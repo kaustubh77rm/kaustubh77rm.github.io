@@ -13,7 +13,8 @@
         }
 
         .container {
-            width: 60%;
+            width: 90%;
+            max-width: 800px;
             margin: 0 auto;
             background-color: #fff;
             padding: 20px;
@@ -48,16 +49,44 @@
             color: #4CAF50;
             text-decoration: none;
         }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>About Me</h1>
-        <p>Hello! I'm <span class="highlight">Kaustubh Ramteke</span>, a passionate developer with experience in creating various systems like a <span class="highlight">User Management System</span>, <span class="highlight">Student Management System</span>, and a <span class="highlight">Bank Database</span>. I have skills in backend development using Core Java, Spring, Spring Boot and SQL.</p>
+        <p>Hello! I'm <span class="highlight">Kaustubh Ramteke</span>, a passionate developer with experience in creating various systems like a <span class="highlight">User Management System</span>, <span class="highlight">Student Management System</span>, and a <span class="highlight">Bank Database</span>. I have strong skills in backend development using Core Java, Spring, Spring Boot and SQL.</p>
 
         <p>I strive to build efficient, scalable, and secure applications with a focus on providing seamless user experiences. My work at <span class="highlight">MKPIT Services, Nagpur</span> has helped me hone my abilities and contribute to impactful projects.</p>
 
         <p>I am continuously learning and improving my coding skills to keep up with the latest technologies. Feel free to check out my projects or contact me if you'd like to collaborate!</p>
+
+        <center><a href="index.html" class="back-button">Back</a><center>
     </div>
 
     <div class="footer">
