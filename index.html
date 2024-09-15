@@ -1,81 +1,96 @@
-<html>
-    <head>
-        <title>KPR First</title>
-        <style>
-            body {
-                font-family: Arial, Helvetica, sans-serif;
-                background-color: #e9ecef;
-                margin: 0;
-                padding: 0;
-            }
-            header {
-                background-color: #343a40;
-                padding: 20px;
-                text-align: center;
-                color: white;
-            }
-            h1 {
-                font-size: 36px;
-                margin: 0;
-            }
-            .date {
-                color: rgb(255, 8, 8);
-                font-size: 30px;
-                font-weight: bold;
-                text-align: center;
-            }
-            .name {
-                color: rgb(97, 2, 186);
-                font-size: 30px;
-                font-weight: bold;
-                text-align: center;
-            }
-            .intro {
-                font-size: 30px;
-                background-color: #f2f2f2;
-                padding: 20px;
-                margin: 20px;
-                text-align: center;
-                border-radius: 10px;
-                box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            }
-            .links {
-                text-align: center;
-                margin-top: 20px;
-            }
-            .links a {
-                text-decoration: none;
-                color: #007bff;
-                font-size: 18px;
-                margin: 0 15px;
-            }
-            .links a:hover {
-                color: #0056b3;
-            }
-        </style>
-    </head>
-    <body>
-        <header>
-            <h1>Welcome to My Profile</h1>
-        </header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
 
-        <p class="date">
-            Date: 4 July 2024
-        </p>
-        
-        <p class="name">
-            Kaustubh Varsha Prabhakar Ramteke
-        </p>
-        
-        <div class="intro">
-            First time using this feature of GitHub. I am Kaustubh from Nagpur, Maharashtra.
-            Currently doing a Java full stack course. Aiming for a job in a product-based company.
-        </div> 
-        
-        <div class="links">
-            <a href="about.html">About Me</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </body>
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Me</h1>
+        <p>Hello! I'm <span class="highlight">Kaustubh Ramteke</span>, a passionate developer with experience in creating various systems like a <span class="highlight">User Management System</span>, <span class="highlight">Student Management System</span>, and a <span class="highlight">Bank Database</span>. I have strong skills in backend development using Core Java, Spring, Spring Boot and SQL.</p>
+
+        <p>I strive to build efficient, scalable, and secure applications with a focus on providing seamless user experiences. My work at <span class="highlight">MKPIT Services, Nagpur</span> has helped me hone my abilities and contribute to impactful projects.</p>
+
+        <p>I am continuously learning and improving my coding skills to keep up with the latest technologies. Feel free to check out my projects or contact me if you'd like to collaborate!</p>
+
+        <center><a href="index.html" class="back-button">Back</a><center>
+    </div>
+
+    <div class="footer">
+        <p>Contact me at: <a href="mailto:kaustubhramteke@rediffmail.com">kaustubhramteke@rediffmail.com</a></p>
+    </div>
+</body>
 </html>
