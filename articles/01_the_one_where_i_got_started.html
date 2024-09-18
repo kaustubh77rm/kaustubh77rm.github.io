@@ -17,7 +17,7 @@
         
         /* Header styling */
         header {
-            background-color: #3B82F6; /* Changed to blue */
+            background-color: #3B82F6; /* Blue color */
             color: white;
             padding: 20px 0;
             text-align: center;
@@ -40,11 +40,35 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
+        /* Flex container for button and title */
+        .flex-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* Back button styling */
+        .back-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
         /* Article title */
         .article-title {
             font-size: 28px;
-            color: #3B82F6; /* Changed to blue */
-            margin-bottom: 10px;
+            color: #3B82F6; /* Blue color */
+            text-align: center;
         }
 
         /* Subtitle for the article */
@@ -52,6 +76,7 @@
             font-size: 18px;
             color: #666;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         /* Article content */
@@ -68,7 +93,7 @@
             margin: 20px 0;
             padding: 10px 20px;
             background-color: #f0f0f0;
-            border-left: 5px solid #3B82F6; /* Changed to blue */
+            border-left: 5px solid #3B82F6; /* Blue color */
         }
 
         /* Footer styling */
@@ -87,16 +112,17 @@
 
         /* Responsive design */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 28px;
+            .container {
+                padding: 15px;
+            }
+
+            .flex-container {
+                flex-direction: column;
+                align-items: flex-start;
             }
 
             .article-title {
-                font-size: 24px;
-            }
-
-            .container {
-                padding: 15px;
+                margin-top: 10px;
             }
         }
     </style>
@@ -110,21 +136,27 @@
 
     <!-- Main content container -->
     <div class="container">
-        <!-- Article title and date -->
+        <!-- Flex container for back button and article title -->
+        <!-- Article title -->
         <h2 class="article-title">Journey Begins</h2>
+
+        <!-- Subtitle for the article -->
         <p class="subtitle">Published on: September 18, 2024</p>
 
         <!-- Article content -->
         <div class="article-content">
             <p>Starting something new is always exciting. This is my first article.</p>
 
-            <p>I dont know if I'm gonna write more on this site. But fuck it; its started</p>
+            <p>I don't know if I'm gonna write more on this site. But fuck it’s started</p>
 
             <!-- Emphasized quote -->
             <div class="quote">
                 "Jo hoga dekha jaega" – James Bond, Spectre (Hindi Dub)
             </div>
-
+            <div class="flex-container">
+            <!-- Back button aligned to the left -->
+            <a href="Column.html" class="back-button">Back</a>
+        </div>
             
         </div>
     </div>
