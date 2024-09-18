@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,9 +54,32 @@
             text-decoration: none;
         }
 
-        a:hover {
-            text-decoration: underline;
+        
+         a {
+            color: #4CAF50;
+            text-decoration: none;
         }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 100%;
+                padding: 15px;
+            }
     </style>
 </head>
 <header>
@@ -69,5 +93,6 @@ Contact Me
             </tr>
         </table>
     </div>
+    <center><a href="index.html" class="back-button">Back</a><center>
 </body>
 </html>
