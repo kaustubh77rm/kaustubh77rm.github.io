@@ -110,8 +110,8 @@
         .back-button {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #1B56F8;
-            color: white;
+            background-color: #f5df00;
+            color: black;
             text-decoration: none;
             border-radius: 5px;
             font-size: 20px;
@@ -120,19 +120,39 @@
         }
         .back-button:hover {
             font-size: 24px;
-            background-color: #2F0BF4;
+            background-color: #f5ba00;
             transform: translateY(-2px);
         }
         .back-button:active {
             background-color: #d67600;
             transform: translateY(0);
         }
+        .flex-container {
+    display: flex;
+    justify-content: flex-start; /* Aligns the content (Back button) to the left */
+    padding-left: 20px; /* Adds some padding to the left side */
+}
     </style>
 </head>
 <body>
     <header>
+     <div class="flex-container" style="text-align: center;">
+        <a href="https://kaustubh77rm.github.io/index.html" class="back-button">Back</a>
+    </div>
         <h1>My Column</h1>
     </header>
+    
+    <section class="date-section">
+        <h2>October 16, 2024</h2>
+        <ul class="link-list">
+            <li>
+                <a href="05_the_one_with_vidarbha_map.html" class="button-57">
+                    <span>The one with vidarbha map</span>
+                    <span>Open</span>
+                </a>
+            </li>
+        </ul>
+    </section>
     
     <section class="date-section">
         <h2>October 4, 2024</h2>
@@ -179,8 +199,5 @@
         </ul>
     </section>
 
-    <div class="flex-container" style="text-align: center;">
-        <a href="https://kaustubh77rm.github.io/index.html" class="back-button">Back</a>
-    </div>
 </body>
 </html>
