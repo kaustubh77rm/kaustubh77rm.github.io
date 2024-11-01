@@ -29,37 +29,28 @@
         }
 
         p {
-        	font-size:20px;
+            font-size: 20px;
             color: #555;
             line-height: 1.8;
             margin-bottom: 20px;
         }
 
         .highlight {
-            color: #4CAF50;
+            color: green;
             font-weight: bold;
         }
+        
         .highlight-1 {
-            color: #145f01;
-            font-weight: bold;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #777;
-        }
-
-        a {
-            color: #4CAF50;
-            text-decoration: none;
+            color: black;
+            font-size: 22px;
+            font-weight: bolder;
         }
 
         .back-button {
             display: inline-block;
             margin-top: 20px;
             padding: 10px 15px;
-            background-color: #4CAF50;
+            background-color: green;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -70,28 +61,183 @@
             background-color: #45a049;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                padding: 15px;
-            }
+        .details-table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
 
-            h1 {
-                font-size: 24px;
-            }
+        .details-table th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 20px;
+            background-color: red;
+            color: white;
+            font-size: 22px;
+        }
+        
+        .details-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 20px;
+        }
+        
+        .details-table-2 {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        .details-table-2 th {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 20px;
+            background-color: #006cc6;
+            color: white;
+            font-size: 22px;
+        }
+        
+        .details-table-2 td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        /* Cool styling for languages */
+        .cool-language {
+            font-weight: bold;
+            color: #1e90ff;
+        }
+
+        /* Interest List Styling */
+        .interest-list {
+            list-style-type: none;
+            padding: 0;
+            font-size: 20px;
+        }
+
+        .interest-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 5px solid #4CAF50;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .interest-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .interest-details {
+            color: #555;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>About Me</h1>
-        <p>Hello! I'm <span class="highlight-1">Kaustubh Ramteke</span>, a computer engineer with experience in creating projects like a <span class="highlight">User Management System</span>, <span class="highlight">Student Management System</span>, & <span class="highlight">Bank Database</span>. I have skills in backend development: Core Java, Spring, Spring Boot & MySQL. And can do frontend development using HTML, CSS, Bootstrap & Javascript.</p>
+        <p>Hello! I'm <span class="highlight-1">Kaustubh Ramteke</span>, a computer engineer with experience in creating projects like a <span class="highlight">Product Sales</span>. I have skills in backend development: Core Java, Spring, Spring Boot & MySQL. And I can do frontend development using HTML, CSS, Bootstrap & JavaScript.</p>
 
         <p>My work at <span class="highlight">MKPIT Services, Nagpur</span> has helped me hone my abilities and contribute to some cool projects.</p>
 
         <p>I am continuously learning and improving my coding skills to keep up with the latest technologies.</p>
 
-        <center><a href="index.html" class="back-button">Back</a><center>
+        <!-- Details Table -->
+        <table class="details-table">    
+            <tr>
+                <th>Name</th>
+                <td>Kaustubh Prabhakar Lakshman Ramteke</td>
+            </tr>
+            <tr>
+                <th>Hometown</th>
+                <td>Amravati, Maharashtra, India</td>
+            </tr>
+            <tr>
+                <th>Current City</th>
+                <td>Nagpur, Maharashtra, India</td>
+            </tr>
+            <tr>
+                <th>Education</th>
+                <td>
+                    <table class="details-table-2">
+                        <tr>
+                            <th>Degree</th>
+                            <th>Institution</th>
+                            <th>Year of Passing</th>
+                            <th>Score</th>
+                        </tr>
+                        <tr>
+                            <td>BE in Computer Science & Engineering</td>
+                            <td>Shree HVPM's COET, Amravati</td>
+                            <td>2023</td>
+                            <td>8.35 CGPA</td>
+                        </tr>
+                        <tr>
+                            <td>Diploma in Computer Engineering</td>
+                            <td>Government Polytechnic, Amravati</td>
+                            <td>2020</td>
+                            <td>79.13%</td>
+                        </tr>
+                        <tr>
+                            <td>SSC/10th</td>
+                            <td>St. Francis High School, Amravati</td>
+                            <td>2017</td>
+                            <td>86.20%</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th>Technical Skills</th>
+                <td>
+                    <table class="details-table-2">
+                        <tr>
+                            <th>Front End</th>
+                            <td>HTML, CSS, JavaScript</td>
+                        </tr>
+                        <tr>
+                            <th>Back End</th>
+                            <td>Core Java, Advance Java, MySQL</td>
+                        </tr>
+                        <tr>
+                            <th>Other Concepts</th>
+                            <td>Data Structures & Algorithms, Object Oriented Programming</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th>Language(s)</th>
+                <td><span>English, Marathi (Mother Tongue), Hindi</span></td>
+            </tr>
+            <tr>
+                <th>Interest(s)</th>
+                <td>
+                    <ul class="interest-list">
+                        <li class="interest-item">
+                            <span class="interest-title">Anime:</span>
+                            <span class="interest-details">Case Closed/ Detective Conan, Naruto, Ninja Hattori, Perman</span>
+                        </li>
+                        <li class="interest-item">
+                            <span class="interest-title">TV Series:</span>
+                            <span class="interest-details">Friends, Community, Suits, TMKOC, Power Rangers SPD</span>
+                        </li>
+                        <li class="interest-item">
+                            <span class="interest-title">Songs:</span>
+                            <span class="interest-details">Fever Fever, Pagol, Pasoori, Roads Untraveled, etc.</span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+
+        <center><a href="index.html" class="back-button">Back</a></center>
     </div>
 </body>
 </html>
