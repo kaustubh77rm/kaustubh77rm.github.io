@@ -4,44 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Me</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #e3e3e3;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
-            width: 95%;
-            max-width: 90%;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 1000px;
+            margin: 30px auto;
             background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-radius: 10px;
-            margin-top: 50px;
         }
 
         h1 {
             text-align: center;
             color: #333;
+            font-size: 28px;
         }
 
         p {
-            font-size: 20px;
+            font-size: 18px;
             color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
+            line-height: 1.7;
         }
 
         .highlight {
             color: green;
             font-weight: bold;
         }
-        
+
         .highlight-1 {
             color: black;
-            font-size: 22px;
-            font-weight: bolder;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .back-button {
@@ -52,79 +54,59 @@
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .back-button:hover {
             background-color: #45a049;
         }
 
-        .details-table {
-        	height:100%;
-            width: 100%;
-            border-collapse: collapse;
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 20px;
         }
 
-        .details-table th {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            font-size: 20px;
-            background-color: orange;
-            color: black;
-            font-size: 22px;
-        }
-        
-        .details-table td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            font-size: 20px;
-        }
-        
-        .details-table-2 {
+        table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        th {
+            background-color: orange;
+            font-weight: bold;
         }
 
         .details-table-2 th {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            font-size: 20px;
             background-color: #006cc6;
             color: white;
-            font-size: 22px;
         }
-        
+
         .details-table-2 td {
             background-color: #e1e1e1;
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            font-size: 20px;
         }
 
-        /* Cool styling for languages */
-        .cool-language {
-            font-weight: bold;
-            color: #1e90ff;
-        }
-
-        /* Interest List Styling */
+        /* Interest list */
         .interest-list {
             list-style-type: none;
             padding: 0;
-            font-size: 20px;
+            margin: 0;
         }
 
         .interest-item {
-            margin-bottom: 20px;
-            padding: 15px;
+            margin-bottom: 15px;
+            padding: 12px;
             border-left: 5px solid #ffaa01;
             background-color: #f2f2f2;
             border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .interest-title {
@@ -135,10 +117,38 @@
         .interest-details {
             color: #555;
         }
+
+        /* 🔥 Mobile tweaks */
+        @media (max-width: 768px) {
+
+            h1 {
+                font-size: 24px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            .highlight-1 {
+                font-size: 18px;
+            }
+
+            th, td {
+                font-size: 14px;
+                padding: 8px;
+            }
+
+            .back-button {
+                font-size: 15px;
+                padding: 8px 12px;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
+
+<div class="container">
         <h1>About Me</h1>
         <p>Hello! I'm <span class="highlight-1">Kaustubh</span>, a computer engineer with experience in creating projects like a <span class="highlight">Product Sales</span>. I have skills in backend development: Core Java, Spring, Spring Boot & MySQL. And I can do frontend development using HTML, CSS, Bootstrap & JavaScript.</p>
 
@@ -146,8 +156,9 @@
 
         <p>I am continuously learning and improving my coding skills to keep up with the latest technologies.</p>
 
-        <!-- Details Table -->
-        <table class="details-table">    
+    <!-- Main Details Table -->
+    <div class="table-wrapper">
+        <table class="details-table">
             <tr>
                 <th>Name</th>
                 <td>Kaustubh Prabhakar Lakshman Ramteke</td>
@@ -163,7 +174,9 @@
             <tr>
                 <th>Education</th>
                 <td>
-                    <table class="details-table-2">
+                    <div class="table-wrapper">
+                        
+                        <table class="details-table-2">
                         <tr>
                             <th>Degree</th>
                             <th>Institution</th>
@@ -172,11 +185,9 @@
                         </tr>
                         <tr>
                             <td>BE in Computer Science & Engineering</td>
-                            <td>Shree Hanuman Vyayam Prasarak Mandal’s 
+                            <td>Shree HVPM’s 
 College of Engineering & Technology, 
-Amravati  
-(Affiliated to Sant Gadge Baba 
-Amravati University, Maharashtra) </td>
+Amravati   </td>
                             <td>2023</td>
                             <td>8.35 CGPA</td>
                         </tr>
@@ -193,11 +204,12 @@ Amravati University, Maharashtra) </td>
                             <td>86.20%</td>
                         </tr>
                     </table>
+                        
+                    </div>
                 </td>
             </tr>
             <tr>
                 <th>Technical Skills</th>
-                
                 <td>
                     <ul class="interest-list">
                         <li class="interest-item">
@@ -209,19 +221,18 @@ Amravati University, Maharashtra) </td>
                             <span class="interest-details">Java, MySQL</span>
                         </li>
                         <li class="interest-item">
-                            <span class="interest-title">Other Concept(s):</span>
+                            <span class="interest-title">Concepts:</span>
                             <span class="interest-details">DSA, OOP</span>
                         </li>
                     </ul>
                 </td>
-                
             </tr>
             <tr>
-                <th>Language(s)</th>
-                <td><span>English, Marathi (Mother Tongue), Hindi</span></td>
+                <th>Languages</th>
+                <td>English, Marathi, Hindi</td>
             </tr>
             <tr>
-                <th>Interest(s)</th>
+                <th>Interests</th>
                 <td>
                     <ul class="interest-list">
                         <li class="interest-item">
@@ -234,14 +245,19 @@ Amravati University, Maharashtra) </td>
                         </li>
                         <li class="interest-item">
                             <span class="interest-title">Songs:</span>
-                            <span class="interest-details">Fever Fever, Pagol, Pasoori, Roads Untraveled, etc.</span>
+                            <span class="interest-details">Fever Fever, Pagol, Pasoori, Roads Untraveled, The Disco Song etc.</span>
                         </li>
                     </ul>
                 </td>
             </tr>
         </table>
-
-        <center><a href="index.html" class="back-button">Back</a></center>
     </div>
+
+    <center>
+        <a href="index.html" class="back-button">Back</a>
+    </center>
+
+</div>
+
 </body>
 </html>
