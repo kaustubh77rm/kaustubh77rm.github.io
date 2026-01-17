@@ -2,6 +2,11 @@
 <head>
 <title>Vidarbha</title>
 <style>
+ a
+ {
+ font-size:20px;
+ padding:20px;
+ }
  
  body {
   background-color: #111;
@@ -74,25 +79,48 @@ img {
   margin-top: 20px; /* Adds space between the heading and the image */
 }
 
+/* Floating Glass Home Button */
+.nav-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 20px;
+  font-size: 1.85em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  border: 2px solid rgba(255,255,255,0.25);
+  transition: all 0.35s ease;
+  z-index: 999;
+}
+
+/* Hover effect */
+.nav-btn:hover {
+  background: rgba(255,140,0,0.25);
+  box-shadow: 0 0 18px rgba(255,140,0,0.7);
+  transform: translateX(-6px);
+}
+
+/* Mobile friendly */
+@media (max-width: 600px) {
+  .nav-btn {
+    padding: 8px 16px;
+    font-size: 0.75em;
+  }
+}
+
+
 </style>
 </head>
 
 
 <body>
 
-<button onclick="history.back()" style="
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: white;
-    color: purple;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
-    z-index: 999;
-">Back</button>
+<a href="../index.html" class="nav-btn" title="Go back to Home">←</a>
 
 
     <div class="content">
