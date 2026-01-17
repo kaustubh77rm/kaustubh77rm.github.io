@@ -1,264 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Me</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #e3e3e3;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+:root {
+    --primary: #2e7d32;
+    --secondary: #006cc6;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #666;
+}
 
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 30px auto;
-            background-color: #fff;
-            padding: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
+/* Base (mobile-first) */
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
 
-        h1 {
-            text-align: center;
-            color: #333;
-            font-size: 28px;
-        }
+/* Sticky top bar */
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+}
 
-        p {
-            font-size: 18px;
-            color: #555;
-            line-height: 1.7;
-        }
+.back-button {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 15px;
+}
 
-        .highlight {
-            color: green;
-            font-weight: bold;
-        }
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 12px;
+}
 
-        .highlight-1 {
-            color: black;
-            font-size: 20px;
-            font-weight: bold;
-        }
+/* Header */
+.header {
+    text-align: center;
+    margin: 20px 0;
+}
 
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: green;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
+.header h1 {
+    margin: 0;
+    font-size: 24px;
+}
 
-        .back-button:hover {
-            background-color: #45a049;
-        }
+.subtitle {
+    color: var(--muted);
+    font-size: 15px;
+    margin-top: 4px;
+}
 
-        /* Tables */
-        .table-wrapper {
-            overflow-x: auto;
-            margin-bottom: 20px;
-        }
+/* Card sections */
+.section {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 600px;
-        }
+.section h3 {
+    margin-top: 0;
+    color: var(--primary);
+}
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-            font-size: 16px;
-        }
+p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--muted);
+}
 
-        th {
-            background-color: orange;
-            font-weight: bold;
-        }
+.highlight {
+    color: var(--primary);
+    font-weight: 600;
+}
 
-        .details-table-2 th {
-            background-color: #006cc6;
-            color: white;
-        }
+/* Info list (mobile replacement for tables) */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .details-table-2 td {
-            background-color: #e1e1e1;
-        }
+.info-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
 
-        /* Interest list */
-        .interest-list {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
+.info-item:last-child {
+    border-bottom: none;
+}
 
-        .interest-item {
-            margin-bottom: 15px;
-            padding: 12px;
-            border-left: 5px solid #ffaa01;
-            background-color: #f2f2f2;
-            border-radius: 5px;
-        }
+.info-label {
+    font-weight: 600;
+    display: block;
+    color: var(--text);
+}
 
-        .interest-title {
-            font-weight: bold;
-            color: #333;
-        }
+/* Education cards */
+.edu-card {
+    padding: 12px;
+    border-left: 4px solid var(--secondary);
+    background: #f8f8f8;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
 
-        .interest-details {
-            color: #555;
-        }
+.edu-card strong {
+    display: block;
+}
 
-        /* 🔥 Mobile tweaks */
-        @media (max-width: 768px) {
+/* Skill chips */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
 
-            h1 {
-                font-size: 24px;
-            }
+.skill {
+    background: #e0f2f1;
+    color: #00695c;
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-size: 14px;
+}
 
-            p {
-                font-size: 16px;
-            }
+/* Interests */
+.interest {
+    background: #f6f6f6;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #ffa000;
+    margin-bottom: 10px;
+}
 
-            .highlight-1 {
-                font-size: 18px;
-            }
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 24px 0;
+}
 
-            th, td {
-                font-size: 14px;
-                padding: 8px;
-            }
+/* Desktop enhancements */
+@media (min-width: 768px) {
+    .container {
+        padding: 24px;
+    }
 
-            .back-button {
-                font-size: 15px;
-                padding: 8px 12px;
-            }
-        }
-    </style>
+    .header h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 17px;
+    }
+}
+</style>
 </head>
 
 <body>
 
+<div class="top-bar">
+    <a href="index.html" class="back-button">← Back</a>
+</div>
+
 <div class="container">
-        <h1>About Me</h1>
-        <p>Hello! I'm <span class="highlight-1">Kaustubh</span>, a computer engineer with experience in creating projects like a <span class="highlight">Product Sales</span>. I have skills in backend development: Core Java, Spring, Spring Boot & MySQL. And I can do frontend development using HTML, CSS, Bootstrap & JavaScript.</p>
 
-        <p>My work at <span class="highlight">MKPIT Services, Nagpur</span> has helped me hone my abilities and contribute to some cool projects.</p>
-
-        <p>I am continuously learning and improving my coding skills to keep up with the latest technologies.</p>
-
-    <!-- Main Details Table -->
-    <div class="table-wrapper">
-        <table class="details-table">
-            <tr>
-                <th>Name</th>
-                <td>Kaustubh Prabhakar Lakshman Ramteke</td>
-            </tr>
-            <tr>
-                <th>Hometown</th>
-                <td>Amravati, Maharashtra, India</td>
-            </tr>
-            <tr>
-                <th>Current City</th>
-                <td>Nagpur, Maharashtra, India</td>
-            </tr>
-            <tr>
-                <th>Education</th>
-                <td>
-                    <div class="table-wrapper">
-                        
-                        <table class="details-table-2">
-                        <tr>
-                            <th>Qualification</th>
-                            <th>Institute</th>
-                            <th>Year of Passing</th>
-                            <th>Score</th>
-                        </tr>
-                        <tr>
-                            <td>BE in Computer Science & Engineering</td>
-                            <td>Shree HVPM’s 
-College of Engineering & Technology, 
-Amravati   </td>
-                            <td>2023</td>
-                            <td>8.35 CGPA</td>
-                        </tr>
-                        <tr>
-                            <td>Diploma in Computer Engineering</td>
-                            <td>Government Polytechnic, Amravati</td>
-                            <td>2020</td>
-                            <td>79.13%</td>
-                        </tr>
-                        <tr>
-                            <td>SSC/10th</td>
-                            <td>St. Francis High School, Amravati</td>
-                            <td>2017</td>
-                            <td>86.20%</td>
-                        </tr>
-                    </table>
-                        
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th>Technical Skills</th>
-                <td>
-                    <ul class="interest-list">
-                        <li class="interest-item">
-                            <span class="interest-title">Front End:</span>
-                            <span class="interest-details">HTML, CSS</span>
-                        </li>
-                        <li class="interest-item">
-                            <span class="interest-title">Back End:</span>
-                            <span class="interest-details">Java, MySQL</span>
-                        </li>
-                        <li class="interest-item">
-                            <span class="interest-title">Concepts:</span>
-                            <span class="interest-details">DSA, OOP</span>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <th>Languages</th>
-                <td>English, Marathi, Hindi</td>
-            </tr>
-            <tr>
-                <th>Interests</th>
-                <td>
-                    <ul class="interest-list">
-                        <li class="interest-item">
-                            <span class="interest-title">Anime:</span>
-                            <span class="interest-details">Case Closed/ Detective Conan, Naruto, Ninja Hattori, Perman</span>
-                        </li>
-                        <li class="interest-item">
-                            <span class="interest-title">TV Series:</span>
-                            <span class="interest-details">Friends, Community, Suits, TMKOC, Power Rangers SPD</span>
-                        </li>
-                        <li class="interest-item">
-                            <span class="interest-title">Songs:</span>
-                            <span class="interest-details">Fever Fever, Pagol, Pasoori, Roads Untraveled, The Disco Song etc.</span>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+    <div class="header">
+        <h1>Kaustubh Ramteke</h1>
+        <div class="subtitle">Computer Engineer | Java & Spring Boot Developer</div>
     </div>
 
-    <center>
-        <a href="index.html" class="back-button">Back</a>
-    </center>
+    <div class="section">
+        <p>
+            Hello! I'm <span class="highlight">Kaustubh</span>, a computer engineer experienced in building
+            projects like <span class="highlight">Product Sales (E-Commerce)</span>.
+            I specialize in <span class="highlight">Java, Spring Boot & MySQL</span>
+            with solid frontend knowledge.
+        </p>
+        <p>
+            My time at <span class="highlight">MKPIT Services, Nagpur</span> strengthened my
+            industry-ready development skills.
+        </p>
+    </div>
+
+    <div class="section">
+        <h3>Basic Information</h3>
+        <ul class="info-list">
+            <li class="info-item"><span class="info-label">Full Name</span>Kaustubh Prabhakar Lakshman Ramteke</li>
+            <li class="info-item"><span class="info-label">Hometown</span>Amravati, Maharashtra</li>
+            <li class="info-item"><span class="info-label">Current City</span>Nagpur, Maharashtra</li>
+            <li class="info-item"><span class="info-label">Languages</span>English, Marathi, Hindi</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Education</h3>
+
+        <div class="edu-card">
+            <strong>BE – Computer Science & Engineering</strong>
+            HVPM COET, Amravati · 2023 · 8.35 CGPA
+        </div>
+
+        <div class="edu-card">
+            <strong>Diploma – Computer Engineering</strong>
+            Government Polytechnic, Amravati · 2020 · 79.13%
+        </div>
+
+        <div class="edu-card">
+            <strong>SSC</strong>
+            St. Francis High School · 2017 · 86.20%
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Technical Skills</h3>
+        <div class="skills">
+            <span class="skill">HTML</span>
+            <span class="skill">CSS</span>
+            <span class="skill">Java</span>
+            <span class="skill">Spring Boot</span>
+            <span class="skill">MySQL</span>
+            <span class="skill">DSA</span>
+            <span class="skill">OOP</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Interests</h3>
+        <div class="interest"><strong>Anime:</strong> Detective Conan, Naruto</div>
+        <div class="interest"><strong>TV Series:</strong> Friends, Community, Suits</div>
+        <div class="interest"><strong>Music:</strong> Pasoori, Roads Untraveled</div>
+    </div>
+
+    <div class="footer">
+        © 2026 Kaustubh Ramteke
+    </div>
 
 </div>
 
 </body>
 </html>
-
