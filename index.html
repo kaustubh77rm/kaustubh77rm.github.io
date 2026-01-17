@@ -114,6 +114,61 @@
             .name-text { font-size: 1.6rem; }
             .name-box { padding: 30px 20px; }
         }
+        
+        /* Profile Picture Section */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.profile-ring {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    padding: 6px;
+    background: conic-gradient(
+        #ff0080,
+        #ff8c00,
+        #40e0d0,
+        #ff0080
+    );
+    animation: rotate-ring 6s linear infinite;
+    box-shadow: 0 0 25px rgba(64, 224, 208, 0.7);
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #0f2027;
+    background: #0f2027;
+}
+
+/* Hover Effect */
+.profile-ring:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 40px rgba(255, 140, 0, 0.9);
+}
+
+/* Rotation Animation */
+@keyframes rotate-ring {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .profile-ring {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+        
     </style>
 </head>
 
@@ -121,6 +176,14 @@
 
 <main>
     <h1>Welcome to My Kingdom</h1>
+
+<!-- Profile Picture -->
+<div class="profile-wrapper">
+    <div class="profile-ring">
+        <img src="image/kaustubh%20dp14.png" alt="Kaustubh Ramteke" class="profile-pic">
+    </div>
+</div>
+
 
     <div class="name-box">
         <div class="circle-border"></div>
