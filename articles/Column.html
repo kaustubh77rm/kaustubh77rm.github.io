@@ -132,15 +132,73 @@
     justify-content: flex-start; /* Aligns the content (Back button) to the left */
     padding-left: 20px; /* Adds some padding to the left side */
 }
+
+/* Improved Back Button */
+.back-nav {
+  background: rgba(255, 255, 255, 0.9);
+  color: #007bff;
+  border: 2px solid #007bff;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+/* Hover */
+.back-nav:hover {
+  background: #007bff;
+  color: #fff;
+  transform: translateX(-4px);
+  box-shadow: 0 4px 12px rgba(0,123,255,0.35);
+}
+
+/* Active */
+.back-nav:active {
+  transform: translateX(0);
+}
+
+/* Header layout: back button + title */
+.header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  position: relative;
+}
+
+/* Keep back button on the left */
+.header-bar .back-nav {
+  position: absolute;
+  left: 20px;
+}
+
+
     </style>
 </head>
+
+<script>
+function goBack() {
+  if (window.history.length > 1) {
+    history.back();
+  } else {
+    window.location.href = "https://kaustubh77rm.github.io/index.html";
+  }
+}
+</script>
+
+
 <body>
-    <header>
-     <div class="flex-container" style="text-align: center;">
-        <a href="https://kaustubh77rm.github.io/index.html" class="back-button">Back</a>
-    </div>
-        <h1>My Column</h1>
-    </header>
+    
+    <header class="header-bar">
+  <button class="back-nav" onclick="goBack()" aria-label="Go back">←</button>
+  
+  <h1>My Column</h1>
+</header>
+
     
     
     <section class="date-section">
