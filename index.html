@@ -1,143 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>KPR First</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>KPR First</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="/image/krlogo.png">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/image/krlogo.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            min-height: 100vh;
-            font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            display: flex;
-            flex-direction: column;
-        }
-
-        main {
-            flex: 1;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        h1 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        /* NAME BOX */
-        .name-box {
-            position: relative;
-            display: inline-block;
-            padding: 50px 80px;
-            border-radius: 15px;
-            overflow: hidden;
-            background: rgba(255,255,255,0.05);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-
-        .name-text {
-            color: white;
-            font-size: 2.5rem;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Animated Border */
-        .circle-border::before {
-            content: "";
-            position: absolute;
-            inset: -5px;
-            border-radius: 20px;
-            background: conic-gradient(#ff0080, #ff8c00, #40e0d0, #ff0080);
-            animation: rotate 4s linear infinite;
-            z-index: 0;
-        }
-
-        .circle-border::after {
-            content: "";
-            position: absolute;
-            inset: 5px;
-            background: #0f2027;
-            border-radius: 15px;
-            z-index: 1;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        /* LINKS */
-        .links {
-            margin-top: 40px;
-        }
-
-        .button-35 {
-            background: #FFD000;
-            border: none;
-            padding: 12px 30px;
-            margin: 10px;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .button-35:hover {
-            transform: scale(1.1);
-            background: linear-gradient(45deg,#f9a825,#f57f17);
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            padding: 15px;
-            text-align: center;
-        }
-
-        @media(max-width:768px){
-            .name-text { font-size: 1.6rem; }
-            .name-box { padding: 30px 20px; }
-        }
-        
-        /* Profile Picture Section */
-.profile-wrapper {
+body {
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    flex-direction: column;
 }
 
+main { flex: 1; text-align: center; padding: 40px 20px; }
+
+h1 { color: white; font-size: 2.5rem; margin-bottom: 20px; }
+
+/* NAME BOX */
+.name-box {
+    position: relative;
+    display: inline-block;
+    padding: 50px 80px;
+    border-radius: 15px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.05);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.name-text {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+}
+
+/* Animated Border */
+.circle-border::before {
+    content: "";
+    position: absolute;
+    inset: -5px;
+    border-radius: 20px;
+    background: conic-gradient(#ff0080, #ff8c00, #40e0d0, #ff0080);
+    animation: rotate 4s linear infinite;
+    z-index: 0;
+}
+
+.circle-border::after {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    background: #0f2027;
+    border-radius: 15px;
+    z-index: 1;
+}
+
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+/* LINKS */
+.links { margin-top: 40px; }
+.button-35 {
+    background: #FFD000;
+    border: none;
+    padding: 12px 30px;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.button-35:hover { transform: scale(1.1); background: linear-gradient(45deg,#f9a825,#f57f17); }
+
+footer {
+    background: #333;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+@media(max-width:768px){
+    .name-text { font-size: 1.6rem; }
+    .name-box { padding: 30px 20px; }
+}
+
+/* Profile Picture Section */
+.profile-wrapper { display: flex; justify-content: center; margin:30px 0; }
 .profile-ring {
     position: relative;
     width: 180px;
     height: 180px;
     border-radius: 50%;
     padding: 6px;
-    background: conic-gradient(
-        #ff0080,
-        #ff8c00,
-        #40e0d0,
-        #ff0080
-    );
+    background: conic-gradient(#ff0080,#ff8c00,#40e0d0,#ff0080);
     animation: rotate-ring 6s linear infinite;
     box-shadow: 0 0 25px rgba(64, 224, 208, 0.7);
 }
-
 .profile-pic {
     width: 100%;
     height: 100%;
@@ -147,41 +113,82 @@
     background: #0f2027;
     user-select: none;
     pointer-events: none;
+}
+.profile-ring:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(255,140,0,0.9); }
+@media(max-width:600px){ .profile-ring { width:130px; height:130px; } }
 
+/* Animated Identity Section */
+.container1 {
+    color: black;
+    font-size: 2rem;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.animation {
+    height: 2.8rem;
+    overflow: hidden;
+}
+/* Animation fix */
+.animation {
+    height: 2.8rem;
+    overflow: hidden;
+}
+/* Slider container */
+.slider {
+    display: flex;
+    flex-direction: column;
+    animation: slideText 9s infinite;
 }
 
-/* Hover Effect */
-.profile-ring:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 40px rgba(255, 140, 0, 0.9);
+/* Each word box */
+.slider {
+    display: flex;
+    flex-direction: column;
+    animation: slideText 9s infinite;
 }
 
-
-
-/* Responsive */
-@media (max-width: 600px) {
-    .profile-ring {
-        width: 130px;
-        height: 130px;
-    }
+.slider > div {
+    height: 3rem; /* make sure each word has exact height */
+    line-height: 3rem; /* vertically center */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    text-transform: capitalize;
 }
 
-        
-    </style>
+.first { background-color: #016f8e; }
+.second { background-color: green; }
+.third { background-color: #fc8a1e; }
+
+@keyframes slideText {
+    0%,20%   { transform: translateY(0); }      /* Kaustubh visible */
+    25%,45%  { transform: translateY(-3rem); } /* Computer Engineer visible */
+    50%,70%  { transform: translateY(-6rem); } /* Maharashtrian visible */
+    75%,100% { transform: translateY(0); }     /* Loop back */
+}
+
+</style>
 </head>
 
 <body>
-
 <main>
     <h1>Welcome to My Kingdom</h1>
 
-<!-- Profile Picture -->
-<div class="profile-wrapper">
-    <div class="profile-ring">
-        <img src="image/kaustubh%20dp14.png" alt="Kaustubh Ramteke" class="profile-pic">
+    <!-- Profile Picture -->
+    <div class="profile-wrapper">
+        <div class="profile-ring">
+            <img src="image/kaustubh%20dp14.png" alt="Kaustubh Ramteke" class="profile-pic">
+        </div>
     </div>
-</div>
-
 
     <div class="name-box">
         <div class="circle-border"></div>
@@ -190,6 +197,21 @@
         </div>
     </div>
 
+    <!-- Animated Identity -->
+    <!-- Animated Identity -->
+<div class="container1">
+    <p>Hello 👋 I'm</p>
+    <section class="animation">
+        <div class="slider">
+            <div class="first">Kaustubh</div>
+            <div class="second">Computer Engineer</div>
+            <div class="third">Maharashtrian</div>
+        </div>
+    </section>
+</div>
+
+
+    <!-- Buttons -->
     <div class="links">
         <button class="button-35" onclick="location.href='about.html'">About Me</button>
         <button class="button-35" onclick="location.href='projects.html'">Projects</button>
@@ -203,16 +225,9 @@
 </footer>
 
 <script>
-    const box = document.querySelector('.name-box');
-
-    box.addEventListener('mouseenter', () => {
-        box.style.transform = 'scale(1.03)';
-    });
-
-    box.addEventListener('mouseleave', () => {
-        box.style.transform = 'scale(1)';
-    });
+const box = document.querySelector('.name-box');
+box.addEventListener('mouseenter', ()=>{ box.style.transform='scale(1.03)'; });
+box.addEventListener('mouseleave', ()=>{ box.style.transform='scale(1)'; });
 </script>
-
 </body>
 </html>
