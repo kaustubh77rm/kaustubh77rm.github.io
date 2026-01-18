@@ -15,7 +15,7 @@
     --muted: #666;
 }
 
-/* Base (mobile-first) */
+/* Base */
 body {
     margin: 0;
     font-family: system-ui, Arial, sans-serif;
@@ -23,7 +23,7 @@ body {
     color: var(--text);
 }
 
-/* Sticky top bar */
+/* Top bar */
 .top-bar {
     position: sticky;
     top: 0;
@@ -46,27 +46,26 @@ body {
 .container {
     max-width: 1000px;
     margin: auto;
-    padding: 12px;
+    padding: 16px;
 }
 
 /* Header */
 .header {
     text-align: center;
-    margin: 20px 0;
+    margin: 24px 0;
 }
 
 .header h1 {
     margin: 0;
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .subtitle {
     color: var(--muted);
-    font-size: 15px;
-    margin-top: 4px;
+    font-size: 16px;
 }
 
-/* Card sections */
+/* Card section */
 .section {
     background: var(--card);
     border-radius: 12px;
@@ -75,13 +74,7 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-.section h3 {
-    margin-top: 0;
-    color: var(--primary);
-}
-
 p {
-    font-size: 16px;
     line-height: 1.7;
     color: var(--muted);
 }
@@ -91,7 +84,7 @@ p {
     font-weight: 600;
 }
 
-/* Info list (mobile replacement for tables) */
+/* Info list */
 .info-list {
     list-style: none;
     padding: 0;
@@ -110,23 +103,9 @@ p {
 .info-label {
     font-weight: 600;
     display: block;
-    color: var(--text);
 }
 
-/* Education cards */
-.edu-card {
-    padding: 12px;
-    border-left: 4px solid var(--secondary);
-    background: #f8f8f8;
-    border-radius: 8px;
-    margin-bottom: 12px;
-}
-
-.edu-card strong {
-    display: block;
-}
-
-/* Skill chips */
+/* Skills */
 .skills {
     display: flex;
     flex-wrap: wrap;
@@ -141,13 +120,87 @@ p {
     font-size: 14px;
 }
 
-/* Interests */
-.interest {
-    background: #f6f6f6;
-    padding: 12px;
-    border-radius: 8px;
-    border-left: 4px solid #ffa000;
+/* Main dropdown */
+.dropdown {
+    background: var(--card);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.dropdown-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-header span {
+    transition: transform 0.3s ease;
+}
+
+.dropdown-header.active span {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 16px;
+}
+
+.dropdown-content.open {
+    padding-bottom: 16px;
+}
+
+/* Sub dropdown */
+.sub-item {
+    background: #f9f9f9;
+    border-radius: 10px;
     margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.sub-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 14px 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.sub-header span {
+    transition: transform 0.3s ease;
+}
+
+.sub-header.active span {
+    transform: rotate(180deg);
+}
+
+.sub-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    padding: 0 16px;
+}
+
+.sub-content.open {
+    padding-bottom: 12px;
 }
 
 /* Footer */
@@ -158,23 +211,10 @@ p {
     margin: 24px 0;
 }
 
-/* Desktop enhancements */
+/* Desktop */
 @media (min-width: 768px) {
-    .container {
-        padding: 24px;
-    }
-
-    .header h1 {
-        font-size: 32px;
-    }
-
-    .subtitle {
-        font-size: 18px;
-    }
-
-    p {
-        font-size: 17px;
-    }
+    .header h1 { font-size: 32px; }
+    .subtitle { font-size: 18px; }
 }
 </style>
 </head>
@@ -182,7 +222,7 @@ p {
 <body>
 
 <div class="top-bar">
-    <a href="index.html" class="back-button">← Back</a>
+    <a href="https://kaustubh77rm.io/" class="back-button">← Back</a>
 </div>
 
 <div class="container">
@@ -196,44 +236,21 @@ p {
         <p>
             Hello! I'm <span class="highlight">Kaustubh</span>, a computer engineer experienced in building
             projects like <span class="highlight">Product Sales (E-Commerce)</span>.
-            I specialize in <span class="highlight">Java, Spring Boot & MySQL</span>
-            with solid frontend knowledge.
-        </p>
-        <p>
-            My time at <span class="highlight">MKPIT Services, Nagpur</span> strengthened my
-            industry-ready development skills.
+            I specialize in <span class="highlight">Java, Spring Boot & MySQL</span>.
         </p>
     </div>
 
     <div class="section">
         <h3>Basic Information</h3>
         <ul class="info-list">
-            <li class="info-item"><span class="info-label">Full Name</span>Kaustubh Prabhakar Lakshman Ramteke</li>
+            <li class="info-item"><span class="info-label">Full Name</span>Kaustubh Prabhakar Ramteke</li>
             <li class="info-item"><span class="info-label">Hometown</span>Amravati, Maharashtra</li>
             <li class="info-item"><span class="info-label">Current City</span>Nagpur, Maharashtra</li>
             <li class="info-item"><span class="info-label">Languages</span>English, Marathi, Hindi</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h3>Education</h3>
-
-        <div class="edu-card">
-            <strong>BE – Computer Science & Engineering</strong>
-            HVPM COET, Amravati · 2023 · 8.35 CGPA
-        </div>
-
-        <div class="edu-card">
-            <strong>Diploma – Computer Engineering</strong>
-            Government Polytechnic, Amravati · 2020 · 79.13%
-        </div>
-
-        <div class="edu-card">
-            <strong>SSC</strong>
-            St. Francis High School · 2017 · 86.20%
-        </div>
-    </div>
-
+<!-- SKILLS -->
     <div class="section">
         <h3>Technical Skills</h3>
         <div class="skills">
@@ -243,22 +260,117 @@ p {
             <span class="skill">Spring Boot</span>
             <span class="skill">MySQL</span>
             <span class="skill">DSA</span>
-            <span class="skill">OOP</span>
         </div>
     </div>
 
-    <div class="section">
-        <h3>Interests</h3>
-        <div class="interest"><strong>Anime:</strong> Detective Conan, Naruto</div>
-        <div class="interest"><strong>TV Series:</strong> Friends, Community, Suits</div>
-        <div class="interest"><strong>Music:</strong> Pasoori, Roads Untraveled</div>
+    <!-- EDUCATION -->
+    <div class="dropdown">
+        <button class="dropdown-header">🎓 Education <span>▼</span></button>
+        <div class="dropdown-content">
+
+            <div class="sub-item">
+                <button class="sub-header">BE – Computer Science & Engineering <span>▼</span></button>
+                <div class="sub-content">
+                    <p>HVPM COET, Amravati</p>
+                    <p>2023 · CGPA: 8.35</p>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <button class="sub-header">Diploma – Computer Engineering <span>▼</span></button>
+                <div class="sub-content">
+                    <p>Government Polytechnic, Amravati</p>
+                    <p>2020 · 79.13%</p>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <button class="sub-header">SSC (10th Standard)<span>▼</span></button>
+                <div class="sub-content">
+                    <p>St. Francis High School</p>
+                    <p>2017 · 86.20%</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 
-    <div class="footer">
-        © 2026 Kaustubh Ramteke
+
+    <!-- INTERESTS -->
+    <div class="dropdown">
+        <button class="dropdown-header">🎯 Interests <span>▼</span></button>
+        <div class="dropdown-content">
+
+            <div class="sub-item">
+                <button class="sub-header">Anime & Cartoon<span>▼</span></button>
+                <div class="sub-content">
+                    <p>Detective Conan/ Case Closed</p>
+                    <p>Naruto</p>
+                    <p>Death Note</p>
+                    <p>Monster</p>
+                    <p>Ninja Hattori</p>
+                    <p>Perman<p>
+                    <p>Scooby Doo Where are you?</p>
+                    <p>Haddi Mera Buddy</p>
+                    <p>Richie Rich</p>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <button class="sub-header">TV Series <span>▼</span></button>
+                <div class="sub-content">
+                    <p>Friends</p>
+                    <p>How I Met Your Mother</p>
+                    <p>Brooklyn Nine Nine</p>
+                    <p>Community</p>
+                    <p>Suits</p>
+                    
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <button class="sub-header">Music <span>▼</span></button>
+                <div class="sub-content">
+                    <p>Pasoori</p>
+                    <p>Roads Untraveled</p>
+                    <p>Melody club - fever fever</p>
+                    <p>Mere mehboob qayamat hogi</p>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <button class="sub-header">Movies <span>▼</span></button>
+                <div class="sub-content">
+                    <p>The Godfather (Part 1 & 2)</p>
+                    <p>Inception</p>
+                    <p>3 Idiots</p>
+                    <p>Student of the year</p>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+    <div class="footer">© 2026 Kaustubh Ramteke</div>
 
 </div>
+
+<script>
+document.querySelectorAll(".dropdown-header, .sub-header").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const content = btn.nextElementSibling;
+        btn.classList.toggle("active");
+
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            content.classList.remove("open");
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            content.classList.add("open");
+        }
+    });
+});
+</script>
 
 </body>
 </html>
