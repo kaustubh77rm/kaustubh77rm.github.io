@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -228,10 +229,6 @@ footer {
         <button class="button-35" onclick="location.href='articles/Column.html'">My Column</button>
     </div>
 
-    <!-- Visitor Counter -->
-    <div id="visitor-count">
-        👁 Visitors: <span id="visitor-num">...</span>
-    </div>
 </main>
 
 <footer>
@@ -243,16 +240,6 @@ const box = document.querySelector('.name-box');
 box.addEventListener('mouseenter', ()=>{ box.style.transform='scale(1.03)'; });
 box.addEventListener('mouseleave', ()=>{ box.style.transform='scale(1)'; });
 
-// Visitor counter using CountAPI
-fetch('https://api.countapi.xyz/hit/kaustubh77rm-website/visits')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('visitor-num').innerText = data.value;
-  })
-  .catch(err => {
-    console.log(err);
-    document.getElementById('visitor-num').innerText = "";
-  });
 </script>
 </body>
 </html>
