@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact Me</title>
+<title>Social Media</title>
 <style>
 :root {
     --primary: #4CAF50;
-    --secondary: #006cc6;
     --bg: #f4f4f4;
     --card: #fff;
-    --text: #333;
 }
 
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--bg);
-    color: var(--text);
 }
 
 header {
@@ -35,42 +32,40 @@ header {
     margin: 30px auto;
     padding: 0 16px;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
-/* Card Links */
+/* Card Links as icon buttons */
 .card {
     display: flex;
     align-items: center;
-    padding: 18px 20px;
-    border-radius: 12px;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
     background-color: var(--card);
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-    font-size: 20px;
-    font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
-    color: var(--text);
+}
+
+.card img {
+    width: 48px;
+    height: 48px;
 }
 
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-    background-color: #f0f8ff;
-}
-
-/* Icon styling */
-.card span {
-    margin-right: 14px;
-    font-size: 28px;
 }
 
 /* Back button */
 .back-button {
     display: inline-block;
-    margin: 20px auto;
+    margin: 30px auto 0;
     padding: 12px 18px;
     background-color: var(--primary);
     color: white;
@@ -78,8 +73,8 @@ header {
     border-radius: 6px;
     font-size: 18px;
     font-weight: 600;
-    transition: 0.3s;
     text-align: center;
+    transition: 0.3s;
 }
 
 .back-button:hover {
@@ -90,10 +85,13 @@ header {
 /* Responsive */
 @media(max-width:600px){
     .card {
-        font-size: 18px;
-        padding: 14px 16px;
+        width: 60px;
+        height: 60px;
     }
-    .card span { font-size: 24px; }
+    .card img {
+        width: 36px;
+        height: 36px;
+    }
 }
 </style>
 </head>
@@ -103,26 +101,26 @@ header {
 <header>Social Media</header>
 
 <div class="container">
-    <a href="mailto:kaustubhramteke@rediffmail.com" class="card">
-        <span>📧</span> kaustubhramteke@rediffmail.com
-    </a>
+    
 
+    <!-- YouTube -->
     <a href="https://www.youtube.com/@kaustubh_ramteke_07" target="_blank" class="card">
-        <span>▶️</span> YouTube
+        <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/youtube1.png" alt="YouTube">
     </a>
 
+    <!-- Quora -->
     <a href="https://www.quora.com/profile/Kaustubh-Ramteke-1" target="_blank" class="card">
-        <span>❓</span> Quora
+        <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/quora1.png" alt="Quora">
     </a>
 
+    <!-- LinkedIn -->
     <a href="https://www.linkedin.com/in/kaustubh-ramteke-07/" target="_blank" class="card">
-        <span>💼</span> LinkedIn
+        <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/linkedin1.png" alt="LinkedIn">
     </a>
-
-    <a href="https://kaustubh77rm.github.io/index.html" class="back-button">←</a>
 
 </div>
 
+<a href="https://kaustubh77rm.github.io/index.html" class="back-button">← Back</a>
+
 </body>
 </html>
-
