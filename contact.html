@@ -1,98 +1,127 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Me</title>
+<style>
+:root {
+    --primary: #4CAF50;
+    --secondary: #006cc6;
+    --bg: #f4f4f4;
+    --card: #fff;
+    --text: #333;
+}
 
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            font-size: 28px;
-            font-weight: bold;
-        }
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+}
 
-        div {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 22vh;
-        }
+header {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
 
-        table {
-            background-color: white;
-            border-collapse: collapse;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 50%;
-            text-align: left;
-            font-size: 18px;
-        }
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
-        th, td {
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-			}
+/* Card Links */
+.card {
+    display: flex;
+    align-items: center;
+    padding: 18px 20px;
+    border-radius: 12px;
+    background-color: var(--card);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+    color: var(--text);
+}
 
-        td {
-            font-weight: bold;
-            color: #333;
-        }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    background-color: #f0f8ff;
+}
 
-        a {
-        	font-family:helvetica;
-            color: blue;
-            text-decoration: none;
-        }
+/* Icon styling */
+.card span {
+    margin-right: 14px;
+    font-size: 28px;
+}
 
-        
-         a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
+/* Back button */
+.back-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 12px 18px;
+    background-color: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    transition: 0.3s;
+    text-align: center;
+}
 
-        .back-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 15px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 18px;
-        }
+.back-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
 
-        .back-button:hover {
-            background-color: #45a049;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                width: 100%;
-                padding: 15px;
-            }
-    </style>
+/* Responsive */
+@media(max-width:600px){
+    .card {
+        font-size: 18px;
+        padding: 14px 16px;
+    }
+    .card span { font-size: 24px; }
+}
+</style>
 </head>
-<header>
-Contact Me
-</header>
+
 <body>
-    <div>
-        <table>
-            <tr>
-                <td><a href="mailto:kaustubhramteke@rediffmail.com">kaustubhramteke@rediffmail.com</a></td>
-            </tr>
-        </table>
-    </div>
-    <center><a href="index.html" class="back-button">Back</a><center>
+
+<header>Social Media</header>
+
+<div class="container">
+    <a href="mailto:kaustubhramteke@rediffmail.com" class="card">
+        <span>📧</span> kaustubhramteke@rediffmail.com
+    </a>
+
+    <a href="https://www.youtube.com/@kaustubh_ramteke_07" target="_blank" class="card">
+        <span>▶️</span> YouTube
+    </a>
+
+    <a href="https://www.quora.com/profile/Kaustubh-Ramteke-1" target="_blank" class="card">
+        <span>❓</span> Quora
+    </a>
+
+    <a href="https://www.linkedin.com/in/kaustubh-ramteke-07/" target="_blank" class="card">
+        <span>💼</span> LinkedIn
+    </a>
+
+    <a href="https://kaustubh77rm.io/index.html" class="back-button">←</a>
+
+</div>
+
 </body>
 </html>
