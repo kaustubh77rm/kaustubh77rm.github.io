@@ -65,7 +65,7 @@ body {
     font-size: 16px;
 }
 
-/* Card section */
+/* Section cards */
 .section {
     background: var(--card);
     border-radius: 12px;
@@ -117,7 +117,7 @@ p {
     color: #00695c;
     padding: 8px 12px;
     border-radius: 999px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 /* Main dropdown */
@@ -151,14 +151,16 @@ p {
     transform: rotate(180deg);
 }
 
+/* 🔥 Scroll-friendly dropdown */
 .dropdown-content {
     max-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
     transition: max-height 0.4s ease;
     padding: 0 16px;
 }
 
 .dropdown-content.open {
+    max-height: 60vh;
     padding-bottom: 16px;
 }
 
@@ -194,12 +196,13 @@ p {
 
 .sub-content {
     max-height: 0;
-    overflow: hidden;
+    overflow-y: auto;
     transition: max-height 0.35s ease;
     padding: 0 16px;
 }
 
 .sub-content.open {
+    max-height: 40vh;
     padding-bottom: 12px;
 }
 
@@ -222,14 +225,14 @@ p {
 <body>
 
 <div class="top-bar">
-    <a href="https://kaustubh77rm.io/" class="back-button">← Back</a>
+    <a href="https://kaustubh77rm.io/index" class="back-button">← Back</a>
 </div>
 
 <div class="container">
 
     <div class="header">
         <h1>Kaustubh Ramteke</h1>
-        <div class="subtitle">Computer Engineer | Java & Spring Boot Developer</div>
+        <div class="subtitle">Computer Engineer</div>
     </div>
 
     <div class="section">
@@ -244,13 +247,12 @@ p {
         <h3>Basic Information</h3>
         <ul class="info-list">
             <li class="info-item"><span class="info-label">Full Name</span>Kaustubh Prabhakar Ramteke</li>
-            <li class="info-item"><span class="info-label">Hometown</span>Amravati, Maharashtra</li>
-            <li class="info-item"><span class="info-label">Current City</span>Nagpur, Maharashtra</li>
+            <li class="info-item"><span class="info-label">Hometown</span>Amravati, Maharashtra, India</li>
+            <li class="info-item"><span class="info-label">Current City</span>Nagpur, Maharashtra, India</li>
             <li class="info-item"><span class="info-label">Languages</span>English, Marathi, Hindi</li>
         </ul>
     </div>
 
-<!-- SKILLS -->
     <div class="section">
         <h3>Technical Skills</h3>
         <div class="skills">
@@ -260,6 +262,8 @@ p {
             <span class="skill">Spring Boot</span>
             <span class="skill">MySQL</span>
             <span class="skill">DSA</span>
+            <span class="skill">OOP</span>
+            
         </div>
     </div>
 
@@ -285,7 +289,7 @@ p {
             </div>
 
             <div class="sub-item">
-                <button class="sub-header">SSC (10th Standard)<span>▼</span></button>
+                <button class="sub-header">SSC (10th Standard) <span>▼</span></button>
                 <div class="sub-content">
                     <p>St. Francis High School</p>
                     <p>2017 · 86.20%</p>
@@ -295,23 +299,21 @@ p {
         </div>
     </div>
 
-
     <!-- INTERESTS -->
     <div class="dropdown">
         <button class="dropdown-header">🎯 Interests <span>▼</span></button>
         <div class="dropdown-content">
 
             <div class="sub-item">
-                <button class="sub-header">Anime & Cartoon<span>▼</span></button>
+                <button class="sub-header">Anime & Cartoon <span>▼</span></button>
                 <div class="sub-content">
-                    <p>Detective Conan/ Case Closed</p>
+                    <p>Detective Conan</p>
                     <p>Naruto</p>
                     <p>Death Note</p>
                     <p>Monster</p>
                     <p>Ninja Hattori</p>
-                    <p>Perman<p>
-                    <p>Scooby Doo Where are you?</p>
-                    <p>Haddi Mera Buddy</p>
+                    <p>Perman</p>
+                    <p>Scooby-Doo</p>
                     <p>Richie Rich</p>
                 </div>
             </div>
@@ -320,11 +322,10 @@ p {
                 <button class="sub-header">TV Series <span>▼</span></button>
                 <div class="sub-content">
                     <p>Friends</p>
-                    <p>How I Met Your Mother</p>
-                    <p>Brooklyn Nine Nine</p>
+                    <p>HIMYM</p>
+                    <p>Brooklyn Nine-Nine</p>
                     <p>Community</p>
                     <p>Suits</p>
-                    
                 </div>
             </div>
 
@@ -333,18 +334,18 @@ p {
                 <div class="sub-content">
                     <p>Pasoori</p>
                     <p>Roads Untraveled</p>
-                    <p>Melody club - fever fever</p>
-                    <p>Mere mehboob qayamat hogi</p>
+                    <p>Melody Club</p>
+                    <p>Mere Mehboob Qayamat Hogi</p>
                 </div>
             </div>
 
             <div class="sub-item">
                 <button class="sub-header">Movies <span>▼</span></button>
                 <div class="sub-content">
-                    <p>The Godfather (Part 1 & 2)</p>
+                    <p>The Godfather I & II</p>
                     <p>Inception</p>
                     <p>3 Idiots</p>
-                    <p>Student of the year</p>
+                    <p>Student of the Year</p>
                 </div>
             </div>
 
@@ -358,16 +359,8 @@ p {
 <script>
 document.querySelectorAll(".dropdown-header, .sub-header").forEach(btn => {
     btn.addEventListener("click", () => {
-        const content = btn.nextElementSibling;
         btn.classList.toggle("active");
-
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-            content.classList.remove("open");
-        } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            content.classList.add("open");
-        }
+        btn.nextElementSibling.classList.toggle("open");
     });
 });
 </script>
