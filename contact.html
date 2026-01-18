@@ -9,6 +9,7 @@
     --primary: #4CAF50;
     --bg: #f4f4f4;
     --card: #fff;
+    --accent: #53009C;
 }
 
 body {
@@ -17,80 +18,96 @@ body {
     background-color: var(--bg);
 }
 
-header {
-    background-color: var(--primary);
+/* Header with centered title & right back button */
+.header-bar {
+    position: relative;
+    background-color: var(--accent);
     color: white;
+    padding: 16px 0;
     text-align: center;
-    padding: 20px 0;
-    font-size: 28px;
-    font-weight: bold;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
 }
 
+.header-bar h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+/* Back button floating on right */
+.back-button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 16px;
+    background: white;
+    color: var(--accent);
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.back-button:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-50%) scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Container for icons */
 .container {
     max-width: 900px;
-    margin: 30px auto;
+    margin: 50px auto;
     padding: 0 16px;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 50px;
     flex-wrap: wrap;
 }
 
-/* Card Links as icon buttons */
+/* Card Links as big icon buttons */
 .card {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 15px;
+    width: 130px;
+    height: 130px;
+    border-radius: 25px;
     background-color: var(--card);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     text-decoration: none;
 }
 
 .card img {
-    width: 48px;
-    height: 48px;
+    width: 80px;
+    height: 80px;
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(0,0,0,0.25);
 }
 
-/* Back button */
-.back-button {
-    display: inline-block;
-    margin: 30px auto 0;
-    padding: 12px 18px;
-    background-color: var(--primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-    font-size: 18px;
-    font-weight: 600;
-    text-align: center;
-    transition: 0.3s;
-}
-
-.back-button:hover {
-    background-color: #45a049;
-    transform: scale(1.05);
-}
-
-/* Responsive */
+/* Responsive adjustments */
 @media(max-width:600px){
     .card {
-        width: 60px;
-        height: 60px;
+        width: 90px;
+        height: 90px;
     }
     .card img {
-        width: 36px;
-        height: 36px;
+        width: 54px;
+        height: 54px;
+    }
+    .header-bar h1 {
+        font-size: 24px;
+    }
+    .back-button {
+        padding: 8px 14px;
+        font-size: 16px;
     }
 }
 </style>
@@ -98,11 +115,12 @@ header {
 
 <body>
 
-<header>Social Media</header>
+<div class="header-bar">
+    <h1>Social Media</h1>
+    <a href="https://kaustubh77rm.github.io/index.html" class="back-button">←</a>
+</div>
 
 <div class="container">
-    
-
     <!-- YouTube -->
     <a href="https://www.youtube.com/@kaustubh_ramteke_07" target="_blank" class="card">
         <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/youtube1.png" alt="YouTube">
@@ -117,10 +135,7 @@ header {
     <a href="https://www.linkedin.com/in/kaustubh-ramteke-07/" target="_blank" class="card">
         <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/linkedin1.png" alt="LinkedIn">
     </a>
-
 </div>
-
-<a href="https://kaustubh77rm.github.io/index.html" class="back-button">← Back</a>
 
 </body>
 </html>
