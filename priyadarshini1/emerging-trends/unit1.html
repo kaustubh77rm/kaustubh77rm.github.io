@@ -7,7 +7,7 @@
 
 <style>
 :root {
-    --primary: #2e7d32;
+    --primary: #4D00BA; /* changed from #2e7d32 */
     --secondary: #006cc6;
     --bg: #f1f1f1;
     --card: #ffffff;
@@ -52,9 +52,9 @@ body {
 }
 
 .back-button:hover {
-    background: #1b5e20;
+    background: #3a008f; /* slightly darker shade of #4D00BA */
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(46, 125, 50, 0.3);
+    box-shadow: 0 4px 8px rgba(77,0,186,0.3);
 }
 
 .page-title {
@@ -87,7 +87,7 @@ body {
 }
 
 .subtitle {
-    color: var(--muted);
+    color: var(--primary);
     font-size: 18px;
     margin-top: 8px;
 }
@@ -178,7 +178,7 @@ body {
 }
 
 .options li:hover {
-    background: rgba(46, 125, 50, 0.05);
+    background: rgba(77,0,186,0.05);
     padding-left: 16px;
     border-radius: 4px;
 }
@@ -244,6 +244,8 @@ body {
     }
 }
 </style>
+
+
 </head>
 
 <body>
@@ -254,11 +256,6 @@ body {
 </div>
 
 <div class="container">
-
-    <div class="header">
-        <h1>Introduction of AI & ML</h1>
-        <div class="subtitle">50 Multiple Choice Questions with Answers</div>
-    </div>
 
     <div class="question-grid">
         
@@ -970,4 +967,3 @@ body {
 
 </body>
 </html>
-
