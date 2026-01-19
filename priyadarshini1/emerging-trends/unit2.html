@@ -1,0 +1,2378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2. Internet of Things (IoT) - PPN</title>
+
+<style>
+:root {
+    --primary: #00BA5D;
+    --secondary: #006cc6;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #666;
+}
+
+/* Base */
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Top bar */
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 16px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-button {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.back-button:hover {
+    background: #008a46;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,186,93,0.3);
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 24px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin: 32px 0 40px;
+    padding: 0 16px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+    color: var(--primary);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--primary);
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+/* Question Grid */
+.question-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+/* Question Card */
+.question-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.question-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.question-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--primary);
+}
+
+/* Question */
+.question {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.question-number {
+    background: var(--primary);
+    color: white;
+    width: 40px;
+    height: 30px;
+    min-width: 22px;
+    border-radius: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.question-text {
+    flex: 1;
+}
+
+/* Options */
+.options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 44px;
+}
+
+.options li {
+    padding: 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    padding-left: 12px;
+}
+
+.options li:last-child {
+    border-bottom: none;
+}
+
+.options li:hover {
+    background: rgba(0,186,93,0.05);
+    padding-left: 16px;
+    border-radius: 4px;
+}
+
+.options b {
+    color: var(--primary);
+    font-size:20px;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 48px 0 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 12px 16px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+    }
+    
+    .header h1 {
+        font-size: 26px;
+    }
+    
+    .question-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .question-card {
+        padding: 20px;
+    }
+    
+    .container {
+        padding: 16px;
+    }
+    
+    .options {
+        margin-left: 40px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .question-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    .question-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 56px 0 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <a href="emerging-trends.html" class="back-button">← Back</a>
+    <h1 class="page-title">Unit 2 - Internet of Things (IoT)</h1>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>Internet of Things (IoT)</h1>
+        
+    <div class="question-grid">
+        
+        <!-- Q1 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Which of the following is a key characteristic of 5G that enables real-time applications like autonomous driving?</div>
+            </div>
+            <ul class="options">
+                <li>(a) High power consumption.</li>
+                <li><b>(b) Ultra-low latency.</b></li>
+                <li>(c) Limited device connectivity.</li>
+                <li>(d) Low data rates.</li>
+            </ul>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">What is the typical peak data rate supported by 5G networks?</div>
+            </div>
+            <ul class="options">
+                <li>(a) 1 Gbps</li>
+                <li>(b) 10 Gbps</li>
+                <li><b>(c) 20 Gbps</b></li>
+                <li>(d) 100 Mbps</li>
+            </ul>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">Which 5G feature allows it to support up to 1 million devices per square kilometre?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Network slicing.</li>
+                <li><b>(b) Massive Machine-Type Communications (mMTC).</b></li>
+                <li>(c) Ultra-Reliable Low-Latency Communications (URLLC).</li>
+                <li>(d) Beamforming.</li>
+            </ul>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">Which application area of 5G is most associated with real-time remote surgeries?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Smart agriculture</li>
+                <li><b>(b) Healthcare</b></li>
+                <li>(c) Smart homes</li>
+                <li>(d) Logistics</li>
+            </ul>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">What is the purpose of network slicing in 5G technology?</div>
+            </div>
+            <ul class="options">
+                <li>(a) To increase power consumption</li>
+                <li><b>(b) To create multiple virtual networks on the same infrastructure</b></li>
+                <li>(c) To reduce network coverage</li>
+                <li>(d) To limit device connectivity</li>
+            </ul>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">6</div>
+                <div class="question-text">Which of the following is an application of 5G in smart cities?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Remote gaming.</li>
+                <li><b>(b) Traffic management with real-time sensor data.</b></li>
+                <li>(c) Virtual reality training for surgeons.</li>
+                <li>(d) Precision farming.</li>
+            </ul>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">7</div>
+                <div class="question-text">Which 5G characteristic improves energy efficiency for IoT devices?</div>
+            </div>
+            <ul class="options">
+                <li>(a) High latency.</li>
+                <li><b>(b) Optimized power consumption.</b></li>
+                <li>(c) Limited bandwidth.</li>
+                <li>(d) Low reliability.</li>
+            </ul>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">8</div>
+                <div class="question-text">IoT stands for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Internet of Technology.</li>
+                <li>(b) Intranet of Things.</li>
+                <li><b>(c) Internet of Things.</b></li>
+                <li>(d) Information of Things.</li>
+            </ul>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">9</div>
+                <div class="question-text">What is the Internet of Things (IoT)?</div>
+            </div>
+            <ul class="options">
+                <li>(a) A technology used only for smartphones.</li>
+                <li><b>(b) A network of interconnected physical devices that exchange data.</b></li>
+                <li>(c) A type of computer virus.</li>
+                <li>(d) A communication protocol for websites.</li>
+            </ul>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">10</div>
+                <div class="question-text">Which of the following is a key characteristic of IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Manual operation</li>
+                <li>(b) Isolation of devices</li>
+                <li><b>(c) Interconnectivity</b></li>
+                <li>(d) Lack of automation</li>
+            </ul>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">11</div>
+                <div class="question-text">Which IoT feature enables devices to operate without human involvement?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Automation</b></li>
+                <li>(b) Virtualization</li>
+                <li>(c) Encryption</li>
+                <li>(d) Translation</li>
+            </ul>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">12</div>
+                <div class="question-text">"Things" in IoT refers to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) only smartphones.</li>
+                <li><b>(b) any physical object with a sensor and connectivity.</b></li>
+                <li>(c) website links.</li>
+                <li>(d) only computers.</li>
+            </ul>
+        </div>
+
+        <!-- Q13 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">13</div>
+                <div class="question-text">Which communication technology is widely used in IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) HDMI</li>
+                <li>(b) USB</li>
+                <li><b>(c) Wi-Fi</b></li>
+                <li>(d) VGA</li>
+            </ul>
+        </div>
+
+        <!-- Q14 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">14</div>
+                <div class="question-text">Which of the following is an application of IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Social media chatting</li>
+                <li><b>(b) Smart home automation</b></li>
+                <li>(c) Playing offline games</li>
+                <li>(d) File compression</li>
+            </ul>
+        </div>
+
+        <!-- Q15 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">15</div>
+                <div class="question-text">IoT allows devices to collect and share data using ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Sensors</b></li>
+                <li>(b) CDs</li>
+                <li>(c) Printers</li>
+                <li>(d) Speakers</li>
+            </ul>
+        </div>
+
+        <!-- Q16 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">16</div>
+                <div class="question-text">Which is an advantage of IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Reduced automation</li>
+                <li>(b) Increased human effort</li>
+                <li><b>(c) Real-time monitoring</b></li>
+                <li>(d) Less data availability</li>
+            </ul>
+        </div>
+
+        <!-- Q17 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">17</div>
+                <div class="question-text">Which of the following is a limitation of IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) High scalability</li>
+                <li><b>(b) Security and privacy issues</b></li>
+                <li>(c) Increased efficiency</li>
+                <li>(d) Better data collection</li>
+            </ul>
+        </div>
+
+        <!-- Q18 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">18</div>
+                <div class="question-text">Which characteristic of IoT enables devices to work together?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Fragmentation</li>
+                <li><b>(b) Interoperability</b></li>
+                <li>(c) Decoupling</li>
+                <li>(d) Sampling</li>
+            </ul>
+        </div>
+
+        <!-- Q19 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">19</div>
+                <div class="question-text">Smart watches, fitness trackers, and medical sensors fall under which IoT application area?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Industrial automation</li>
+                <li><b>(b) Healthcare</b></li>
+                <li>(c) Transport</li>
+                <li>(d) Agriculture</li>
+            </ul>
+        </div>
+
+        <!-- Q20 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">20</div>
+                <div class="question-text">Which of the following is NOT an IoT advantage?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Improved monitoring</li>
+                <li>(b) Better decision-making</li>
+                <li><b>(c) Increased cyber risks</b></li>
+                <li>(d) Automation</li>
+            </ul>
+        </div>
+
+        <!-- Q21 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">21</div>
+                <div class="question-text">Cloud computing helps IoT by ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Storing and processing large amounts of data.</b></li>
+                <li>(b) Creating viruses.</li>
+                <li>(c) Blocking device communication.</li>
+                <li>(d) Removing internet access.</li>
+            </ul>
+        </div>
+
+        <!-- Q22 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">22</div>
+                <div class="question-text">Which component is essential in IoT devices?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Sensors and actuators</b></li>
+                <li>(b) Chalk and board</li>
+                <li>(c) Pen drive</li>
+                <li>(d) Hard disk</li>
+            </ul>
+        </div>
+
+        <!-- Q23 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">23</div>
+                <div class="question-text">Which IoT application is widely used in agriculture?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Weather-based irrigation systems.</b></li>
+                <li>(b) Online shopping portals.</li>
+                <li>(c) Music streaming.</li>
+                <li>(d) Video editing.</li>
+            </ul>
+        </div>
+
+        <!-- Q24 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">24</div>
+                <div class="question-text">Physical design of IoT mainly focuses on ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Data flow</li>
+                <li><b>(b) Hardware components</b></li>
+                <li>(c) Cloud services</li>
+                <li>(d) Software standards</li>
+            </ul>
+        </div>
+
+        <!-- Q25 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">25</div>
+                <div class="question-text">Which of the following is part of the physical design of IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) IoT protocols</li>
+                <li><b>(b) Sensors and actuators</b></li>
+                <li>(c) Cloud databases</li>
+                <li>(d) Data analytics.</li>
+            </ul>
+        </div>
+
+        <!-- Q26 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">26</div>
+                <div class="question-text">Logical design of IoT deals with ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Hardware wiring.</li>
+                <li><b>(b) Functional blocks and data flows.</b></li>
+                <li>(c) Power supply.</li>
+                <li>(d) Battery types.</li>
+            </ul>
+        </div>
+
+        <!-- Q27 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">27</div>
+                <div class="question-text">Which is NOT a physical component of IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Sensors</li>
+                <li>(b) RFID tags</li>
+                <li><b>(c) Application layer</b></li>
+                <li>(d) Actuators</li>
+            </ul>
+        </div>
+
+        <!-- Q28 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">28</div>
+                <div class="question-text">An actuator in IoT is used for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Receiving data.</li>
+                <li>(b) Storing data.</li>
+                <li><b>(c) Performing actions.</b></li>
+                <li>(d) Testing networks.</li>
+            </ul>
+        </div>
+
+        <!-- Q29 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">29</div>
+                <div class="question-text">Which device converts physical signals into electrical signals?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Actuator</li>
+                <li><b>(b) Sensor</b></li>
+                <li>(c) Router</li>
+                <li>(d) Microcontroller</li>
+            </ul>
+        </div>
+
+        <!-- Q30 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">30</div>
+                <div class="question-text">Which of the following is part of logical design?</div>
+            </div>
+            <ul class="options">
+                <li>(a) RFID</li>
+                <li><b>(b) MQTT protocol</b></li>
+                <li>(c) ESP32 board</li>
+                <li>(d) Temperature sensor</li>
+            </ul>
+        </div>
+
+        <!-- Q31 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">31</div>
+                <div class="question-text">IoT architecture commonly uses how many layers?</div>
+            </div>
+            <ul class="options">
+                <li>(a) 1</li>
+                <li><b>(b) 3</b></li>
+                <li>(c) 5</li>
+                <li>(d) 7</li>
+            </ul>
+        </div>
+
+        <!-- Q32 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">32</div>
+                <div class="question-text">The perception layer in IoT architecture handles</div>
+            </div>
+            <ul class="options">
+                <li>(a) Data processing.</li>
+                <li><b>(b) Sensing and data collection.</b></li>
+                <li>(c) Application services.</li>
+                <li>(d) Communication security.</li>
+            </ul>
+        </div>
+
+        <!-- Q33 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">33</div>
+                <div class="question-text">The network layer in IoT architecture is responsible for</div>
+            </div>
+            <ul class="options">
+                <li>(a) Storing data only.</li>
+                <li>(b) Processing raw data.</li>
+                <li><b>(c) Transmitting data.</b></li>
+                <li>(d) Displaying output.</li>
+            </ul>
+        </div>
+
+        <!-- Q34 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">34</div>
+                <div class="question-text">Application layer in IoT handles ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Signal amplification.</li>
+                <li><b>(b) User-side services.</b></li>
+                <li>(c) Device manufacturing.</li>
+                <li>(d) Power management.</li>
+            </ul>
+        </div>
+
+        <!-- Q35 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">35</div>
+                <div class="question-text">Which of these is a communication technology used in physical design?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Wi-Fi</b></li>
+                <li>(b) Excel</li>
+                <li>(c) Twitter</li>
+                <li>(d) HTML</li>
+            </ul>
+        </div>
+
+        <!-- Q36 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">36</div>
+                <div class="question-text">IoT logical design uses functional blocks such as ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Power blocks.</li>
+                <li><b>(b) Communication blocks.</b></li>
+                <li>(c) Display blocks.</li>
+                <li>(d) Motor blocks.</li>
+            </ul>
+        </div>
+
+        <!-- Q37 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">37</div>
+                <div class="question-text">Which of the following is part of the IoT functional block?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Security</b></li>
+                <li>(b) Shoes</li>
+                <li>(c) Bulb</li>
+                <li>(d) Wire</li>
+            </ul>
+        </div>
+
+        <!-- Q38 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">38</div>
+                <div class="question-text">Physical design includes which component?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Cloud API</li>
+                <li><b>(b) Sensors</b></li>
+                <li>(c) SQL database</li>
+                <li>(d) Data warehouse</li>
+            </ul>
+        </div>
+
+        <!-- Q39 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">39</div>
+                <div class="question-text">The main job of the IoT communication block is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) to cook food.</li>
+                <li><b>(b) to transfer data between devices.</b></li>
+                <li>(c) to store raw data.</li>
+                <li>(d) to protect files.</li>
+            </ul>
+        </div>
+
+        <!-- Q40 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">40</div>
+                <div class="question-text">In IoT architecture, which layer handles data routing?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Application</li>
+                <li><b>(b) Network</b></li>
+                <li>(c) Perception</li>
+                <li>(d) Storage</li>
+            </ul>
+        </div>
+
+        <!-- Q41 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">41</div>
+                <div class="question-text">Logical design describes: ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) How the device physically looks?</li>
+                <li><b>(b) How IoT functions conceptually?</b></li>
+                <li>(c) Voltage requirements.</li>
+                <li>(d) Mechanical shape.</li>
+            </ul>
+        </div>
+
+        <!-- Q42 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">42</div>
+                <div class="question-text">Which of these is a sensing component?</div>
+            </div>
+            <ul class="options">
+                <li>(a) LED</li>
+                <li><b>(b) Temperature sensor</b></li>
+                <li>(c) Speaker</li>
+                <li>(d) Switch</li>
+            </ul>
+        </div>
+
+        <!-- Q43 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">43</div>
+                <div class="question-text">The 3-layer IoT architecture is also called ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Simple IoT architecture.</li>
+                <li><b>(b) Basic reference model.</b></li>
+                <li>(c) Open IoT structure.</li>
+                <li>(d) Smart architecture.</li>
+            </ul>
+        </div>
+
+        <!-- Q44 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">44</div>
+                <div class="question-text">RFID tags are used in IoT for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Audio output.</li>
+                <li><b>(b) Object identification.</b></li>
+                <li>(c) Multimedia sharing.</li>
+                <li>(d) Gaming.</li>
+            </ul>
+        </div>
+
+        <!-- Q45 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">45</div>
+                <div class="question-text">Micro-controllers like Arduino belong to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Logical design.</li>
+                <li><b>(b) Physical design.</b></li>
+                <li>(c) Database architecture.</li>
+                <li>(d) Application layer.</li>
+            </ul>
+        </div>
+
+        <!-- Q46 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">46</div>
+                <div class="question-text">Logical design defines: ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) IoT network placement.</li>
+                <li><b>(b) IoT communication protocols.</b></li>
+                <li>(c) IoT battery size.</li>
+                <li>(d) Motor speed.</li>
+            </ul>
+        </div>
+
+        <!-- Q47 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">47</div>
+                <div class="question-text">The physical design determines ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Cloud storage type</li>
+                <li><b>(b) Actual IoT device components</b></li>
+                <li>(c) Software algorithms</li>
+                <li>(d) User interface</li>
+            </ul>
+        </div>
+
+        <!-- Q48 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">48</div>
+                <div class="question-text">Which architecture layer is closest to the IoT device?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Application</li>
+                <li>(b) Network</li>
+                <li><b>(c) Perception</b></li>
+                <li>(d) Middleware</li>
+            </ul>
+        </div>
+
+        <!-- Q49 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">49</div>
+                <div class="question-text">In IoT, "Things" refer to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Only mobile phones</li>
+                <li><b>(b) Physical devices with sensors</b></li>
+                <li>(c) Software applications</li>
+                <li>(d) Audio devices only</li>
+            </ul>
+        </div>
+
+        <!-- Q50 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">50</div>
+                <div class="question-text">Which is NOT included in logical design?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Data Flow</li>
+                <li>(b) IoT Protocols</li>
+                <li><b>(c) Hardware sensors</b></li>
+                <li>(d) Functional blocks</li>
+            </ul>
+        </div>
+
+        <!-- Q51 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">51</div>
+                <div class="question-text">Fog computing belongs to which layer?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Perception</li>
+                <li>(b) Application</li>
+                <li><b>(c) Network / Middleware</b></li>
+                <li>(d) Hardware</li>
+            </ul>
+        </div>
+
+        <!-- Q52 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">52</div>
+                <div class="question-text">Which protocol is used in IoT logical design for messaging?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) MQTT</b></li>
+                <li>(b) HDMI</li>
+                <li>(c) VGA</li>
+                <li>(d) FTP</li>
+            </ul>
+        </div>
+
+        <!-- Q53 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">53</div>
+                <div class="question-text">A common physical IoT component for connectivity is ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) ESP8266 module</b></li>
+                <li>(b) Adobe Reader</li>
+                <li>(c) PowerPoint</li>
+                <li>(d) Facebook app</li>
+            </ul>
+        </div>
+
+        <!-- Q54 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">54</div>
+                <div class="question-text">IoT architecture focuses on ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Device modelling</li>
+                <li><b>(b) Layered communication</b></li>
+                <li>(c) Movie editing</li>
+                <li>(d) Painting</li>
+            </ul>
+        </div>
+
+        <!-- Q55 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">55</div>
+                <div class="question-text">Which layer ensures user-specific IoT services?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Network</li>
+                <li><b>(b) Application</b></li>
+                <li>(c) Perception</li>
+                <li>(d) Transport</li>
+            </ul>
+        </div>
+
+        <!-- Q56 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">56</div>
+                <div class="question-text">The term "IoT functional view" refers to ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Logical design</b></li>
+                <li>(b) Clothing design</li>
+                <li>(c) Hardware manufacturing</li>
+                <li>(d) Android coding</li>
+            </ul>
+        </div>
+
+        <!-- Q57 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">57</div>
+                <div class="question-text">In logical design, data processing is part of ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Functional block</b></li>
+                <li>(b) Battery block</li>
+                <li>(c) Physical tool</li>
+                <li>(d) Mechanical block</li>
+            </ul>
+        </div>
+
+        <!-- Q58 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">58</div>
+                <div class="question-text">Which of the following best describes IoT architecture?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) A layered structure</b></li>
+                <li>(b) A flat structure</li>
+                <li>(c) A random structure</li>
+                <li>(d) A circular structure</li>
+            </ul>
+        </div>
+
+        <!-- Q59 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">59</div>
+                <div class="question-text">An example of a physical design communication device is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) LDR sensor</li>
+                <li><b>(b) Bluetooth module</b></li>
+                <li>(c) SQL server</li>
+                <li>(d) Cloud analytics</li>
+            </ul>
+        </div>
+
+        <!-- Q60 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">60</div>
+                <div class="question-text">Which layer includes device addressing?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Application</li>
+                <li><b>(b) Network</b></li>
+                <li>(c) Perception</li>
+                <li>(d) Security layer</li>
+            </ul>
+        </div>
+
+        <!-- Q61 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">61</div>
+                <div class="question-text">Sensors and actuators are part of which layer?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Network</li>
+                <li><b>(b) Perception</b></li>
+                <li>(c) Application</li>
+                <li>(d) Processing</li>
+            </ul>
+        </div>
+
+        <!-- Q62 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">62</div>
+                <div class="question-text">Which is a key function of IoT architecture?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Organizing data flow</b></li>
+                <li>(b) Video editing</li>
+                <li>(c) Graphic design</li>
+                <li>(d) Gaming support</li>
+            </ul>
+        </div>
+
+        <!-- Q63 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">63</div>
+                <div class="question-text">A gateway in IoT is mainly used for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Cooking</li>
+                <li><b>(b) Bridging devices with the internet</b></li>
+                <li>(c) Taking photos</li>
+                <li>(d) Increasing sound</li>
+            </ul>
+        </div>
+
+        <!-- Q64 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">64</div>
+                <div class="question-text">Logical design focuses on ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Device structure</li>
+                <li><b>(b) Conceptual technical representation</b></li>
+                <li>(c) Physical body</li>
+                <li>(d) Mechanical shape</li>
+            </ul>
+        </div>
+
+        <!-- Q65 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">65</div>
+                <div class="question-text">Which of the following is a physical IoT device?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Cloud software</li>
+                <li><b>(b) Wi-Fi router</b></li>
+                <li>(c) Big data analytics</li>
+                <li>(d) HTML code</li>
+            </ul>
+        </div>
+
+        <!-- Q66 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">66</div>
+                <div class="question-text">The architecture layer that makes decisions for the user is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Perception</li>
+                <li><b>(b) Application</b></li>
+                <li>(c) Network</li>
+                <li>(d) Physical</li>
+            </ul>
+        </div>
+
+        <!-- Q67 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">67</div>
+                <div class="question-text">Middleware IoT architecture often lies between ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Application and hardware.</b></li>
+                <li>(b) Network and perception.</li>
+                <li>(c) User and government.</li>
+                <li>(d) Internet and email.</li>
+            </ul>
+        </div>
+
+        <!-- Q68 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">68</div>
+                <div class="question-text">IoT protocols mainly belong to ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Logical design</b></li>
+                <li>(b) Physical design</li>
+                <li>(c) Robotics</li>
+                <li>(d) Mathematics</li>
+            </ul>
+        </div>
+
+        <!-- Q69 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">69</div>
+                <div class="question-text">The physical design of IoT includes which of these?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Wi-Fi module</b></li>
+                <li>(b) XML</li>
+                <li>(c) SQL</li>
+                <li>(d) Website</li>
+            </ul>
+        </div>
+
+        <!-- Q70 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">70</div>
+                <div class="question-text">The operation of sensors in IoT is part of ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Logical design</li>
+                <li><b>(b) Physical design</b></li>
+                <li>(c) Application design</li>
+                <li>(d) Cloud design</li>
+            </ul>
+        </div>
+
+        <!-- Q71 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">71</div>
+                <div class="question-text">A sensor is a device that ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Performs physical action.</li>
+                <li><b>(b) Converts physical quantity into electrical signals.</b></li>
+                <li>(c) Stores data.</li>
+                <li>(d) Only transmits data.</li>
+            </ul>
+        </div>
+
+        <!-- Q72 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">72</div>
+                <div class="question-text">Which of the following is an example of an actuator?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Temperature sensor.</li>
+                <li>(b) Soil moisture sensor.</li>
+                <li><b>(c) DC motor.</b></li>
+                <li>(d) LDR sensor.</li>
+            </ul>
+        </div>
+
+        <!-- Q73 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">73</div>
+                <div class="question-text">A PIR sensor is used to detect ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Light</li>
+                <li>(b) Pressure</li>
+                <li><b>(c) Motion</b></li>
+                <li>(d) Sound</li>
+            </ul>
+        </div>
+
+        <!-- Q74 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">74</div>
+                <div class="question-text">Which sensor is used for measuring temperature?</div>
+            </div>
+            <ul class="options">
+                <li>(a) LDR</li>
+                <li>(b) Ultrasonic sensor</li>
+                <li><b>(c) LM35</b></li>
+                <li>(d) IR sensor</li>
+            </ul>
+        </div>
+
+        <!-- Q75 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">75</div>
+                <div class="question-text">Which of the following detects light intensity?</div>
+            </div>
+            <ul class="options">
+                <li>(a) DHT11</li>
+                <li><b>(b) LDR</b></li>
+                <li>(c) Load cell</li>
+                <li>(d) MQ-2</li>
+            </ul>
+        </div>
+
+        <!-- Q76 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">76</div>
+                <div class="question-text">The MQ-2 sensor is used to detect ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Motion</li>
+                <li><b>(b) Gas</b></li>
+                <li>(c) Water level</li>
+                <li>(d) Pressure</li>
+            </ul>
+        </div>
+
+        <!-- Q77 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">77</div>
+                <div class="question-text">Which actuator converts electrical energy into rotational motion?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Relay</li>
+                <li><b>(b) DC motor</b></li>
+                <li>(c) LDR</li>
+                <li>(d) Thermistor</li>
+            </ul>
+        </div>
+
+        <!-- Q78 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">78</div>
+                <div class="question-text">A servo motor is an actuator used for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Temperature sensing.</li>
+                <li><b>(b) Precise angular movement.</b></li>
+                <li>(c) Sound detection.</li>
+                <li>(d) Light measurement.</li>
+            </ul>
+        </div>
+
+        <!-- Q79 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">79</div>
+                <div class="question-text">Which sensor is used for distance measurement in IoT?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Ultrasonic sensor</b></li>
+                <li>(b) Thermistor</li>
+                <li>(c) IR flame sensor</li>
+                <li>(d) MQ-135</li>
+            </ul>
+        </div>
+
+        <!-- Q80 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">80</div>
+                <div class="question-text">Which sensor is commonly used in smart homes for humidity and temperature?</div>
+            </div>
+            <ul class="options">
+                <li>(a) LDR</li>
+                <li><b>(b) DHT11</b></li>
+                <li>(c) Load cell</li>
+                <li>(d) Motion sensor</li>
+            </ul>
+        </div>
+
+        <!-- Q81 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">81</div>
+                <div class="question-text">Load cells are used to measure ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Light</li>
+                <li>(b) Gas</li>
+                <li><b>(c) Weight / force</b></li>
+                <li>(d) Altitude</li>
+            </ul>
+        </div>
+
+        <!-- Q82 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">82</div>
+                <div class="question-text">Which of these is NOT a sensor?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Gyroscope</li>
+                <li>(b) Accelerometer</li>
+                <li><b>(c) Relay</b></li>
+                <li>(d) Thermistor</li>
+            </ul>
+        </div>
+
+        <!-- Q83 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">83</div>
+                <div class="question-text">An actuator that allows switching of high-voltage devices is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Servo motor</li>
+                <li><b>(b) Relay</b></li>
+                <li>(c) LDR</li>
+                <li>(d) IR sensor</li>
+            </ul>
+        </div>
+
+        <!-- Q84 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">84</div>
+                <div class="question-text">A thermistor is used for ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Temperature measurement</b></li>
+                <li>(b) Sound detection</li>
+                <li>(c) Distance measurement</li>
+                <li>(d) Vibration detection</li>
+            </ul>
+        </div>
+
+        <!-- Q85 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">85</div>
+                <div class="question-text">Which sensor is used in smartphones for screen rotation?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Gyroscope</b></li>
+                <li>(b) Gas sensor</li>
+                <li>(c) PIR sensor</li>
+                <li>(d) LDR</li>
+            </ul>
+        </div>
+
+        <!-- Q86 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">86</div>
+                <div class="question-text">Accelerometers measure ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Temperature</li>
+                <li>(b) Gas concentration</li>
+                <li><b>(c) Acceleration / tilt</b></li>
+                <li>(d) Noise level</li>
+            </ul>
+        </div>
+
+        <!-- Q87 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">87</div>
+                <div class="question-text">A buzzer in IoT acts as a ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Sensor</li>
+                <li><b>(b) Actuator</b></li>
+                <li>(c) Controller</li>
+                <li>(d) Storage device</li>
+            </ul>
+        </div>
+
+        <!-- Q88 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">88</div>
+                <div class="question-text">Which sensor is used in smoke detection?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) MQ-2</b></li>
+                <li>(b) BMP180</li>
+                <li>(c) LDR</li>
+                <li>(d) PIR</li>
+            </ul>
+        </div>
+
+        <!-- Q89 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">89</div>
+                <div class="question-text">Which sensor is used to detect fire?</div>
+            </div>
+            <ul class="options">
+                <li>(a) LDR</li>
+                <li><b>(b) Flame sensor</b></li>
+                <li>(c) DHT11</li>
+                <li>(d) Ultrasonic</li>
+            </ul>
+        </div>
+
+        <!-- Q90 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">90</div>
+                <div class="question-text">A stepper motor is used when ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Rotation in steps is required.</b></li>
+                <li>(b) Gas detection is needed.</li>
+                <li>(c) Temperature must be sensed.</li>
+                <li>(d) Light measurement is needed.</li>
+            </ul>
+        </div>
+
+        <!-- Q91 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">91</div>
+                <div class="question-text">Which sensor detects sound levels?</div>
+            </div>
+            <ul class="options">
+                <li>(a) BMP180</li>
+                <li><b>(b) Sound sensor</b></li>
+                <li>(c) Ultrasonic</li>
+                <li>(d) Gyroscope</li>
+            </ul>
+        </div>
+
+        <!-- Q92 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">92</div>
+                <div class="question-text">The BMP180 sensor is used for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Gas detection</li>
+                <li><b>(b) Altitude and pressure</b></li>
+                <li>(c) Vibration measurement</li>
+                <li>(d) Light sensing</li>
+            </ul>
+        </div>
+
+        <!-- Q93 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">93</div>
+                <div class="question-text">A water level sensor is used to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Monitor humidity</li>
+                <li><b>(b) Detect water depth or presence</b></li>
+                <li>(c) Measure gas</li>
+                <li>(d) Control motor speed</li>
+            </ul>
+        </div>
+
+        <!-- Q94 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">94</div>
+                <div class="question-text">Which of the following is a digital sensor?</div>
+            </div>
+            <ul class="options">
+                <li>(a) LDR</li>
+                <li>(b) Thermistor</li>
+                <li><b>(c) DHT22</b></li>
+                <li>(d) Load cell</li>
+            </ul>
+        </div>
+
+        <!-- Q95 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">95</div>
+                <div class="question-text">The IR sensor mainly detects ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Infrared radiation and object presence.</b></li>
+                <li>(b) Temperature.</li>
+                <li>(c) Water flow.</li>
+                <li>(d) Gas leakage.</li>
+            </ul>
+        </div>
+
+        <!-- Q96 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">96</div>
+                <div class="question-text">A relay can be classified as ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Input sensor</li>
+                <li><b>(b) Output actuator</b></li>
+                <li>(c) Storage device</li>
+                <li>(d) Power supply</li>
+            </ul>
+        </div>
+
+        <!-- Q97 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">97</div>
+                <div class="question-text">Which sensor is suitable for soil moisture measurement?</div>
+            </div>
+            <ul class="options">
+                <li>(a) PIR</li>
+                <li><b>(b) Capacitive soil moisture sensor</b></li>
+                <li>(c) MQ-135</li>
+                <li>(d) Ultrasonic</li>
+            </ul>
+        </div>
+
+        <!-- Q98 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">98</div>
+                <div class="question-text">A vibration sensor is used for ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Detecting movement in machines.</b></li>
+                <li>(b) Measuring humidity.</li>
+                <li>(c) Reading light intensity.</li>
+                <li>(d) Checking pressure.</li>
+            </ul>
+        </div>
+
+        <!-- Q99 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">99</div>
+                <div class="question-text">A photodiode is primarily used for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Gas detection</li>
+                <li><b>(b) Light sensing.</b></li>
+                <li>(c) Sound detection.</li>
+                <li>(d) Temperature measurement.</li>
+            </ul>
+        </div>
+
+        <!-- Q100 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">100</div>
+                <div class="question-text">Which of these is an example of an actuator used in home automation?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Ultrasonic sensor</li>
+                <li>(b) Gas sensor</li>
+                <li><b>(c) Electric door lock</b></li>
+                <li>(d) DHT11</li>
+            </ul>
+        </div>
+
+        <!-- Q101 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">101</div>
+                <div class="question-text">A flow sensor is used to measure ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Gas.</li>
+                <li><b>(b) Fluid movement.</b></li>
+                <li>(c) Sound.</li>
+                <li>(d) Pressure.</li>
+            </ul>
+        </div>
+
+        <!-- Q102 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">102</div>
+                <div class="question-text">The role of an actuator in IoT is to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Process data.</li>
+                <li>(b) Sense environmental changes.</li>
+                <li><b>(c) Perform an action based on input.</b></li>
+                <li>(d) Store cloud information.</li>
+            </ul>
+        </div>
+
+        <!-- Q103 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">103</div>
+                <div class="question-text">Which sensor is commonly used in IoT-based weather monitoring systems?</div>
+            </div>
+            <ul class="options">
+                <li>(a) PIR sensor</li>
+                <li><b>(b) DHT22</b></li>
+                <li>(c) Ultrasonic sensor</li>
+                <li>(d) Relay</li>
+            </ul>
+        </div>
+
+        <!-- Q104 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">104</div>
+                <div class="question-text">Which actuator is used to control water flow in smart irrigation systems?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Servo motor</li>
+                <li><b>(b) Solenoid valve</b></li>
+                <li>(c) LDR</li>
+                <li>(d) Gyroscope</li>
+            </ul>
+        </div>
+
+        <!-- Q105 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">105</div>
+                <div class="question-text">A Hall Effect sensor is used to measure ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Temperature</li>
+                <li><b>(b) Magnetic field</b></li>
+                <li>(c) Humidity</li>
+                <li>(d) Sound</li>
+            </ul>
+        </div>
+
+        <!-- Q106 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">106</div>
+                <div class="question-text">5G networks are mainly designed to support ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Only voice calls.</li>
+                <li>(b) Low-speed IoT devices.</li>
+                <li><b>(c) High-speed, low-latency communication.</b></li>
+                <li>(d) Cable TV signals.</li>
+            </ul>
+        </div>
+
+        <!-- Q107 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">107</div>
+                <div class="question-text">Which of the following is a key characteristic of 5G?</div>
+            </div>
+            <ul class="options">
+                <li>(a) High latency</li>
+                <li>(b) Low bandwidth</li>
+                <li><b>(c) Ultra-low latency</b></li>
+                <li>(d) Limited connectivity</li>
+            </ul>
+        </div>
+
+        <!-- Q108 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">108</div>
+                <div class="question-text">5G supports IoT using which feature?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Massive machine-type communication (mMTC).</b></li>
+                <li>(b) Dial-up networking.</li>
+                <li>(c) USB connections.</li>
+                <li>(d) Satellite TV signals.</li>
+            </ul>
+        </div>
+
+        <!-- Q109 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">109</div>
+                <div class="question-text">One important application area of 5G-IoT is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Offline gaming.</li>
+                <li><b>(b) Smart cities.</b></li>
+                <li>(c) Paper printing.</li>
+                <li>(d) Manual farming.</li>
+            </ul>
+        </div>
+
+        <!-- Q110 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">110</div>
+                <div class="question-text">5G can support up to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Dozens of devices.</li>
+                <li>(b) 100 devices.</li>
+                <li><b>(c) Millions of devices per square kilometre.</b></li>
+                <li>(d) Only one device per household.</li>
+            </ul>
+        </div>
+
+        <!-- Q111 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">111</div>
+                <div class="question-text">Which frequency band is commonly used in 5G?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Low-frequency AM band</li>
+                <li><b>(b) 700 MHz – 52 GHz</b></li>
+                <li>(c) 10–20 kHz</li>
+                <li>(d) 1–5 kHz</li>
+            </ul>
+        </div>
+
+        <!-- Q112 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">112</div>
+                <div class="question-text">Which characteristic of 5G enables real-time IoT operations?</div>
+            </div>
+            <ul class="options">
+                <li>(a) High latency</li>
+                <li><b>(b) Low latency</b></li>
+                <li>(c) Weak signal strength</li>
+                <li>(d) Slow transmission</li>
+            </ul>
+        </div>
+
+        <!-- Q113 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">113</div>
+                <div class="question-text">An example of extreme real-time communication using 5G is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) File transfer</li>
+                <li><b>(b) Remote surgery</b></li>
+                <li>(c) Email sending</li>
+                <li>(d) Social media browsing</li>
+            </ul>
+        </div>
+
+        <!-- Q114 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">114</div>
+                <div class="question-text">5G IoT applications in transportation include ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Self-driving cars.</b></li>
+                <li>(b) Typewriters.</li>
+                <li>(c) Postal mail.</li>
+                <li>(d) Bicycle sensors only.</li>
+            </ul>
+        </div>
+
+        <!-- Q115 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">115</div>
+                <div class="question-text">Next Generation Network (NGN) is primarily based on ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Circuit-switching.</li>
+                <li><b>(b) Packet-switched IP networks.</b></li>
+                <li>(c) Morse code.</li>
+                <li>(d) Analog communication.</li>
+            </ul>
+        </div>
+
+        <!-- Q116 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">116</div>
+                <div class="question-text">NGN is designed to integrate ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Only audio communication.</li>
+                <li><b>(b) Multiple services like voice, video, and data.</b></li>
+                <li>(c) Only video streaming.</li>
+                <li>(d) Only SMS services.</li>
+            </ul>
+        </div>
+
+        <!-- Q117 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">117</div>
+                <div class="question-text">A key feature of NGN is ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Service independence from the network.</b></li>
+                <li>(b) Limited bandwidth.</li>
+                <li>(c) Analog interface.</li>
+                <li>(d) No mobility support.</li>
+            </ul>
+        </div>
+
+        <!-- Q118 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">118</div>
+                <div class="question-text">Which functional block of NGN controls call set-up and teardown?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Media Gateway.</li>
+                <li><b>(b) Media Gateway Controller.</b></li>
+                <li>(c) Application Server.</li>
+                <li>(d) Router.</li>
+            </ul>
+        </div>
+
+        <!-- Q119 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">119</div>
+                <div class="question-text">Media Gateway in NGN is responsible for ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Converting media streams between networks.</b></li>
+                <li>(b) Performing user authentication.</li>
+                <li>(c) Controlling billing.</li>
+                <li>(d) Handling email traffic.</li>
+            </ul>
+        </div>
+
+        <!-- Q120 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">120</div>
+                <div class="question-text">The Application Server in NGN provides ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Power supply.</li>
+                <li><b>(b) Service logic and applications.</b></li>
+                <li>(c) Radio frequency.</li>
+                <li>(d) Sensor data.</li>
+            </ul>
+        </div>
+
+        <!-- Q121 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">121</div>
+                <div class="question-text">Which component translates between IP and traditional PSTN networks?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Router</li>
+                <li><b>(b) Media Gateway</b></li>
+                <li>(c) Application Server</li>
+                <li>(d) GPS module</li>
+            </ul>
+        </div>
+
+        <!-- Q122 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">122</div>
+                <div class="question-text">NGN architecture supports mobility using ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Static channels</li>
+                <li><b>(b) Packet routing</b></li>
+                <li>(c) Satellite radio</li>
+                <li>(d) SMS center</li>
+            </ul>
+        </div>
+
+        <!-- Q123 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">123</div>
+                <div class="question-text">Which of these is a benefit of 5G in IoT applications?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Slow response time</li>
+                <li>(b) Reduced device density</li>
+                <li><b>(c) Massive connectivity</b></li>
+                <li>(d) Weak security</li>
+            </ul>
+        </div>
+
+        <!-- Q124 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">124</div>
+                <div class="question-text">The part of NGN that handles service creation is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Media Gateway</li>
+                <li><b>(b) Application Server</b></li>
+                <li>(c) PSTN switch</li>
+                <li>(d) Antenna</li>
+            </ul>
+        </div>
+
+        <!-- Q125 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">125</div>
+                <div class="question-text">5G enables ultra-reliable communication also known as ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) URLLC</b></li>
+                <li>(b) VoIP</li>
+                <li>(c) FTP</li>
+                <li>(d) SMS</li>
+            </ul>
+        </div>
+
+        <!-- Q126 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">126</div>
+                <div class="question-text">The NGN Media Gateway Controller communicates using ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) MGCP or H.248</b></li>
+                <li>(b) PDF files</li>
+                <li>(c) SMS protocol</li>
+                <li>(d) Bluetooth</li>
+            </ul>
+        </div>
+
+        <!-- Q127 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">127</div>
+                <div class="question-text">In 5G IoT, extremely low latency is essential for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Video buffering</li>
+                <li>(b) Smart appliances</li>
+                <li><b>(c) Industrial automation</b></li>
+                <li>(d) File downloads</li>
+            </ul>
+        </div>
+
+        <!-- Q128 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">128</div>
+                <div class="question-text">The NGN architecture is often divided into ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) 1 layer</li>
+                <li>(b) 2 layers</li>
+                <li><b>(c) 3 layers</b></li>
+                <li>(d) 7 layers</li>
+            </ul>
+        </div>
+
+        <!-- Q129 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">129</div>
+                <div class="question-text">A key characteristic of NGN is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) No support for multimedia</li>
+                <li><b>(b) Quality of Service (QoS)</b></li>
+                <li>(c) Static switching</li>
+                <li>(d) Manual routing</li>
+            </ul>
+        </div>
+
+        <!-- Q130 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">130</div>
+                <div class="question-text">In NGN, the Media Gateway Controller controls the Media Gateway using ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Voice commands</li>
+                <li><b>(b) Signaling messages</b></li>
+                <li>(c) Laser signals</li>
+                <li>(d) GSM only</li>
+            </ul>
+        </div>
+
+        <!-- Q131 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">131</div>
+                <div class="question-text">Application servers in NGN are mainly ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) End-user devices</li>
+                <li><b>(b) Service execution platforms</b></li>
+                <li>(c) Physical switches</li>
+                <li>(d) Radio towers</li>
+            </ul>
+        </div>
+
+        <!-- Q132 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">132</div>
+                <div class="question-text">5G enhances IoT applications in healthcare by enabling ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Offline medical tests</li>
+                <li><b>(b) Remote patient monitoring</b></li>
+                <li>(c) Manual data entry</li>
+                <li>(d) Traditional telephones</li>
+            </ul>
+        </div>
+
+        <!-- Q133 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">133</div>
+                <div class="question-text">Which feature of 5G helps in smart industrial robots?</div>
+            </div>
+            <ul class="options">
+                <li>(a) High latency</li>
+                <li><b>(b) Ultra-reliable low latency</b></li>
+                <li>(c) Low bandwidth</li>
+                <li>(d) Weak connectivity</li>
+            </ul>
+        </div>
+
+        <!-- Q134 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">134</div>
+                <div class="question-text">NGN supports which type of communication?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Circuit only</li>
+                <li><b>(b) Multi-service packet communication</b></li>
+                <li>(c) Manual signaling</li>
+                <li>(d) Morse code</li>
+            </ul>
+        </div>
+
+        <!-- Q135 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">135</div>
+                <div class="question-text">The transport layer of NGN handles ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Service creation</li>
+                <li><b>(b) User traffic transmission</b></li>
+                <li>(c) Application logic</li>
+                <li>(d) Authentication only</li>
+            </ul>
+        </div>
+
+        <!-- Q136 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">136</div>
+                <div class="question-text">The combination of 5G and IoT is mainly used for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Faster book printing</li>
+                <li><b>(b) Automation and smart connectivity</b></li>
+                <li>(c) Slower networks</li>
+                <li>(d) Manual switching</li>
+            </ul>
+        </div>
+
+        <!-- Q137 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">137</div>
+                <div class="question-text">Cloud-based IoT architecture mainly integrates ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Sensors and printers</li>
+                <li><b>(b) IoT devices with cloud storage and computing</b></li>
+                <li>(c) Only mobile phones</li>
+                <li>(d) Offline storage systems</li>
+            </ul>
+        </div>
+
+        <!-- Q138 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">138</div>
+                <div class="question-text">In cloud-based IoT, the role of the cloud is to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Only sense environmental data</li>
+                <li><b>(b) Store, process, and analyze IoT data</b></li>
+                <li>(c) Replace sensors</li>
+                <li>(d) Provide audio output</li>
+            </ul>
+        </div>
+
+        <!-- Q139 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">139</div>
+                <div class="question-text">Which layer of cloud-based IoT handles sensing and data collection?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Application layer</li>
+                <li><b>(b) Sensor/Perception layer</b></li>
+                <li>(c) Network management</li>
+                <li>(d) Virtualization layer</li>
+            </ul>
+        </div>
+
+        <!-- Q140 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">140</div>
+                <div class="question-text">In cloud-based IoT architecture, the network layer is responsible for ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Data transmission between devices and cloud</b></li>
+                <li>(b) Data visualization</li>
+                <li>(c) Executing cloud programs</li>
+                <li>(d) Powering devices</li>
+            </ul>
+        </div>
+
+        <!-- Q141 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">141</div>
+                <div class="question-text">Which cloud service model is commonly used for IoT data analytics?</div>
+            </div>
+            <ul class="options">
+                <li>(a) IaaS</li>
+                <li><b>(b) PaaS</b></li>
+                <li>(c) SaaS</li>
+                <li>(d) CDP</li>
+            </ul>
+        </div>
+
+        <!-- Q142 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">142</div>
+                <div class="question-text">The application layer in cloud-based IoT provides ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Machine learning analysis</li>
+                <li><b>(b) User-specific services like dashboards and alerts</b></li>
+                <li>(c) Power supply management</li>
+                <li>(d) Hardware manufacturing</li>
+            </ul>
+        </div>
+
+        <!-- Q143 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">143</div>
+                <div class="question-text">Which of the following is NOT a component of cloud-based IoT architecture?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Perception layer</li>
+                <li>(b) Network layer</li>
+                <li>(c) Application layer</li>
+                <li><b>(d) Manual switching layer</b></li>
+            </ul>
+        </div>
+
+        <!-- Q144 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">144</div>
+                <div class="question-text">Cloud-based IoT improves scalability by ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Restricting device connections.</li>
+                <li><b>(b) Allowing flexible storage and resources.</b></li>
+                <li>(c) Reducing storage options.</li>
+                <li>(d) Turning off cloud servers.</li>
+            </ul>
+        </div>
+
+        <!-- Q145 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">145</div>
+                <div class="question-text">Which cloud platform is widely used for IoT?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Adobe Photoshop</li>
+                <li><b>(b) Microsoft Azure IoT Hub</b></li>
+                <li>(c) VLC Media Player</li>
+                <li>(d) GIMP</li>
+            </ul>
+        </div>
+
+        <!-- Q146 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">146</div>
+                <div class="question-text">The main benefit of integrating IoT with cloud is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Manual data processing.</li>
+                <li><b>(b) Large-scale storage and real-time processing.</b></li>
+                <li>(c) Reduced connectivity.</li>
+                <li>(d) Less device automation.</li>
+            </ul>
+        </div>
+
+        <!-- Q147 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">147</div>
+                <div class="question-text">Which layer in a cloud-based IoT architecture is responsible for device connectivity and data acquisition?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Application Layer.</li>
+                <li>(b) Perception Layer.</li>
+                <li><b>(c) Network Layer.</b></li>
+                <li>(d) Business Layer.</li>
+            </ul>
+        </div>
+
+        <!-- Q148 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">148</div>
+                <div class="question-text">What is the main purpose of the Cloud Service Layer in IoT architecture?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Storing and processing IoT data.</b></li>
+                <li>(b) Connecting IoT devices to sensors.</li>
+                <li>(c) End-user interaction.</li>
+                <li>(d) Powering IoT hardware.</li>
+            </ul>
+        </div>
+
+        <!-- Q149 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">149</div>
+                <div class="question-text">In a cloud-IoT system, which component typically performs real-time analytics?</div>
+            </div>
+            <ul class="options">
+                <li>(a) IoT device.</li>
+                <li><b>(b) Cloud platform.</b></li>
+                <li>(c) Local router.</li>
+                <li>(d) End user application.</li>
+            </ul>
+        </div>
+
+        <!-- Q150 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">150</div>
+                <div class="question-text">Which cloud deployment model is most suitable for organizations wanting full control over IoT data security?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Public Cloud</li>
+                <li><b>(b) Private Cloud</b></li>
+                <li>(c) Hybrid Cloud</li>
+                <li>(d) Community Cloud</li>
+            </ul>
+        </div>
+
+    </div>
+    
+    <div class="footer">© 2026 Kaustubh Ramteke</div>
+</div>
+
+</body>
+</html>
