@@ -4,137 +4,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Social Media</title>
+
 <style>
 :root {
-    --primary: #4CAF50;
-    --bg: #f4f4f4;
-    --card: #fff;
-    --accent: #53009C;
+    --primary: #2e7d32;
+    --secondary: #006cc6;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #666;
 }
 
+/* Base */
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--bg);
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
 }
 
-/* Header with centered title & right back button */
-.header-bar {
-    position: relative;
-    background-color: var(--accent);
-    color: white;
-    padding: 16px 0;
+/* Top bar (same as About page) */
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.back-button {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 16px;
+}
+
+/* Header */
+.header {
     text-align: center;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    margin: 24px 0;
 }
 
-.header-bar h1 {
+.header h1 {
     margin: 0;
     font-size: 28px;
 }
 
-/* Back button floating on right */
-.back-button {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 10px 16px;
-    background: white;
-    color: var(--accent);
-    font-weight: bold;
+.subtitle {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+/* Social cards grid */
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+}
+
+/* Card */
+.social-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px 16px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    text-align: center;
     text-decoration: none;
-    border-radius: 12px;
-    font-size: 18px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.back-button:hover {
-    background-color: #e0e0e0;
-    transform: translateY(-50%) scale(1.05);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+.social-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.15);
 }
 
-/* Container for icons */
-.container {
-    max-width: 900px;
-    margin: 50px auto;
-    padding: 0 16px;
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
+.social-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 12px;
 }
 
-/* Card Links as big icon buttons */
-.card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    height: 130px;
-    border-radius: 25px;
-    background-color: var(--card);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
+.social-card span {
+    display: block;
+    font-weight: 600;
+    color: var(--text);
 }
 
-.card img {
-    width: 80px;
-    height: 80px;
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 32px 0 16px;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 18px 35px rgba(0,0,0,0.25);
+/* Desktop */
+@media (min-width: 768px) {
+    .header h1 { font-size: 32px; }
+    .subtitle { font-size: 18px; }
 }
 
-/* Responsive adjustments */
-@media(max-width:600px){
-    .card {
-        width: 90px;
-        height: 90px;
-    }
-    .card img {
-        width: 54px;
-        height: 54px;
-    }
-    .header-bar h1 {
-        font-size: 24px;
-    }
-    .back-button {
-        padding: 8px 14px;
-        font-size: 16px;
-    }
+span{
+font-size:20px;
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="header-bar">
-    <h1>Social Media</h1>
+<div class="top-bar">
     <a href="https://kaustubh77rm.github.io/index.html" class="back-button">←</a>
 </div>
 
 <div class="container">
-    <!-- YouTube -->
-    <a href="https://www.youtube.com/@kaustubh_ramteke_07" target="_blank" class="card">
-        <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/youtube1.png" alt="YouTube">
-    </a>
 
-    <!-- Quora -->
-    <a href="https://www.quora.com/profile/Kaustubh-Ramteke-1" target="_blank" class="card">
-        <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/quora1.png" alt="Quora">
-    </a>
+    <div class="header">
+        <h1>Social Media</h1>
+        <div class="subtitle">Find me around the internet</div>
+    </div>
 
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/kaustubh-ramteke-07/" target="_blank" class="card">
-        <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/linkedin1.png" alt="LinkedIn">
-    </a>
+    <div class="social-grid">
+
+        <a href="https://www.youtube.com/@kaustubh_ramteke_07" target="_blank" class="social-card">
+            <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/youtube1.png" alt="YouTube">
+            <span>YouTube</span>
+        </a>
+
+        <a href="https://www.quora.com/profile/Kaustubh-Ramteke-1" target="_blank" class="social-card">
+            <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/quora1.png" alt="Quora">
+            <span>Quora</span>
+        </a>
+
+        <a href="https://www.linkedin.com/in/kaustubh-ramteke-07/" target="_blank" class="social-card">
+            <img src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/image/linkedin1.png" alt="LinkedIn">
+            <span>LinkedIn</span>
+        </a>
+
+    </div>
+
+    <div class="footer">© 2026 Kaustubh Ramteke</div>
+
 </div>
 
 </body>
