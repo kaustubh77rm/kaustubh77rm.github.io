@@ -108,6 +108,16 @@ body {
     .header h1 { font-size: 32px; }
     .subtitle { font-size: 18px; }
 }
+
+
+.logo {
+    max-width: 135px;   
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+}
+
 </style>
 </head>
 
@@ -121,9 +131,12 @@ body {
 
 <div class="header">
     <!-- Logo added here -->
-    <img src="https://kaustubh77rm.github.io/image/Priyadarshini.png" 
-     alt="Priyadarshini Logo" 
-     style="max-width:120px; margin-bottom:16px; display:block; margin-left:auto; margin-right:auto;">
+    <img src="https://kaustubh77rm.github.io/image/Priyadarshini.png"
+     alt="Priyadarshini Logo"
+     class="logo"
+     draggable="false"
+     oncontextmenu="return false;">
+
 
     
     
