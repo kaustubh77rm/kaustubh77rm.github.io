@@ -250,7 +250,7 @@ body {
 
 <div class="top-bar">
     <a href="emerging-trends.html" class="back-button">← Back</a>
-    <h1 class="page-title">Unit 1 AI & ML MCQs</h1>
+    <h1 class="page-title">Unit 1 - AI & ML Quiz</h1>
 </div>
 
 <div class="container">
@@ -964,39 +964,9 @@ body {
 
     </div>
 
-    <div class="footer">© 2026 Kaustubh Ramteke | Unit 1 AI & ML MCQs</div>
+    <div class="footer">© 2026 Kaustubh Ramteke | PPN - AI & ML Quiz</div>
 
 </div>
-
-<script>
-// Simple animation for question cards
-document.addEventListener('DOMContentLoaded', function() {
-    const questions = document.querySelectorAll('.question-card');
-    
-    // Add animation on scroll
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    questions.forEach((question, index) => {
-        question.style.opacity = '0';
-        question.style.transform = 'translateY(20px)';
-        question.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-        question.style.transitionDelay = (index * 0.05) + 's';
-        observer.observe(question);
-    });
-});
-</script>
 
 </body>
 </html>
