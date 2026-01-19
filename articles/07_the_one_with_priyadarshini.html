@@ -1,171 +1,139 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The One with the priyadarshini</title>
-    <style>
-        /* General page styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        /* Header styling */
-        header {
-            background-color: #3B82F6; /* Blue color */
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The One with the priyadarshini</title>
 
-        header h1 {
-            margin: 0;
-            font-size: 36px;
-            letter-spacing: 1px;
-        }
+<style>
+:root {
+    --primary: #2e7d32;
+    --secondary: #006cc6;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #666;
+}
 
-        /* Container for content */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
+/* Base */
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
 
-        /* Flex container for button and title */
-        .flex-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+/* Top bar */
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    z-index: 100;
+}
 
-        /* Back button styling */
-        .back-button {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #4CAF50; /* Green color */
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 22px;
-            transition: background-color 0.3s;
-        }
+.back-button {
+    background: var(--primary);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 15px;
+}
 
-        .back-button:hover {
-            background-color: #45a049;
-        }
+/* Container */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 16px;
+}
 
-        /* Article title */
-        .article-title {
-            font-size: 28px;
-            color: #3B82F6; /* Blue color */
-            text-align: center;
-        }
+/* Article Card */
+.article-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 26px;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
 
-        /* Subtitle for the article */
-        .subtitle {
-            font-size: 20px;
-            color: #666;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+/* Header */
+.article-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        /* Article content */
-        .article-content {
-            font-size: 20px;
-            margin-bottom: 20px;
-            text-align: justify;
-        }
+.article-header h1 {
+    margin: 0;
+    font-size: 30px;
+}
 
-        /* Emphasized quote styling */
-        .quote {
-        	font-size: 20px;
-            font-style: italic;
-            color: #666;
-            margin: 20px 0;
-            padding: 10px 20px;
-            background-color: #f0f0f0;
-            border-left: 5px solid #3B82F6; /* Blue color */
-        }
+.subtitle {
+    color: var(--muted);
+    font-size: 16px;
+    margin-top: 6px;
+}
 
-        /* Footer styling */
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-        }
+/* Content */
+.article-content {
+    font-size: 18px;
+    text-align: justify;
+}
 
-        footer p {
-            margin: auto;
-            font-size: 18px;
-        }
+/* Footer */
+.footer {
+    text-align: center;
+    margin: 24px 0 12px;
+    color: var(--muted);
+    font-size: 15px;
+}
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .flex-container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .article-title {
-                margin-top: 10px;
-            }
-        }
-    </style>
+/* Desktop */
+@media (min-width: 768px) {
+    .article-header h1 {
+        font-size: 34px;
+    }
+    .article-content {
+        font-size: 19px;
+    }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Header section -->
-    <header>
-        <h1>The one with the priyadarshini</h1>
-    </header>
+<!-- Top Bar -->
+<div class="top-bar">
+    <a href="Column.html" class="back-button">←</a>
+</div>
 
-    <!-- Main content container -->
-    <div class="container">
-        <!-- Flex container for back button and article title -->
-        <!-- Article title -->
-        <h2 class="article-title">Priyadarshini adventures</h2>
+<!-- Main Content -->
+<div class="container">
 
-        <!-- Subtitle for the article -->
-        <p class="subtitle">Published on: Jan 19, 2026</p>
+    <div class="article-card">
 
-        <!-- Article content -->
+        <div class="article-header">
+            <h1>Priyadarshini adventures</h1>
+            <div class="subtitle">Published on: Jan 19, 2026</div>
+        </div>
+
         <div class="article-content">
-            
-
-<p>
-Last year in 2025 July month, joined Priyadarshini College of Engg. (Diploma), Nagpur as lecturer in Computer Engg. Department. A lot has happened. A bag full of experiences are collected. Thinking about making a photo gallery kinda thing of the photos which I have. Lets see.
-</p>
-
-
-            
-            <a href="Column.html" class="back-button">Back</a>
+            <p>
+                Last year in 2025 July month, joined Priyadarshini College of Engg. (Diploma), 
+                Nagpur as lecturer in Computer Engg. Department. A lot has happened. 
+                A bag full of experiences are collected. Thinking about making a photo gallery 
+                kinda thing of the photos which I have. Lets see.
+            </p>
         </div>
-            
-        </div>
+
     </div>
 
-    <!-- Footer section -->
-    <footer>
-        <p>&copy; Kaustubh Ramteke </p>
-    </footer>
+    <div class="footer">
+        © Kaustubh Ramteke
+    </div>
+
+</div>
 
 </body>
 </html>
-
