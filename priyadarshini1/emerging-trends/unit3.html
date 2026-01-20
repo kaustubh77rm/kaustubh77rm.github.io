@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 - Blockchain Technology - Complete MCQs</title>
+
+<style>
+:root {
+    --primary: #00BA5D;
+    --secondary: #2E7D32;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #666;
+    --section-bg: #f9f9f9;
+    --border: #e0e0e0;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 16px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    z-index: 100;
+}
+
+.back-button {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.header h1 {
+    color: var(--primary);
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section {
+    margin-bottom: 40px;
+    padding: 25px;
+    background: var(--section-bg);
+    border-radius: 12px;
+}
+
+.section-title {
+    color: var(--secondary);
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.question-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+    gap: 24px;
+}
+
+.question-card {
+    background: var(--card);
+    padding: 22px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    border-left: 6px solid var(--primary);
+    transition: transform 0.3s ease;
+}
+
+.question-card:hover {
+    transform: translateY(-5px);
+}
+
+.question {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.question-number {
+    background: var(--primary);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    min-width: 36px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.options {
+    list-style: none;
+    padding-left: 52px;
+    margin: 0;
+}
+
+.options li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.options li:last-child {
+    border-bottom: none;
+}
+
+.correct {
+    color: var(--primary);
+    font-weight: bold;
+    position: relative;
+}
+
+.correct::before {
+    content: "✓";
+    color: var(--primary);
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.answer-key {
+    background: #e8f5e9;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 40px;
+    border-left: 5px solid var(--primary);
+}
+
+.answer-key h3 {
+    color: var(--secondary);
+    margin-top: 0;
+}
+
+.answer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.answer-item {
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.footer {
+    text-align: center;
+    margin: 50px 0 20px;
+    color: var(--muted);
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .question-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .container {
+        padding: 15px;
+    }
+    
+    .header h1 {
+        font-size: 28px;
+    }
+    
+    .question {
+        font-size: 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <a href="emerging-trends.html" class="back-button">← Back</a>
+    <h2>Unit 3 – Complete Blockchain Technology MCQs</h2>
+</div>
+
+    <div class="section">
+        <h2 class="section-title">Basics of Blockchain Technology</h2>
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">1</div>
+                    Who invented blockchain technology?
+                </div>
+                <ul class="options">
+                    <li>(a) Elon Musk</li>
+                    <li class="correct">(b) Satoshi Nakamoto</li>
+                    <li>(c) Vitalik Buterin</li>
+                    <li>(d) Tim Berners-Lee</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">2</div>
+                    What is a blockchain?
+                </div>
+                <ul class="options">
+                    <li>(a) A centralized database</li>
+                    <li class="correct">(b) A decentralized digital ledger</li>
+                    <li>(c) A traditional banking system</li>
+                    <li>(d) A programming language</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">3</div>
+                    What is the first block in the blockchain called?
+                </div>
+                <ul class="options">
+                    <li>(a) Prime block</li>
+                    <li class="correct">(b) Genesis block</li>
+                    <li>(c) Root block</li>
+                    <li>(d) Initial block</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">4</div>
+                    The blockchain ledger is ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Mutable</li>
+                    <li class="correct">(b) Immutable</li>
+                    <li>(c) Partially mutable</li>
+                    <li>(d) Deleted regularly</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">5</div>
+                    Which feature allows all nodes to keep a copy of the blockchain?
+                </div>
+                <ul class="options">
+                    <li>(a) Transparency</li>
+                    <li class="correct">(b) Decentralization</li>
+                    <li>(c) Anonymity</li>
+                    <li>(d) Centralization</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">6</div>
+                    The hash in a blockchain block is ________.
+                </div>
+                <ul class="options">
+                    <li>(a) The user's password</li>
+                    <li class="correct">(b) A unique identifier of the block</li>
+                    <li>(c) The blockchain's name</li>
+                    <li>(d) The transaction amount</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">7</div>
+                    What links a block to its previous block?
+                </div>
+                <ul class="options">
+                    <li>(a) Timestamp</li>
+                    <li class="correct">(b) Previous block's hash</li>
+                    <li>(c) User ID</li>
+                    <li>(d) Transaction amount</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">8</div>
+                    What process do miners perform?
+                </div>
+                <ul class="options">
+                    <li>(a) Code smart contracts</li>
+                    <li class="correct">(b) Verify and add blocks to the blockchain</li>
+                    <li>(c) Delete invalid transactions</li>
+                    <li>(d) Create cryptocurrencies</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">9</div>
+                    Which of the following is NOT a key feature of blockchain?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Centralized control</li>
+                    <li>(b) Immutability</li>
+                    <li>(c) Transparency</li>
+                    <li>(d) Decentralization</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">10</div>
+                    What ensures transactions on the blockchain cannot be altered?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Consensus algorithm</li>
+                    <li>(b) Digital wallets</li>
+                    <li>(c) Miners' IDs</li>
+                    <li>(d) Private keys</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">11</div>
+                    Blockchain network participants are called ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Servers</li>
+                    <li>(b) Miners</li>
+                    <li class="correct">(c) Nodes</li>
+                    <li>(d) Clients</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">12</div>
+                    What property ensures all network copies remain consistent?
+                </div>
+                <ul class="options">
+                    <li>(a) Central authority control</li>
+                    <li class="correct">(b) Consensus protocols</li>
+                    <li>(c) Data encryption</li>
+                    <li>(d) Transactions fees</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">13</div>
+                    Which system has a single point of failure?
+                </div>
+                <ul class="options">
+                    <li>(a) Blockchain</li>
+                    <li class="correct">(b) Traditional centralized system</li>
+                    <li>(c) Peer-to-peer network</li>
+                    <li>(d) Decentralized system</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">14</div>
+                    Which system provides higher transparency?
+                </div>
+                <ul class="options">
+                    <li>(a) Traditional system</li>
+                    <li class="correct">(b) Blockchain</li>
+                    <li>(c) Neither</li>
+                    <li>(d) Both equally</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">15</div>
+                    Which system is typically slower for cross-border transactions?
+                </div>
+                <ul class="options">
+                    <li>(a) Blockchain</li>
+                    <li class="correct">(b) Traditional centralized system</li>
+                    <li>(c) Both the same</li>
+                    <li>(d) None of these</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Types of Blockchain</h2>
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">16</div>
+                    Blockchain eliminates the need for ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Cryptography</li>
+                    <li class="correct">(b) Intermediaries</li>
+                    <li>(c) Data storage</li>
+                    <li>(d) Recording transactions</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">17</div>
+                    Public blockchains are ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Permissioned and private</li>
+                    <li class="correct">(b) Open to anyone</li>
+                    <li>(c) Operated by a single company</li>
+                    <li>(d) Always faster than private blockchains</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">18</div>
+                    Private blockchains are ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Open to the public</li>
+                    <li class="correct">(b) Permissioned and controlled by an organization</li>
+                    <li>(c) The same as public blockchains</li>
+                    <li>(d) More decentralized than public blockchains</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">19</div>
+                    Consortium blockchains are ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Public blockchains</li>
+                    <li class="correct">(b) Governed by multiple organizations</li>
+                    <li>(c) Controlled by no one</li>
+                    <li>(d) Solely managed by governments</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">20</div>
+                    Hybrid blockchains ________.
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Combine features of public and private blockchains</li>
+                    <li>(b) Are fully centralized</li>
+                    <li>(c) Are prohibited in most countries</li>
+                    <li>(d) Do not use cryptography</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Blockchain Applications</h2>
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">21</div>
+                    Which industry uses blockchain for secure cross-border payments?
+                </div>
+                <ul class="options">
+                    <li>(a) Healthcare</li>
+                    <li class="correct">(b) Finance</li>
+                    <li>(c) Supply Chain</li>
+                    <li>(d) Gaming</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">22</div>
+                    Blockchain improves supply chains by ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Reducing transparency</li>
+                    <li class="correct">(b) Tracking products from origin to consumer</li>
+                    <li>(c) Hiding product details</li>
+                    <li>(d) Increasing fraud risk</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">23</div>
+                    In healthcare, blockchain helps by ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Making all patient data public</li>
+                    <li class="correct">(b) Securely storing and sharing medical records</li>
+                    <li>(c) Slowing down data access</li>
+                    <li>(d) Reducing data collection</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">24</div>
+                    Blockchain offers gamers the ability to ________.
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Own in-game assets as NFTs</li>
+                    <li>(b) Cheat on games</li>
+                    <li>(c) Avoid transparency</li>
+                    <li>(d) Use centralized servers</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Smart Contracts and Cryptocurrencies</h2>
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">25</div>
+                    Smart contracts ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Require a lawyer to enforce</li>
+                    <li class="correct">(b) Are self-executing contracts coded on blockchain</li>
+                    <li>(c) Can be changed anytime by the creator</li>
+                    <li>(d) Need intermediaries</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">26</div>
+                    Which is a key feature of smart contracts?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Autonomy and immutability</li>
+                    <li>(b) Manual execution</li>
+                    <li>(c) Require human intervention</li>
+                    <li>(d) Can be erased easily</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">27</div>
+                    Bitcoin is ________.
+                </div>
+                <ul class="options">
+                    <li>(a) A centralized digital currency</li>
+                    <li class="correct">(b) A cryptocurrency operating on blockchain</li>
+                    <li>(c) A fiat currency</li>
+                    <li>(d) Not related to blockchain</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">28</div>
+                    Ethereum is known for ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Only cryptocurrency transactions</li>
+                    <li class="correct">(b) Enabling smart contract execution</li>
+                    <li>(c) Being a private blockchain</li>
+                    <li>(d) Centralized control</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Blockchain Challenges</h2>
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">29</div>
+                    The biggest scalability challenge is ________.
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Slow transactions as network grows</li>
+                    <li>(b) Too much transparency</li>
+                    <li>(c) Lack of security</li>
+                    <li>(d) Too many users</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">30</div>
+                    Proof of Work consensus consumes ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Minimal energy</li>
+                    <li class="correct">(b) High energy due to mining computations</li>
+                    <li>(c) No electricity</li>
+                    <li>(d) Renewable resources only</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">31</div>
+                    Regulatory uncertainty ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Encourages rapid adoption</li>
+                    <li class="correct">(b) Hinders blockchain adoption globally</li>
+                    <li>(c) Is resolved everywhere</li>
+                    <li>(d) Does not affect blockchain</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">32</div>
+                    What is a "51% attack"?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) When a single user controls over half of all mining power</li>
+                    <li>(b) More than half network uses blockchain</li>
+                    <li>(c) Over half transactions are instant</li>
+                    <li>(d) None of the above</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">33</div>
+                    Immutability challenges include ________.
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Inability to correct errors once stored</li>
+                    <li>(b) Data easily altered</li>
+                    <li>(c) Data deleted automatically</li>
+                    <li>(d) Frequent rollbacks</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">Additional Concepts</h2>
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">34</div>
+                    A privacy issue in public blockchains is ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Complete anonymity</li>
+                    <li class="correct">(b) Exposure of transaction details publicly</li>
+                    <li>(c) Data encryption</li>
+                    <li>(d) Transparency for trusted users only</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">35</div>
+                    What is a node in blockchain?
+                </div>
+                <ul class="options">
+                    <li>(a) A centralized server</li>
+                    <li class="correct">(b) A participant computer maintaining the blockchain</li>
+                    <li>(c) A programming language</li>
+                    <li>(d) A data block</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">36</div>
+                    Which cryptographic function helps identify blocks uniquely?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Hash function</li>
+                    <li>(b) Digital signature</li>
+                    <li>(c) Public key</li>
+                    <li>(d) Private key</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">37</div>
+                    What does the consensus mechanism do?
+                </div>
+                <ul class="options">
+                    <li>(a) Deletes blocks</li>
+                    <li class="correct">(b) Ensures network agreement on blockchain data</li>
+                    <li>(c) Hides transactions</li>
+                    <li>(d) Creates private keys</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">38</div>
+                    Which blockchain type is most suitable for enterprise solutions requiring privacy?
+                </div>
+                <ul class="options">
+                    <li>(a) Public blockchain</li>
+                    <li class="correct">(b) Private blockchain</li>
+                    <li>(c) Hybrid blockchain</li>
+                    <li>(d) Consortium blockchain</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">39</div>
+                    What is tokenization in blockchain?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Converting assets into digital tokens for easier transfer</li>
+                    <li>(b) Hiding asset identity</li>
+                    <li>(c) Destroying digital records</li>
+                    <li>(d) Encrypting personal data only</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">40</div>
+                    Auditability in blockchain refers to ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Erasing past transactions anytime</li>
+                    <li class="correct">(b) Traceability and verification of all transactions</li>
+                    <li>(c) Central bank control of records</li>
+                    <li>(d) Only private log keeping</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">41</div>
+                    Which feature of blockchain supports financial inclusion?
+                </div>
+                <ul class="options">
+                    <li>(a) Centralized authority</li>
+                    <li class="correct">(b) Open access and no intermediaries</li>
+                    <li>(c) High transaction fees</li>
+                    <li>(d) Complex licensing</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">42</div>
+                    "Smart contracts" are based on ________.
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) "if/when...then" logic</li>
+                    <li>(b) Manual approval process</li>
+                    <li>(c) Paper documentation</li>
+                    <li>(d) Third-party arbitration</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">43</div>
+                    Which blockchain consensus reduces consumption compared to Proof of Work?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Proof of Stake</li>
+                    <li>(b) Proof of Authority</li>
+                    <li>(c) Proof of Identity</li>
+                    <li>(d) Proof of Power</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">44</div>
+                    Cross-border payments on blockchain are ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Slow and costly</li>
+                    <li class="correct">(b) Faster and cheaper due to lack of intermediaries</li>
+                    <li>(c) Only for cryptocurrency</li>
+                    <li>(d) Not traceable</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">45</div>
+                    Blockchain transparency affects users by ________.
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Increasing trust through visible data</li>
+                    <li>(b) Hiding their transaction details</li>
+                    <li>(c) Removing all privacy</li>
+                    <li>(d) Centralizing control</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">46</div>
+                    What type of blockchain is Ripple known for?
+                </div>
+                <ul class="options">
+                    <li>(a) Public blockchain</li>
+                    <li>(b) Consortium blockchain</li>
+                    <li>(c) Private blockchain</li>
+                    <li class="correct">(d) Hybrid blockchain</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">47</div>
+                    What happens when a new node joins a blockchain network?
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) It receives a full copy of the blockchain</li>
+                    <li>(b) It gets limited data</li>
+                    <li>(c) It controls the network</li>
+                    <li>(d) It manages mining rewards</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">48</div>
+                    The decentralized nature of blockchain ________.
+                </div>
+                <ul class="options">
+                    <li>(a) Makes data tampering easy</li>
+                    <li>(b) Increases risk of failure</li>
+                    <li class="correct">(c) Enhances security by multiple copies</li>
+                    <li>(d) Depends on a central server</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">49</div>
+                    Gas fees in Ethereum are used to ________.
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Pay transaction processing on blockchain</li>
+                    <li>(b) Control user access</li>
+                    <li>(c) Reward users with tokens</li>
+                    <li>(d) None of the above</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">50</div>
+                    Which blockchain is known for pioneering smart contracts?
+                </div>
+                <ul class="options">
+                    <li>(a) Bitcoin</li>
+                    <li class="correct">(b) Ethereum</li>
+                    <li>(c) Litecoin</li>
+                    <li>(d) Dogecoin</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="answer-key">
+        <h3>Complete Answer Key</h3>
+        <p>All correct answers for quick reference:</p>
+        <div class="answer-grid">
+            <div class="answer-item">1. (b)</div>
+            <div class="answer-item">2. (b)</div>
+            <div class="answer-item">3. (b)</div>
+            <div class="answer-item">4. (b)</div>
+            <div class="answer-item">5. (b)</div>
+            <div class="answer-item">6. (b)</div>
+            <div class="answer-item">7. (b)</div>
+            <div class="answer-item">8. (b)</div>
+            <div class="answer-item">9. (a)</div>
+            <div class="answer-item">10. (a)</div>
+            <div class="answer-item">11. (c)</div>
+            <div class="answer-item">12. (b)</div>
+            <div class="answer-item">13. (b)</div>
+            <div class="answer-item">14. (b)</div>
+            <div class="answer-item">15. (b)</div>
+            <div class="answer-item">16. (b)</div>
+            <div class="answer-item">17. (b)</div>
+            <div class="answer-item">18. (b)</div>
+            <div class="answer-item">19. (b)</div>
+            <div class="answer-item">20. (a)</div>
+            <div class="answer-item">21. (b)</div>
+            <div class="answer-item">22. (b)</div>
+            <div class="answer-item">23. (b)</div>
+            <div class="answer-item">24. (a)</div>
+            <div class="answer-item">25. (b)</div>
+            <div class="answer-item">26. (a)</div>
+            <div class="answer-item">27. (b)</div>
+            <div class="answer-item">28. (b)</div>
+            <div class="answer-item">29. (a)</div>
+            <div class="answer-item">30. (b)</div>
+            <div class="answer-item">31. (b)</div>
+            <div class="answer-item">32. (a)</div>
+            <div class="answer-item">33. (a)</div>
+            <div class="answer-item">34. (b)</div>
+            <div class="answer-item">35. (b)</div>
+            <div class="answer-item">36. (a)</div>
+            <div class="answer-item">37. (b)</div>
+            <div class="answer-item">38. (b)</div>
+            <div class="answer-item">39. (a)</div>
+            <div class="answer-item">40. (b)</div>
+            <div class="answer-item">41. (b)</div>
+            <div class="answer-item">42. (a)</div>
+            <div class="answer-item">43. (a)</div>
+            <div class="answer-item">44. (b)</div>
+            <div class="answer-item">45. (a)</div>
+            <div class="answer-item">46. (d)</div>
+            <div class="answer-item">47. (a)</div>
+            <div class="answer-item">48. (c)</div>
+            <div class="answer-item">49. (a)</div>
+            <div class="answer-item">50. (b)</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 Kaustubh Ramteke</p>
+        <p>Based on study material from Nirali Prakashan</p>
+    </div>
+</div>
+
+</body>
+</html>
