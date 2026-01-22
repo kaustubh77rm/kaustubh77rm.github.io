@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>C Programming</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TOP BAR */
+.top-bar {
+    padding: 15px 20px;
+}
+
+.back-btn {
+    color: #FFD000;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* MAIN */
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 20px;
+    padding: 40px 30px;
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+/* HEADING */
+.card h1 {
+    font-size: 2.6rem;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-bottom: 30px;
+}
+
+/* c SYLLABUS BUTTON */
+.syllabus-btn {
+    display: inline-block;
+    background: #FFD000;
+    color: #000;
+    padding: 20px 50px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin: 20px 0;
+}
+
+.syllabus-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(255,208,0,0.6);
+}
+
+
+/* FOOTER */
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+    .card h1 { font-size: 2rem; }
+    .syllabus-btn { font-size: 20px; padding: 18px 40px; }
+    .course-info { padding: 20px 15px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <a href="/priyadarshini1/ppn.html" class="back-btn">← Back</a>
+</div>
+
+<main>
+    <div class="card">
+        <h1>C</h1>
+        <div class="subtitle">This page contain syllabus & notes of c programming</div>
+
+        <!-- Single Syllabus Button -->
+        <a href="c_syllabus.html" class="syllabus-btn">Syllabus</a>
+
+        
+    </div>
+</main>
+
+<footer>
+    © 2026 Kaustubh Ramteke
+</footer>
+
+</body>
+</html>
