@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +13,8 @@
     --card: #ffffff;
     --text: #333;
     --muted: #666;
+    --folder-bg: #f0f7ff;
+    --folder-border: #c2d9ff;
 }
 
 /* Base */
@@ -207,6 +208,87 @@ p {
     padding-bottom: 12px;
 }
 
+/* Folder Structure Styles */
+.folder-item {
+    background: var(--folder-bg);
+    border: 2px solid var(--folder-border);
+    border-radius: 8px;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+.folder-header {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 6px 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--secondary);
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.folder-header::before {
+    content: "📁 ";
+    margin-right: 8px;
+}
+
+.folder-header span {
+    transition: transform 0.3s ease;
+}
+
+.folder-header.active span {
+    transform: rotate(90deg);
+}
+
+.folder-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background: white;
+}
+
+.folder-content.open {
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+/* Song List */
+.song-list {
+    padding: 12px 16px;
+}
+
+.song-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.song-item::before {
+    content: "🎵 ";
+    margin-right: 8px;
+    color: var(--primary);
+}
+
+.song-item:last-child {
+    border-bottom: none;
+}
+
+/* Category headers */
+.category-title {
+    font-weight: 600;
+    color: var(--primary);
+    margin: 12px 0 6px 0;
+    padding-left: 8px;
+    font-size: 15px;
+}
+
 /* Footer */
 .footer {
     text-align: center;
@@ -261,11 +343,9 @@ p {
             <span class="skill">CSS</span>
             <span class="skill">Java</span>
             <span class="skill">Python</span>
-            <span class="skill">Spring Boot</span>
             <span class="skill">MySQL</span>
-            <span class="skill">DSA</span>
-            <span class="skill">OOP</span>
-            
+            <span class="skill">Data Structures & Algorithms</span>
+            <span class="skill">Object Oriented Programming</span>
         </div>
     </div>
 
@@ -317,122 +397,11 @@ p {
                     <p>Perman</p>
                     <p>Scooby-Doo</p>
                     <p>Richie Rich</p>
+                    <p>The grim adventures of billy & mandy</p>
                 </div>
             </div>
 
-            <div class="sub-item">
-                <button class="sub-header">📺 TV Series <span>▼</span></button>
-                <div class="sub-content">
-                    <p>Friends</p>
-                    <p>HIMYM</p>
-                    <p>Brooklyn Nine-Nine</p>
-                    <p>Community</p>
-                    <p>Suits</p>
-                </div>
-            </div>
-
-            <div class="sub-item">
-    <button class="sub-header">🎵 Music <span>▼</span></button>
-    <div class="sub-content">
-		<p><strong>Music</strong></p>
-        <p>beethoven 5th symphony</p>
-        <p>marriage of figaro</p>
-        <p>fur elise</p>
-        <p>the brothers mourn</p>
-        <p>the godfather waltz</p>
-        <p>maharaja ost</p>
-        <p>sivaji the boss bgm</p>
-        <p>champions league theme</p>
-        <p>detective conan main theme</p>
-        
-        <p><strong>English</strong></p>
-        <p>lose yourself</p>
-        <p>roads untraveled</p>
-        <p>fever fever – melody club</p>
-        <p>bloody mary</p>
-        <p>bob's beat</p>
-        <p>havana</p>
-        <p>temparature (sean paul)</p>
-        <p>gangsters paradise</p>
-        <p>cradles</p>
-        <p>die with a smile</p>
-        
-        
-
-        <p><strong>Hindustani</strong></p>
-        <p>chand sifarish</p>
-        <p>mere mehboob qayamat hogi</p>
-        <p>dhoom machale</p>
-        <p>ishq wala love</p>
-        <p>kukkad</p>
-        <p>the disco song </p>
-        <p>dus bahane</p>
-        <p>badtameez dil</p>
-        <p>bhool bhulaiya</p>
-        <p>chennai express</p>
-        <p>one two three four</p>
-        <p>chhomantar</p>
-        <p>dus bahane</p>
-        <p>early morning</p>
-        
-        <p><strong>Punjabi</strong></p>
-        <p>ishaq tera tadpave</p>
-        <p>pasoori (coke studio)</p>
-        <p>pagol</p>
-        <p>panjab</p>
-        <p>syl</p>
-        <p>295</p>
-        
-        <p><strong>Marathi</strong></p>
-        <p>pratham namo gautama</p>
-        <p>uddharli koti kule</p>
-        <p>mauli mauli (ajay atul)</p>
-        <p>aala baburao</p>
-        <p>apsara aali</p>
-        <p>kombadi parali</p>
-        <p>bai wadyavr ya</p>
-        <p>chandra</p>
-        <p>varyavarti gandh pasarla</p>
-
-        <p><strong>Tamil</strong></p>
-        <p>surangani</p>
-        <p>appadi podu </p>
-        <p>idli chutney (sean roldan) </p>
-
-        <p><strong>Malayalam</strong></p>
-        <p>aadharanjali</p>
-        <p>illuminati</p>
-        <p>armadham</p>
-        
-		<p><strong>Bhojpuri</strong></p>
-        <p>khaiba mehari</p>
-        <p>chhalakta hamro jawaniya</p>
-        
-		<p><strong>Bengali</strong></p>
-        <p>char chokka hoi hoi</p>
-        
-        <p><strong>Portuguese</strong></p>
-        <p>malemolencia</p>
-
-        <p><strong>Spanish</strong></p>
-        <p>bailando</p>
-
-        <p><strong>French</strong></p>
-        <p>butterfly (superbus)</p>
-        
-        <p><strong>Italian</strong></p>
-        <p>bella ciao</p>
-
-        <p><strong>Japanese</strong></p>
-        <p>alumina (nightmare)</p>
-        <p>kimi ga ireba</p>
-        <p>flow (colors)</p>
-        
-    </div>
-</div>
-
-
-            <div class="sub-item">
+<div class="sub-item">
                 <button class="sub-header">🍿 Movies <span>▼</span></button>
                 <div class="sub-content">
                     <p>The Godfather I & II</p>
@@ -443,29 +412,262 @@ p {
                     <p>Skyfall</p>
                     <p>Mission Impossible - Ghost Protocol</p>
                     <p>Mission Impossible - Rogue Nation</p>
-                    <p>Need for speed</p>
+                    <p>Need for Speed</p>
                     <p>Maharaja</p>
                     <p>Sooryavansham</p>
-                    <p>The shawshank redemption</p>
+                    <p>The Shawshank Redemption</p>
                 </div>
             </div>
 
-        </div>
-    </div>
+        
+
+            <div class="sub-item">
+                <button class="sub-header">📺 TV Series <span>▼</span></button>
+                <div class="sub-content">
+                    <p>Taarak Mehta Ka Ooltah Chashmah</p>
+                    <p>Friends</p>
+                    <p>HIMYM</p>
+                    <p>Brooklyn Nine-Nine</p>
+                    <p>Community</p>
+                    <p>Suits</p>
+                </div>
+            </div>
+
+            <div class="sub-item">
+                <button class="sub-header">🎵 Music <span>▼</span></button>
+                <div class="sub-content">
+                    <!-- Your EXACT order starts here -->
+                    
+                    <div class="folder-item">
+                        <button class="folder-header">Soundtracks & Classicals<span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">beethoven 5th symphony</div>
+                        <div class="song-item">marriage of figaro</div>
+                        <div class="song-item">fur elise</div>
+                        <div class="song-item">the brothers mourn</div>
+                        <div class="song-item">the godfather waltz</div>
+                        
+                        <div class="song-item">maharaja ost</div>
+                        <div class="song-item">sivaji the boss bgm</div>
+                        <div class="song-item">champions league theme</div>
+                        <div class="song-item">detective conan main theme</div>
+                        
+                               
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- English Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">English <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">lose yourself</div>
+                                <div class="song-item">roads untraveled</div>
+                                <div class="song-item">fever fever – melody club</div>
+                                <div class="song-item">bloody mary</div>
+                                <div class="song-item">bob's beat</div>
+                                <div class="song-item">havana</div>
+                                <div class="song-item">temparature (sean paul)</div>
+                                <div class="song-item">gangsters paradise</div>
+                                <div class="song-item">cradles</div>
+                                <div class="song-item">die with a smile</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Hindustani Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Hindustani <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">chand sifarish</div>
+                                <div class="song-item">mere mehboob qayamat hogi</div>
+                                <div class="song-item">dhoom machale</div>
+                                <div class="song-item">ishq wala love</div>
+                                <div class="song-item">kukkad</div>
+                                <div class="song-item">the disco song</div>
+                                <div class="song-item">dus bahane</div>
+                                <div class="song-item">badtameez dil</div>
+                                <div class="song-item">bhool bhulaiya</div>
+                                <div class="song-item">chennai express</div>
+                                <div class="song-item">one two three four</div>
+                                <div class="song-item">chhomantar</div>
+                                <div class="song-item">early morning</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Punjabi Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Punjabi <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">ishaq tera tadpave</div>
+                                <div class="song-item">pasoori (coke studio)</div>
+                                <div class="song-item">pagol</div>
+                                <div class="song-item">panjab</div>
+                                <div class="song-item">syl</div>
+                                <div class="song-item">295</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Marathi Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Marathi <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">pratham namo gautama</div>
+                                <div class="song-item">uddharli koti kule</div>
+                                <div class="song-item">mauli mauli (ajay atul)</div>
+                                <div class="song-item">aala baburao</div>
+                                <div class="song-item">apsara aali</div>
+                                <div class="song-item">kombadi parali</div>
+                                <div class="song-item">bai wadyavr ya</div>
+                                <div class="song-item">chandra</div>
+                                <div class="song-item">varyavarti gandh pasarla</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tamil Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Tamil <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">surangani</div>
+                                <div class="song-item">appadi podu</div>
+                                <div class="song-item">idli chutney (sean roldan)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Malayalam Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Malayalam <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">aadharanjali</div>
+                                <div class="song-item">illuminati</div>
+                                <div class="song-item">armadham</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bhojpuri Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Bhojpuri <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">khaiba mehari</div>
+                                <div class="song-item">chhalakta hamro jawaniya</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bengali Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Bengali <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">char chokka hoi hoi</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Portuguese Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Portuguese <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">malemolencia</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Spanish Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Spanish <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">bailando</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- French Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">French <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">butterfly (superbus)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Italian Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Italian <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">bella ciao</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Japanese Folder -->
+                    <div class="folder-item">
+                        <button class="folder-header">Japanese <span>▶</span></button>
+                        <div class="folder-content">
+                            <div class="song-list">
+                                <div class="song-item">alumina (nightmare)</div>
+                                <div class="song-item">kimi ga ireba</div>
+                                <div class="song-item">flow (colors)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Your EXACT order ends here -->
+                    
+                </div>
+            </div>
+
+            
 
     <div class="footer">© 2026 Kaustubh Ramteke</div>
 
 </div>
 
 <script>
+// Handle dropdowns
 document.querySelectorAll(".dropdown-header, .sub-header").forEach(btn => {
     btn.addEventListener("click", () => {
         btn.classList.toggle("active");
         btn.nextElementSibling.classList.toggle("open");
     });
 });
+
+// Handle folder toggles
+document.querySelectorAll(".folder-header").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        btn.classList.toggle("active");
+        const content = btn.nextElementSibling;
+        content.classList.toggle("open");
+        
+        // Rotate arrow
+        const arrow = btn.querySelector('span');
+        if (btn.classList.contains('active')) {
+            arrow.textContent = '▼';
+        } else {
+            arrow.textContent = '▶';
+        }
+    });
+});
 </script>
 
 </body>
 </html>
-
