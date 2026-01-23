@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The One with the Priyadarshini photos gallery</title>
+<title>The One with the priyadarshini photos gallery</title>
 
 <style>
 :root {
@@ -22,6 +22,21 @@ body {
     background: var(--bg);
     color: var(--text);
     line-height: 1.7;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Disable text selection */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    pointer-events: none; /* Prevents right-click menu on images */
 }
 
 /* ================= TOP BAR ================= */
@@ -61,35 +76,6 @@ body {
     padding: 20px 16px;
 }
 
-/* ================= ARTICLE CARD ================= */
-.article-card {
-    background: var(--card);
-    border-radius: 18px;
-    padding: 30px;
-    box-shadow: 0 10px 22px rgba(0,0,0,0.1);
-}
-
-.article-header {
-    text-align: center;
-    margin-bottom: 22px;
-}
-
-.article-header h1 {
-    margin: 0;
-    font-size: 32px;
-}
-
-.subtitle {
-    color: var(--muted);
-    font-size: 17px;
-    margin-top: 6px;
-}
-
-.article-content {
-    font-size: 19px;
-    text-align: justify;
-}
-
 /* ================= GALLERY ================= */
 .gallery-section {
     margin-top: 45px;
@@ -107,37 +93,55 @@ body {
     gap: 16px;
 }
 
-.gallery-grid img {
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+}
+
+.gallery-img {
     width: 100%;
     height: 220px;
     object-fit: cover;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
-}
-
-.gallery-grid img:hover {
-    transform: scale(1.06);
-    box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+    display: block;
+    background-color: #f0f0f0;
 }
 
 /* ================= LIGHTBOX ================= */
 .lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.92);
+    background: rgba(0,0,0,0.95);
     display: none;
     align-items: center;
     justify-content: center;
     z-index: 999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-.lightbox img {
+.lightbox-content {
+    position: relative;
     max-width: 90%;
     max-height: 85%;
+}
+
+.lightbox-img {
+    max-width: 100%;
+    max-height: 85vh;
     border-radius: 14px;
     animation: zoomIn 0.4s ease;
+    display: block;
 }
 
 @keyframes zoomIn {
@@ -152,20 +156,43 @@ body {
     font-size: 40px;
     color: #fff;
     cursor: pointer;
+    z-index: 1001;
+    background: rgba(0,0,0,0.5);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .nav {
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
     font-size: 50px;
     color: #fff;
     cursor: pointer;
     user-select: none;
-    padding: 10px;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    z-index: 1001;
 }
 
 .prev { left: 20px; }
 .next { right: 20px; }
+
+/* ================= PROTECTION OVERLAY ================= */
+.protection-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 2;
+}
 
 /* ================= FOOTER ================= */
 .footer {
@@ -178,8 +205,12 @@ body {
 /* ================= RESPONSIVE ================= */
 @media (max-width: 600px) {
     .top-title { font-size: 24px; }
-    .article-header h1 { font-size: 28px; }
-    .article-content { font-size: 18px; }
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    .gallery-img {
+        height: 180px;
+    }
 }
 </style>
 </head>
@@ -210,7 +241,10 @@ body {
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
     <span class="close">&times;</span>
-    <img id="lightbox-img">
+    <div class="lightbox-content">
+        <img id="lightbox-img" class="lightbox-img">
+        <div class="protection-overlay" id="lightbox-overlay"></div>
+    </div>
     <div class="nav prev">&#10094;</div>
     <div class="nav next">&#10095;</div>
 </div>
@@ -227,25 +261,73 @@ const images = [
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
+const lightboxOverlay = document.getElementById("lightbox-overlay");
 
 let currentIndex = 0;
 
-/* Load gallery */
+// Disable context menu on entire page
+document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Disable keyboard shortcuts for saving
+document.addEventListener('keydown', function(e) {
+    // Disable Ctrl+S, Ctrl+Shift+S, Cmd+S, etc.
+    if ((e.ctrlKey || e.metaKey) && 
+        (e.key === 's' || e.key === 'S' || e.keyCode === 83)) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // Disable Print Screen
+    if (e.key === 'PrintScreen' || e.keyCode === 44) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // Disable F12 (DevTools)
+    if (e.key === 'F12' || e.keyCode === 123) {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Load gallery
 images.forEach((src, index) => {
+    const galleryItem = document.createElement("div");
+    galleryItem.className = "gallery-item";
+    
     const img = document.createElement("img");
+    img.className = "gallery-img";
     img.src = src;
-    img.onclick = () => openLightbox(index);
-    gallery.appendChild(img);
+    img.loading = "lazy";
+    
+    // Create transparent overlay for protection
+    const overlay = document.createElement("div");
+    overlay.className = "protection-overlay";
+    
+    galleryItem.appendChild(img);
+    galleryItem.appendChild(overlay);
+    
+    galleryItem.onclick = () => openLightbox(index);
+    gallery.appendChild(galleryItem);
 });
 
 function openLightbox(index) {
     currentIndex = index;
     lightboxImg.src = images[index];
     lightbox.style.display = "flex";
+    
+    // Add additional protection when lightbox is open
+    document.body.style.overflow = 'hidden';
 }
 
 function closeLightbox() {
     lightbox.style.display = "none";
+    document.body.style.overflow = 'auto';
 }
 
 function nextImg() {
@@ -258,10 +340,17 @@ function prevImg() {
     lightboxImg.src = images[currentIndex];
 }
 
+// Add overlay click handler to prevent image interaction
+lightboxOverlay.addEventListener('click', (e) => {
+    e.stopPropagation();
+});
+
+// Lightbox controls
 document.querySelector(".close").onclick = closeLightbox;
 document.querySelector(".next").onclick = nextImg;
 document.querySelector(".prev").onclick = prevImg;
 
+// Keyboard navigation
 document.addEventListener("keydown", e => {
     if (lightbox.style.display === "flex") {
         if (e.key === "Escape") closeLightbox();
@@ -269,8 +358,23 @@ document.addEventListener("keydown", e => {
         if (e.key === "ArrowLeft") prevImg();
     }
 });
-</script>
 
+// Prevent drag and drop
+document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Prevent opening in new tab via middle click
+document.addEventListener('auxclick', function(e) {
+    if (e.button === 1 && e.target.tagName === 'IMG') {
+        e.preventDefault();
+        return false;
+    }
+});
+</script>
 
 </body>
 </html>
