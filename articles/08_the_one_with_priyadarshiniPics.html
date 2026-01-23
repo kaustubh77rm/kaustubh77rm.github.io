@@ -216,24 +216,31 @@ body {
 </div>
 
 <script>
-const images = [
-    "image/priy/1.jpg",
-    "image/priy/2.jpg",
-    "image/priy/3.jpg",
-    "image/priy/4.jpg",
-    "image/priy/5.jpg"
-    // add all your images here
-];
+const basePath = "image/priy/";
+const extensions = ["jpg", "jpeg", "png"];
+const totalImages = 20; // exact count if you know it
 
+const images = [];
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
+
 let currentIndex = 0;
+
+/* Build image list */
+for (let i = 1; i <= totalImages; i++) {
+    extensions.forEach(ext => {
+        images.push(`${basePath}${i}.${ext}`);
+    });
+}
 
 /* Load gallery */
 images.forEach((src, index) => {
     const img = document.createElement("img");
     img.src = src;
+
+    img.onerror = () => img.remove(); // 💡 removes broken images
+
     img.onclick = () => openLightbox(index);
     gallery.appendChild(img);
 });
@@ -270,6 +277,7 @@ document.addEventListener("keydown", e => {
     }
 });
 </script>
+
 
 </body>
 </html>
