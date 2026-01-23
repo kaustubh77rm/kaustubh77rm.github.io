@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The One with the Priyadarshini photos gallery</title>
+
+<style>
+:root {
+    --primary: #2e7d32;
+    --secondary: #006cc6;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #222;
+    --muted: #666;
+}
+
+/* ================= BASE ================= */
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* ================= TOP BAR ================= */
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 18px 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-button {
+    position: absolute;
+    left: 16px;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.top-title {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px 16px;
+}
+
+/* ================= ARTICLE CARD ================= */
+.article-card {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.1);
+}
+
+.article-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.article-header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 17px;
+    margin-top: 6px;
+}
+
+.article-content {
+    font-size: 19px;
+    text-align: justify;
+}
+
+/* ================= GALLERY ================= */
+.gallery-section {
+    margin-top: 45px;
+}
+
+.gallery-title {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 22px;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.06);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.25);
+}
+
+/* ================= LIGHTBOX ================= */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 14px;
+    animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav {
+    position: absolute;
+    top: 50%;
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+    user-select: none;
+    padding: 10px;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* ================= FOOTER ================= */
+.footer {
+    text-align: center;
+    margin: 32px 0 14px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+    .top-title { font-size: 24px; }
+    .article-header h1 { font-size: 28px; }
+    .article-content { font-size: 18px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <a href="Column.html" class="back-button">←</a>
+    <div class="top-title">The one with the priyadarshini photos gallery</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <!-- GALLERY -->
+    <div class="gallery-section">
+        <div class="gallery-title">📸 Priyadarshini Moments</div>
+        <div class="gallery-grid" id="gallery"></div>
+    </div>
+
+    <div class="footer">
+        © Kaustubh Ramteke
+    </div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <img id="lightbox-img">
+    <div class="nav prev">&#10094;</div>
+    <div class="nav next">&#10095;</div>
+</div>
+
+<script>
+const images = [
+    "image/priy/1.jpg",
+    "image/priy/2.jpg",
+    "image/priy/3.jpg",
+    "image/priy/4.jpg",
+    "image/priy/5.jpg"
+    // add all your images here
+];
+
+const gallery = document.getElementById("gallery");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+let currentIndex = 0;
+
+/* Load gallery */
+images.forEach((src, index) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.onclick = () => openLightbox(index);
+    gallery.appendChild(img);
+});
+
+function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = images[index];
+    lightbox.style.display = "flex";
+}
+
+function closeLightbox() {
+    lightbox.style.display = "none";
+}
+
+function nextImg() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImg.src = images[currentIndex];
+}
+
+function prevImg() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImg.src = images[currentIndex];
+}
+
+document.querySelector(".close").onclick = closeLightbox;
+document.querySelector(".next").onclick = nextImg;
+document.querySelector(".prev").onclick = prevImg;
+
+document.addEventListener("keydown", e => {
+    if (lightbox.style.display === "flex") {
+        if (e.key === "Escape") closeLightbox();
+        if (e.key === "ArrowRight") nextImg();
+        if (e.key === "ArrowLeft") prevImg();
+    }
+});
+</script>
+
+</body>
+</html>
