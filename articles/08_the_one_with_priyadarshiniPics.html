@@ -50,6 +50,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 60px;
 }
 
 .back-button {
@@ -62,11 +63,20 @@ img {
     text-decoration: none;
     font-size: 16px;
     font-weight: 700;
+    white-space: nowrap;
+    z-index: 10;
 }
 
 .top-title {
     font-size: 30px;
     font-weight: 900;
+    text-align: center;
+    padding: 0 60px; /* Add padding to prevent overlap */
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* ================= CONTAINER ================= */
@@ -78,7 +88,7 @@ img {
 
 /* ================= GALLERY ================= */
 .gallery-section {
-    margin-top: 45px;
+    margin-top: 5px;
 }
 
 .gallery-title {
@@ -236,13 +246,123 @@ img {
 }
 
 /* ================= RESPONSIVE ================= */
-@media (max-width: 600px) {
-    .top-title { font-size: 24px; }
-    .gallery-grid {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 14px 10px;
+        min-height: 56px;
     }
+    
+    .back-button {
+        left: 12px;
+        padding: 8px 14px;
+        font-size: 15px;
+    }
+    
+    .top-title {
+        font-size: 22px;
+        padding: 0 50px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+    
     .gallery-img {
         height: 180px;
+    }
+    
+    .gallery-title {
+        font-size: 22px;
+    }
+    
+    .close {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+        width: 45px;
+        height: 45px;
+    }
+    
+    .nav {
+        font-size: 40px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .top-bar {
+        padding: 12px 8px;
+        min-height: 52px;
+    }
+    
+    .back-button {
+        left: 8px;
+        padding: 7px 12px;
+        font-size: 14px;
+    }
+    
+    .top-title {
+        font-size: 18px;
+        padding: 0 45px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 12px;
+    }
+    
+    .gallery-img {
+        height: 160px;
+    }
+    
+    .gallery-title {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+    
+    .container {
+        padding: 15px 12px;
+    }
+    
+    .close {
+        top: 10px;
+        right: 15px;
+        font-size: 30px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .nav {
+        font-size: 35px;
+        padding: 12px;
+    }
+    
+    .prev { left: 10px; }
+    .next { right: 10px; }
+}
+
+@media (max-width: 360px) {
+    .top-title {
+        font-size: 16px;
+        padding: 0 40px;
+    }
+    
+    .back-button {
+        left: 6px;
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+    
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+    }
+    
+    .gallery-img {
+        height: 140px;
     }
 }
 </style>
@@ -253,7 +373,7 @@ img {
 <!-- TOP BAR -->
 <div class="top-bar">
     <a href="Column.html" class="back-button">←</a>
-    <div class="top-title">The one with the priyadarshini photos gallery</div>
+    <div class="top-title">The one with the photos gallery</div>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -262,7 +382,7 @@ img {
     <!-- GALLERY -->
     <div class="gallery-section">
         <div class="gallery-title">📸 Priyadarshini Moments</div>
-        
+        <center>Published on: Jan 23, 2026</center>
         <!-- Loading state -->
         <div id="loading" class="loading">
             <div class="loading-spinner"></div>
@@ -299,7 +419,7 @@ img {
 // GitHub repository details
 const GITHUB_USERNAME = 'kaustubh77rm';
 const REPO_NAME = 'kaustubh77rm.github.io';
-const IMAGE_FOLDER = 'image/priy'; // Change this to 'image/priy' if you want only priy folder
+const IMAGE_FOLDER = 'image/priy';
 
 // DOM elements
 const gallery = document.getElementById("gallery");
