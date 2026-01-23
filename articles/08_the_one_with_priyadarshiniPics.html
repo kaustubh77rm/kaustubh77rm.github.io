@@ -115,6 +115,39 @@ img {
     background-color: #f0f0f0;
 }
 
+/* ================= LOADING ================= */
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: var(--muted);
+}
+
+.loading-spinner {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px;
+    color: #d32f2f;
+    background: #ffebee;
+    border-radius: 10px;
+    margin: 20px;
+}
+
 /* ================= LIGHTBOX ================= */
 .lightbox {
     position: fixed;
@@ -229,6 +262,19 @@ img {
     <!-- GALLERY -->
     <div class="gallery-section">
         <div class="gallery-title">📸 Priyadarshini Moments</div>
+        
+        <!-- Loading state -->
+        <div id="loading" class="loading">
+            <div class="loading-spinner"></div>
+            <div>Loading images from GitHub...</div>
+        </div>
+        
+        <!-- Error message (hidden by default) -->
+        <div id="error-message" class="error-message" style="display: none;">
+            Unable to load images. Please check your internet connection.
+        </div>
+        
+        <!-- Gallery will be populated here -->
         <div class="gallery-grid" id="gallery"></div>
     </div>
 
@@ -250,22 +296,96 @@ img {
 </div>
 
 <script>
-const images = [
-  "/image/priy/1.png",
-  "/image/priy/2.png",
-  "/image/priy/3.jpg",
-  "/image/priy/4.jpeg",
-  "/image/priy/5.jpeg"
-];
+// GitHub repository details
+const GITHUB_USERNAME = 'kaustubh77rm';
+const REPO_NAME = 'kaustubh77rm.github.io';
+const IMAGE_FOLDER = 'image/priy'; // Change this to 'image/priy' if you want only priy folder
 
+// DOM elements
 const gallery = document.getElementById("gallery");
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
 const lightboxOverlay = document.getElementById("lightbox-overlay");
+const loadingElement = document.getElementById("loading");
+const errorElement = document.getElementById("error-message");
 
+let images = [];
 let currentIndex = 0;
 
-// Disable context menu on entire page
+// Function to fetch images from GitHub
+async function fetchImagesFromGitHub() {
+    try {
+        // GitHub API endpoint for the repository contents
+        const apiUrl = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${IMAGE_FOLDER}`;
+        
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+            throw new Error(`GitHub API error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Filter for image files only
+        const imageFiles = data.filter(item => {
+            const fileName = item.name.toLowerCase();
+            return fileName.match(/\.(jpg|jpeg|png|gif|bmp|webp|svg)$/);
+        });
+        
+        if (imageFiles.length === 0) {
+            throw new Error('No images found in the repository');
+        }
+        
+        // Convert GitHub URLs to raw content URLs
+        images = imageFiles.map(item => 
+            `https://raw.githubusercontent.com/${GITHUB_USERNAME}/${REPO_NAME}/main/${IMAGE_FOLDER}/${item.name}`
+        );
+        
+        // Hide loading
+        loadingElement.style.display = 'none';
+        
+        // Load gallery
+        loadGallery();
+        
+    } catch (error) {
+        console.error('Error fetching images:', error);
+        loadingElement.style.display = 'none';
+        errorElement.style.display = 'block';
+        errorElement.innerHTML = `
+            <h3>Unable to load images</h3>
+            <p>Error: ${error.message}</p>
+            <p>Make sure your GitHub repository is public and contains images in the '${IMAGE_FOLDER}' folder.</p>
+        `;
+    }
+}
+
+// Load gallery with fetched images
+function loadGallery() {
+    gallery.innerHTML = '';
+    
+    images.forEach((src, index) => {
+        const galleryItem = document.createElement("div");
+        galleryItem.className = "gallery-item";
+        
+        const img = document.createElement("img");
+        img.className = "gallery-img";
+        img.src = src;
+        img.loading = "lazy";
+        img.alt = `Image ${index + 1}`;
+        
+        // Create transparent overlay for protection
+        const overlay = document.createElement("div");
+        overlay.className = "protection-overlay";
+        
+        galleryItem.appendChild(img);
+        galleryItem.appendChild(overlay);
+        
+        galleryItem.onclick = () => openLightbox(index);
+        gallery.appendChild(galleryItem);
+    });
+}
+
+// Security measures
 document.addEventListener('contextmenu', function(e) {
     if (e.target.tagName === 'IMG') {
         e.preventDefault();
@@ -273,9 +393,8 @@ document.addEventListener('contextmenu', function(e) {
     }
 });
 
-// Disable keyboard shortcuts for saving
 document.addEventListener('keydown', function(e) {
-    // Disable Ctrl+S, Ctrl+Shift+S, Cmd+S, etc.
+    // Disable Ctrl+S, Cmd+S
     if ((e.ctrlKey || e.metaKey) && 
         (e.key === 's' || e.key === 'S' || e.keyCode === 83)) {
         e.preventDefault();
@@ -288,40 +407,18 @@ document.addEventListener('keydown', function(e) {
         return false;
     }
     
-    // Disable F12 (DevTools)
+    // Disable F12
     if (e.key === 'F12' || e.keyCode === 123) {
         e.preventDefault();
         return false;
     }
 });
 
-// Load gallery
-images.forEach((src, index) => {
-    const galleryItem = document.createElement("div");
-    galleryItem.className = "gallery-item";
-    
-    const img = document.createElement("img");
-    img.className = "gallery-img";
-    img.src = src;
-    img.loading = "lazy";
-    
-    // Create transparent overlay for protection
-    const overlay = document.createElement("div");
-    overlay.className = "protection-overlay";
-    
-    galleryItem.appendChild(img);
-    galleryItem.appendChild(overlay);
-    
-    galleryItem.onclick = () => openLightbox(index);
-    gallery.appendChild(galleryItem);
-});
-
+// Lightbox functions
 function openLightbox(index) {
     currentIndex = index;
     lightboxImg.src = images[index];
     lightbox.style.display = "flex";
-    
-    // Add additional protection when lightbox is open
     document.body.style.overflow = 'hidden';
 }
 
@@ -340,7 +437,7 @@ function prevImg() {
     lightboxImg.src = images[currentIndex];
 }
 
-// Add overlay click handler to prevent image interaction
+// Lightbox overlay click handler
 lightboxOverlay.addEventListener('click', (e) => {
     e.stopPropagation();
 });
@@ -374,6 +471,9 @@ document.addEventListener('auxclick', function(e) {
         return false;
     }
 });
+
+// Initialize: Fetch images from GitHub
+fetchImagesFromGitHub();
 </script>
 
 </body>
