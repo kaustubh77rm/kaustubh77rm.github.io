@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Buddhist Mahar Surnames Vidarbha</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
 
 <style>
@@ -11,143 +12,115 @@
     --bg1: #ff8c00;
     --bg2: #ff6b00;
     --bg3: #cc5500;
-    --glass: rgba(255, 255, 255, 0.12);
-    --glass-white: rgba(255, 255, 255, 0.15);
-    --border: rgba(255, 255, 255, 0.25);
-    --accent: #ff4500;
+
+    --glass: rgba(255, 255, 255, 0.14);
+    --border: rgba(255, 255, 255, 0.28);
+
     --text-light: #ffffff;
-    --text-dark: #3a2611;
+    --text-dark: #222;
 }
 
+/* RESET */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* BODY */
 body {
-    font-size: 28px;
-    min-height: 90vh;
+    min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-    color: var(--text-light);
     display: flex;
-    align-items: center;
     justify-content: center;
     padding: 30px;
+    color: var(--text-light);
 }
 
+/* CONTAINER */
 .container {
     width: 100%;
     max-width: 1200px;
 }
 
+/* HEADINGS */
 h1 {
     text-align: center;
     font-size: 2.2rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 2px;
-    margin-bottom: 25px;
-    text-shadow: 0 0 15px rgba(255, 69, 0, 0.4);
-    color: #fff;
+    margin-bottom: 10px;
 }
 
 .subtitle {
     text-align: center;
-    font-size: 1.5rem;
-    opacity: 0.95;
+    font-size: 1.8rem;
     margin-bottom: 30px;
-    color: #fff;
-    font-weight: 500;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
 }
 
+/* GRID */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    gap: 22px;
 }
 
+/* COLUMN – glass only here */
 .column {
     background: var(--glass);
     backdrop-filter: blur(14px);
-    border: 1px solid var(--border);
     border-radius: 18px;
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 32px rgba(255, 107, 0, 0.25);
+    border: 1px solid var(--border);
+    padding: 20px 16px;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.25);
 }
 
-.column:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(255, 69, 0, 0.4);
-    background: rgba(255, 255, 255, 0.18);
-}
-
+/* LIST */
 ul {
     list-style: none;
 }
 
 li {
-    padding: 10px 12px;
-    margin-bottom: 8px;
-    border-radius: 12px;
+    padding: 8px 4px;
+    margin-bottom: 6px;
+    text-align: center;
     font-weight: 600;
     letter-spacing: 0.5px;
-    cursor: default;
-    transition: all 0.3s ease;
-    color: var(--text-light);
-    background: var(--glass-white);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-    font-size: 0.9em;
+    font-size: 1.7rem;
+    background: transparent;   /* ❌ no glass */
+    border: none;              /* ❌ no border */
+    transition: transform .25s ease, color .25s ease;
 }
 
 li:hover {
-    background: rgba(255, 255, 255, 0.25);
-    color: var(--text-light);
-    transform: translateX(6px) scale(1.03);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.35);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transform: translateX(4px);
+    color: #ffe0b3;
 }
 
+/* FOOTER */
 footer {
+    margin-top: 28px;
     text-align: center;
-    margin-top: 25px;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     opacity: 0.9;
-    color: #fff;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    backdrop-filter: blur(5px);
 }
 
-/* Responsive adjustments */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-    body {
-        font-size: 24px;
-        padding: 20px;
-    }
-    
     h1 {
         font-size: 1.8rem;
+        color: #111;
     }
-    
+
     .subtitle {
         font-size: 1.2rem;
+        color: #111;
     }
-    
-    .grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 15px;
-    }
-    
+
     li {
-        padding: 8px 10px;
-        font-size: 0.8em;
+        color: var(--text-dark);
     }
 }
 
@@ -155,16 +128,16 @@ footer {
     .grid {
         grid-template-columns: 1fr;
     }
-    
+
     li {
-        padding: 10px;
-        font-size: 0.85em;
+        font-size: 0.9rem;
     }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
     <h1>LAST NAMES (VIDARBHA REGION)</h1>
     <div class="subtitle">Buddhist Mahar Community</div>
@@ -201,15 +174,18 @@ for (let i = 0; i < columns; i++) {
 
     const ul = document.createElement("ul");
 
-    surnames.slice(i * perColumn, (i + 1) * perColumn).forEach(name => {
-        const li = document.createElement("li");
-        li.textContent = name;
-        ul.appendChild(li);
-    });
+    surnames
+        .slice(i * perColumn, (i + 1) * perColumn)
+        .forEach(name => {
+            const li = document.createElement("li");
+            li.textContent = name;
+            ul.appendChild(li);
+        });
 
     col.appendChild(ul);
     grid.appendChild(col);
 }
 </script>
+
 </body>
 </html>
