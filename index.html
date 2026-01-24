@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,10 +215,59 @@ footer {
     .profile-ring { width:130px; height:130px; }
     .button-35 { font-size: 18px; padding: 10px 20px; }
 }
+
+/* SIDE IMAGES */
+.side-image {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 0;
+    opacity: 0.85;
+}
+
+.side-image img {
+    width: 160px;
+    max-width: 18vw;
+    height: auto;
+    filter: drop-shadow(0 10px 25px rgba(0,0,0,0.6));
+}
+
+/* LEFT & RIGHT */
+.side-image.left {
+    left: 20px;
+}
+
+.side-image.right {
+    right: 20px;
+}
+
+/* Keep main content above images */
+main {
+    position: relative;
+    z-index: 2;
+}
+
+/* MOBILE: hide side images */
+@media (max-width: 900px) {
+    .side-image {
+        display: none;
+    }
+}
+
 </style>
 </head>
 
 <body>
+
+<!-- SIDE IMAGES -->
+<div class="side-image left">
+    <img src="/image/Amravati_Municipal_Corporation_Logo.png" alt="Amravati Municipal Corporation">
+</div>
+
+<div class="side-image right">
+    <img src="/image/amba.jpg" alt="Amba Devi">
+</div>
+
 <main>
     <h1>Welcome to My Kingdom 🧿</h1>
 
