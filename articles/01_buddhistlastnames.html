@@ -13,11 +13,12 @@
     --bg2: #ff6b00;
     --bg3: #cc5500;
 
-    --glass: rgba(255, 255, 255, 0.14);
-    --border: rgba(255, 255, 255, 0.28);
+    /* classy glass */
+    --glass: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.45);
 
+    --text-dark: #2b2b2b;
     --text-light: #ffffff;
-    --text-dark: #222;
 }
 
 /* RESET */
@@ -47,8 +48,8 @@ body {
 /* HEADINGS */
 h1 {
     text-align: center;
-    font-size: 2.2rem;
-    font-weight: 700;
+    font-size: 2.6rem;
+    font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 10px;
 }
@@ -56,25 +57,39 @@ h1 {
 .subtitle {
     text-align: center;
     font-size: 1.8rem;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     opacity: 0.95;
 }
 
 /* GRID */
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 22px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 26px;
 }
 
-/* COLUMN – glass only here */
+/* COLUMN – classy glass */
 .column {
     background: var(--glass);
-    backdrop-filter: blur(14px);
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    padding: 20px 16px;
-    box-shadow: 0 10px 32px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-radius: 22px;
+    border: 1px solid var(--glass-border);
+    padding: 26px 20px;
+
+    box-shadow:
+        0 12px 32px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.column:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 18px 45px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.65);
 }
 
 /* LIST */
@@ -83,44 +98,48 @@ ul {
 }
 
 li {
-    padding: 8px 4px;
-    margin-bottom: 6px;
+    padding: 10px 6px;
+    margin-bottom: 8px;
     text-align: center;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    font-size: 1.7rem;
-    background: transparent;   /* ❌ no glass */
-    border: none;              /* ❌ no border */
+
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    font-size: 1.6rem;
+
+    color: var(--text-dark);
+    background: transparent;
+    border: none;
+
     transition: transform .25s ease, color .25s ease;
 }
 
 li:hover {
     transform: translateX(4px);
-    color: #ffe0b3;
+    color: #9c3f00;
 }
 
 /* FOOTER */
 footer {
-    margin-top: 28px;
+    margin-top: 30px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     opacity: 0.9;
 }
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
     h1 {
-        font-size: 1.8rem;
+        font-size: 2.1rem;
         color: #111;
     }
 
     .subtitle {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         color: #111;
     }
 
     li {
-        color: var(--text-dark);
+        font-size: 1.4rem;
     }
 }
 
@@ -130,7 +149,7 @@ footer {
     }
 
     li {
-        font-size: 0.9rem;
+        font-size: 1.3rem;
     }
 }
 </style>
@@ -149,19 +168,16 @@ footer {
 
 <script>
 const surnames = [
-    "WANKHEDE","WANJARI","MORE","INGOLE","KAMBLE","BHAGAT","BHITKAR","RAIPURE",
-    "NAGRALE","THAWARE","THOOL","MOON","NAIK","NAKHALE","KHADSE","SHAMBHARKAR",
-
-    "WANKHADE","INGLE","ABHYANKAR","MOHOD","MAHORE","BHATKAR","GAIKWAD","TAYADE",
-    "KHANDARE","DAMODAR","SONONE","SHIRSAT","GAWAI","VIRGHAT","WARGHAT","DONGRE",
-
-    "PATIL","MESHRAM","GAJBHIYE","RAMTEKE","SHENDE","KHOBRAGADE","MOTGHARE",
-    "BORKAR","BANSOD","RANGARI","WASNIK","LANJEWAR","UKE","NAGDEVE",
-    "GADPAYALE","MANWATKAR",
-
-    "RAUT","SAHARE","SHAHARE","BADOLE","BHALEKAR","DHAMGAYE","TEMBHURNE",
-    "SAKHARE","KOCHE","UNDIRWADE","INDURKAR","NANDESHWAR","JAMBHULKAR",
-    "JANBANDHU","WALDE","SANGOLE"
+"WANKHEDE","WANJARI","MORE","INGOLE","KAMBLE","BHAGAT","BHITKAR","RAIPURE",
+"NAGRALE","THAWARE","THOOL","MOON","NAIK","NAKHALE","KHADSE","SHAMBHARKAR",
+"WANKHADE","INGLE","ABHYANKAR","MOHOD","MAHORE","BHATKAR","GAIKWAD","TAYADE",
+"KHANDARE","DAMODAR","SONONE","SHIRSAT","GAWAI","VIRGHAT","WARGHAT","DONGRE",
+"PATIL","MESHRAM","GAJBHIYE","RAMTEKE","SHENDE","KHOBRAGADE","MOTGHARE",
+"BORKAR","BANSOD","RANGARI","WASNIK","LANJEWAR","UKE","NAGDEVE",
+"GADPAYALE","MANWATKAR",
+"RAUT","SAHARE","SHAHARE","BADOLE","BHALEKAR","DHAMGAYE","TEMBHURNE",
+"SAKHARE","KOCHE","UNDIRWADE","INDURKAR","NANDESHWAR","JAMBHULKAR",
+"JANBANDHU","WALDE","SANGOLE"
 ];
 
 const columns = 4;
@@ -174,13 +190,11 @@ for (let i = 0; i < columns; i++) {
 
     const ul = document.createElement("ul");
 
-    surnames
-        .slice(i * perColumn, (i + 1) * perColumn)
-        .forEach(name => {
-            const li = document.createElement("li");
-            li.textContent = name;
-            ul.appendChild(li);
-        });
+    surnames.slice(i * perColumn, (i + 1) * perColumn).forEach(name => {
+        const li = document.createElement("li");
+        li.textContent = name;
+        ul.appendChild(li);
+    });
 
     col.appendChild(ul);
     grid.appendChild(col);
