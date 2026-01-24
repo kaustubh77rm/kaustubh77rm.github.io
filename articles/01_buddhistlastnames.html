@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Buddhist Mahar Surnames Vidarbha</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --bg1: #0f2027;
+    --bg2: #203a43;
+    --bg3: #2c5364;
+    --glass: rgba(255,255,255,0.12);
+    --border: rgba(255,255,255,0.25);
+    --accent: #00e5ff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size:28px;
+    min-height: 90vh;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    text-shadow: 0 0 15px rgba(0,229,255,0.4);
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    opacity: 0.85;
+    margin-bottom: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.column {
+    background: var(--glass);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.column:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: default;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+}
+
+li:hover {
+    background: linear-gradient(90deg, var(--accent), #4facfe);
+    color: #000;
+    transform: translateX(6px);
+}
+
+footer {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <h1>LAST NAMES (VIDARBHA REGION)</h1>
+    <div class="subtitle">Buddhist Mahar Community</div>
+
+    <div class="grid" id="grid"></div>
+
+    <footer>© Kaustubh Ramteke</footer>
+</div>
+
+<script>
+const surnames = [
+    "WANKHEDE","WANJARI","MORE","INGOLE","KAMBLE","BHAGAT","BHITKAR","RAIPURE",
+    "NAGRALE","THAWARE","THOOL","MOON","NAIK","NAKHALE","KHADSE","SHAMBHARKAR",
+
+    "WANKHADE","INGLE","ABHYANKAR","MOHOD","MAHORE","BHATKAR","GAIKWAD","TAYADE",
+    "KHANDARE","DAMODAR","SONONE","SHIRSAT","GAWAI","VIRGHAT","WARGHAT","DONGRE",
+
+    "PATIL","MESHRAM","GAJBHIYE","RAMTEKE","SHENDE","KHOBRAGADE","MOTGHARE",
+    "BORKAR","BANSOD","RANGARI","WASNIK","LANJEWAR","UKE","NAGDEVE",
+    "GADPAYALE","MANWATKAR",
+
+    "RAUT","SAHARE","SHAHARE","BADOLE","BHALEKAR","DHAMGAYE","TEMBHURNE",
+    "SAKHARE","KOCHE","UNDIRWADE","INDURKAR","NANDESHWAR","JAMBHULKAR",
+    "JANBANDHU","WALDE","SANGOLE"
+];
+
+const columns = 4;
+const perColumn = Math.ceil(surnames.length / columns);
+const grid = document.getElementById("grid");
+
+for (let i = 0; i < columns; i++) {
+    const col = document.createElement("div");
+    col.className = "column";
+
+    const ul = document.createElement("ul");
+
+    surnames.slice(i * perColumn, (i + 1) * perColumn).forEach(name => {
+        const li = document.createElement("li");
+        li.textContent = name;
+        ul.appendChild(li);
+    });
+
+    col.appendChild(ul);
+    grid.appendChild(col);
+}
+</script>
+</body>
+</html>
