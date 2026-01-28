@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Concepts - Glass Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #10b981;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f0f4ff;
+            --glass-bg: rgba(255, 255, 255, 0.75);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            --card-radius: 24px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 60px;
+            background-image: 
+                radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 40px 0 30px;
+            text-align: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+        }
+
+        .logo-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            border: none;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+            font-size: 16px;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+        }
+
+        .filter-btn {
+            display: flex;
+            gap: 8px;
+            padding: 14px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            align-items: center;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: sticky;
+            top: 30px;
+            height: fit-content;
+        }
+
+        .nav-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .nav-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-title i {
+            font-size: 1.1rem;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 12px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            color: var(--text);
+            text-decoration: none;
+            border-radius: 14px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+        }
+
+        .nav-link i {
+            font-size: 0.9rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .stats-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: var(--card-radius);
+            padding: 24px;
+            text-align: center;
+        }
+
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .stats-label {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: var(--card-radius);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+            padding: 32px;
+            margin-bottom: 30px;
+            transition: var(--transition);
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .card-icon i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .card-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            margin-top: 4px;
+            font-size: 0.95rem;
+        }
+
+        .content-body {
+            color: var(--text);
+        }
+
+        .content-body h3 {
+            font-size: 1.3rem;
+            margin: 24px 0 12px;
+            color: var(--primary);
+        }
+
+        .content-body h4 {
+            font-size: 1.1rem;
+            margin: 20px 0 10px;
+            color: var(--text);
+        }
+
+        .content-body p {
+            margin-bottom: 16px;
+        }
+
+        .content-body ul, .content-body ol {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        .content-body li {
+            margin-bottom: 8px;
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            color: #94a3b8;
+            font-size: 0.9rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: #94a3b8;
+            padding: 6px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        pre {
+            color: #e2e8f0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        .code-keyword {
+            color: #60a5fa;
+        }
+
+        .code-class {
+            color: #fbbf24;
+        }
+
+        .code-string {
+            color: #34d399;
+        }
+
+        .code-comment {
+            color: #94a3b8;
+        }
+
+        /* Table Styling */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table th {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: var(--primary);
+            border-bottom: 2px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .comparison-table td {
+            padding: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.15);
+            color: var(--primary);
+        }
+
+        .badge-success {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent);
+        }
+
+        .badge-warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .content-card {
+                padding: 24px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .search-filter {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-box {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-card {
+            animation: fadeInUp 0.5s ease-out forwards;
+        }
+
+        .content-card:nth-child(2) { animation-delay: 0.1s; }
+        .content-card:nth-child(3) { animation-delay: 0.2s; }
+        .content-card:nth-child(4) { animation-delay: 0.3s; }
+        .content-card:nth-child(5) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-coffee"></i>
+                </div>
+                <h1>Java Concepts</h1>
+            </div>
+            <p class="subtitle">A comprehensive guide to core Java programming concepts with examples and explanations</p>
+            
+            <div class="search-filter">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search concepts...">
+                </div>
+                <div class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    <span>Filter by Category</span>
+                </div>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <aside class="sidebar">
+                <div class="nav-card">
+                    <h3 class="nav-title"><i class="fas fa-bookmark"></i> Concepts</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#package" class="nav-link active"><i class="fas fa-cube"></i> Package</a></li>
+                        <li class="nav-item"><a href="#class" class="nav-link"><i class="fas fa-cubes"></i> Class</a></li>
+                        <li class="nav-item"><a href="#main-method" class="nav-link"><i class="fas fa-play"></i> Main Method</a></li>
+                        <li class="nav-item"><a href="#polymorphism" class="nav-link"><i class="fas fa-shapes"></i> Polymorphism</a></li>
+                        <li class="nav-item"><a href="#abstraction" class="nav-link"><i class="fas fa-eye-slash"></i> Abstraction</a></li>
+                        <li class="nav-item"><a href="#encapsulation" class="nav-link"><i class="fas fa-box"></i> Encapsulation</a></li>
+                        <li class="nav-item"><a href="#jdk-jre-jvm" class="nav-link"><i class="fas fa-layer-group"></i> JDK, JRE, JVM</a></li>
+                        <li class="nav-item"><a href="#setter-getter" class="nav-link"><i class="fas fa-exchange-alt"></i> Setter & Getter</a></li>
+                        <li class="nav-item"><a href="#constructor" class="nav-link"><i class="fas fa-hammer"></i> Constructor</a></li>
+                        <li class="nav-item"><a href="#overloading-overriding" class="nav-link"><i class="fas fa-retweet"></i> Overloading & Overriding</a></li>
+                        <li class="nav-item"><a href="#inheritance" class="nav-link"><i class="fas fa-sitemap"></i> Inheritance</a></li>
+                        <li class="nav-item"><a href="#access-modifiers" class="nav-link"><i class="fas fa-lock"></i> Access Modifiers</a></li>
+                        <li class="nav-item"><a href="#collections" class="nav-link"><i class="fas fa-th-large"></i> Collections API</a></li>
+                        <li class="nav-item"><a href="#exceptions" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Exceptions</a></li>
+                        <li class="nav-item"><a href="#threads" class="nav-link"><i class="fas fa-bolt"></i> Threads</a></li>
+                    </ul>
+                </div>
+                
+                <div class="stats-card">
+                    <div class="stats-number">42</div>
+                    <div class="stats-label">Java Concepts Covered</div>
+                </div>
+            </aside>
+            
+            <main class="content-area">
+                <!-- Package Card -->
+                <div id="package" class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Package</h2>
+                            <div class="card-subtitle">Namespace for organizing related classes</div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <p>A <strong>package</strong> in Java is a namespace that organizes a set of related classes and interfaces. Conceptually, you can think of packages as being similar to different folders on your computer.</p>
+                        
+                        <h3>Usage:</h3>
+                        <ul>
+                            <li><strong>Preventing Naming Conflicts:</strong> Packages help avoid class name conflicts. For example, two classes named <code>Employee</code> can be placed in different packages.</li>
+                            <li><strong>Controlled Access:</strong> Packages can help define access controls. Classes, fields, and methods declared with no access modifier are accessible only within the same package.</li>
+                            <li><strong>Encapsulation:</strong> Packages can hide classes, methods, and fields by not exposing them to other packages.</li>
+                            <li><strong>Easy Maintenance:</strong> Grouping related classes and interfaces in packages makes it easier to locate and maintain the code.</li>
+                        </ul>
+                        
+                        <div class="badge badge-primary">Namespace</div>
+                        <div class="badge badge-primary">Organization</div>
+                        <div class="badge badge-success">Access Control</div>
+                    </div>
+                </div>
+                
+                <!-- Class Card -->
+                <div id="class" class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Class</h2>
+                            <div class="card-subtitle">Blueprint for creating objects</div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <p>A <strong>class</strong> in Java is a blueprint from which individual objects are created. A class can contain:</p>
+                        
+                        <ul>
+                            <li><strong>Fields:</strong> Variables that hold the state of the objects.</li>
+                            <li><strong>Methods:</strong> Functions that define the behavior of the objects.</li>
+                            <li><strong>Constructors:</strong> Special methods that initialize new objects.</li>
+                            <li><strong>Blocks:</strong> Code blocks that are executed during the object creation.</li>
+                            <li><strong>Nested Class and Interface:</strong> Classes and interfaces defined within another class.</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Class Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="code-keyword">public class</span> <span class="code-class">Employee</span> {
+    <span class="code-comment">// Fields (instance variables)</span>
+    <span class="code-keyword">private</span> String name;
+    <span class="code-keyword">private</span> <span class="code-keyword">int</span> id;
+    <span class="code-keyword">private</span> <span class="code-keyword">double</span> salary;
+    
+    <span class="code-comment">// Constructor</span>
+    <span class="code-keyword">public</span> Employee(String name, <span class="code-keyword">int</span> id, <span class="code-keyword">double</span> salary) {
+        <span class="code-keyword">this</span>.name = name;
+        <span class="code-keyword">this</span>.id = id;
+        <span class="code-keyword">this</span>.salary = salary;
+    }
+    
+    <span class="code-comment">// Method</span>
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> displayDetails() {
+        System.out.println(<span class="code-string">"Employee: "</span> + name + <span class="code-string">", ID: "</span> + id);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <div class="badge badge-primary">Blueprint</div>
+                        <div class="badge badge-primary">Object-Oriented</div>
+                        <div class="badge badge-success">Encapsulation</div>
+                    </div>
+                </div>
+                
+                <!-- Main Method Card -->
+                <div id="main-method" class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Main Method</h2>
+                            <div class="card-subtitle">Entry point of a Java application</div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <p>The <strong>main()</strong> method is the entry point of a Java application. It is always written as:</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Main Method Signature</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="code-keyword">public static void</span> main(String[] args) {
+    <span class="code-comment">// Application code goes here</span>
+}</code></pre>
+                        </div>
+                        
+                        <h3>Components:</h3>
+                        <ul>
+                            <li><strong>public:</strong> The method is accessible from anywhere.</li>
+                            <li><strong>static:</strong> The method can be called without creating an instance of the class.</li>
+                            <li><strong>void:</strong> The method does not return any value.</li>
+                            <li><strong>String[] args:</strong> The parameter is an array of <code>String</code> arguments passed to the main method.</li>
+                        </ul>
+                        
+                        <div class="badge badge-primary">Entry Point</div>
+                        <div class="badge badge-success">Static Method</div>
+                        <div class="badge badge-warning">JVM Access</div>
+                    </div>
+                </div>
+                
+                <!-- Polymorphism Card -->
+                <div id="polymorphism" class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-shapes"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Polymorphism</h2>
+                            <div class="card-subtitle">One interface, multiple implementations</div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <p><strong>Polymorphism</strong> in Java allows methods to do different things based on the object it is acting upon.</p>
+                        
+                        <h3>Types of Polymorphism:</h3>
+                        <ul>
+                            <li><strong>Compile-Time Polymorphism:</strong> Achieved using method overloading.</li>
+                            <li><strong>Runtime Polymorphism:</strong> Achieved using method overriding.</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Polymorphism Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="code-comment">// Method Overloading (Compile-Time Polymorphism)</span>
+<span class="code-keyword">class</span> <span class="code-class">Calculator</span> {
+    <span class="code-keyword">public</span> <span class="code-keyword">int</span> add(<span class="code-keyword">int</span> a, <span class="code-keyword">int</span> b) {
+        <span class="code-keyword">return</span> a + b;
+    }
+    
+    <span class="code-keyword">public</span> <span class="code-keyword">int</span> add(<span class="code-keyword">int</span> a, <span class="code-keyword">int</span> b, <span class="code-keyword">int</span> c) {
+        <span class="code-keyword">return</span> a + b + c;
+    }
+}
+
+<span class="code-comment">// Method Overriding (Runtime Polymorphism)</span>
+<span class="code-keyword">class</span> <span class="code-class">Animal</span> {
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> sound() {
+        System.out.println(<span class="code-string">"Animal makes a sound"</span>);
+    }
+}
+
+<span class="code-keyword">class</span> <span class="code-class">Dog</span> <span class="code-keyword">extends</span> Animal {
+    <span class="code-keyword">@Override</span>
+    <span class="code-keyword">public</span> <span class="code-keyword">void</span> sound() {
+        System.out.println(<span class="code-string">"Dog barks"</span>);
+    }
+}</code></pre>
+                        </div>
+                        
+                        <div class="badge badge-primary">OOP Principle</div>
+                        <div class="badge badge-success">Method Overloading</div>
+                        <div class="badge badge-success">Method Overriding</div>
+                    </div>
+                </div>
+                
+                <!-- JDK, JRE, JVM Card -->
+                <div id="jdk-jre-jvm" class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">JDK, JRE, JVM</h2>
+                            <div class="card-subtitle">Java Platform Components</div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <h3>JDK (Java Development Kit)</h3>
+                        <p><strong>JDK</strong> is a software development kit used to develop Java applications and applets. It includes the JRE, an interpreter/loader (Java), a compiler (javac), an archiver (jar), a documentation generator (Javadoc), and other tools needed for Java development.</p>
+                        
+                        <h3>JRE (Java Runtime Environment)</h3>
+                        <p><strong>JRE</strong> provides the libraries, Java Virtual Machine (JVM), and other components necessary to run applications written in Java. It does not include development tools like compilers or debuggers.</p>
+                        
+                        <h3>JVM (Java Virtual Machine)</h3>
+                        <p><strong>JVM</strong> is an abstract machine that enables your computer to run a Java program. It provides a runtime environment in which Java bytecode can be executed.</p>
+                        
+                        <h3>Relationship Between JDK, JRE, and JVM</h3>
+                        <ul>
+                            <li><strong>JDK</strong> contains the <strong>JRE</strong>, which in turn contains the <strong>JVM</strong>.</li>
+                            <li>The <strong>JDK</strong> is used for development, containing the tools necessary for developing Java programs.</li>
+                            <li>The <strong>JRE</strong> is used to run Java applications.</li>
+                            <li>The <strong>JVM</strong> is the engine that runs the bytecode generated by the Java compiler.</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Relationship Visualization</span>
+                            </div>
+                            <pre><code>JDK
+├── JRE
+│   ├── JVM
+│   ├── Core Libraries
+│   └── Other Components
+├── Development Tools
+│   ├── Compiler (javac)
+│   ├── Debugger
+│   └── Documentation (Javadoc)
+└── Other Utilities</code></pre>
+                        </div>
+                        
+                        <div class="badge badge-primary">Development</div>
+                        <div class="badge badge-success">Runtime</div>
+                        <div class="badge badge-warning">Virtual Machine</div>
+                    </div>
+                </div>
+                
+                <!-- Collections API Card -->
+                <div id="collections" class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Collections API</h2>
+                            <div class="card-subtitle">Framework for storing and manipulating groups of data</div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <p>Provides a set of classes and interfaces for storing and manipulating groups of data as a single unit.</p>
+                        
+                        <h3>Main Interfaces:</h3>
+                        <ul>
+                            <li><strong>List:</strong> Ordered collection (e.g., <code>ArrayList</code>, <code>LinkedList</code>).</li>
+                            <li><strong>Set:</strong> Unordered collection with no duplicates (e.g., <code>HashSet</code>, <code>TreeSet</code>).</li>
+                            <li><strong>Queue:</strong> Collection used to hold elements prior to processing (e.g., <code>LinkedList</code>, <code>PriorityQueue</code>).</li>
+                            <li><strong>Map:</strong> Key-value pairs (e.g., <code>HashMap</code>, <code>TreeMap</code>).</li>
+                        </ul>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Collections Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code><span class="code-comment">// ArrayList Example</span>
+List&lt;String&gt; names = <span class="code-keyword">new</span> ArrayList&lt;&gt;();
+names.add(<span class="code-string">"John"</span>);
+names.add(<span class="code-string">"Jane"</span>);
+names.add(<span class="code-string">"Alice"</span>);
+
+<span class="code-comment">// HashSet Example</span>
+Set&lt;Integer&gt; numbers = <span class="code-keyword">new</span> HashSet&lt;&gt;();
+numbers.add(10);
+numbers.add(20);
+numbers.add(10); <span class="code-comment">// Duplicate, won't be added</span>
+
+<span class="code-comment">// HashMap Example</span>
+Map&lt;String, Integer&gt; ages = <span class="code-keyword">new</span> HashMap&lt;&gt;();
+ages.put(<span class="code-string">"John"</span>, 25);
+ages.put(<span class="code-string">"Jane"</span>, 30);</code></pre>
+                        </div>
+                        
+                        <h3>Stream API (Java 8+)</h3>
+                        <p>Introduced in Java 8, the Stream API is used to process collections of objects in a functional style.</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span>Stream API Example</span>
+                                <button class="copy-btn">Copy</button>
+                            </div>
+                            <pre><code>List&lt;String&gt; names = Arrays.asList(<span class="code-string">"John"</span>, <span class="code-string">"Jane"</span>, <span class="code-string">"Adam"</span>, <span class="code-string">"Eve"</span>);
+
+<span class="code-comment">// Filter names starting with 'J' and convert to uppercase</span>
+List&lt;String&gt; result = names.stream()
+    .filter(name -&gt; name.startsWith(<span class="code-string">"J"</span>))
+    .map(String::toUpperCase)
+    .collect(Collectors.toList());
+
+<span class="code-comment">// result = ["JOHN", "JANE"]</span></code></pre>
+                        </div>
+                        
+                        <div class="badge badge-primary">Data Structures</div>
+                        <div class="badge badge-success">Stream API</div>
+                        <div class="badge badge-warning">Java 8+</div>
+                    </div>
+                </div>
+                
+                <!-- Overloading vs Overriding Card -->
+                <div id="overloading-overriding" class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-retweet"></i>
+                        </div>
+                        <div>
+                            <h2 class="card-title">Method Overloading & Overriding</h2>
+                            <div class="card-subtitle">Comparing two polymorphism techniques</div>
+                        </div>
+                    </div>
+                    <div class="content-body">
+                        <table class="comparison-table">
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Method Overloading</th>
+                                    <th>Method Overriding</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Definition</strong></td>
+                                    <td>Defining multiple methods with the same name but different parameter lists</td>
+                                    <td>Redefining a method in a subclass that is already defined in its superclass</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Purpose</strong></td>
+                                    <td>Increase readability by allowing the same method name for different tasks</td>
+                                    <td>Provide specific implementation of a method defined in a parent class</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Parameters</strong></td>
+                                    <td>Must have different parameter types, numbers, or both</td>
+                                    <td>Must have the same parameter types and number</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Return Type</strong></td>
+                                    <td>Can have different return types</td>
+                                    <td>Must have the same return type (or subtype)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Inheritance</strong></td>
+                                    <td>Not required; can occur within the same class</td>
+                                    <td>Requires inheritance; occurs between superclass and subclass</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Binding</strong></td>
+                                    <td>Compile-time (static binding)</td>
+                                    <td>Runtime (dynamic binding)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <div class="badge badge-primary">Polymorphism</div>
+                        <div class="badge badge-success">Compile-Time</div>
+                        <div class="badge badge-warning">Runtime</div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        
+        <footer>
+            <p>Java Concepts Reference • Created with <i class="fas fa-heart" style="color:#ef4444;"></i> for Java Developers</p>
+            <p style="margin-top: 8px; font-size: 0.8rem;">42 concepts covered • Last updated: June 2023</p>
+        </footer>
+    </div>
+
+    <script>
+        // Navigation active state
+        const navLinks = document.querySelectorAll('.nav-link');
+        const contentCards = document.querySelectorAll('.content-card');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                navLinks.forEach(item => item.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Scroll to corresponding card
+                const targetId = this.getAttribute('href');
+                const targetCard = document.querySelector(targetId);
+                
+                if (targetCard) {
+                    window.scrollTo({
+                        top: targetCard.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Copy code button functionality
+        const copyButtons = document.querySelectorAll('.copy-btn');
+        
+        copyButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const codeBlock = this.closest('.code-block');
+                const code = codeBlock.querySelector('code').textContent;
+                
+                // Copy to clipboard
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
+                    this.style.background = 'rgba(16, 185, 129, 0.3)';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                        this.style.background = '';
+                    }, 2000);
+                });
+            });
+        });
+        
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            contentCards.forEach(card => {
+                const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+                const cardContent = card.querySelector('.content-body').textContent.toLowerCase();
+                
+                if (cardTitle.includes(searchTerm) || cardContent.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+        
+        // Highlight active card based on scroll position
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            contentCards.forEach(card => {
+                const cardTop = card.offsetTop;
+                const cardHeight = card.clientHeight;
+                
+                if (pageYOffset >= (cardTop - 150)) {
+                    current = card.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Initially set cards for animation
+        contentCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
