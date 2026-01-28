@@ -130,7 +130,7 @@ footer {
 <body>
 
 <!-- 🔊 BACKGROUND MUSIC -->
-<audio id="bgMusic" autoplay loop muted>
+<audio id="bgMusic" autoplay loop>
     <source src="https://raw.githubusercontent.com/kaustubh77rm/kaustubh77rm.github.io/main/music/the-disco-song.mp3" type="audio/mpeg">
 </audio>
 
@@ -150,15 +150,52 @@ footer {
 </div>
 
 <script>
-// 🎵 Enable music after first interaction (browser-safe)
+// 🎵 Auto-play music with user gesture fallback
 const bgMusic = document.getElementById("bgMusic");
-document.addEventListener("click", () => {
-    if (bgMusic.muted) {
-        bgMusic.muted = false;
-        bgMusic.volume = 0.4;
-        bgMusic.play();
+
+// Set volume
+bgMusic.volume = 0.4;
+
+// Try to play automatically
+function playAudio() {
+    const playPromise = bgMusic.play();
+    
+    if (playPromise !== undefined) {
+        playPromise.then(() => {
+            console.log("Audio playing successfully");
+        }).catch(error => {
+            console.log("Auto-play prevented. Will play on user interaction.");
+            // Add a visual cue for users to click
+            document.body.style.cursor = "pointer";
+            document.title = "▶️ Click to play music - Buddhist Mahar Surnames";
+            
+            // Play on first user interaction
+            const playOnInteraction = () => {
+                bgMusic.play();
+                document.body.style.cursor = "default";
+                document.title = "Buddhist Mahar Surnames Vidarbha";
+                // Remove event listeners after first play
+                document.removeEventListener('click', playOnInteraction);
+                document.removeEventListener('touchstart', playOnInteraction);
+                document.removeEventListener('keydown', playOnInteraction);
+            };
+            
+            document.addEventListener('click', playOnInteraction);
+            document.addEventListener('touchstart', playOnInteraction);
+            document.addEventListener('keydown', playOnInteraction);
+        });
     }
-}, { once: true });
+}
+
+// Start playing when page is ready
+window.addEventListener('load', playAudio);
+
+// Also try when page becomes visible
+document.addEventListener('visibilitychange', () => {
+    if (!document.hidden && bgMusic.paused) {
+        playAudio();
+    }
+});
 
 // Surnames
 const surnames = [
