@@ -46,7 +46,6 @@
 
 /* BODY */
 body {
-    min-height: 100vh;
     font-family: var(--font-primary);
     background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
     display: flex;
@@ -54,7 +53,7 @@ body {
     align-items: flex-start;
     padding: 40px 30px;
     color: var(--text-light);
-    line-height: 1.6;
+    line-height: 1;
 }
 
 /* CONTAINER */
@@ -68,8 +67,7 @@ h1 {
     text-align: center;
     font-size: 3.2rem;
     font-weight: 800;
-    letter-spacing: var(--letter-spacing-wider);
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     font-family: var(--font-condensed);
     text-transform: uppercase;
     line-height: 1.2;
@@ -80,7 +78,7 @@ h1 {
 .subtitle {
     text-align: center;
     font-size: 1.5rem;
-    margin-bottom: 40px;
+    margin-bottom: 7px;
     font-weight: 500;
     letter-spacing: var(--letter-spacing-wide);
     color: #fff9f6;
@@ -313,58 +311,69 @@ document.fonts.ready.then(() => {
 const columns = 4;
 const perColumn = Math.ceil(surnames.length / columns);
 const grid = document.getElementById("grid");
-const allLiElements = [];
+const columnLiElements = []; // Array to store li elements for each column
 
-// Create columns and collect all li elements
+// Create columns and organize li elements by column
 for (let i = 0; i < columns; i++) {
     const col = document.createElement("div");
     col.className = "column";
     
     const ul = document.createElement("ul");
+    const columnItems = [];
     
     surnames.slice(i * perColumn, (i + 1) * perColumn).forEach(name => {
         const li = document.createElement("li");
         li.textContent = name;
         ul.appendChild(li);
-        allLiElements.push(li);
+        columnItems.push(li);
     });
     
     col.appendChild(ul);
     grid.appendChild(col);
+    columnLiElements.push(columnItems);
 }
 
-// Sequential hover animation
-let currentIndex = 0;
+// Sequential hover animation - all columns simultaneously
+let currentRowIndex = 0;
 const hoverDuration = 800; // milliseconds each surname stays highlighted
 const pauseBetween = 200; // milliseconds pause between surnames
+const maxRows = Math.max(...columnLiElements.map(col => col.length)); // Find longest column
 
-function highlightNextSurname() {
-    // Remove auto-hover class from all
-    allLiElements.forEach(li => {
-        li.classList.remove('auto-hover');
+function highlightNextRow() {
+    // Remove auto-hover class from all li elements
+    columnLiElements.forEach(column => {
+        column.forEach(li => {
+            li.classList.remove('auto-hover');
+        });
     });
     
-    // Add auto-hover to current surname
-    allLiElements[currentIndex].classList.add('auto-hover');
+    // Add auto-hover to current row in ALL columns simultaneously
+    columnLiElements.forEach(column => {
+        if (currentRowIndex < column.length) {
+            column[currentRowIndex].classList.add('auto-hover');
+        }
+    });
     
-    // Move to next surname
-    currentIndex = (currentIndex + 1) % allLiElements.length;
+    // Move to next row
+    currentRowIndex = (currentRowIndex + 1) % maxRows;
     
     // Schedule next highlight
-    setTimeout(highlightNextSurname, hoverDuration + pauseBetween);
+    setTimeout(highlightNextRow, hoverDuration + pauseBetween);
 }
 
 // Start the animation after a brief delay
-setTimeout(highlightNextSurname, 1000);
+setTimeout(highlightNextRow, 1000);
 
 // Optional: Pause animation on hover
-allLiElements.forEach(li => {
-    li.addEventListener('mouseenter', () => {
-        // You could add pause functionality here if desired
-    });
-    
-    li.addEventListener('mouseleave', () => {
-        // Resume animation
+columnLiElements.forEach(column => {
+    column.forEach(li => {
+        li.addEventListener('mouseenter', () => {
+            // You could add pause functionality here if desired
+        });
+        
+        li.addEventListener('mouseleave', () => {
+            // Resume animation
+        });
     });
 });
 </script>
