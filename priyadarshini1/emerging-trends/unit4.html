@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4. Immersive Technology & Sustainable Computing</title>
+
+<style>
+:root {
+    --primary: #4D00BA;
+    --secondary: #006cc6;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #666;
+}
+
+/* Base */
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+/* Top bar */
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 16px 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-button {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.back-button:hover {
+    background: #3a008f;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(77,0,186,0.3);
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 24px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin: 32px 0 40px;
+    padding: 0 16px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 32px;
+    color: var(--primary);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--primary);
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+/* Question Grid */
+.question-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 24px;
+    margin-top: 20px;
+}
+
+/* Question Card */
+.question-card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.question-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+}
+
+.question-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--primary);
+}
+
+/* Question */
+.question {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.question-number {
+    background: var(--primary);
+    color: white;
+    width: 30px;
+    height: 30px;
+    min-width: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.question-text {
+    flex: 1;
+}
+
+/* Options */
+.options {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 44px;
+}
+
+.options li {
+    padding: 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+    padding-left: 12px;
+}
+
+.options li:last-child {
+    border-bottom: none;
+}
+
+.options li:hover {
+    background: rgba(77,0,186,0.05);
+    padding-left: 16px;
+    border-radius: 4px;
+}
+
+.options b {
+    color: var(--primary);
+    font-size:20px;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 48px 0 24px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .top-bar {
+        padding: 12px 16px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+    }
+    
+    .header h1 {
+        font-size: 26px;
+    }
+    
+    .question-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .question-card {
+        padding: 20px;
+    }
+    
+    .container {
+        padding: 16px;
+    }
+    
+    .options {
+        margin-left: 40px;
+    }
+}
+
+/* Tablet */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .question-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1025px) {
+    .question-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.footer {
+    text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+    margin: 56px 0 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <h1 class="page-title">Unit 4 - Immersive Technology & Sustainable Computing</h1>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>Immersive Technology & Sustainable Computing</h1>
+        
+    <div class="question-grid">
+        
+        <!-- Q1 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">1</div>
+                <div class="question-text">Immersive technology merges ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Hardware and software</li>
+                <li><b>(b) Physical and digital environments</b></li>
+                <li>(c) Data and storage</li>
+                <li>(d) Computers and networks</li>
+            </ul>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">2</div>
+                <div class="question-text">The main purpose of immersive technology is to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Replace physical systems</li>
+                <li><b>(b) Enhance user experience through engagement</b></li>
+                <li>(c) Reduce computer speed</li>
+                <li>(d) Store more data</li>
+            </ul>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">3</div>
+                <div class="question-text">Which technology completely replaces the real world?</div>
+            </div>
+            <ul class="options">
+                <li>(a) AR</li>
+                <li><b>(b) VR</b></li>
+                <li>(c) MR</li>
+                <li>(d) XR</li>
+            </ul>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">4</div>
+                <div class="question-text">The device essential for Virtual Reality experience ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Monitor</li>
+                <li><b>(b) VR headset</b></li>
+                <li>(c) Smartphone</li>
+                <li>(d) Keyboard</li>
+            </ul>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">5</div>
+                <div class="question-text">Augmented Reality works by ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Simulating only virtual worlds</li>
+                <li><b>(b) Overlaying digital objects on the real world</b></li>
+                <li>(c) Creating sound-based simulations</li>
+                <li>(d) Replacing human senses</li>
+            </ul>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">6</div>
+                <div class="question-text">Mixed Reality (MR) is a combination of ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) AR and AI</li>
+                <li>(b) VR and IoT</li>
+                <li><b>(c) AR and VR</b></li>
+                <li>(d) None of these</li>
+            </ul>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">7</div>
+                <div class="question-text">Extended Reality (XR) includes ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Only AR and VR</li>
+                <li><b>(b) AR, VR, and MR</b></li>
+                <li>(c) Only MR</li>
+                <li>(d) None of these</li>
+            </ul>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">8</div>
+                <div class="question-text">Haptic technology mainly stimulates which human sense?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Hearing</li>
+                <li><b>(b) Touch</b></li>
+                <li>(c) Vision</li>
+                <li>(d) Smell</li>
+            </ul>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">9</div>
+                <div class="question-text">A common example of AR in daily life is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Google Docs</li>
+                <li><b>(b) Pokémon GO</b></li>
+                <li>(c) YouTube</li>
+                <li>(d) PowerPoint</li>
+            </ul>
+        </div>
+
+        <!-- Q10 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">10</div>
+                <div class="question-text">Which immersive technology allows users to interact with both real and digital objects in real time?</div>
+            </div>
+            <ul class="options">
+                <li>(a) AR</li>
+                <li><b>(b) MR</b></li>
+                <li>(c) VR</li>
+                <li>(d) XR</li>
+            </ul>
+        </div>
+
+        <!-- Q11 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">11</div>
+                <div class="question-text">The sense of "presence" in immersive technology means ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) The user is physically moving</li>
+                <li><b>(b) The user feels part of the virtual world</b></li>
+                <li>(c) The user's device is on</li>
+                <li>(d) None of these</li>
+            </ul>
+        </div>
+
+        <!-- Q12 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">12</div>
+                <div class="question-text">Which of the following is a wearable haptic device?</div>
+            </div>
+            <ul class="options">
+                <li>(a) VR headset</li>
+                <li><b>(b) VR gloves</b></li>
+                <li>(c) Keyboard</li>
+                <li>(d) Joystick</li>
+            </ul>
+        </div>
+
+        <!-- Q13 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">13</div>
+                <div class="question-text">Touchable haptics are commonly used in ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Smartphones and tablets</b></li>
+                <li>(b) Servers</li>
+                <li>(c) VR helmets</li>
+                <li>(d) Data centers</li>
+            </ul>
+        </div>
+
+        <!-- Q14 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">14</div>
+                <div class="question-text">Mid-air haptics deliver sensations using ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Electricity</li>
+                <li><b>(b) Ultrasound waves</b></li>
+                <li>(c) Heat sensors</li>
+                <li>(d) Vibrations only</li>
+            </ul>
+        </div>
+
+        <!-- Q15 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">15</div>
+                <div class="question-text">Which immersive technology is most used for training pilots?</div>
+            </div>
+            <ul class="options">
+                <li>(a) AR</li>
+                <li><b>(b) VR</b></li>
+                <li>(c) MR</li>
+                <li>(d) XR</li>
+            </ul>
+        </div>
+
+        <!-- Q16 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">16</div>
+                <div class="question-text">Which technology provides 3D visual overlays on physical spaces?</div>
+            </div>
+            <ul class="options">
+                <li>(a) MR</li>
+                <li><b>(b) AR</b></li>
+                <li>(c) VR</li>
+                <li>(d) Haptic</li>
+            </ul>
+        </div>
+
+        <!-- Q17 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">17</div>
+                <div class="question-text">XR is best described as ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Software simulation</li>
+                <li><b>(b) The umbrella term for AR, VR, MR</b></li>
+                <li>(c) Quantum device</li>
+                <li>(d) Mechanical design tool</li>
+            </ul>
+        </div>
+
+        <!-- Q18 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">18</div>
+                <div class="question-text">Which industry was among the first to adopt immersive technology widely?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Education</li>
+                <li><b>(b) Gaming</b></li>
+                <li>(c) Manufacturing</li>
+                <li>(d) Agriculture</li>
+            </ul>
+        </div>
+
+        <!-- Q19 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">19</div>
+                <div class="question-text">Immersive technologies engage which senses?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Sight and sound</b></li>
+                <li>(b) Taste and smell</li>
+                <li>(c) Balance and touch</li>
+                <li>(d) None</li>
+            </ul>
+        </div>
+
+        <!-- Q20 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">20</div>
+                <div class="question-text">Microsoft HoloLens is an example of ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) VR device</li>
+                <li><b>(b) MR device</b></li>
+                <li>(c) AR device</li>
+                <li>(d) XR headset</li>
+            </ul>
+        </div>
+
+        <!-- Q21 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">21</div>
+                <div class="question-text">In education, immersive technology helps by ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Creating physical textbooks</li>
+                <li><b>(b) Enabling virtual field trips</b></li>
+                <li>(c) Replacing teachers</li>
+                <li>(d) Reducing school hours</li>
+            </ul>
+        </div>
+
+        <!-- Q22 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">22</div>
+                <div class="question-text">Medical students use VR to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Play games</li>
+                <li><b>(b) Practice surgery in virtual environments</b></li>
+                <li>(c) Write reports</li>
+                <li>(d) Scan patient IDs</li>
+            </ul>
+        </div>
+
+        <!-- Q23 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">23</div>
+                <div class="question-text">AR can assist engineers by ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Reducing machine cost</li>
+                <li><b>(b) Overlaying design elements on real components</b></li>
+                <li>(c) Replacing hardware</li>
+                <li>(d) Printing 3D models</li>
+            </ul>
+        </div>
+
+        <!-- Q24 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">24</div>
+                <div class="question-text">In real estate, VR enables ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Cost estimation</li>
+                <li><b>(b) Remote property tours</b></li>
+                <li>(c) Document management</li>
+                <li>(d) Security scanning</li>
+            </ul>
+        </div>
+
+        <!-- Q25 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">25</div>
+                <div class="question-text">AR marketing helps customers by ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Displaying product manuals</li>
+                <li><b>(b) Trying products virtually</b></li>
+                <li>(c) Increasing advertisements</li>
+                <li>(d) None</li>
+            </ul>
+        </div>
+
+        <!-- Q26 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">26</div>
+                <div class="question-text">In tourism, immersive technology offers ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Virtual previews of destinations</b></li>
+                <li>(b) Flight discounts</li>
+                <li>(c) Paper tickets</li>
+                <li>(d) Booking apps only</li>
+            </ul>
+        </div>
+
+        <!-- Q27 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">27</div>
+                <div class="question-text">The military uses VR and AR to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Entertain troops</li>
+                <li><b>(b) Conduct safe training simulations</b></li>
+                <li>(c) Build bases</li>
+                <li>(d) None</li>
+            </ul>
+        </div>
+
+        <!-- Q28 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">28</div>
+                <div class="question-text">Healthcare uses VR for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Music therapy</li>
+                <li><b>(b) Pain management and mental health</b></li>
+                <li>(c) Billing</li>
+                <li>(d) Insurance claims</li>
+            </ul>
+        </div>
+
+        <!-- Q29 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">29</div>
+                <div class="question-text">In architecture, immersive technology allows ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Viewing 3D models before construction</b></li>
+                <li>(b) Enhancing paper drawings</li>
+                <li>(c) Speeding up cement drying</li>
+                <li>(d) Painting walls</li>
+            </ul>
+        </div>
+        
+        <!-- Q30 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">30</div>
+                <div class="question-text">AR glasses are used for ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Showing digital info in real-world view</b></li>
+                <li>(b) Listening to audio</li>
+                <li>(c) Printing photos</li>
+                <li>(d) Transferring files</li>
+            </ul>
+        </div>
+
+        <!-- Q31 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">31</div>
+                <div class="question-text">Green computing promotes ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Energy conservation</b></li>
+                <li>(b) Faster processors</li>
+                <li>(c) Bigger servers</li>
+                <li>(d) More power usage</li>
+            </ul>
+        </div>
+
+        <!-- Q32 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">32</div>
+                <div class="question-text">Green IT mainly focuses on ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Recycling and reducing e-waste</b></li>
+                <li>(b) Producing expensive chips</li>
+                <li>(c) Cloud gaming</li>
+                <li>(d) Cryptocurrency mining</li>
+            </ul>
+        </div>
+
+        <!-- Q33 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">33</div>
+                <div class="question-text">Energy-efficient hardware helps by ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Increasing electricity cost</li>
+                <li><b>(b) Reducing power consumption</b></li>
+                <li>(c) Producing more heat</li>
+                <li>(d) Degrading performance</li>
+            </ul>
+        </div>
+
+        <!-- Q34 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">34</div>
+                <div class="question-text">Which is NOT a feature of green computing?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Energy saving</li>
+                <li>(b) Reduced pollution</li>
+                <li><b>(c) High carbon footprint</b></li>
+                <li>(d) Recycling</li>
+            </ul>
+        </div>
+
+        <!-- Q35 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">35</div>
+                <div class="question-text">Data centers improve cooling efficiency using ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Hot aisle / cold aisle layout</b></li>
+                <li>(b) Random arrangement</li>
+                <li>(c) Closed chambers</li>
+                <li>(d) Heating ducts</li>
+            </ul>
+        </div>
+
+        <!-- Q36 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">36</div>
+                <div class="question-text">Liquid cooling in data centers is used for ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Better heat transfer</b></li>
+                <li>(b) Soundproofing</li>
+                <li>(c) Data encryption</li>
+                <li>(d) Visual enhancement</li>
+            </ul>
+        </div>
+
+        <!-- Q37 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">37</div>
+                <div class="question-text">Virtualization helps green computing by ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Reducing physical servers</b></li>
+                <li>(b) Increasing storage devices</li>
+                <li>(c) Running fewer applications</li>
+                <li>(d) Wasting resources</li>
+            </ul>
+        </div>
+
+        <!-- Q38 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">38</div>
+                <div class="question-text">Green computing is also called ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Cloud IT</li>
+                <li><b>(b) Green IT</b></li>
+                <li>(c) Smart IT</li>
+                <li>(d) Energy IT</li>
+            </ul>
+        </div>
+
+        <!-- Q39 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">39</div>
+                <div class="question-text">Which of these is a benefit of green computing?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Cost savings</b></li>
+                <li>(b) High temperature</li>
+                <li>(c) More pollution</li>
+                <li>(d) Data loss</li>
+            </ul>
+        </div>
+
+        <!-- Q40 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">40</div>
+                <div class="question-text">A paperless office contributes to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Waste generation</li>
+                <li><b>(b) Green computing</b></li>
+                <li>(c) Carbon increase</li>
+                <li>(d) None</li>
+            </ul>
+        </div>
+
+        <!-- Q41 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">41</div>
+                <div class="question-text">The first stage in e-waste management is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Sorting</li>
+                <li><b>(b) Collection</b></li>
+                <li>(c) Dismantling</li>
+                <li>(d) Recycling</li>
+            </ul>
+        </div>
+
+        <!-- Q42 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">42</div>
+                <div class="question-text">Data destruction ensures ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) File recovery</li>
+                <li><b>(b) Information security</b></li>
+                <li>(c) Power efficiency</li>
+                <li>(d) Free software</li>
+            </ul>
+        </div>
+
+        <!-- Q43 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">43</div>
+                <div class="question-text">Shredding is done to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Mix components</li>
+                <li><b>(b) Break down parts for sorting</b></li>
+                <li>(c) Repair devices</li>
+                <li>(d) None</li>
+            </ul>
+        </div>
+
+        <!-- Q44 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">44</div>
+                <div class="question-text">Magnetic separation removes ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Plastic</li>
+                <li><b>(b) Steel and iron</b></li>
+                <li>(c) Copper</li>
+                <li>(d) Glass</li>
+            </ul>
+        </div>
+
+        <!-- Q45 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">45</div>
+                <div class="question-text">Eddy current separation targets ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Non-ferrous metals</b></li>
+                <li>(b) Glass</li>
+                <li>(c) Wood</li>
+                <li>(d) Paper</li>
+            </ul>
+        </div>
+
+        <!-- Q46 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">46</div>
+                <div class="question-text">Water separation helps in separating ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Glass and plastics</b></li>
+                <li>(b) Metals</li>
+                <li>(c) Chemicals</li>
+                <li>(d) All materials</li>
+            </ul>
+        </div>
+
+        <!-- Q47 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">47</div>
+                <div class="question-text">Material recovery extracts ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Gold, copper, silver</b></li>
+                <li>(b) Plastic, paper, wood</li>
+                <li>(c) Lead, mercury</li>
+                <li>(d) Glass only</li>
+            </ul>
+        </div>
+
+        <!-- Q48 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">48</div>
+                <div class="question-text">Hazardous waste includes ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Plastic</li>
+                <li><b>(b) Lead, mercury, cadmium</b></li>
+                <li>(c) Paper</li>
+                <li>(d) Aluminum</li>
+            </ul>
+        </div>
+
+        <!-- Q49 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">49</div>
+                <div class="question-text">The purpose of e-waste recycling is to ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Produce more e-waste</li>
+                <li><b>(b) Reduce environmental impact</b></li>
+                <li>(c) Generate new waste</li>
+                <li>(d) Discard all materials</li>
+            </ul>
+        </div>
+
+        <!-- Q50 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">50</div>
+                <div class="question-text">Recovered materials are used to ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Create new electronic products</b></li>
+                <li>(b) Build buildings</li>
+                <li>(c) Produce paper</li>
+                <li>(d) Make fuel</li>
+            </ul>
+        </div>
+
+        <!-- Q51 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">51</div>
+                <div class="question-text">Quantum computing is based on ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Quantum mechanics</b></li>
+                <li>(b) Classical physics</li>
+                <li>(c) Thermodynamics</li>
+                <li>(d) Nanotechnology</li>
+            </ul>
+        </div>
+
+        <!-- Q52 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">52</div>
+                <div class="question-text">The basic unit of quantum information is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Bit</li>
+                <li>(b) Byte</li>
+                <li><b>(c) Qubit</b></li>
+                <li>(d) Node</li>
+            </ul>
+        </div>
+
+        <!-- Q53 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">53</div>
+                <div class="question-text">Superposition allows a qubit to be ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) 0 or 1</li>
+                <li><b>(b) 0 and 1 simultaneously</b></li>
+                <li>(c) 2 only</li>
+                <li>(d) None</li>
+            </ul>
+        </div>
+
+        <!-- Q54 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">54</div>
+                <div class="question-text">Entanglement means ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Two qubits interact instantly</b></li>
+                <li>(b) Qubits separate</li>
+                <li>(c) Bits collide</li>
+                <li>(d) Data loss</li>
+            </ul>
+        </div>
+
+        <!-- Q55 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">55</div>
+                <div class="question-text">Quantum interference helps ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Eliminate wrong solutions</b></li>
+                <li>(b) Store memory</li>
+                <li>(c) Increase heat</li>
+                <li>(d) Encrypt data</li>
+            </ul>
+        </div>
+
+        <!-- Q56 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">56</div>
+                <div class="question-text">Classical computers use ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Qubits</li>
+                <li><b>(b) Bits</b></li>
+                <li>(c) Gates only</li>
+                <li>(d) Photons</li>
+            </ul>
+        </div>
+
+        <!-- Q57 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">57</div>
+                <div class="question-text">Quantum computers can solve problems ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Sequentially</li>
+                <li><b>(b) In parallel</b></li>
+                <li>(c) Randomly</li>
+                <li>(d) Slowly</li>
+            </ul>
+        </div>
+
+        <!-- Q58 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">58</div>
+                <div class="question-text">Example of a quantum computer ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) IBM Quantum</b></li>
+                <li>(b) Dell Laptop</li>
+                <li>(c) Raspberry Pi</li>
+                <li>(d) Chromebook</li>
+            </ul>
+        </div>
+
+        <!-- Q59 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">59</div>
+                <div class="question-text">Quantum computing helps in ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Drug discovery</b></li>
+                <li>(b) Game design</li>
+                <li>(c) Web hosting</li>
+                <li>(d) UI design</li>
+            </ul>
+        </div>
+
+        <!-- Q60 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">60</div>
+                <div class="question-text">Quantum Key Distribution (QKD) is used in ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Cryptography</b></li>
+                <li>(b) AI</li>
+                <li>(c) Robotics</li>
+                <li>(d) Machine learning</li>
+            </ul>
+        </div>
+
+        <!-- Q61 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">61</div>
+                <div class="question-text">Google's quantum computer is called ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Titan</li>
+                <li><b>(b) Sycamore</b></li>
+                <li>(c) QuantumX</li>
+                <li>(d) DeepMind</li>
+            </ul>
+        </div>
+
+        <!-- Q62 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">62</div>
+                <div class="question-text">Quantum computers process information using ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Classical gates</li>
+                <li><b>(b) Quantum gates</b></li>
+                <li>(c) Optical drives</li>
+                <li>(d) CPUs</li>
+            </ul>
+        </div>
+
+        <!-- Q63 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">63</div>
+                <div class="question-text">Quantum computing benefits which field most?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Optimization</b></li>
+                <li>(b) Animation</li>
+                <li>(c) Gaming</li>
+                <li>(d) Cloud hosting</li>
+            </ul>
+        </div>
+
+        <!-- Q64 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">64</div>
+                <div class="question-text">Quantum computing is still in ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Early development stage</b></li>
+                <li>(b) Full production</li>
+                <li>(c) Decline</li>
+                <li>(d) Decommissioning</li>
+            </ul>
+        </div>
+
+        <!-- Q65 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">65</div>
+                <div class="question-text">A key difference between classical and quantum computing is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Speed of data transfer</li>
+                <li><b>(b) Representation of data (bits vs qubits)</b></li>
+                <li>(c) Screen resolution</li>
+                <li>(d) Hardware design</li>
+            </ul>
+        </div>
+
+        <!-- Q66 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">66</div>
+                <div class="question-text">In quantum computing, probability is used for ......</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Observing results</b></li>
+                <li>(b) Compressing data</li>
+                <li>(c) Encrypting data</li>
+                <li>(d) Deleting files</li>
+            </ul>
+        </div>
+
+        <!-- Q67 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">67</div>
+                <div class="question-text">Quantum algorithms are faster for ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Sorting</li>
+                <li><b>(b) Factoring large numbers</b></li>
+                <li>(c) Simple addition</li>
+                <li>(d) Text processing</li>
+            </ul>
+        </div>
+
+        <!-- Q68 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">68</div>
+                <div class="question-text">Which principle allows linked qubits to share information instantly?</div>
+            </div>
+            <ul class="options">
+                <li>(a) Superposition</li>
+                <li><b>(b) Entanglement</b></li>
+                <li>(c) Holography</li>
+                <li>(d) Refraction</li>
+            </ul>
+        </div>
+
+        <!-- Q69 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">69</div>
+                <div class="question-text">Which area can quantum computing revolutionize?</div>
+            </div>
+            <ul class="options">
+                <li><b>(a) Cybersecurity</b></li>
+                <li>(b) Photography</li>
+                <li>(c) Social media</li>
+                <li>(d) Printing</li>
+            </ul>
+        </div>
+
+        <!-- Q70 -->
+        <div class="question-card">
+            <div class="question">
+                <div class="question-number">70</div>
+                <div class="question-text">The main challenge in building quantum computers is ......</div>
+            </div>
+            <ul class="options">
+                <li>(a) Data storage</li>
+                <li><b>(b) Qubit stability and error correction</b></li>
+                <li>(c) Color display</li>
+                <li>(d) User interface</li>
+            </ul>
+        </div>
+
+    </div>
+    
+<div class="footer">© 2026 Kaustubh Ramteke</div>
+
+</div>
+</body>
+</html>
