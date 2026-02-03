@@ -15,7 +15,6 @@
     --muted: #666;
 }
 
-/* Base */
 body {
     margin: 0;
     font-family: system-ui, Arial, sans-serif;
@@ -24,7 +23,6 @@ body {
     line-height: 1.6;
 }
 
-/* Top bar */
 .top-bar {
     position: sticky;
     top: 0;
@@ -32,29 +30,6 @@ body {
     padding: 16px 24px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.1);
     z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.back-button {
-    background: var(--primary);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.back-button:hover {
-    background: #3a008f;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(77,0,186,0.3);
 }
 
 .page-title {
@@ -64,14 +39,12 @@ body {
     margin: 0;
 }
 
-/* Container */
 .container {
     max-width: 1200px;
     margin: auto;
     padding: 24px;
 }
 
-/* Header */
 .header {
     text-align: center;
     margin: 32px 0 40px;
@@ -92,7 +65,6 @@ body {
     margin-top: 8px;
 }
 
-/* Question Grid */
 .question-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -100,13 +72,12 @@ body {
     margin-top: 20px;
 }
 
-/* Question Card */
 .question-card {
     background: var(--card);
     border-radius: 16px;
     padding: 24px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
     border: 1px solid rgba(0,0,0,0.05);
     position: relative;
     overflow: hidden;
@@ -127,7 +98,6 @@ body {
     background: var(--primary);
 }
 
-/* Question */
 .question {
     font-size: 22px;
     font-weight: 600;
@@ -157,7 +127,6 @@ body {
     flex: 1;
 }
 
-/* Options */
 .options {
     list-style: none;
     padding: 0;
@@ -169,18 +138,11 @@ body {
     padding: 10px 0;
     font-size: 16px;
     border-bottom: 1px solid rgba(0,0,0,0.05);
-    transition: all 0.2s ease;
     padding-left: 12px;
 }
 
 .options li:last-child {
     border-bottom: none;
-}
-
-.options li:hover {
-    background: rgba(77,0,186,0.05);
-    padding-left: 16px;
-    border-radius: 4px;
 }
 
 .options b {
@@ -189,7 +151,6 @@ body {
     font-weight: 500;
 }
 
-/* Footer */
 .footer {
     text-align: center;
     font-size: 14px;
@@ -199,20 +160,7 @@ body {
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 
-/* Mobile */
 @media (max-width: 768px) {
-    .top-bar {
-        padding: 12px 16px;
-    }
-    
-    .page-title {
-        font-size: 18px;
-    }
-    
-    .header h1 {
-        font-size: 26px;
-    }
-    
     .question-grid {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -230,31 +178,6 @@ body {
         margin-left: 40px;
     }
 }
-
-/* Tablet */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .question-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Desktop */
-@media (min-width: 1025px) {
-    .question-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-.footer {
-    text-align: center;
-    font-size: 14px;
-    color: var(--muted);
-    margin: 56px 0 24px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(0,0,0,0.1);
-}
-
-
 </style>
 </head>
 
@@ -268,6 +191,7 @@ body {
     <div class="header">
         <h1>Immersive Technology & Sustainable Computing</h1>
         
+    
     <div class="question-grid">
         
         <!-- Q1 -->
@@ -277,8 +201,8 @@ body {
                 <div class="question-text">Immersive technology merges ......</div>
             </div>
             <ul class="options">
-                <li>(a) Hardware and software</li>
-                <li><b>(b) Physical and digital environments</b></li>
+                <li><b>(a) Hardware and software</b></li>
+                <li>(b) Physical and digital environments</li>
                 <li>(c) Data and storage</li>
                 <li>(d) Computers and networks</li>
             </ul>
