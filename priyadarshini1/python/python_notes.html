@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Programming Notes - Complete Guide</title>
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #306998 0%, #FFD43B 100%);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Navigation Styles */
+        nav {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .nav-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            background-color: #4B8BBE;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background-color: #306998;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background-color: #FFD43B;
+            color: #333;
+        }
+        
+        /* Content Sections */
+        .unit-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            display: none;
+        }
+        
+        .unit-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .unit-header {
+            color: #306998;
+            border-bottom: 3px solid #FFD43B;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .unit-header h2 {
+            font-size: 1.8rem;
+        }
+        
+        .unit-number {
+            background-color: #306998;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .topic {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .topic:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .topic h3 {
+            color: #4B8BBE;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .sub-topic {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid #FFD43B;
+        }
+        
+        .sub-topic h4 {
+            color: #333;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        .content-box {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            overflow-x: auto;
+        }
+        
+        .code-block {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        
+        .code-comment {
+            color: #75715e;
+        }
+        
+        .code-keyword {
+            color: #f92672;
+        }
+        
+        .code-function {
+            color: #66d9ef;
+        }
+        
+        .code-string {
+            color: #e6db74;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #666;
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .unit-section {
+                padding: 20px;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Python Programming Notes</h1>
+            
+        </div>
+    </header>
+    
+    <div class="container">
+        <nav>
+            <div class="nav-container">
+                <button class="nav-btn active" data-target="unit1">Unit 1: Python Basics</button>
+                <button class="nav-btn" data-target="unit2">Unit 2: Data Structures</button>
+                <button class="nav-btn" data-target="unit3">Unit 3: Functions & Modules</button>
+                <button class="nav-btn" data-target="unit4">Unit 4: OOP in Python</button>
+                <button class="nav-btn" data-target="unit5">Unit 5: Built-in Packages</button>
+            </div>
+        </nav>
+        
+        <!-- Unit 1 Content -->
+        <section id="unit1" class="unit-section active">
+            <div class="unit-header">
+                <div class="unit-number">1</div>
+                <h2>Python Basics</h2>
+            </div>
+            
+            <div class="topic">
+                <h3>1.1 Introduction: Features, History and Applications</h3>
+                <div class="content-box">
+                    <p><strong>What is Python?</strong> Python is a high-level, interpreted, general-purpose programming language. It is easy to learn and widely used for developing applications, automation, data analysis, artificial intelligence, and embedded software.</p>
+                    
+                    <p><strong>Features of Python:</strong></p>
+                    <ul>
+                        <li><strong>Simple and Easy to Learn:</strong> Uses simple English-like syntax, making it beginner-friendly.</li>
+                        <li><strong>Interpreted Language:</strong> Code is executed line by line, which makes debugging easy.</li>
+                        <li><strong>High-Level Language:</strong> Programmer does not need to manage memory manually.</li>
+                        <li><strong>Platform Independent:</strong> Programs can run on Windows, Linux, and macOS without changes.</li>
+                        <li><strong>Free and Open Source:</strong> Python is freely available and can be modified.</li>
+                        <li><strong>Large Standard Library:</strong> Provides built-in modules for math, file handling, networking, etc.</li>
+                        <li><strong>Object-Oriented:</strong> Supports concepts like classes and objects.</li>
+                    </ul>
+                    
+                    <p><strong>Applications of Python:</strong></p>
+                    <ol>
+                        <li>Web Development (Django, Flask)</li>
+                        <li>Data Analysis, AI, and ML applications</li>
+                        <li>Automation and Scripting</li>
+                        <li>Scientific and Engineering Applications</li>
+                        <li>Embedded Systems Support (MicroPython)</li>
+                        <li>Game Development (Pygame)</li>
+                        <li>Desktop Applications (GUI)</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>1.2 Python Building Blocks</h3>
+                <div class="sub-topic">
+                    <h4>Indentation</h4>
+                    <p>Indentation refers to the spaces at the beginning of a line of code. Python uses indentation to define blocks of code (if/else, loops, functions). Generally, 4 spaces are used for indentation.</p>
+                    <div class="code-block">
+                        <span class="code-keyword">if</span> x > <span class="code-string">0</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Positive number"</span>)
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Identifiers</h4>
+                    <p>Names given to variables, functions, classes, etc.</p>
+                    <p><strong>Rules for Identifiers:</strong></p>
+                    <ul>
+                        <li>Must start with a letter (a-z or A-Z) or underscore (_)</li>
+                        <li>Case-sensitive (age and Age are different)</li>
+                        <li>Cannot start with a digit</li>
+                        <li>Cannot use Python keywords</li>
+                    </ul>
+                    <p><strong>Examples:</strong> Valid: total, _count, marks1 | Invalid: 1num, total-marks, if</p>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Variables</h4>
+                    <p>A variable is a name that refers to a memory location used to store data. Python is dynamically typed.</p>
+                    <div class="code-block">
+                        x = <span class="code-string">10</span><br>
+                        name = <span class="code-string">"Python"</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Comments</h4>
+                    <p>Comments are used to explain code and are ignored by the Python interpreter.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># This is a single-line comment</span><br><br>
+                        <span class="code-comment">"""</span><br>
+                        <span class="code-comment">This is a</span><br>
+                        <span class="code-comment">multi-line comment</span><br>
+                        <span class="code-comment">"""</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Keywords</h4>
+                    <p>Reserved words with special meaning in Python (if, else, for, while, etc.). Cannot be used as identifiers.</p>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> keyword<br>
+                        <span class="code-function">print</span>(keyword.kwlist)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>1.3 Basic Input/Output Operations</h3>
+                <div class="sub-topic">
+                    <h4>input() Function</h4>
+                    <p>Used to take input from the user. Always returns a string.</p>
+                    <div class="code-block">
+                        name = <span class="code-function">input</span>(<span class="code-string">"Enter your name: "</span>)<br>
+                        num = <span class="code-function">int</span>(<span class="code-function">input</span>(<span class="code-string">"Enter a number: "</span>))
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>print() Function</h4>
+                    <p>Used to display output on the screen.</p>
+                    <div class="code-block">
+                        <span class="code-function">print</span>(<span class="code-string">"Hello Python"</span>)<br><br>
+                        <span class="code-comment"># Printing multiple values</span><br>
+                        a = <span class="code-string">10</span><br>
+                        b = <span class="code-string">20</span><br>
+                        <span class="code-function">print</span>(a, b)<br><br>
+                        <span class="code-comment"># Using separator</span><br>
+                        <span class="code-function">print</span>(<span class="code-string">1</span>, <span class="code-string">2</span>, <span class="code-string">3</span>, sep=<span class="code-string">"-"</span>)<br><br>
+                        <span class="code-comment"># Using end parameter</span><br>
+                        <span class="code-function">print</span>(<span class="code-string">"Hello"</span>, end=<span class="code-string">" "</span>)<br>
+                        <span class="code-function">print</span>(<span class="code-string">"World"</span>)<br><br>
+                        <span class="code-comment"># Formatted output with f-string</span><br>
+                        name = <span class="code-string">"Ram"</span><br>
+                        age = <span class="code-string">20</span><br>
+                        <span class="code-function">print</span>(<span class="code-string">f"Name: {name}, Age: {age}"</span>)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>1.4 Operators in Python</h3>
+                <p>Operators are symbols used to perform operations on variables and values.</p>
+                
+                <div class="sub-topic">
+                    <h4>Arithmetic Operators</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operator</th>
+                                <th>Operation</th>
+                                <th>Example</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>+</td><td>Addition</td><td>10 + 5</td><td>15</td></tr>
+                            <tr><td>-</td><td>Subtraction</td><td>10 - 5</td><td>5</td></tr>
+                            <tr><td>*</td><td>Multiplication</td><td>10 * 5</td><td>50</td></tr>
+                            <tr><td>/</td><td>Division</td><td>10 / 5</td><td>2.0</td></tr>
+                            <tr><td>%</td><td>Modulus</td><td>10 % 3</td><td>1</td></tr>
+                            <tr><td>//</td><td>Floor Division</td><td>10 // 3</td><td>3</td></tr>
+                            <tr><td>**</td><td>Exponent</td><td>2 ** 3</td><td>8</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Relational Operators</h4>
+                    <p>Used to compare two values. Returns True or False.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operator</th>
+                                <th>Meaning</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>==</td><td>Equal to</td><td>a == b</td></tr>
+                            <tr><td>!=</td><td>Not equal to</td><td>a != b</td></tr>
+                            <tr><td>></td><td>Greater than</td><td>a > b</td></tr>
+                            <tr><td><</td><td>Less than</td><td>a < b</td></tr>
+                            <tr><td>>=</td><td>Greater than or equal</td><td>a >= b</td></tr>
+                            <tr><td><=</td><td>Less than or equal</td><td>a <= b</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Assignment Operators</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operator</th>
+                                <th>Example</th>
+                                <th>Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>=</td><td>a = 5</td><td>Assign 5 to a</td></tr>
+                            <tr><td>+=</td><td>a += 2</td><td>a = a + 2</td></tr>
+                            <tr><td>-=</td><td>a -= 2</td><td>a = a - 2</td></tr>
+                            <tr><td>*=</td><td>a *= 2</td><td>a = a * 2</td></tr>
+                            <tr><td>/=</td><td>a /= 2</td><td>a = a / 2</td></tr>
+                            <tr><td>%=</td><td>a %= 2</td><td>a = a % 2</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Logical Operators</h4>
+                    <p>Used to combine conditional statements.</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operator</th>
+                                <th>Meaning</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>and</td><td>Logical AND</td><td>a > 5 and b < 10</td></tr>
+                            <tr><td>or</td><td>Logical OR</td><td>a > 5 or b < 10</td></tr>
+                            <tr><td>not</td><td>Logical NOT</td><td>not(a > 5)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Bitwise Operators</h4>
+                    <p>Work on binary values (bits).</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Operator</th>
+                                <th>Name</th>
+                                <th>Example</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>&</td><td>AND</td><td>a & b</td></tr>
+                            <tr><td>|</td><td>OR</td><td>a | b</td></tr>
+                            <tr><td>^</td><td>XOR</td><td>a ^ b</td></tr>
+                            <tr><td>~</td><td>NOT</td><td>~a</td></tr>
+                            <tr><td><<</td><td>Left shift</td><td>a << 1</td></tr>
+                            <tr><td>>></td><td>Right shift</td><td>a >> 1</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Membership Operators</h4>
+                    <p>Used to check whether a value exists in a sequence (list, tuple, string).</p>
+                    <div class="code-block">
+                        list1 = [<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>, <span class="code-string">40</span>]<br>
+                        <span class="code-function">print</span>(<span class="code-string">10</span> <span class="code-keyword">in</span> list1) <span class="code-comment"># True</span><br>
+                        <span class="code-function">print</span>(<span class="code-string">45</span> <span class="code-keyword">not in</span> list1) <span class="code-comment"># True</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Identity Operators</h4>
+                    <p>Used to compare memory location of two objects.</p>
+                    <div class="code-block">
+                        a = <span class="code-string">10</span><br>
+                        b = <span class="code-string">10</span><br>
+                        <span class="code-function">print</span>(a <span class="code-keyword">is</span> b) <span class="code-comment"># True</span><br>
+                        <span class="code-function">print</span>(a <span class="code-keyword">is not</span> b) <span class="code-comment"># False</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>1.5 Control Flow Statements</h3>
+                <p>Control flow statements are used to control the execution flow of a Python program.</p>
+                
+                <div class="sub-topic">
+                    <h4>Conditional Statements</h4>
+                    <p><strong>if Statement:</strong></p>
+                    <div class="code-block">
+                        x = <span class="code-string">10</span><br>
+                        <span class="code-keyword">if</span> x > <span class="code-string">0</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Positive number"</span>)
+                    </div>
+                    
+                    <p><strong>if-else Statement:</strong></p>
+                    <div class="code-block">
+                        x = -<span class="code-string">2</span><br>
+                        <span class="code-keyword">if</span> x > <span class="code-string">0</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Positive"</span>)<br>
+                        <span class="code-keyword">else</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Negative"</span>)
+                    </div>
+                    
+                    <p><strong>if-elif-else Statement:</strong></p>
+                    <div class="code-block">
+                        marks = <span class="code-string">75</span><br>
+                        <span class="code-keyword">if</span> marks >= <span class="code-string">75</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Distinction"</span>)<br>
+                        <span class="code-keyword">elif</span> marks >= <span class="code-string">60</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"First Class"</span>)<br>
+                        <span class="code-keyword">else</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Pass"</span>)
+                    </div>
+                    
+                    <p><strong>Nested if Statement:</strong></p>
+                    <div class="code-block">
+                        x = <span class="code-string">10</span><br>
+                        <span class="code-keyword">if</span> x > <span class="code-string">0</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> x % <span class="code-string">2</span> == <span class="code-string">0</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Positive Even Number"</span>)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">else</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Positive Odd Number"</span>)
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Loops in Python</h4>
+                    <p><strong>while Loop:</strong></p>
+                    <div class="code-block">
+                        i = <span class="code-string">1</span><br>
+                        <span class="code-keyword">while</span> i <= <span class="code-string">5</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(i)<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;i += <span class="code-string">1</span>
+                    </div>
+                    
+                    <p><strong>for Loop:</strong></p>
+                    <div class="code-block">
+                        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-string">1</span>, <span class="code-string">6</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(i)
+                    </div>
+                    
+                    <p><strong>Nested Loops:</strong></p>
+                    <div class="code-block">
+                        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-string">1</span>, <span class="code-string">3</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">for</span> j <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-string">1</span>, <span class="code-string">3</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(i, j)
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Loop Manipulation Statements</h4>
+                    <p><strong>break Statement:</strong> Terminates the loop immediately.</p>
+                    <div class="code-block">
+                        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-string">1</span>, <span class="code-string">6</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> i == <span class="code-string">3</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">break</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(i)
+                    </div>
+                    
+                    <p><strong>continue Statement:</strong> Skips the current iteration and continues with the next.</p>
+                    <div class="code-block">
+                        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-string">1</span>, <span class="code-string">6</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">if</span> i == <span class="code-string">3</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">continue</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(i)
+                    </div>
+                    
+                    <p><strong>pass Statement:</strong> Null statement that does nothing (used as a placeholder).</p>
+                    <div class="code-block">
+                        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-string">5</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">pass</span> <span class="code-comment"># Placeholder for future code</span>
+                    </div>
+                    
+                    <p><strong>else with Loop:</strong> Executes when the loop completes normally (without break).</p>
+                    <div class="code-block">
+                        <span class="code-keyword">for</span> i <span class="code-keyword">in</span> <span class="code-function">range</span>(<span class="code-string">1</span>, <span class="code-string">4</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(i)<br>
+                        <span class="code-keyword">else</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Loop completed"</span>)
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Unit 2 Content -->
+        <section id="unit2" class="unit-section">
+            <div class="unit-header">
+                <div class="unit-number">2</div>
+                <h2>Data Structures in Python</h2>
+            </div>
+            
+            <div class="topic">
+                <h3>2.1 Lists</h3>
+                <p>A list in Python is a collection of items stored in a single variable. Lists are ordered, mutable (can be changed), and allow duplicate values.</p>
+                
+                <div class="sub-topic">
+                    <h4>Defining and Accessing Lists</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Defining lists</span><br>
+                        numbers = [<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>]<br>
+                        names = [<span class="code-string">"Amit"</span>, <span class="code-string">"Ravi"</span>, <span class="code-string">"Neha"</span>]<br>
+                        mixed = [<span class="code-string">1</span>, <span class="code-string">"Python"</span>, <span class="code-string">3.5</span>]<br><br>
+                        
+                        <span class="code-comment"># Accessing values</span><br>
+                        <span class="code-function">print</span>(numbers[<span class="code-string">0</span>]) <span class="code-comment"># 10</span><br>
+                        <span class="code-function">print</span>(numbers[-<span class="code-string">1</span>]) <span class="code-comment"># 30 (negative indexing)</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Updating and Deleting List Values</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Updating list values</span><br>
+                        numbers = [<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>]<br>
+                        numbers[<span class="code-string">1</span>] = <span class="code-string">50</span><br>
+                        <span class="code-function">print</span>(numbers) <span class="code-comment"># [10, 50, 30]</span><br><br>
+                        
+                        <span class="code-comment"># Deleting list values</span><br>
+                        <span class="code-keyword">del</span> numbers[<span class="code-string">1</span>] <span class="code-comment"># deletes element at index 1</span><br>
+                        numbers.remove(<span class="code-string">30</span>) <span class="code-comment"># deletes value 30</span><br>
+                        numbers.pop() <span class="code-comment"># deletes last element</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Basic List Operations</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Concatenation</span><br>
+                        list1 = [<span class="code-string">1</span>, <span class="code-string">2</span>]<br>
+                        list2 = [<span class="code-string">3</span>, <span class="code-string">4</span>]<br>
+                        <span class="code-function">print</span>(list1 + list2) <span class="code-comment"># [1, 2, 3, 4]</span><br><br>
+                        
+                        <span class="code-comment"># Repetition</span><br>
+                        <span class="code-function">print</span>([<span class="code-string">1</span>, <span class="code-string">2</span>] * <span class="code-string">3</span>) <span class="code-comment"># [1, 2, 1, 2, 1, 2]</span><br><br>
+                        
+                        <span class="code-comment"># Membership</span><br>
+                        list1 = [<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>]<br>
+                        <span class="code-function">print</span>(<span class="code-string">20</span> <span class="code-keyword">in</span> list1) <span class="code-comment"># True</span><br><br>
+                        
+                        <span class="code-comment"># Length</span><br>
+                        <span class="code-function">print</span>(<span class="code-function">len</span>(list1)) <span class="code-comment"># 3</span><br><br>
+                        
+                        <span class="code-comment"># Slicing</span><br>
+                        numbers = [<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>, <span class="code-string">40</span>, <span class="code-string">50</span>]<br>
+                        <span class="code-function">print</span>(numbers[<span class="code-string">1</span>:<span class="code-string">4</span>]) <span class="code-comment"># [20, 30, 40]</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Built-in List Methods</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>append()</td><td>Adds element at end</td></tr>
+                            <tr><td>insert()</td><td>Inserts element at specific position</td></tr>
+                            <tr><td>remove()</td><td>Removes specific value</td></tr>
+                            <tr><td>pop()</td><td>Removes last element</td></tr>
+                            <tr><td>clear()</td><td>Removes all elements</td></tr>
+                            <tr><td>index()</td><td>Returns index of value</td></tr>
+                            <tr><td>count()</td><td>Counts occurrences</td></tr>
+                            <tr><td>sort()</td><td>Sorts list</td></tr>
+                            <tr><td>reverse()</td><td>Reverses list</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>2.2 Tuples</h3>
+                <p>A tuple is similar to a list but immutable (cannot be changed). Tuples are ordered and allow duplicate values.</p>
+                
+                <div class="sub-topic">
+                    <h4>Defining and Accessing Tuples</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Defining tuples</span><br>
+                        numbers = (<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>)<br>
+                        names = (<span class="code-string">"Amit"</span>, <span class="code-string">"Ravi"</span>, <span class="code-string">"Neha"</span>)<br>
+                        mixed = (<span class="code-string">1</span>, <span class="code-string">"Python"</span>, <span class="code-string">3.5</span>)<br><br>
+                        
+                        <span class="code-comment"># Single-element tuple (comma is mandatory)</span><br>
+                        t = (<span class="code-string">5</span>,)<br><br>
+                        
+                        <span class="code-comment"># Accessing values</span><br>
+                        <span class="code-function">print</span>(numbers[<span class="code-string">0</span>]) <span class="code-comment"># 10</span><br>
+                        <span class="code-function">print</span>(numbers[-<span class="code-string">1</span>]) <span class="code-comment"># 30</span><br>
+                        <span class="code-function">print</span>(numbers[<span class="code-string">1</span>:<span class="code-string">3</span>]) <span class="code-comment"># (20, 30) - slicing</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Basic Tuple Operations</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Concatenation</span><br>
+                        t1 = (<span class="code-string">1</span>, <span class="code-string">2</span>)<br>
+                        t2 = (<span class="code-string">3</span>, <span class="code-string">4</span>)<br>
+                        <span class="code-function">print</span>(t1 + t2) <span class="code-comment"># (1, 2, 3, 4)</span><br><br>
+                        
+                        <span class="code-comment"># Repetition</span><br>
+                        <span class="code-function">print</span>((<span class="code-string">1</span>, <span class="code-string">2</span>) * <span class="code-string">3</span>) <span class="code-comment"># (1, 2, 1, 2, 1, 2)</span><br><br>
+                        
+                        <span class="code-comment"># Membership</span><br>
+                        t = (<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>)<br>
+                        <span class="code-function">print</span>(<span class="code-string">20</span> <span class="code-keyword">in</span> t) <span class="code-comment"># True</span><br><br>
+                        
+                        <span class="code-comment"># Length</span><br>
+                        <span class="code-function">print</span>(<span class="code-function">len</span>(t)) <span class="code-comment"># 3</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Tuple Methods</h4>
+                    <p>Tuples have very few methods because they are immutable.</p>
+                    <div class="code-block">
+                        t = (<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">10</span>, <span class="code-string">30</span>, <span class="code-string">10</span>)<br>
+                        <span class="code-function">print</span>(t.count(<span class="code-string">10</span>)) <span class="code-comment"># 3 - number of occurrences</span><br>
+                        <span class="code-function">print</span>(t.index(<span class="code-string">20</span>)) <span class="code-comment"># 1 - index of first occurrence</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Difference Between List and Tuple</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>List</th>
+                                <th>Tuple</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Mutable</td><td>Immutable</td></tr>
+                            <tr><td>Uses []</td><td>Uses ()</td></tr>
+                            <tr><td>More methods</td><td>Fewer methods</td></tr>
+                            <tr><td>Slower</td><td>Faster</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>2.3 Sets</h3>
+                <p>A set is an unordered, mutable collection of unique elements. Sets are mainly used to remove duplicates and to perform mathematical set operations.</p>
+                
+                <div class="sub-topic">
+                    <h4>Defining Sets</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Defining sets</span><br>
+                        s = {<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>, <span class="code-string">40</span>}<br>
+                        <span class="code-function">print</span>(s)<br><br>
+                        
+                        <span class="code-comment"># Using set() constructor</span><br>
+                        s = <span class="code-function">set</span>([<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>, <span class="code-string">40</span>])<br><br>
+                        
+                        <span class="code-comment"># Empty set</span><br>
+                        s = <span class="code-function">set</span>() <span class="code-comment"># Not {}</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Accessing and Deleting Set Values</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Accessing values (sets are unordered)</span><br>
+                        s = {<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>}<br>
+                        <span class="code-keyword">for</span> value <span class="code-keyword">in</span> s:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(value)<br><br>
+                        
+                        <span class="code-comment"># Deleting set values</span><br>
+                        s.remove(<span class="code-string">20</span>) <span class="code-comment"># removes specific element</span><br>
+                        s.pop() <span class="code-comment"># removes random element</span><br>
+                        <span class="code-keyword">del</span> s <span class="code-comment"># deletes entire set</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Set Operations</h4>
+                    <div class="code-block">
+                        A = {<span class="code-string">1</span>, <span class="code-string">2</span>, <span class="code-string">3</span>}<br>
+                        B = {<span class="code-string">3</span>, <span class="code-string">4</span>, <span class="code-string">5</span>}<br><br>
+                        
+                        <span class="code-comment"># Union (all elements from both sets)</span><br>
+                        <span class="code-function">print</span>(A | B) <span class="code-comment"># {1, 2, 3, 4, 5}</span><br><br>
+                        
+                        <span class="code-comment"># Intersection (common elements)</span><br>
+                        <span class="code-function">print</span>(A & B) <span class="code-comment"># {3}</span><br><br>
+                        
+                        <span class="code-comment"># Difference (elements in A but not in B)</span><br>
+                        <span class="code-function">print</span>(A - B) <span class="code-comment"># {1, 2}</span><br><br>
+                        
+                        <span class="code-comment"># Symmetric Difference (elements in either set but not both)</span><br>
+                        <span class="code-function">print</span>(A ^ B) <span class="code-comment"># {1, 2, 4, 5}</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Set Methods</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Method</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>add(x)</td><td>Adds an element</td></tr>
+                            <tr><td>update(iterable)</td><td>Adds multiple elements</td></tr>
+                            <tr><td>remove(x)</td><td>Removes element (error if not found)</td></tr>
+                            <tr><td>discard(x)</td><td>Removes element (no error)</td></tr>
+                            <tr><td>pop()</td><td>Removes random element</td></tr>
+                            <tr><td>clear()</td><td>Removes all elements</td></tr>
+                            <tr><td>union()</td><td>Returns union of sets</td></tr>
+                            <tr><td>intersection()</td><td>Returns common elements</td></tr>
+                            <tr><td>difference()</td><td>Returns difference</td></tr>
+                            <tr><td>issubset()</td><td>Checks subset</td></tr>
+                            <tr><td>issuperset()</td><td>Checks superset</td></tr>
+                            <tr><td>copy()</td><td>Returns copy of set</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>2.4 Dictionaries</h3>
+                <p>A dictionary is a collection of key-value pairs. Keys are unique and immutable, while values can be of any data type.</p>
+                
+                <div class="sub-topic">
+                    <h4>Defining and Accessing Dictionaries</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Defining dictionary</span><br>
+                        student = {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"name"</span>: <span class="code-string">"Rahul"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"roll"</span>: <span class="code-string">101</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">"marks"</span>: <span class="code-string">85</span><br>
+                        }<br><br>
+                        
+                        <span class="code-comment"># Accessing values</span><br>
+                        <span class="code-function">print</span>(student[<span class="code-string">"name"</span>]) <span class="code-comment"># Rahul</span><br>
+                        <span class="code-function">print</span>(student.get(<span class="code-string">"marks"</span>)) <span class="code-comment"># 85</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Updating and Deleting Dictionary Values</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Updating values</span><br>
+                        student[<span class="code-string">"marks"</span>] = <span class="code-string">90</span> <span class="code-comment"># change existing value</span><br>
+                        student[<span class="code-string">"grade"</span>] = <span class="code-string">"A"</span> <span class="code-comment"># add new key-value pair</span><br><br>
+                        
+                        <span class="code-comment"># Deleting values</span><br>
+                        <span class="code-keyword">del</span> student[<span class="code-string">"roll"</span>] <span class="code-comment"># deletes key "roll"</span><br>
+                        student.pop(<span class="code-string">"marks"</span>) <span class="code-comment"># removes key "marks"</span><br>
+                        student.popitem() <span class="code-comment"># removes last inserted item</span><br>
+                        student.clear() <span class="code-comment"># removes all items</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Dictionary Operations</h4>
+                    <div class="code-block">
+                        student = {<span class="code-string">"name"</span>: <span class="code-string">"Rahul"</span>, <span class="code-string">"roll"</span>: <span class="code-string">101</span>, <span class="code-string">"marks"</span>: <span class="code-string">85</span>}<br><br>
+                        
+                        <span class="code-comment"># Traversing a dictionary</span><br>
+                        <span class="code-keyword">for</span> key <span class="code-keyword">in</span> student:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(key, student[key])<br><br>
+                        
+                        <span class="code-comment"># Check key existence</span><br>
+                        <span class="code-keyword">if</span> <span class="code-string">"name"</span> <span class="code-keyword">in</span> student:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Key exists"</span>)<br><br>
+                        
+                        <span class="code-comment"># Length of dictionary</span><br>
+                        <span class="code-function">print</span>(<span class="code-function">len</span>(student)) <span class="code-comment"># 3</span><br><br>
+                        
+                        <span class="code-comment"># Copy dictionary</span><br>
+                        new_student = student.copy()
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Unit 3 Content -->
+        <section id="unit3" class="unit-section">
+            <div class="unit-header">
+                <div class="unit-number">3</div>
+                <h2>Functions & Modules</h2>
+            </div>
+            
+            <div class="topic">
+                <h3>3.1 Functions in Python</h3>
+                <p>A function is a block of code that performs a specific task and can be reused.</p>
+                
+                <div class="sub-topic">
+                    <h4>Defining and Calling Functions</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Defining a function</span><br>
+                        <span class="code-keyword">def</span> greet():<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Hello"</span>)<br><br>
+                        
+                        <span class="code-comment"># Calling a function</span><br>
+                        greet() <span class="code-comment"># Output: Hello</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Function Arguments</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Function with arguments</span><br>
+                        <span class="code-keyword">def</span> addition(a, b, c):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(a + b + c)<br><br>
+                        
+                        addition(<span class="code-string">10</span>, <span class="code-string">15</span>, <span class="code-string">5</span>) <span class="code-comment"># Output: 30</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Return Statement</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Function with return value</span><br>
+                        <span class="code-keyword">def</span> square(n):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> n * n<br><br>
+                        
+                        result = square(<span class="code-string">4</span>)<br>
+                        <span class="code-function">print</span>(result) <span class="code-comment"># Output: 16</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Scope of Variables</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Global variable</span><br>
+                        y = <span class="code-string">20</span><br><br>
+                        
+                        <span class="code-comment"># Function with local variable</span><br>
+                        <span class="code-keyword">def</span> show():<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;x = <span class="code-string">10</span> <span class="code-comment"># local variable</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(x)<br><br>
+                        
+                        <span class="code-keyword">def</span> display():<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(y) <span class="code-comment"># accessing global variable</span><br><br>
+                        
+                        show()<br>
+                        display()
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Lambda Functions</h4>
+                    <p>Small, one-line anonymous functions defined using the lambda keyword.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Lambda function</span><br>
+                        square = <span class="code-keyword">lambda</span> x: x * x<br>
+                        <span class="code-function">print</span>(square(<span class="code-string">5</span>)) <span class="code-comment"># Output: 25</span><br><br>
+                        
+                        <span class="code-comment"># Lambda with multiple arguments</span><br>
+                        add = <span class="code-keyword">lambda</span> a, b: a + b<br>
+                        <span class="code-function">print</span>(add(<span class="code-string">10</span>, <span class="code-string">5</span>)) <span class="code-comment"># Output: 15</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>3.2 Modules</h3>
+                <p>A module is a Python file that contains functions, classes, or variables that can be imported and used in other programs.</p>
+                
+                <div class="sub-topic">
+                    <h4>Creating User-Defined Module</h4>
+                    <p><strong>Step 1: Create a module (mymath.py)</strong></p>
+                    <div class="code-block">
+                        <span class="code-comment"># mymath.py</span><br>
+                        <span class="code-keyword">def</span> add(a, b):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> a + b<br><br>
+                        
+                        <span class="code-keyword">def</span> sub(a, b):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> a - b
+                    </div>
+                    
+                    <p><strong>Step 2: Use the module in another program</strong></p>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> mymath<br><br>
+                        
+                        <span class="code-function">print</span>(mymath.add(<span class="code-string">10</span>, <span class="code-string">5</span>)) <span class="code-comment"># 15</span><br>
+                        <span class="code-function">print</span>(mymath.sub(<span class="code-string">10</span>, <span class="code-string">5</span>)) <span class="code-comment"># 5</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Importing Modules</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Import full module</span><br>
+                        <span class="code-keyword">import</span> math<br>
+                        <span class="code-function">print</span>(math.sqrt(<span class="code-string">16</span>)) <span class="code-comment"># 4.0</span><br><br>
+                        
+                        <span class="code-comment"># Import specific function</span><br>
+                        <span class="code-keyword">from</span> math <span class="code-keyword">import</span> sqrt<br>
+                        <span class="code-function">print</span>(sqrt(<span class="code-string">25</span>)) <span class="code-comment"># 5</span><br><br>
+                        
+                        <span class="code-comment"># Import with alias</span><br>
+                        <span class="code-keyword">import</span> math <span class="code-keyword">as</span> m<br>
+                        <span class="code-function">print</span>(m.factorial(<span class="code-string">5</span>)) <span class="code-comment"># 120</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Using Python Built-in Modules</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># math module</span><br>
+                        <span class="code-keyword">import</span> math<br>
+                        <span class="code-function">print</span>(math.factorial(<span class="code-string">5</span>)) <span class="code-comment"># 120</span><br>
+                        <span class="code-function">print</span>(math.pi) <span class="code-comment"># 3.141592653589793</span><br><br>
+                        
+                        <span class="code-comment"># random module</span><br>
+                        <span class="code-keyword">import</span> random<br>
+                        <span class="code-function">print</span>(random.randint(<span class="code-string">1</span>, <span class="code-string">10</span>)) <span class="code-comment"># random number between 1 and 10</span><br><br>
+                        
+                        <span class="code-comment"># datetime module</span><br>
+                        <span class="code-keyword">import</span> datetime<br>
+                        <span class="code-function">print</span>(datetime.date.today()) <span class="code-comment"># current date</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>3.3 Python Packages</h3>
+                <p>A package is a collection of modules organized in directories. Packages allow for hierarchical structuring of modules.</p>
+                
+                <div class="sub-topic">
+                    <h4>Creating User-Defined Package</h4>
+                    <p><strong>Step 1: Create folder structure</strong></p>
+                    <div class="content-box">
+                        mypackage/<br>
+                        &nbsp;&nbsp;__init__.py<br>
+                        &nbsp;&nbsp;add.py<br>
+                        &nbsp;&nbsp;sub.py
+                    </div>
+                    
+                    <p><strong>Step 2: Create module files</strong></p>
+                    <div class="code-block">
+                        <span class="code-comment"># add.py</span><br>
+                        <span class="code-keyword">def</span> add(a, b):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> a + b<br><br>
+                        
+                        <span class="code-comment"># sub.py</span><br>
+                        <span class="code-keyword">def</span> sub(a, b):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> a - b
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Importing Packages</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Import specific modules from package</span><br>
+                        <span class="code-keyword">from</span> mypackage <span class="code-keyword">import</span> add, sub<br><br>
+                        
+                        <span class="code-function">print</span>(add.add(<span class="code-string">10</span>, <span class="code-string">5</span>)) <span class="code-comment"># 15</span><br>
+                        <span class="code-function">print</span>(sub.sub(<span class="code-string">10</span>, <span class="code-string">5</span>)) <span class="code-comment"># 5</span><br><br>
+                        
+                        <span class="code-comment"># Alternative import</span><br>
+                        <span class="code-keyword">import</span> mypackage.add<br>
+                        <span class="code-function">print</span>(mypackage.add.add(<span class="code-string">3</span>, <span class="code-string">2</span>)) <span class="code-comment"># 5</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Installing Packages using PIP</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Install numpy (run in terminal/command prompt)</span><br>
+                        pip install numpy<br><br>
+                        
+                        <span class="code-comment"># Using numpy in Python</span><br>
+                        <span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np<br><br>
+                        
+                        <span class="code-comment"># Create numpy array</span><br>
+                        arr = np.array([<span class="code-string">1</span>, <span class="code-string">2</span>, <span class="code-string">3</span>, <span class="code-string">4</span>])<br>
+                        <span class="code-function">print</span>(arr) <span class="code-comment"># [1 2 3 4]</span><br><br>
+                        
+                        <span class="code-comment"># Basic operations</span><br>
+                        a = np.array([<span class="code-string">10</span>, <span class="code-string">20</span>, <span class="code-string">30</span>])<br>
+                        b = np.array([<span class="code-string">1</span>, <span class="code-string">2</span>, <span class="code-string">3</span>])<br>
+                        <span class="code-function">print</span>(a + b) <span class="code-comment"># [11 22 33]</span><br>
+                        <span class="code-function">print</span>(a - b) <span class="code-comment"># [9 18 27]</span><br>
+                        <span class="code-function">print</span>(a * b) <span class="code-comment"># [10 40 90]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Unit 4 Content -->
+        <section id="unit4" class="unit-section">
+            <div class="unit-header">
+                <div class="unit-number">4</div>
+                <h2>Object Oriented Programming in Python</h2>
+            </div>
+            
+            <div class="topic">
+                <h3>4.1 Object Oriented Concepts</h3>
+                <p>A class in Python is a user-defined template for creating objects. It bundles data and functions together.</p>
+                
+                <div class="sub-topic">
+                    <h4>Creating Class and Object</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Simple class</span><br>
+                        <span class="code-keyword">class</span> Student:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">pass</span> <span class="code-comment"># empty class</span><br><br>
+                        
+                        <span class="code-comment"># Creating object</span><br>
+                        s1 = Student()<br><br>
+                        
+                        <span class="code-comment"># Class with attributes</span><br>
+                        <span class="code-keyword">class</span> Bike:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;name = <span class="code-string">""</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;gear = <span class="code-string">0</span><br><br>
+                        
+                        <span class="code-comment"># Create object and access attributes</span><br>
+                        bike1 = Bike()<br>
+                        bike1.gear = <span class="code-string">4</span><br>
+                        bike1.name = <span class="code-string">"Splendor"</span><br>
+                        <span class="code-function">print</span>(<span class="code-string">f"Name: {bike1.name}, Gear: {bike1.gear}"</span>) <span class="code-comment"># Name: Splendor, Gear: 4</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>4.2 Constructors in Python</h3>
+                <p>A constructor is a special method that runs automatically when an object is created. In Python, it's defined using __init__().</p>
+                
+                <div class="sub-topic">
+                    <h4>Non-Parameterized Constructor</h4>
+                    <div class="code-block">
+                        <span class="code-keyword">class</span> Student:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Student object created"</span>)<br><br>
+                        
+                        s1 = Student() <span class="code-comment"># Output: Student object created</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Parameterized Constructor</h4>
+                    <div class="code-block">
+                        <span class="code-keyword">class</span> Student:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-keyword">self</span>, name, roll):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">self</span>.name = name<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">self</span>.roll = roll<br><br>
+                        
+                        s1 = Student(<span class="code-string">"Amit"</span>, <span class="code-string">101</span>)<br>
+                        <span class="code-function">print</span>(s1.name) <span class="code-comment"># Amit</span><br>
+                        <span class="code-function">print</span>(s1.roll) <span class="code-comment"># 101</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>4.3 Polymorphism</h3>
+                <p>Polymorphism allows methods to do different things based on the object it is acting upon.</p>
+                
+                <div class="sub-topic">
+                    <h4>Method Overloading</h4>
+                    <p>Defining multiple methods with the same name but different parameters. Note: Python doesn't support traditional method overloading.</p>
+                    <div class="code-block">
+                        <span class="code-keyword">def</span> product(a, b):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;p = a * b<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(p)<br><br>
+                        
+                        <span class="code-keyword">def</span> product(a, b, c):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;p = a * b * c<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(p)<br><br>
+                        
+                        <span class="code-comment"># Only the last definition is recognized</span><br>
+                        product(<span class="code-string">4</span>, <span class="code-string">5</span>, <span class="code-string">5</span>) <span class="code-comment"># 100</span><br>
+                        <span class="code-comment"># product(4, 5) would raise an error</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Method Overriding</h4>
+                    <p>Writing a method in the child class with the same name and parameters as a method in the parent class.</p>
+                    <div class="code-block">
+                        <span class="code-comment"># Parent class</span><br>
+                        <span class="code-keyword">class</span> Mobile:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> call(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Mobile calling"</span>)<br><br>
+                        
+                        <span class="code-comment"># Child class</span><br>
+                        <span class="code-keyword">class</span> Samsung(Mobile):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> call(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Samsung calling"</span>)<br><br>
+                        
+                        <span class="code-comment"># Object creation</span><br>
+                        m = Mobile()<br>
+                        s = Samsung()<br><br>
+                        
+                        m.call() <span class="code-comment"># Mobile calling</span><br>
+                        s.call() <span class="code-comment"># Samsung calling (overridden method)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>4.4 Data Hiding / Abstraction</h3>
+                <p>Data hiding is achieved by making class members private using double underscore prefix (__).</p>
+                <div class="code-block">
+                    <span class="code-keyword">class</span> BankAccount:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> <span class="code-function">__init__</span>(<span class="code-keyword">self</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">self</span>.__balance = <span class="code-string">0</span> <span class="code-comment"># private attribute</span><br><br>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> deposit(<span class="code-keyword">self</span>, amount):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">self</span>.__balance += amount<br><br>
+                    
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> get_balance(<span class="code-keyword">self</span>):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-keyword">self</span>.__balance<br><br>
+                    
+                    account = BankAccount()<br>
+                    account.deposit(<span class="code-string">1000</span>)<br>
+                    <span class="code-function">print</span>(account.get_balance()) <span class="code-comment"># 1000</span><br>
+                    <span class="code-comment"># account.__balance would cause error (private attribute)</span>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>4.5 Inheritance</h3>
+                <p>Inheritance allows a class to inherit attributes and methods from another class.</p>
+                
+                <div class="sub-topic">
+                    <h4>Single Inheritance</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Parent class</span><br>
+                        <span class="code-keyword">class</span> Animal:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> speak(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Animal speaks"</span>)<br><br>
+                        
+                        <span class="code-comment"># Child class</span><br>
+                        <span class="code-keyword">class</span> Dog(Animal):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> bark(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Dog barks"</span>)<br><br>
+                        
+                        d = Dog()<br>
+                        d.speak() <span class="code-comment"># Animal speaks (inherited)</span><br>
+                        d.bark() <span class="code-comment"># Dog barks</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Multiple Inheritance</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Parent class 1</span><br>
+                        <span class="code-keyword">class</span> Father:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> height(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Tall"</span>)<br><br>
+                        
+                        <span class="code-comment"># Parent class 2</span><br>
+                        <span class="code-keyword">class</span> Mother:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> color(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Fair"</span>)<br><br>
+                        
+                        <span class="code-comment"># Child class inheriting from both</span><br>
+                        <span class="code-keyword">class</span> Child(Father, Mother):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">pass</span><br><br>
+                        
+                        c = Child()<br>
+                        c.height() <span class="code-comment"># Tall</span><br>
+                        c.color() <span class="code-comment"># Fair</span>
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Multilevel Inheritance</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Grandparent class</span><br>
+                        <span class="code-keyword">class</span> GrandParent:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> property(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Land"</span>)<br><br>
+                        
+                        <span class="code-comment"># Parent class</span><br>
+                        <span class="code-keyword">class</span> Parent(GrandParent):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> house(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"Bungalow"</span>)<br><br>
+                        
+                        <span class="code-comment"># Child class</span><br>
+                        <span class="code-keyword">class</span> Child(Parent):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">def</span> car(<span class="code-keyword">self</span>):<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(<span class="code-string">"BMW"</span>)<br><br>
+                        
+                        c = Child()<br>
+                        c.property() <span class="code-comment"># Land</span><br>
+                        c.house() <span class="code-comment"># Bungalow</span><br>
+                        c.car() <span class="code-comment"># BMW</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Unit 5 Content -->
+        <section id="unit5" class="unit-section">
+            <div class="unit-header">
+                <div class="unit-number">5</div>
+                <h2>Introduction to Built-in Packages</h2>
+            </div>
+            
+            <div class="topic">
+                <h3>5.1 Pandas</h3>
+                <p>Pandas is a Python library used for working with data sets. It has functions for analyzing, cleaning, exploring, and manipulating data.</p>
+                
+                <div class="sub-topic">
+                    <h4>Installation and Import</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Installation (run in terminal)</span><br>
+                        pip install pandas<br><br>
+                        
+                        <span class="code-comment"># Import pandas</span><br>
+                        <span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Pandas Series</h4>
+                    <p>A one-dimensional labelled array that can hold data of any type.</p>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd<br><br>
+                        
+                        numbers = [<span class="code-string">11</span>, <span class="code-string">12</span>, <span class="code-string">13</span>, <span class="code-string">14</span>]<br>
+                        ser = pd.Series(numbers)<br>
+                        <span class="code-function">print</span>(ser)
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Pandas DataFrames</h4>
+                    <p>A two-dimensional table-like structure where data is arranged in rows and columns.</p>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd<br><br>
+                        
+                        mydataset = {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'colors'</span>: [<span class="code-string">"Blue"</span>, <span class="code-string">"Red"</span>, <span class="code-string">"Yellow"</span>],<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-string">'numbers'</span>: [<span class="code-string">1</span>, <span class="code-string">2</span>, <span class="code-string">3</span>]<br>
+                        }<br><br>
+                        
+                        myvar = pd.DataFrame(mydataset)<br>
+                        <span class="code-function">print</span>(myvar)
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Reading CSV Files</h4>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd<br><br>
+                        
+                        <span class="code-comment"># Load CSV file</span><br>
+                        df = pd.read_csv(<span class="code-string">"students.csv"</span>)<br>
+                        <span class="code-function">print</span>(df)<br><br>
+                        
+                        <span class="code-comment"># Display first few rows</span><br>
+                        <span class="code-function">print</span>(df.head())<br><br>
+                        
+                        <span class="code-comment"># Display basic information</span><br>
+                        <span class="code-function">print</span>(df.info())
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>5.2 Creating GUI using tkinter</h3>
+                <p>Tkinter is a Python library for creating GUI applications quickly and easily.</p>
+                
+                <div class="sub-topic">
+                    <h4>Basic Tkinter Window</h4>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> tkinter <span class="code-keyword">as</span> tk<br><br>
+                        
+                        <span class="code-comment"># Create main window</span><br>
+                        root = tk.Tk()<br>
+                        root.title(<span class="code-string">"My GUI App"</span>)<br>
+                        root.geometry(<span class="code-string">"400x300"</span>)<br><br>
+                        
+                        <span class="code-comment"># Run the application</span><br>
+                        root.mainloop()
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Tkinter Widgets</h4>
+                    <p><strong>Label:</strong> Display text or image</p>
+                    <div class="code-block">
+                        <span class="code-keyword">from</span> tkinter <span class="code-keyword">import</span> *<br><br>
+                        
+                        root = Tk()<br>
+                        w = Label(root, text=<span class="code-string">'GeeksForGeeks.org!'</span>)<br>
+                        w.pack()<br>
+                        root.mainloop()
+                    </div>
+                    
+                    <p><strong>Button:</strong> Clickable button that triggers an action</p>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> tkinter <span class="code-keyword">as</span> tk<br><br>
+                        
+                        r = tk.Tk()<br>
+                        r.title(<span class="code-string">'Counting Seconds'</span>)<br>
+                        button = tk.Button(r, text=<span class="code-string">'Stop'</span>, width=<span class="code-string">25</span>, command=r.destroy)<br>
+                        button.pack()<br>
+                        r.mainloop()
+                    </div>
+                    
+                    <p><strong>Entry:</strong> Single line text input</p>
+                    <div class="code-block">
+                        <span class="code-keyword">from</span> tkinter <span class="code-keyword">import</span> *<br><br>
+                        
+                        master = Tk()<br>
+                        Label(master, text=<span class="code-string">'First Name'</span>).grid(row=<span class="code-string">0</span>)<br>
+                        Label(master, text=<span class="code-string">'Last Name'</span>).grid(row=<span class="code-string">1</span>)<br><br>
+                        
+                        e1 = Entry(master)<br>
+                        e2 = Entry(master)<br><br>
+                        
+                        e1.grid(row=<span class="code-string">0</span>, column=<span class="code-string">1</span>)<br>
+                        e2.grid(row=<span class="code-string">1</span>, column=<span class="code-string">1</span>)<br>
+                        mainloop()
+                    </div>
+                    
+                    <p><strong>CheckButton:</strong> Checkbox that can be toggled on or off</p>
+                    <div class="code-block">
+                        <span class="code-keyword">from</span> tkinter <span class="code-keyword">import</span> *<br><br>
+                        
+                        master = Tk()<br>
+                        var1 = IntVar()<br>
+                        Checkbutton(master, text=<span class="code-string">'male'</span>, variable=var1).grid(row=<span class="code-string">0</span>, sticky=W)<br><br>
+                        
+                        var2 = IntVar()<br>
+                        Checkbutton(master, text=<span class="code-string">'female'</span>, variable=var2).grid(row=<span class="code-string">1</span>, sticky=W)<br>
+                        mainloop()
+                    </div>
+                    
+                    <p><strong>RadioButton:</strong> Allows user to select one option from a set</p>
+                    <div class="code-block">
+                        <span class="code-keyword">from</span> tkinter <span class="code-keyword">import</span> *<br><br>
+                        
+                        root = Tk()<br>
+                        v = IntVar()<br><br>
+                        
+                        Radiobutton(root, text=<span class="code-string">'GfG'</span>, variable=v, value=<span class="code-string">1</span>).pack(anchor=W)<br>
+                        Radiobutton(root, text=<span class="code-string">'MIT'</span>, variable=v, value=<span class="code-string">2</span>).pack(anchor=W)<br>
+                        mainloop()
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>5.3 Connecting to Database using MySQL</h3>
+                <p>MySQL Connector allows Python programs to connect and work with MySQL databases.</p>
+                
+                <div class="sub-topic">
+                    <h4>Installation</h4>
+                    <div class="code-block">
+                        <span class="code-comment"># Install mysql-connector-python</span><br>
+                        pip install mysql-connector-python
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Connecting to Database</h4>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> mysql.connector<br><br>
+                        
+                        <span class="code-comment"># Connect to database</span><br>
+                        conn = mysql.connector.connect(<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;host=<span class="code-string">"localhost"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;user=<span class="code-string">"root"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;password=<span class="code-string">"password"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;database=<span class="code-string">"db"</span><br>
+                        )<br><br>
+                        
+                        <span class="code-comment"># Create cursor</span><br>
+                        cursor = conn.cursor()<br><br>
+                        
+                        <span class="code-comment"># Execute query</span><br>
+                        cursor.execute(<span class="code-string">"SELECT * FROM student"</span>)<br><br>
+                        
+                        <span class="code-comment"># Fetch all records</span><br>
+                        records = cursor.fetchall()<br><br>
+                        
+                        <span class="code-comment"># Display records</span><br>
+                        <span class="code-keyword">for</span> row <span class="code-keyword">in</span> records:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-function">print</span>(row)<br><br>
+                        
+                        <span class="code-comment"># Close connection</span><br>
+                        conn.close()
+                    </div>
+                </div>
+                
+                <div class="sub-topic">
+                    <h4>Database Operations</h4>
+                    <div class="code-block">
+                        <span class="code-keyword">import</span> mysql.connector<br><br>
+                        
+                        conn = mysql.connector.connect(<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;host=<span class="code-string">"localhost"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;user=<span class="code-string">"root"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;password=<span class="code-string">"password"</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;database=<span class="code-string">"db"</span><br>
+                        )<br>
+                        cursor = conn.cursor()<br><br>
+                        
+                        <span class="code-comment"># Create table</span><br>
+                        cursor.execute(<span class="code-string">"""CREATE TABLE IF NOT EXISTS student (</span><br>
+                        <span class="code-string">id INT AUTO_INCREMENT PRIMARY KEY,</span><br>
+                        <span class="code-string">name VARCHAR(255),</span><br>
+                        <span class="code-string">marks INT</span><br>
+                        <span class="code-string">)"""</span>)<br><br>
+                        
+                        <span class="code-comment"># Insert data</span><br>
+                        sql = <span class="code-string">"INSERT INTO student (name, marks) VALUES (%s, %s)"</span><br>
+                        val = (<span class="code-string">"Amit"</span>, <span class="code-string">85</span>)<br>
+                        cursor.execute(sql, val)<br>
+                        conn.commit()<br><br>
+                        
+                        <span class="code-comment"># Update data</span><br>
+                        sql = <span class="code-string">"UPDATE student SET marks = %s WHERE name = %s"</span><br>
+                        val = (<span class="code-string">90</span>, <span class="code-string">"Amit"</span>)<br>
+                        cursor.execute(sql, val)<br>
+                        conn.commit()<br><br>
+                        
+                        <span class="code-comment"># Delete data</span><br>
+                        sql = <span class="code-string">"DELETE FROM student WHERE name = %s"</span><br>
+                        val = (<span class="code-string">"Amit"</span>,)<br>
+                        cursor.execute(sql, val)<br>
+                        conn.commit()<br><br>
+                        
+                        conn.close()
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>© Kaustubh Ramteke</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navButtons = document.querySelectorAll('.nav-btn');
+            const unitSections = document.querySelectorAll('.unit-section');
+            
+            // Function to show selected unit and hide others
+            function showUnit(unitId) {
+                // Hide all units
+                unitSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Show selected unit
+                document.getElementById(unitId).classList.add('active');
+                
+                // Update active button
+                navButtons.forEach(button => {
+                    button.classList.remove('active');
+                    if (button.getAttribute('data-target') === unitId) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+            
+            // Add click event listeners to navigation buttons
+            navButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetUnit = this.getAttribute('data-target');
+                    showUnit(targetUnit);
+                });
+            });
+            
+            // Show first unit by default
+            if (unitSections.length > 0) {
+                showUnit('unit1');
+            }
+        });
+    </script>
+</body>
+</html>
