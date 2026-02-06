@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Priyadarshini Event Video Gallery</title>
+    <title>Priyadarshini Amrutam 2026 Event Video Gallery</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -37,8 +37,16 @@
         
         .header-content {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+        
+        .title-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
         }
         
         h1 {
@@ -47,15 +55,16 @@
             text-align: center;
         }
         
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
         .logo i {
             font-size: 2.5rem;
             color: #ff0000;
+        }
+        
+        .creator-name {
+            color: #888;
+            font-size: 1rem;
+            font-style: italic;
+            text-align: center;
         }
         
         .video-grid {
@@ -165,6 +174,10 @@
             .video-container {
                 height: 200px;
             }
+            
+            .creator-name {
+                font-size: 0.9rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -183,6 +196,20 @@
             .video-container {
                 height: 180px;
             }
+            
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            .title-section {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .creator-name {
+                font-family:arial;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -190,9 +217,14 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <i class="fab fa-youtube"></i>
+                <div class="title-section">
+                    <div class="logo">
+                        <i class="fab fa-youtube"></i>
+                    </div>
                     <h1>Priyadarshini Video Gallery (Amrutam 2026)</h1>
+                </div>
+                <div class="creator-name">
+                    ©Kaustubh Ramteke
                 </div>
             </div>
         </div>
