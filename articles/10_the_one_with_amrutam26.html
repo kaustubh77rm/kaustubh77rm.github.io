@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyadarshini Event Video Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #0f0f0f;
+            color: #f1f1f1;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background-color: #0f0f0f;
+            padding: 25px 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h1 {
+            color: #ff0000;
+            font-size: 2.2rem;
+            text-align: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo i {
+            font-size: 2.5rem;
+            color: #ff0000;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .video-card {
+            background-color: #1f1f1f;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background-color: #000;
+            overflow: hidden;
+        }
+        
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background-color: rgba(255, 0, 0, 0.8);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .play-button:hover {
+            background-color: rgba(255, 0, 0, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .play-button i {
+            color: white;
+            font-size: 1.8rem;
+            margin-left: 5px;
+        }
+        
+        .video-player {
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 220px;
+        }
+        
+        .active-video .video-player {
+            display: block;
+        }
+        
+        .active-video .video-thumbnail {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .video-thumbnail {
+                height: 200px;
+            }
+            
+            .video-container {
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .video-thumbnail {
+                height: 180px;
+            }
+            
+            .video-container {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fab fa-youtube"></i>
+                    <h1>Priyadarshini Video Gallery (Amrutam 2026)</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <div class="video-grid" id="videoGallery">
+            <!-- Video cards will be inserted here by JavaScript -->
+        </div>
+    </main>
+    
+    <footer class="container">
+        <p>©Kaustubh Ramteke</p>
+    </footer>
+
+    <script>
+        // Video data from the provided YouTube links
+        const videoData = [
+            {
+                id: "SA5c1hk7y3E"
+            },
+            {
+                id: "WGhEGoaGFxM"
+            },
+            {
+                id: "MbOiZkOdNVw"
+            },
+            {
+                id: "ZLUqtAeJdUM"
+            },
+            {
+                id: "Iq2knnu_Cuo"
+            },
+            {
+                id: "DAWF4mYcbJw"
+            },
+            {
+                id: "Uy4dBZGpIp0"
+            }
+        ];
+        
+        // Function to create video cards
+        function createVideoCard(video) {
+            return `
+                <div class="video-card" data-video-id="${video.id}">
+                    <div class="video-container">
+                        <div class="video-thumbnail">
+                            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="Event Video">
+                            <button class="play-button" onclick="playVideo(this)">
+                                <i class="fas fa-play"></i>
+                            </button>
+                        </div>
+                        <iframe 
+                            class="video-player"
+                            src="https://www.youtube.com/embed/${video.id}?enablejsapi=1"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // Function to initialize the video gallery
+        function initializeGallery() {
+            const gallery = document.getElementById('videoGallery');
+            
+            // Add video cards to the gallery
+            videoData.forEach(video => {
+                gallery.innerHTML += createVideoCard(video);
+            });
+        }
+        
+        // Function to play a video when the play button is clicked
+        function playVideo(playButton) {
+            // Get the video card element
+            const videoCard = playButton.closest('.video-card');
+            const videoId = videoCard.getAttribute('data-video-id');
+            const videoPlayer = videoCard.querySelector('.video-player');
+            
+            // Stop any currently playing videos
+            stopAllVideos();
+            
+            // Add active class to this video card
+            videoCard.classList.add('active-video');
+            
+            // Set the iframe src to enable autoplay
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+        }
+        
+        // Function to stop all videos
+        function stopAllVideos() {
+            const videoCards = document.querySelectorAll('.video-card');
+            
+            videoCards.forEach(card => {
+                card.classList.remove('active-video');
+                const iframe = card.querySelector('.video-player');
+                
+                // Reset the src to remove autoplay
+                const videoId = card.getAttribute('data-video-id');
+                iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
+            });
+        }
+        
+        // Initialize the gallery when the page loads
+        document.addEventListener('DOMContentLoaded', initializeGallery);
+        
+        // Stop all videos when clicking outside of a video card
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.video-card')) {
+                stopAllVideos();
+            }
+        });
+    </script>
+</body>
+</html>
