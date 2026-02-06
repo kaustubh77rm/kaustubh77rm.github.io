@@ -17,21 +17,24 @@ body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
-/* MAIN CONTAINER */
+/* MAIN CONTAINER - Takes remaining space */
 main { 
-    flex: 1; 
-    min-height: 0; /* allows flexbox to shrink properly */
+    flex: 1 0 auto; /* Grow to fill space, don't shrink */
+    min-height: 0; 
     text-align: center; 
-    padding: 20px 20px 40px 20px; /* reduced top padding */
+    padding: 20px 20px 40px 20px;
+    position: relative;
+    z-index: 1;
 }
 
 /* PAGE HEADING */
 h1 { 
     color: white; 
     font-size: 2.5rem; 
-    margin: 0; 
+    margin: 0 0 20px 0; 
 }
 
 /* NAME BOX */
@@ -44,6 +47,7 @@ h1 {
     background: rgba(255,255,255,0.05);
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     transition: transform 0.3s ease;
+    margin: 10px 0;
 }
 
 .name-text {
@@ -85,7 +89,6 @@ h1 {
     border-radius: 50%;
     padding: 6px;
     background: conic-gradient(#ff0080,#ff8c00,#40e0d0,#ff0080);
-    animation: rotate-ring 6s linear infinite;
     box-shadow: 0 0 25px rgba(64, 224, 208, 0.7);
 }
 .profile-pic {
@@ -99,6 +102,8 @@ h1 {
     pointer-events: none;
 }
 .profile-ring:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(255,140,0,0.9); }
+
+@keyframes rotate-ring { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 /* Animated Identity Section */
 .container1 {
@@ -130,9 +135,9 @@ h1 {
     font-weight: bold;
     text-transform: capitalize;
 }
-.first { background-color: #0060A3; height:12px;}
-.second { background-color: green; height:12px;}
-.third { background-color: #FF5100; height:12px;}
+.first { background-color: #0060A3; }
+.second { background-color: green; }
+.third { background-color: #FF5100; }
 @keyframes slideText {
     0%,20%   { transform: translateY(0); }      
     25%,45%  { transform: translateY(-3rem); } 
@@ -196,20 +201,41 @@ h1 {
     gap: 8px; 
 }
 
-/* FOOTER */
+/* STICKY FOOTER */
 footer {
     background: #333;
     color: white;
     padding: 15px;
     text-align: center;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    flex-shrink: 0; /* Don't shrink */
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
+    border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
+
 
 /* RESPONSIVE */
 @media(max-width:768px){
     .name-text { font-size: 1.6rem; }
     .name-box { padding: 30px 20px; }
     .profile-ring { width:130px; height:130px; }
-    .button-35 { font-size: 18px; padding: 10px 20px; }
+    .button-35 { font-size: 18px; padding: 10px 20px; margin: 8px; }
+    h1 { font-size: 2rem; }
+    .container1 { font-size: 1.5rem; }
+    footer { padding: 12px; font-size: 0.9rem; }
+}
+
+/* For very small screens */
+@media(max-width:480px){
+    .name-text { font-size: 1.3rem; }
+    .name-box { padding: 20px 15px; }
+    .button-35 { font-size: 16px; padding: 10px 16px; margin: 6px; }
+    h1 { font-size: 1.7rem; }
+    .container1 { font-size: 1.2rem; }
 }
 </style>
 </head>
