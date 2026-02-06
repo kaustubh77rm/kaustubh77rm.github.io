@@ -209,7 +209,7 @@
     </footer>
 
     <script>
-        // Video data from the provided YouTube links
+        // Video data from the provided YouTube links (in original order)
         const videoData = [
             {
                 id: "SA5c1hk7y3E"
@@ -231,6 +231,24 @@
             },
             {
                 id: "Uy4dBZGpIp0"
+            },
+            {
+                id: "C-QekBIdNzk"
+            },
+            {
+                id: "1wlYYxZSqa8"
+            },
+            {
+                id: "64hEx8AP1eY"
+            },
+            {
+                id: "HtPEaJTZEGs"
+            },
+            {
+                id: "PnX-Fa2ZV0k"
+            },
+            {
+                id: "6PUEN4CFPxw"
             }
         ];
         
@@ -261,8 +279,11 @@
         function initializeGallery() {
             const gallery = document.getElementById('videoGallery');
             
-            // Add video cards to the gallery
-            videoData.forEach(video => {
+            // Create a reversed copy of the videoData array
+            const reversedVideoData = [...videoData].reverse();
+            
+            // Add video cards to the gallery in reverse order
+            reversedVideoData.forEach(video => {
                 gallery.innerHTML += createVideoCard(video);
             });
         }
