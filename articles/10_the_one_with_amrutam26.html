@@ -50,7 +50,7 @@
         }
         
         h1 {
-            color: #ff0000;
+            color: white;
             font-size: 2.2rem;
             text-align: center;
         }
@@ -207,7 +207,7 @@
             }
             
             .creator-name {
-                font-family:arial;
+                font-family: arial;
                 font-size: 1rem;
             }
         }
@@ -241,48 +241,40 @@
     </footer>
 
     <script>
-        // Video data from the provided YouTube links (in original order)
-        const videoData = [
-            {
-                id: "SA5c1hk7y3E"
-            },
-            {
-                id: "WGhEGoaGFxM"
-            },
-            {
-                id: "MbOiZkOdNVw"
-            },
-            {
-                id: "ZLUqtAeJdUM"
-            },
-            {
-                id: "Iq2knnu_Cuo"
-            },
-            {
-                id: "DAWF4mYcbJw"
-            },
-            {
-                id: "Uy4dBZGpIp0"
-            },
-            {
-                id: "C-QekBIdNzk"
-            },
-            {
-                id: "1wlYYxZSqa8"
-            },
-            {
-                id: "64hEx8AP1eY"
-            },
-            {
-                id: "HtPEaJTZEGs"
-            },
-            {
-                id: "PnX-Fa2ZV0k"
-            },
-            {
-                id: "6PUEN4CFPxw"
-            }
+        // Original video data from the provided YouTube links in chronological order
+        const allVideoIds = [
+            "vHwKSZpsH6Y", // index 1
+            "jKoIZiq6IYI", // index 2
+            "nZk3cAFXBUE", // index 3
+            "eJRG3TSD-hM", // index 4
+            "KlH4iScW89Y", // index 5
+            "FhlmSff4rws", // index 6
+            "BfszregXIkE", // index 7
+            "jbLv92DV-9M", // index 8
+            "gVdZeGSmUm4", // index 9
+            "j6rkw9N6MTw", // index 10
+            "mgf5RlWdAEQ", // index 11
+            "htId6Ra0Ook", // index 12
+            "0UzJ0vxRgSI", // index 13
+            "SA5c1hk7y3E", // index 14
+            "WGhEGoaGFxM", // index 16
+            "MbOiZkOdNVw", // index 18
+            "ZLUqtAeJdUM", // index 20
+            "Iq2knnu_Cuo", // index 21
+            "DAWF4mYcbJw", // index 23
+            "Uy4dBZGpIp0", // index 25
+            "C-QekBIdNzk", // index 26
+            "1wlYYxZSqa8", // index 27
+            "64hEx8AP1eY", // index 28
+            "HtPEaJTZEGs", // index 29
+            "PnX-Fa2ZV0k", // index 30
+            "6PUEN4CFPxw"  // index 31
         ];
+        
+        // Create video data array with unique IDs only (duplicates already removed)
+        const videoData = allVideoIds.map(id => {
+            return { id: id };
+        });
         
         // Function to create video cards
         function createVideoCard(video) {
@@ -311,11 +303,8 @@
         function initializeGallery() {
             const gallery = document.getElementById('videoGallery');
             
-            // Create a reversed copy of the videoData array
-            const reversedVideoData = [...videoData].reverse();
-            
-            // Add video cards to the gallery in reverse order
-            reversedVideoData.forEach(video => {
+            // Add video cards to the gallery in chronological order
+            videoData.forEach(video => {
                 gallery.innerHTML += createVideoCard(video);
             });
         }
