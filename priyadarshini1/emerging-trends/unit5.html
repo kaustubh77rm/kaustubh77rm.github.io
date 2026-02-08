@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit 5 - Digital Forensics & Ethical Hacking - Complete MCQs</title>
+    <style>
+        :root {
+            --primary: #006E6E;
+            --secondary: #2E7D32;
+            --bg: #f1f1f1;
+            --card: #ffffff;
+            --text: #333;
+            --muted: #666;
+            --section-bg: #f9f9f9;
+            --border: #e0e0e0;
+        }
+
+        body {
+            margin: 0;
+            font-family: system-ui, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            position: sticky;
+            top: 0;
+            background: var(--card);
+            padding: 16px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+
+        .top-bar-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .top-bar-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .copyright-below {
+            text-align: center;
+            color: var(--muted);
+            font-weight: 500;
+            padding-top: 8px;
+            border-top: 1px solid var(--border);
+            margin-top: 8px;
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 24px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .header h1 {
+            color: var(--primary);
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: var(--section-bg);
+            border-radius: 12px;
+        }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .question-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(550px, 1fr));
+            gap: 24px;
+        }
+
+        .question-card {
+            background: var(--card);
+            padding: 22px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .question {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .question-number {
+            background: var(--primary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 8px;
+            min-width: 36px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .options {
+            list-style: none;
+            padding-left: 52px;
+            margin: 0;
+        }
+
+        .options li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .options li:last-child {
+            border-bottom: none;
+        }
+
+        .correct {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 20px;
+            position: relative;
+        }
+
+        .answer-key {
+            background: #e8f5e9;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .answer-key h3 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+
+        .answer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .answer-item {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            text-align: center;
+            margin: 50px 0 20px;
+            color: var(--muted);
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .question-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .question {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-content">
+        <div class="top-bar-title">
+            <h2 style="margin: 0;">Unit 5 – Digital Forensics & Ethical Hacking</h2>
+        </div>
+        <div class="copyright-below">
+            © Kaustubh Ramteke
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="header">
+        <h1>Digital Forensics & Ethical Hacking</h1>
+    </div>
+    <div class="section">
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">1</div>
+                    Digital Forensics is primarily concerned with:
+                </div>
+                <ul class="options">
+                    <li>(a) building computer systems.</li>
+                    <li class="correct">(b) preservation, identification, extraction, and documentation of computer evidence.</li>
+                    <li>(c) software development.</li>
+                    <li>(d) network installation.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">2</div>
+                    Which of the following is an objective of digital forensics?
+                </div>
+                <ul class="options">
+                    <li>(a) Design UI for software.</li>
+                    <li class="correct">(b) Recover, analyze, and preserve computer materials for legal proceedings.</li>
+                    <li>(c) Develop malware.</li>
+                    <li>(d) Install operating systems.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">3</div>
+                    Digital forensics helps in:
+                </div>
+                <ul class="options">
+                    <li>(a) breaking software licenses.</li>
+                    <li class="correct">(b) estimating potential impact of malicious activity.</li>
+                    <li>(c) upgrading hardware.</li>
+                    <li>(d) designing new programming languages.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">4</div>
+                    Which of the following is a core rule of digital forensics?
+                </div>
+                <ul class="options">
+                    <li>(a) Work directly on the original evidence.</li>
+                    <li class="correct">(b) Maintain integrity and create a forensically sound copy.</li>
+                    <li>(c) Ignore documentation.</li>
+                    <li>(d) Skip chain of custody.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">5</div>
+                    What is the first stage in digital forensics investigation?
+                </div>
+                <ul class="options">
+                    <li>(a) Analysis</li>
+                    <li>(b) Documentation</li>
+                    <li class="correct">(c) Identification</li>
+                    <li>(d) Presentation</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">6</div>
+                    During evidence handling, why is a chain of custody important?
+                </div>
+                <ul class="options">
+                    <li>(a) To reduce paperwork.</li>
+                    <li class="correct">(b) To prove evidence integrity and control.</li>
+                    <li>(c) To speed up the investigation.</li>
+                    <li>(d) To delete irrelevant files.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Questions 7-14 -->
+    <div class="section">
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">7</div>
+                    Which stage involves creating a forensic image of the digital evidence?
+                </div>
+                <ul class="options">
+                    <li>(a) Identification</li>
+                    <li class="correct">(b) Preservation/Extraction</li>
+                    <li>(c) Documentation</li>
+                    <li>(d) Presentation</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">8</div>
+                    Volatile data in digital forensics refers to:
+                </div>
+                <ul class="options">
+                    <li>(a) Hard disk data.</li>
+                    <li class="correct">(b) Data in RAM that may be lost if not captured properly.</li>
+                    <li>(c) Data stored in external drives.</li>
+                    <li>(d) Encrypted data only.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">9</div>
+                    The DFRWS model was proposed in:
+                </div>
+                <ul class="options">
+                    <li>(a) 1999</li>
+                    <li class="correct">(b) 2001</li>
+                    <li>(c) 2005</li>
+                    <li>(d) 2010</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">10</div>
+                    Which model adds Preparation and Return of Evidence phases?
+                </div>
+                <ul class="options">
+                    <li>(a) DFRWS Model</li>
+                    <li class="correct">(b) ADFM</li>
+                    <li>(c) IDIP</li>
+                    <li>(d) EEDIP</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">11</div>
+                    The IDIP model integrates:
+                </div>
+                <ul class="options">
+                    <li>(a) only digital evidence.</li>
+                    <li class="correct">(b) both digital and physical crime scene investigations.</li>
+                    <li>(c) only network attacks.</li>
+                    <li>(d) only legal documentation.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">12</div>
+                    Which model focuses on end-to-end traceability and automated documentation?
+                </div>
+                <ul class="options">
+                    <li>(a) DFRWS Model</li>
+                    <li class="correct">(b) EEDIP</li>
+                    <li>(c) UMDFPM</li>
+                    <li>(d) ADFM</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">13</div>
+                    UMDFPM stands for:
+                </div>
+                <ul class="options">
+                    <li>(a) Unified Model of Digital Forensic Process.</li>
+                    <li class="correct">(b) UML Modeling of Digital Forensic Process Model.</li>
+                    <li>(c) Universal Method for Digital Police.</li>
+                    <li>(d) Unified Module for Digital Protection.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">14</div>
+                    Which model is suitable for multi-agency cybercrime cases requiring structured communication?
+                </div>
+                <ul class="options">
+                    <li>(a) DFRWS</li>
+                    <li class="correct">(b) Extended Model for Cybercrime Investigation</li>
+                    <li>(c) ADFM</li>
+                    <li>(d) IDIP</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">15</div>
+                    Ethical hacking is:
+                </div>
+                <ul class="options">
+                    <li>(a) Illegal hacking for personal gain.</li>
+                    <li class="correct">(b) Authorized testing of systems to identify vulnerabilities.</li>
+                    <li>(c) Installing malware.</li>
+                    <li>(d) Ignoring security measures.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">16</div>
+                    Which hacker type acts legally to help organizations secure systems?
+                </div>
+                <ul class="options">
+                    <li>(a) Black Hat</li>
+                    <li class="correct">(b) White Hat</li>
+                    <li>(c) Grey Hat</li>
+                    <li>(d) Blue Hat</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">17</div>
+                    Which hacker type may access systems without permission but without malicious intent?
+                </div>
+                <ul class="options">
+                    <li>(a) White Hat</li>
+                    <li class="correct">(b) Grey Hat</li>
+                    <li>(c) Red Hat</li>
+                    <li>(d) Green Hat</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">18</div>
+                    A Red Hat Hacker is known for:
+                </div>
+                <ul class="options">
+                    <li>(a) creating malware for profit.</li>
+                    <li class="correct">(b) aggressively stopping black hat hackers.</li>
+                    <li>(c) learning hacking as a beginner.</li>
+                    <li>(d) ethical penetration testing.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">19</div>
+                    Phases of Ethical Hacking do NOT include:
+                </div>
+                <ul class="options">
+                    <li>(a) Reconnaissance</li>
+                    <li>(b) Scanning</li>
+                    <li class="correct">(c) System destruction</li>
+                    <li>(d) Reporting and analysis</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">20</div>
+                    Which of the following is an AI-powered attack?
+                </div>
+                <ul class="options">
+                    <li>(a) Ransomware 2.0</li>
+                    <li class="correct">(b) Deepfake phishing</li>
+                    <li>(c) OS downgrade attack</li>
+                    <li>(d) Firmware exploit</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">21</div>
+                    Ransomware 2.0 is known for:
+                </div>
+                <ul class="options">
+                    <li>(a) Encrypting files only.</li>
+                    <li class="correct">(b) Encrypting and exfiltrating data for double/triple extortion.</li>
+                    <li>(c) Exploiting network devices.</li>
+                    <li>(d) Downgrading OS.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">22</div>
+                    IoT exploits typically involve:
+                </div>
+                <ul class="options">
+                    <li>(a) Social engineering only.</li>
+                    <li class="correct">(b) Insecure devices used for attacks or botnets.</li>
+                    <li>(c) Application layer bypass.</li>
+                    <li>(d) Red Hat hacking.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">23</div>
+                    Zero-day exploits are:
+                </div>
+                <ul class="options">
+                    <li>(a) Known vulnerabilities with patches.</li>
+                    <li class="correct">(b) Unknown vulnerabilities with no patches available.</li>
+                    <li>(c) OS downgrade techniques.</li>
+                    <li>(d) Only web application issues.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">24</div>
+                    Advanced WAF bypass attacks target:
+                </div>
+                <ul class="options">
+                    <li>(a) Operating System.</li>
+                    <li class="correct">(b) Web applications.</li>
+                    <li>(c) IoT devices.</li>
+                    <li>(d) Firmware only.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">25</div>
+                    National Cyber Security Policy (NCSP) 2013 aims to:
+                </div>
+                <ul class="options">
+                    <li>(a) increase internet speed in India.</li>
+                    <li class="correct">(b) protect public and private infrastructure from cyber attacks.</li>
+                    <li>(c) ban all social media.</li>
+                    <li>(d) create malware.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">26</div>
+                    IT Act 2000 primarily deals with:
+                </div>
+                <ul class="options">
+                    <li>(a) Hardware design.</li>
+                    <li class="correct">(b) Electronic records, digital signatures, and cybercrime.</li>
+                    <li>(c) Building networks.</li>
+                    <li>(d) Installing OS updates.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Questions 27-44 -->
+    <div class="section">
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">27</div>
+                    The Digital Personal Data Protection Act (DPDP) 2023 ensures:
+                </div>
+                <ul class="options">
+                    <li>(a) free access to all data.</li>
+                    <li class="correct">(b) lawful processing of personal data with consent.</li>
+                    <li>(c) deletion of all user data automatically.</li>
+                    <li>(d) encourages phishing attacks.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">28</div>
+                    CCPWC Scheme (2018) focuses on:
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Cybercrime prevention against women and children.</li>
+                    <li>(b) Reducing malware attacks.</li>
+                    <li>(c) Ethical hacking training only.</li>
+                    <li>(d) IoT security.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">29</div>
+                    Which section of IT Act 2000 deals with hacking and computer offenses?
+                </div>
+                <ul class="options">
+                    <li>(a) Section 43</li>
+                    <li class="correct">(b) Section 66</li>
+                    <li>(c) Section 72A</li>
+                    <li>(d) Section 69</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">30</div>
+                    Forensic duplication is necessary because:
+                </div>
+                <ul class="options">
+                    <li>(a) To save storage space.</li>
+                    <li class="correct">(b) To preserve the original evidence while performing analysis.</li>
+                    <li>(c) To format drives.</li>
+                    <li>(d) To speed-up software installation.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">31</div>
+                    Which tool is widely used for forensic imaging?
+                </div>
+                <ul class="options">
+                    <li>(a) Wireshark</li>
+                    <li class="correct">(b) EnCase</li>
+                    <li>(c) MS-Excel</li>
+                    <li>(d) Notepad</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">32</div>
+                    Forensic triage is performed to:
+                </div>
+                <ul class="options">
+                    <li>(a) Repair broken hardware.</li>
+                    <li class="correct">(b) Quickly assess and prioritize evidence.</li>
+                    <li>(c) Install antivirus software.</li>
+                    <li>(d) Encrypt files.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">33</div>
+                    Metadata in digital evidence includes:
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) Data about data (creation time, author, last modified).</li>
+                    <li>(b) File content only.</li>
+                    <li>(c) File size only.</li>
+                    <li>(d) IP addresses only.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">34</div>
+                    Imaging a storage device ensures:
+                </div>
+                <ul class="options">
+                    <li>(a) deletion of all files.</li>
+                    <li class="correct">(b) an exact bit-by-bit copy of data.</li>
+                    <li>(c) faster internet speed.</li>
+                    <li>(d) encryption of files.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">35</div>
+                    Hashing in digital forensics is used to:
+                </div>
+                <ul class="options">
+                    <li>(a) compress data.</li>
+                    <li class="correct">(b) verify integrity of digital evidence.</li>
+                    <li>(c) encrypt emails.</li>
+                    <li>(d) convert files to PDFs.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">36</div>
+                    Which model emphasizes legal admissibility of evidence from start to end?
+                </div>
+                <ul class="options">
+                    <li>(a) DFRWS</li>
+                    <li>(b) ADFM</li>
+                    <li>(c) IDIP</li>
+                    <li class="correct">(d) EEDIP</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">37</div>
+                    The "Preservation" phase in any forensic model involves:
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) collecting evidence and maintaining chain of custody.</li>
+                    <li>(b) writing reports only.</li>
+                    <li>(c) installing software patches.</li>
+                    <li>(d) monitoring network traffic.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">38</div>
+                    Which model is used for real-time or live forensic analysis?
+                </div>
+                <ul class="options">
+                    <li>(a) DFRWS</li>
+                    <li class="correct">(b) Live Forensic Model</li>
+                    <li>(c) IDIP</li>
+                    <li>(d) ADFM</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">39</div>
+                    Foot printing in ethical hacking is done to:
+                </div>
+                <ul class="options">
+                    <li>(a) plant malware.</li>
+                    <li class="correct">(b) gather preliminary information about the target.</li>
+                    <li>(c) delete user accounts.</li>
+                    <li>(d) crack passwords only.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">40</div>
+                    Scanning in hacking helps to:
+                </div>
+                <ul class="options">
+                    <li>(a) exploit vulnerabilities.</li>
+                    <li class="correct">(b) identify open ports, services, and weak points.</li>
+                    <li>(c) encrypt the network.</li>
+                    <li>(d) create a backup.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">41</div>
+                    Enumeration phase involves:
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) listing potential targets and system details.</li>
+                    <li>(b) installing antivirus.</li>
+                    <li>(c) performing backups.</li>
+                    <li>(d) writing reports only.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">42</div>
+                    Post-exploitation phase is for:
+                </div>
+                <ul class="options">
+                    <li>(a) restoring system data.</li>
+                    <li class="correct">(b) maintaining access, covering tracks, and extracting data.</li>
+                    <li>(c) scanning the system.</li>
+                    <li>(d) running antivirus.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">43</div>
+                    Black Hat hackers are:
+                </div>
+                <ul class="options">
+                    <li>(a) legal testers of systems.</li>
+                    <li class="correct">(b) malicious hackers exploiting vulnerabilities for personal gain.</li>
+                    <li>(c) students learning hacking.</li>
+                    <li>(d) cybersecurity officers.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">44</div>
+                    Blue Hat hackers are usually:
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) internal corporate testers before software release.</li>
+                    <li>(b) malicious hackers.</li>
+                    <li>(c) government hackers.</li>
+                    <li>(d) script kiddies.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Questions 45-57 -->
+    <div class="section">
+        <div class="question-grid">
+            
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">45</div>
+                    Script Kiddies are:
+                </div>
+                <ul class="options">
+                    <li>(a) experienced hackers.</li>
+                    <li class="correct">(b) unskilled attackers using pre-made tools.</li>
+                    <li>(c) government cybersecurity professionals.</li>
+                    <li>(d) AI-based attack tools.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">46</div>
+                    Hacktivists are motivated by:
+                </div>
+                <ul class="options">
+                    <li>(a) money.</li>
+                    <li class="correct">(b) political or social causes.</li>
+                    <li>(c) corporate espionage.</li>
+                    <li>(d) virus creation.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">47</div>
+                    State-sponsored hackers are:
+                </div>
+                <ul class="options">
+                    <li>(a) ethical testers.</li>
+                    <li class="correct">(b) government-backed attackers for espionage or cyberwarfare.</li>
+                    <li>(c) students learning hacking.</li>
+                    <li>(d) penetration testers.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">48</div>
+                    Phishing attacks aim to:
+                </div>
+                <ul class="options">
+                    <li>(a) send spam.</li>
+                    <li class="correct">(b) trick users into revealing sensitive information.</li>
+                    <li>(c) encrypt files.</li>
+                    <li>(d) scan networks.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">49</div>
+                    Ransomware attacks primarily involve:
+                </div>
+                <ul class="options">
+                    <li>(a) stealing identities.</li>
+                    <li class="correct">(b) encrypting user data and demanding ransom.</li>
+                    <li>(c) crashing websites.</li>
+                    <li>(d) spamming emails.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">50</div>
+                    IoT Botnets are used to:
+                </div>
+                <ul class="options">
+                    <li class="correct">(a) launch DDoS attacks.</li>
+                    <li>(b) encrypt files.</li>
+                    <li>(c) test network speed.</li>
+                    <li>(d) clean devices.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">51</div>
+                    Malware is:
+                </div>
+                <ul class="options">
+                    <li>(a) authorized software.</li>
+                    <li class="correct">(b) malicious software designed to disrupt or damage systems.</li>
+                    <li>(c) antivirus software.</li>
+                    <li>(d) operating system upgrade.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">52</div>
+                    Zero-day attacks are dangerous because:
+                </div>
+                <ul class="options">
+                    <li>(a) they use old vulnerabilities.</li>
+                    <li class="correct">(b) there is no patch available yet.</li>
+                    <li>(c) they are easy to prevent.</li>
+                    <li>(d) they target only students.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">53</div>
+                    The IT (Amendment) Act 2008 introduced:
+                </div>
+                <ul class="options">
+                    <li>(a) only digital signatures.</li>
+                    <li class="correct">(b) cybercrime provisions including identity theft, phishing, and cyber terrorism.</li>
+                    <li>(c) internet connectivity rules.</li>
+                    <li>(d) hardware standards.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">54</div>
+                    Digital Personal Data Protection Act (DPDP) 2023 replaced:
+                </div>
+                <ul class="options">
+                    <li>(a) IT Act 2000 completely.</li>
+                    <li class="correct">(b) Some provisions related to personal data protection under IT Act.</li>
+                    <li>(c) Only copyright laws.</li>
+                    <li>(d) Cybercrime sections.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">55</div>
+                    Cybercrime against women and children is covered under:
+                </div>
+                <ul class="options">
+                    <li>(a) IT Act Section 43.</li>
+                    <li class="correct">(b) IT Act Section 66A/66B & CCPWC Scheme.</li>
+                    <li>(c) DPDP Act only.</li>
+                    <li>(d) NCSP only.</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">56</div>
+                    Which law mandates consent for collecting personal data?
+                </div>
+                <ul class="options">
+                    <li>(a) IT Act 2000</li>
+                    <li class="correct">(b) DPDP Act 2023</li>
+                    <li>(c) CCPWC Scheme</li>
+                    <li>(d) NCSP 2013</li>
+                </ul>
+            </div>
+
+            <div class="question-card">
+                <div class="question">
+                    <div class="question-number">57</div>
+                    NCSP 2013 was formulated by:
+                </div>
+                <ul class="options">
+                    <li>(a) UNESCO.</li>
+                    <li class="correct">(b) Government of India.</li>
+                    <li>(c) Private companies.</li>
+                    <li>(d) Ethical hackers.</li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    <div class="footer">
+        <p>© 2026 Kaustubh Ramteke</p>
+        <p>Based on study material from Nirali Prakashan</p>
+    </div>
+</div>
+
+</body>
+</html>
