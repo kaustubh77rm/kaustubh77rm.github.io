@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +14,11 @@
         }
         
         body {
-            background-color: #0f0f0f;
+            background-color: #0a0a0a;
             color: #f1f1f1;
             line-height: 1.6;
             padding-bottom: 40px;
+            overflow-x: hidden;
         }
         
         .container {
@@ -28,12 +28,14 @@
         }
         
         header {
-            background-color: #0f0f0f;
+            background-color: rgba(15, 15, 15, 0.95);
             padding: 25px 0;
             border-bottom: 1px solid #333;
             position: sticky;
             top: 0;
             z-index: 100;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
         
         .header-content {
@@ -46,7 +48,7 @@
         .title-section {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
             margin-bottom: 10px;
         }
         
@@ -54,45 +56,67 @@
             color: white;
             font-size: 2.2rem;
             text-align: center;
+            font-weight: 600;
+            background: linear-gradient(90deg, #ff0000, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(255, 0, 0, 0.2);
         }
         
         .logo i {
             font-size: 2.5rem;
             color: #ff0000;
+            filter: drop-shadow(0 2px 4px rgba(255, 0, 0, 0.5));
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover i {
+            transform: scale(1.1);
         }
         
         .creator-name {
-            color: #888;
+            color: #aaa;
             font-size: 1rem;
             font-style: italic;
             text-align: center;
+            letter-spacing: 0.5px;
         }
         
         .video-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
+            gap: 30px;
             margin-top: 40px;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .video-card {
-            background-color: #1f1f1f;
-            border-radius: 12px;
+            background-color: #1a1a1a;
+            border-radius: 16px;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 0, 0, 0.2);
+            background-color: #202020;
         }
         
         .video-thumbnail {
             position: relative;
             width: 100%;
             height: 220px;
-            background-color: #000;
+            background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
             overflow: hidden;
         }
         
@@ -100,7 +124,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.3s ease;
+            transition: all 0.5s ease;
+            filter: brightness(0.9);
+        }
+        
+        .video-card:hover .video-thumbnail img {
+            transform: scale(1.05);
+            filter: brightness(1.1);
         }
         
         .play-button {
@@ -110,7 +140,7 @@
             transform: translate(-50%, -50%);
             width: 70px;
             height: 70px;
-            background-color: rgba(255, 0, 0, 0.8);
+            background-color: rgba(255, 0, 0, 0.9);
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -118,11 +148,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.4);
+            z-index: 2;
         }
         
         .play-button:hover {
             background-color: rgba(255, 0, 0, 1);
-            transform: translate(-50%, -50%) scale(1.1);
+            transform: translate(-50%, -50%) scale(1.15);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.6);
         }
         
         .play-button i {
@@ -131,36 +164,193 @@
             margin-left: 5px;
         }
         
-        .video-player {
+        .video-duration {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Modal Lightbox Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            display: none;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
         
-        .video-container {
+        .modal-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 90%;
+            max-width: 1100px;
+            background-color: #111;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            transition: transform 0.4s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .modal-video-container {
             position: relative;
             width: 100%;
-            height: 220px;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            background-color: #000;
         }
         
-        .active-video .video-player {
-            display: block;
+        .modal-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
-        .active-video .video-thumbnail {
-            display: none;
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #151515;
+            border-bottom: 1px solid #333;
+        }
+        
+        .modal-title {
+            font-size: 1.3rem;
+            color: #fff;
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .close-modal:hover {
+            color: #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.1);
+            border-top: 5px solid #ff0000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 1;
+        }
+        
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        
+        .video-index {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 2;
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            pointer-events: none;
+        }
+        
+        .modal-nav button {
+            pointer-events: all;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-nav button:hover {
+            background-color: rgba(255, 0, 0, 0.8);
+            transform: scale(1.1);
+        }
+        
+        .modal-nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
         }
         
         footer {
             text-align: center;
-            margin-top: 40px;
-            color: #666;
+            margin-top: 60px;
+            color: #777;
             font-size: 0.9rem;
+            padding: 20px;
+            border-top: 1px solid #222;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .video-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
         }
         
         @media (max-width: 768px) {
             .video-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
                 gap: 20px;
             }
             
@@ -172,16 +362,23 @@
                 height: 200px;
             }
             
-            .video-container {
-                height: 200px;
-            }
-            
             .creator-name {
                 font-size: 0.9rem;
             }
+            
+            .modal-content {
+                width: 95%;
+                border-radius: 12px;
+            }
+            
+            .modal-nav button {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
         }
         
-        @media (max-width: 480px) {
+        @media (max-width: 576px) {
             .video-grid {
                 grid-template-columns: 1fr;
             }
@@ -191,26 +388,56 @@
             }
             
             .video-thumbnail {
-                height: 180px;
-            }
-            
-            .video-container {
-                height: 180px;
+                height: 200px;
             }
             
             h1 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
             }
             
             .title-section {
                 flex-direction: column;
-                gap: 5px;
+                gap: 8px;
             }
             
             .creator-name {
-                font-family: arial;
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
+            
+            .modal-header {
+                padding: 15px;
+            }
+            
+            .modal-title {
+                font-size: 1.1rem;
+            }
+            
+            .modal-nav {
+                padding: 0 10px;
+            }
+            
+            .modal-nav button {
+                width: 35px;
+                height: 35px;
+            }
+        }
+        
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ff0000;
         }
     </style>
 </head>
@@ -237,13 +464,44 @@
         </div>
     </main>
     
+    <!-- Modal Lightbox -->
+    <div class="modal-overlay" id="videoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle">Amrutam 2026 Event Video</div>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-video-container">
+                <div class="loading-spinner" id="modalSpinner"></div>
+                <span class="video-index" id="videoIndex">1 / 30</span>
+                <iframe 
+                    class="modal-video"
+                    id="modalVideo"
+                    src=""
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <div class="modal-nav">
+                    <button id="prevVideo" disabled>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button id="nextVideo">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <footer class="container">
-        <p>©Kaustubh Ramteke</p>
+        <p>©Kaustubh Ramteke - Amrutam 2026 Event Video Gallery</p>
     </footer>
 
     <script>
         // Original video data from the provided YouTube links in chronological order
-        // Added the two new videos at the end of the array
         const allVideoIds = [
             "vHwKSZpsH6Y", // index 1
             "jKoIZiq6IYI", // index 2
@@ -273,32 +531,42 @@
             "6PUEN4CFPxw", // index 31
             "GkTHhJQnNts",
             "4VCy30a3Ooo" // New video 1
-              // New video 2
         ];
         
-        // Create video data array with unique IDs only (duplicates already removed)
-        const videoData = allVideoIds.map(id => {
-            return { id: id };
+        // Create video data array
+        const videoData = allVideoIds.map((id, index) => {
+            return { 
+                id: id,
+                index: index + 1
+            };
         });
+        
+        // DOM Elements
+        const videoGallery = document.getElementById('videoGallery');
+        const videoModal = document.getElementById('videoModal');
+        const modalVideo = document.getElementById('modalVideo');
+        const modalSpinner = document.getElementById('modalSpinner');
+        const closeModal = document.getElementById('closeModal');
+        const prevVideo = document.getElementById('prevVideo');
+        const nextVideo = document.getElementById('nextVideo');
+        const videoIndex = document.getElementById('videoIndex');
+        const modalTitle = document.getElementById('modalTitle');
+        
+        // Current video state
+        let currentVideoIndex = 0;
         
         // Function to create video cards
         function createVideoCard(video) {
             return `
-                <div class="video-card" data-video-id="${video.id}">
-                    <div class="video-container">
-                        <div class="video-thumbnail">
-                            <img src="https://img.youtube.com/vi/${video.id}/hqdefault.jpg" alt="Event Video">
-                            <button class="play-button" onclick="playVideo(this)">
-                                <i class="fas fa-play"></i>
-                            </button>
-                        </div>
-                        <iframe 
-                            class="video-player"
-                            src="https://www.youtube.com/embed/${video.id}?enablejsapi=1"
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                        </iframe>
+                <div class="video-card" data-video-id="${video.id}" data-index="${video.index}">
+                    <div class="video-thumbnail">
+                        <img src="https://img.youtube.com/vi/${video.id}/maxresdefault.jpg" 
+                             onerror="this.src='https://img.youtube.com/vi/${video.id}/hqdefault.jpg'" 
+                             alt="Event Video ${video.index}">
+                        <button class="play-button">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <div class="video-duration">Video ${video.index}</div>
                     </div>
                 </div>
             `;
@@ -306,53 +574,129 @@
         
         // Function to initialize the video gallery
         function initializeGallery() {
-            const gallery = document.getElementById('videoGallery');
-            
             // Add video cards to the gallery in chronological order
             videoData.forEach(video => {
-                gallery.innerHTML += createVideoCard(video);
+                videoGallery.innerHTML += createVideoCard(video);
+            });
+            
+            // Add click event listeners to all video cards
+            document.querySelectorAll('.video-card').forEach((card, index) => {
+                card.addEventListener('click', () => openModal(index));
             });
         }
         
-        // Function to play a video when the play button is clicked
-        function playVideo(playButton) {
-            // Get the video card element
-            const videoCard = playButton.closest('.video-card');
-            const videoId = videoCard.getAttribute('data-video-id');
-            const videoPlayer = videoCard.querySelector('.video-player');
+        // Function to open modal with selected video
+        function openModal(index) {
+            currentVideoIndex = index;
+            updateModalVideo();
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
             
-            // Stop any currently playing videos
-            stopAllVideos();
-            
-            // Add active class to this video card
-            videoCard.classList.add('active-video');
-            
-            // Set the iframe src to enable autoplay
-            videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1`;
+            // Update navigation buttons
+            updateNavButtons();
         }
         
-        // Function to stop all videos
-        function stopAllVideos() {
-            const videoCards = document.querySelectorAll('.video-card');
+        // Function to close modal
+        function closeVideoModal() {
+            videoModal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
             
-            videoCards.forEach(card => {
-                card.classList.remove('active-video');
-                const iframe = card.querySelector('.video-player');
-                
-                // Reset the src to remove autoplay
-                const videoId = card.getAttribute('data-video-id');
-                iframe.src = `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;
-            });
+            // Stop the video
+            modalVideo.src = "";
+            
+            // Show loading spinner for next time
+            modalSpinner.style.display = 'block';
+        }
+        
+        // Function to update modal video
+        function updateModalVideo() {
+            const videoId = videoData[currentVideoIndex].id;
+            
+            // Show loading spinner
+            modalSpinner.style.display = 'block';
+            
+            // Update video index display
+            videoIndex.textContent = `${currentVideoIndex + 1} / ${videoData.length}`;
+            
+            // Update modal title
+            modalTitle.textContent = `Amrutam 2026 Event Video ${currentVideoIndex + 1}`;
+            
+            // Set the iframe src with autoplay
+            modalVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&enablejsapi=1&rel=0&modestbranding=1`;
+            
+            // Hide loading spinner when video is ready
+            modalVideo.onload = () => {
+                modalSpinner.style.display = 'none';
+            };
+        }
+        
+        // Function to update navigation buttons
+        function updateNavButtons() {
+            prevVideo.disabled = currentVideoIndex === 0;
+            nextVideo.disabled = currentVideoIndex === videoData.length - 1;
+        }
+        
+        // Function to play next video
+        function playNextVideo() {
+            if (currentVideoIndex < videoData.length - 1) {
+                currentVideoIndex++;
+                updateModalVideo();
+                updateNavButtons();
+            }
+        }
+        
+        // Function to play previous video
+        function playPrevVideo() {
+            if (currentVideoIndex > 0) {
+                currentVideoIndex--;
+                updateModalVideo();
+                updateNavButtons();
+            }
         }
         
         // Initialize the gallery when the page loads
         document.addEventListener('DOMContentLoaded', initializeGallery);
         
-        // Stop all videos when clicking outside of a video card
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.video-card')) {
-                stopAllVideos();
+        // Event listeners for modal
+        closeModal.addEventListener('click', closeVideoModal);
+        prevVideo.addEventListener('click', playPrevVideo);
+        nextVideo.addEventListener('click', playNextVideo);
+        
+        // Close modal when clicking outside the content
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
             }
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (videoModal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeVideoModal();
+                } else if (e.key === 'ArrowRight') {
+                    playNextVideo();
+                } else if (e.key === 'ArrowLeft') {
+                    playPrevVideo();
+                }
+            }
+        });
+        
+        // Smooth scroll effect for header on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling up
+                header.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
         });
     </script>
 </body>
