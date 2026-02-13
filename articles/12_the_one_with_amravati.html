@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The one with amravati</title>
+
+<style>
+:root {
+    --primary: #2e7d32;
+    --secondary: #006cc6;
+    --bg: #f1f1f1;
+    --card: #ffffff;
+    --text: #222;
+    --muted: #666;
+}
+
+/* Base */
+body {
+    margin: 0;
+    font-family: system-ui, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+/* ================= TOP BAR ================= */
+.top-bar {
+    position: sticky;
+    top: 0;
+    background: var(--card);
+    padding: 18px 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Back button */
+.back-button {
+    position: absolute;
+    left: 16px;
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover {
+    background: #1b5e20;
+}
+
+/* BIG + BOLD TITLE */
+.top-title {
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: 0.6px;
+    color: var(--secondary);
+}
+
+/* ================= CONTAINER ================= */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px 16px;
+}
+
+/* ================= ARTICLE CARD ================= */
+.article-card {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 30px;
+    box-shadow: 0 10px 22px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Article header */
+.article-header {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.article-header h1 {
+    margin: 0;
+    font-size: 32px;
+    color: var(--secondary);
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 17px;
+    margin-top: 6px;
+}
+
+/* Content */
+.article-content {
+    font-size: 19px;
+    text-align: justify;
+}
+
+.article-content p {
+    margin-bottom: 20px;
+}
+
+.article-content b {
+    color: var(--primary);
+}
+
+/* Quote styling */
+.quote {
+    font-style: italic;
+    color: var(--muted);
+    margin: 25px 0;
+    padding: 15px 20px;
+    background-color: #f8f9fa;
+    border-left: 4px solid var(--secondary);
+    border-radius: 0 8px 8px 0;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin: 28px 0 14px;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 600px) {
+    .top-title {
+        font-size: 24px;
+        text-align: center;
+        padding: 0 44px;
+    }
+
+    .article-header h1 {
+        font-size: 28px;
+    }
+
+    .article-content {
+        font-size: 18px;
+    }
+    
+    .top-bar {
+        padding: 15px 12px;
+    }
+    
+    .back-button {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+    <div class="top-title">The one with amravati</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <div class="article-card">
+
+        <div class="article-header">
+            <h1>Amravati baddal</h1>
+            <div class="subtitle">Published on: February 13, 2026</div>
+        </div>
+
+        <div class="article-content">
+            <p>Now gonna write something bout amravati, my hometown. Not havin concrete thoughts bout the content but still, will share future of the city perspective. List of all the colleges, schools, hotels, restaurents etc stuff that the city holds. You know.</p>
+            
+            
+            
+        </div>
+
+    </div>
+
+    <div class="footer">
+        © Kaustubh Ramteke
+    </div>
+
+</div>
+
+</body>
+</html>
