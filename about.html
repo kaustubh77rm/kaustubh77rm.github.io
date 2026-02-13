@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -198,14 +199,20 @@ p {
 .sub-content {
     max-height: 0;
     overflow-y: auto;
-    transition: max-height 0.35s ease;
+    transition: max-height 0.35s ease, padding 0.3s ease;
     padding: 0 16px;
+    
+    background: linear-gradient(135deg, #f8fbff, #eef5ff);
+    border-left: 4px solid var(--secondary);
+    border-radius: 0 0 12px 12px;
 }
 
 .sub-content.open {
     max-height: 40vh;
-    padding-bottom: 12px;
+    padding: 16px;
 }
+
+
 
 /* Folder Structure Styles */
 .folder-item {
@@ -262,22 +269,32 @@ p {
 }
 
 .song-item {
-    padding: 8px 0;
-    border-bottom: 1px solid #eee;
+    padding: 8px 12px;
     font-size: 14px;
     display: flex;
     align-items: center;
+    border-radius: 6px;
+    transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.song-item:hover {
+    background: linear-gradient(to right, #e8f5e9, transparent);
+    transform: scale(1.02);
 }
 
 .song-item::before {
-    content: "🎵 ";
-    margin-right: 8px;
+    content: "▶";
+    margin-right: 10px;
+    font-size: 12px;
     color: var(--primary);
+    transition: transform 0.2s ease;
 }
 
-.song-item:last-child {
-    border-bottom: none;
+.song-item:hover::before {
+    transform: scale(1.2);
 }
+
+
 
 /* Category headers */
 .category-title {
