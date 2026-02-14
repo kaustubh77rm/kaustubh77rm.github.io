@@ -48,6 +48,7 @@ img {
     box-shadow: 0 4px 10px rgba(0,0,0,0.18);
     z-index: 100;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 60px;
@@ -71,12 +72,22 @@ img {
     font-size: 30px;
     font-weight: 900;
     text-align: center;
-    padding: 0 60px; /* Add padding to prevent overlap */
+    padding: 0 60px;
     width: 100%;
     box-sizing: border-box;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-bottom: 8px;
+}
+
+.copyright-line {
+    text-align: center;
+    font-size: 16px;
+    color: var(--muted);
+    width: 100%;
+    padding: 0 60px;
+    box-sizing: border-box;
 }
 
 /* ================= CONTAINER ================= */
@@ -266,6 +277,11 @@ img {
         text-overflow: ellipsis;
     }
     
+    .copyright-line {
+        font-size: 14px;
+        padding: 0 50px;
+    }
+    
     .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
@@ -306,6 +322,11 @@ img {
     
     .top-title {
         font-size: 18px;
+        padding: 0 45px;
+    }
+    
+    .copyright-line {
+        font-size: 13px;
         padding: 0 45px;
     }
     
@@ -350,6 +371,11 @@ img {
         padding: 0 40px;
     }
     
+    .copyright-line {
+        font-size: 12px;
+        padding: 0 40px;
+    }
+    
     .back-button {
         left: 6px;
         padding: 6px 10px;
@@ -373,6 +399,7 @@ img {
 <!-- TOP BAR -->
 <div class="top-bar">
     <div class="top-title">The one with the amrutam 2026</div>
+    <div class="copyright-line">© Kaustubh Ramteke</div>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -382,7 +409,6 @@ img {
     <div class="gallery-section">
         <div class="gallery-title">🌟 Amrutam 2026 Moments</div>
         <center>Published on: January 30, 2026</center>
-        <center>© Kaustubh Ramteke</center>
         
         <!-- Loading state -->
         <div id="loading" class="loading">
