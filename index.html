@@ -32,73 +32,11 @@ main {
 }
 
 /* PAGE HEADING */
-/* HERO TITLE - Premium Landing Style */
-h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    margin: 0 0 25px 0;
-    letter-spacing: 1px;
-    position: relative;
-    display: inline-block;
-
-    background: linear-gradient(90deg, #ffffff, #FFD000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: fadeSlide 1.2s ease forwards;
-    opacity: 0;
+h1 { 
+    color: white; 
+    font-size: 2.5rem; 
+    margin: 0 0 20px 0; 
 }
-
-/* Animated Accent Line */
-/* Continuous Moving Underline */
-h1::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -10px;
-    height: 3px;
-    width: 100%;
-    border-radius: 10px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        #FFD000,
-        transparent
-    );
-
-    background-size: 200% 100%;
-    animation: moveLine 3s linear infinite;
-}
-
-/* Animation */
-@keyframes moveLine {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}
-
-
-/* Expand underline on hover */
-h1:hover::after {
-    width: 70%;
-}
-
-/* Smooth entry animation */
-@keyframes fadeSlide {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 /* NAME BOX */
 .name-box {
