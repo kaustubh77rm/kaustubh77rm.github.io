@@ -1,8 +1,7 @@
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>costub77</title>
+<title>costub77 · full width fast pulse</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="icon" type="image/png" href="/image/krlogo.png">
@@ -21,9 +20,9 @@ body {
     position: relative;
 }
 
-/* MAIN CONTAINER - Takes remaining space */
+/* MAIN CONTAINER */
 main { 
-    flex: 1 0 auto; /* Grow to fill space, don't shrink */
+    flex: 1 0 auto;
     min-height: 0; 
     text-align: center; 
     padding: 20px 20px 40px 20px;
@@ -31,12 +30,53 @@ main {
     z-index: 1;
 }
 
-/* PAGE HEADING */
+/* ===== HEADING WITH FAST FULL-WIDTH PULSE UNDERLINE ===== */
 h1 { 
     color: white; 
     font-size: 2.5rem; 
-    margin: 0 0 20px 0; 
+    margin: 0 0 20px 0;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 20px;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
+
+/* FAST full-width pulse */
+/* SMOOTH FULL-WIDTH BUTTER UNDERLINE */
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    border-radius: 4px;
+    transform-origin: center;
+    transform: scaleX(0);
+    opacity: 0.8;
+    animation: butterSmooth 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes butterSmooth {
+    0% {
+        transform: scaleX(0);
+        opacity: 0.3;
+    }
+    40% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    60% {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scaleX(0);
+        opacity: 1;
+    }
+}
+
 
 /* NAME BOX */
 .name-box {
@@ -91,6 +131,7 @@ h1 {
     padding: 6px;
     background: conic-gradient(#ff0080,#ff8c00,#40e0d0,#ff0080);
     box-shadow: 0 0 25px rgba(64, 224, 208, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .profile-pic {
     width: 100%;
@@ -103,8 +144,6 @@ h1 {
     pointer-events: none;
 }
 .profile-ring:hover { transform: scale(1.08); box-shadow: 0 0 40px rgba(255,140,0,0.9); }
-
-@keyframes rotate-ring { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
 /* Animated Identity Section */
 .container1 {
@@ -147,36 +186,8 @@ h1 {
 }
 
 /* BUTTONS */
-.links {
-    margin-top: 20px;
-}
-/* 🔥 ULTRA PREMIUM APP-STYLE BUTTONS 🔥 */
-.button-35 {
-    position: relative;
-    overflow: hidden;
-    border: none;
-    padding: 16px 38px;
-    margin: 14px;
-    font-size: 20px;
-    font-weight: 700;
-    border-radius: 999px;
-    cursor: pointer;
-    letter-spacing: 0.8px;
-    color: #222;
+.links { margin-top: 20px; }
 
-    background: linear-gradient(135deg, #FFD000, #FFA000);
-    
-    box-shadow:
-        0 10px 25px rgba(0,0,0,0.4),
-        inset 0 -4px 0 rgba(0,0,0,0.15);
-
-    transition: 
-        transform 0.25s cubic-bezier(.2,.8,.2,1),
-        box-shadow 0.25s ease,
-        background 0.3s ease;
-}
-
-/* 🔥 CLEAN PREMIUM BUTTONS (No rainbow drama) 🔥 */
 .button-35 {
     position: relative;
     overflow: hidden;
@@ -189,20 +200,16 @@ h1 {
     cursor: pointer;
     letter-spacing: 0.5px;
     color: #111;
-
     background: #FFD000;
-
     box-shadow:
         0 8px 18px rgba(0,0,0,0.35),
         0 2px 0 rgba(0,0,0,0.2) inset;
-
     transition: 
         transform 0.25s ease,
         box-shadow 0.25s ease,
         background 0.3s ease;
 }
 
-/* Soft Light Sweep */
 .button-35::before {
     content: "";
     position: absolute;
@@ -219,38 +226,20 @@ h1 {
     transition: 0.6s ease;
 }
 
-/* Hover */
 .button-35:hover {
     transform: translateY(-4px);
     background: #ffc107;
-    box-shadow:
-        0 14px 28px rgba(0,0,0,0.4);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.4);
 }
 
-.button-35:hover::before {
-    left: 130%;
-}
+.button-35:hover::before { left: 130%; }
 
-/* Click */
 .button-35:active {
     transform: translateY(1px);
-    box-shadow:
-        0 4px 10px rgba(0,0,0,0.4) inset;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4) inset;
 }
 
-/* VISITOR COUNTER */
-#visitor-count { 
-    margin-top: 20px; 
-    font-size: 1.5rem; 
-    color: #FFD000; 
-    font-weight: 700; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    gap: 8px; 
-}
-
-/* STICKY FOOTER */
+/* FOOTER */
 footer {
     background: #333;
     color: white;
@@ -261,11 +250,10 @@ footer {
     left: 0;
     width: 100%;
     z-index: 100;
-    flex-shrink: 0; /* Don't shrink */
+    flex-shrink: 0;
     box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.5);
     border-top: 2px solid rgba(255, 255, 255, 0.1);
 }
-
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -278,7 +266,6 @@ footer {
     footer { padding: 12px; font-size: 0.9rem; }
 }
 
-/* For very small screens */
 @media(max-width:480px){
     .name-text { font-size: 1.3rem; }
     .name-box { padding: 20px 15px; }
@@ -291,6 +278,7 @@ footer {
 
 <body>
 <main>
+    <!-- ===== HEADING WITH FAST FULL-WIDTH PULSE ===== -->
     <h1>Welcome to My Kingdom 🧿</h1>
 
     <!-- Profile Picture -->
@@ -319,23 +307,13 @@ footer {
     </div>
 
     <!-- Navigation Buttons -->
-    <div class="links" style="
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:10px;
-">
-
+    <div class="links" style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px;">
         <button class="button-35" onclick="location.href='about.html'">About Me</button>
         <button class="button-35" onclick="location.href='projects.html'">Projects</button>
         <button class="button-35" onclick="location.href='contact.html'">Media</button>
         <button class="button-35" onclick="location.href='articles/Column.html'">My Column</button>
-    <button class="button-35" onclick="location.href='priyadarshini1/ppn.html'">
-        Priyadarshini
-    </button>
+        <button class="button-35" onclick="location.href='priyadarshini1/ppn.html'">Priyadarshini</button>
     </div>
-
-
 </main>
 
 <footer>
@@ -346,7 +324,6 @@ footer {
 const box = document.querySelector('.name-box');
 box.addEventListener('mouseenter', ()=>{ box.style.transform='scale(1.03)'; });
 box.addEventListener('mouseleave', ()=>{ box.style.transform='scale(1)'; });
-
 </script>
 </body>
 </html>
