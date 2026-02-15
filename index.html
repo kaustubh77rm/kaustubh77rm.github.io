@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -149,45 +150,93 @@ h1 {
 .links {
     margin-top: 20px;
 }
-
-/* BETTER APP-STYLE BUTTONS */
+/* 🔥 ULTRA PREMIUM APP-STYLE BUTTONS 🔥 */
 .button-35 {
-    background: linear-gradient(135deg, #FFD000, #FFA000);
+    position: relative;
+    overflow: hidden;
     border: none;
-    padding: 14px 34px;
-    margin: 12px;
+    padding: 16px 38px;
+    margin: 14px;
     font-size: 20px;
     font-weight: 700;
     border-radius: 999px;
     cursor: pointer;
+    letter-spacing: 0.8px;
     color: #222;
-    letter-spacing: 0.5px;
 
+    background: linear-gradient(135deg, #FFD000, #FFA000);
+    
     box-shadow:
-        0 8px 18px rgba(0,0,0,0.35),
-        inset 0 -3px 0 rgba(0,0,0,0.15);
+        0 10px 25px rgba(0,0,0,0.4),
+        inset 0 -4px 0 rgba(0,0,0,0.15);
 
     transition: 
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
+        transform 0.25s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.25s ease,
         background 0.3s ease;
 }
 
-/* Hover (mouse) */
+/* 🔥 CLEAN PREMIUM BUTTONS (No rainbow drama) 🔥 */
+.button-35 {
+    position: relative;
+    overflow: hidden;
+    border: none;
+    padding: 15px 36px;
+    margin: 12px;
+    font-size: 19px;
+    font-weight: 700;
+    border-radius: 999px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    color: #111;
+
+    background: #FFD000;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,0.35),
+        0 2px 0 rgba(0,0,0,0.2) inset;
+
+    transition: 
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.3s ease;
+}
+
+/* Soft Light Sweep */
+.button-35::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.6),
+        transparent
+    );
+    transition: 0.6s ease;
+}
+
+/* Hover */
 .button-35:hover {
-    transform: translateY(-3px) scale(1.05);
-    background: linear-gradient(135deg,#ffca28,#ff8f00);
+    transform: translateY(-4px);
+    background: #ffc107;
     box-shadow:
-        0 14px 30px rgba(255,193,7,0.55);
+        0 14px 28px rgba(0,0,0,0.4);
 }
 
-/* Tap / Click */
+.button-35:hover::before {
+    left: 130%;
+}
+
+/* Click */
 .button-35:active {
-    transform: scale(0.97);
+    transform: translateY(1px);
     box-shadow:
-        0 5px 12px rgba(0,0,0,0.4) inset;
+        0 4px 10px rgba(0,0,0,0.4) inset;
 }
-
 
 /* VISITOR COUNTER */
 #visitor-count { 
