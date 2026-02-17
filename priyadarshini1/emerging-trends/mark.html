@@ -1,450 +1,305 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-    <title>IT · IF6K · Emerging Trends</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+<title>IT · IF6K · Emerging Trends</title>
 
-        body {
-            background: linear-gradient(145deg, #f0f4fa 0%, #e6ecf3 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem 0.75rem;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
 
-        .card {
-            max-width: 1200px;
-            width: 100%;
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(3px);
-            border-radius: 2rem;
-            box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.3);
-            padding: 1.5rem 1.2rem 2rem 1.2rem;
-            border: 1px solid rgba(255,255,255,0.6);
-        }
+body{
+    background:linear-gradient(145deg,#f0f4fa 0%,#e6ecf3 100%);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:1rem 0.75rem;
+}
 
-        /* ----- header with extra subject line ----- */
-        .dept-header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            background: #0f2744;        /* deeper navy */
-            color: white;
-            padding: 1rem 1.5rem;
-            border-radius: 48px;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 8px 16px rgba(0,20,40,0.3);
-            border: 1px solid #3e6a97;
-            gap: 0.6rem 0.8rem;
-        }
+.card{
+    max-width:1200px;
+    width:100%;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(3px);
+    border-radius:2rem;
+    box-shadow:0 20px 40px -12px rgba(0,20,40,0.3);
+    padding:1.5rem 1.2rem 2rem 1.2rem;
+    border:1px solid rgba(255,255,255,0.6);
+}
 
-        .dept-header .title-item {
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.01em;
-            display: flex;
-            align-items: center;
-            gap: 0.3rem;
-            flex-wrap: wrap;
-        }
+/* Header */
+.dept-header{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:center;
+    background:#0f2744;
+    color:white;
+    padding:1rem 1.5rem;
+    border-radius:48px;
+    margin-bottom:1.5rem;
+    box-shadow:0 8px 16px rgba(0,20,40,0.3);
+    border:1px solid #3e6a97;
+    gap:0.6rem 0.8rem;
+}
 
-        .dept-header .title-item strong {
-            font-weight: 700;
-            background: #f2c94c;
-            color: #0a1a2b;
-            padding: 0.2rem 1rem;
-            border-radius: 40px;
-            font-size: 0.95rem;
-            margin-left: 0.3rem;
-        }
+.dept-header .title-item strong{
+    font-weight:700;
+    background:#f2c94c;
+    color:#0a1a2b;
+    padding:0.2rem 1rem;
+    border-radius:40px;
+    font-size:0.95rem;
+}
 
-        .year-badge {
-            background: #1f4a7a;
-            padding: 0.3rem 1.2rem;
-            border-radius: 36px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: 1px solid #78a5d2;
-            white-space: nowrap;
-        }
+.year-badge{
+    background:#1f4a7a;
+    padding:0.3rem 1.2rem;
+    border-radius:36px;
+    font-weight:600;
+    font-size:1.1rem;
+    border:1px solid #78a5d2;
+}
 
-        /* new subject row inside header (or attached) */
-        .subject-row {
-            background: #17345c;
-            margin: 0.2rem 0 1.2rem 0;
-            padding: 0.7rem 1.8rem;
-            border-radius: 40px;
-            display: inline-flex;
-            flex-wrap: wrap;
-            align-items: baseline;
-            gap: 0.8rem 1.5rem;
-            color: white;
-            font-size: 1.1rem;
-            border: 1px solid #5d8bc0;
-            box-shadow: inset 0 1px 3px rgba(255,255,255,0.2);
-            width: fit-content;
-            max-width: 100%;
-        }
+/* Subject Row */
+.subject-row{
+    background:#17345c;
+    margin:0.2rem 0 0.8rem 0;
+    padding:0.7rem 1.8rem;
+    border-radius:40px;
+    display:inline-flex;
+    flex-wrap:wrap;
+    align-items:baseline;
+    gap:0.8rem 1.5rem;
+    color:white;
+    font-size:1.1rem;
+    border:1px solid #5d8bc0;
+}
 
-        .subject-name {
-            font-weight: 600;
-            background: #2c5786;
-            padding: 0.25rem 1.2rem;
-            border-radius: 30px;
-        }
+.subject-name{
+    font-weight:600;
+    background:#2c5786;
+    padding:0.25rem 1.2rem;
+    border-radius:30px;
+}
 
-        .subject-code {
-            font-family: 'SF Mono', 'Fira Code', monospace;
-            background: #0e2e4a;
-            padding: 0.25rem 1.2rem;
-            border-radius: 30px;
-            letter-spacing: 0.5px;
-            border: 1px solid #a1c2e6;
-        }
+.subject-code{
+    font-family:monospace;
+    background:#0e2e4a;
+    padding:0.25rem 1.2rem;
+    border-radius:30px;
+    border:1px solid #a1c2e6;
+}
 
-        /* ----- table styles (mobile first) ----- */
-        .marks-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 6px;
-            background: transparent;
-            font-size: 0.9rem;
-        }
+/* Faculty Name */
+.faculty{
+    margin-bottom:1.2rem;
+    padding:0.6rem 1.4rem;
+    background:#e3edf9;
+    border-radius:30px;
+    font-weight:600;
+    color:#0f2744;
+    border:1px solid #b4c7e3;
+    display:inline-block;
+}
 
-        /* main column headers */
-        .marks-table thead tr {
-            background: #1f3a5f;
-            border-radius: 16px 16px 0 0;
-        }
+/* Table */
+.marks-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0 6px;
+}
 
-        .marks-table thead th {
-            color: white;
-            font-weight: 600;
-            font-size: 0.95rem;
-            padding: 0.8rem 0.2rem;
-            text-align: center;
-            background: #1f3a5f;
-            border-bottom: 3px solid #f5c542;
-        }
+.marks-table thead th{
+    background:#1f3a5f;
+    color:white;
+    font-weight:600;
+    padding:0.8rem 0.2rem;
+    text-align:center;
+    border-bottom:3px solid #f5c542;
+}
 
-        .marks-table thead th:first-child {
-            border-top-left-radius: 16px;
-        }
-        .marks-table thead th:last-child {
-            border-top-right-radius: 16px;
-        }
+/* Name Marks Header */
+.name-header td{
+    background:#dce6f3;
+    font-weight:800;
+    text-align:center;
+    padding:0.6rem;
+    border-radius:12px;
+    color:#0f2744;
+    border:1px solid #b5c8e6;
+}
 
-        /* group row (IF6K / ET-1) */
-        .marks-table .group-row th {
-            background: #cbd5e1;
-            color: #102b41;
-            font-size: 0.95rem;
-            font-weight: 700;
-            padding: 0.6rem 0.2rem;
-            text-align: center;
-            border-bottom: 2px dashed #6b8eb5;
-        }
+/* Cells */
+.marks-table tbody td{
+    background:white;
+    padding:0.7rem 0.4rem;
+    border-radius:14px;
+    border:1px solid #dee7f2;
+}
 
-        .marks-table .group-row th:first-child {
-            border-right: 2px solid #8da3c0;
-        }
-        .marks-table .group-row th:last-child {
-            border-left: 2px solid #8da3c0;
-        }
+.marks-table td.perfect{
+    background:#c7efd4 !important;
+    color:#0b4e2b;
+    font-weight:800;
+}
 
-        /* cells base */
-        .marks-table tbody td {
-            background: white;
-            padding: 0.75rem 0.4rem;
-            border-radius: 14px;
-            font-size: 1.3rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            border: 1px solid #dee7f2;
-            vertical-align: middle;
-
-            /* fade-in animation for names */
-            animation: nameFadeIn 0.5s ease forwards;
-        }
-
-        /* left name cells */
-        .marks-table tbody td:first-child {
-            font-weight: 600;
-            color: #13294b;
-            background: #f6faff;
-            border-left: 4px solid #f5c542;
-            border-radius: 14px 0 0 14px;
-            padding-left: 0.7rem;
-        }
-
-        /* right name cells */
-        .marks-table tbody td:nth-child(3) {
-            font-weight: 600;
-            color: #153955;
-            background: #f6faff;
-            border-right: 4px solid #5880aa;
-            border-radius: 0 14px 14px 0;
-            padding-right: 0.7rem;
-        }
-
-        /* marks columns */
-        .marks-table tbody td:nth-child(2),
-        .marks-table tbody td:nth-child(4) {
-            text-align: center;
-            font-weight: 700;
-            font-size: 1rem;
-            background: #ffffff;
-        }
-
-        /* perfect score highlight */
-        .marks-table td.perfect {
-            background: #d0f0da !important;
-            color: #0a542a;
-            font-weight: 800;
-            position: relative;
-        }
-
-        /* empty cell dash */
-        .marks-table td:empty::before {
-            content: "—";
-            color: #acbed4;
-            font-weight: 400;
-            opacity: 0.8;
-        }
-
-        /* animation keyframes */
-        @keyframes nameFadeIn {
-            0% { opacity: 0; transform: translateX(-4px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
-
-        /* footer note */
-        .table-footer-note {
-            margin-top: 1.8rem;
-            padding: 0.6rem 1.2rem;
-            background: #d7e2f0;
-            border-radius: 40px;
-            display: inline-block;
-            font-size: 0.85rem;
-            color: #173e5f;
-            border: 1px solid #9cb9da;
-            font-weight: 500;
-        }
-
-        /* ===== MOBILE OPTIMIZATION ===== */
-        @media (max-width: 600px) {
-            body { padding: 0.5rem 0.3rem; }
-            .card { padding: 1rem 0.8rem 1.5rem; border-radius: 1.8rem; }
-            
-            .dept-header {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 0.8rem 1rem;
-                border-radius: 36px;
-            }
-            .dept-header .title-item { font-size: 0.95rem; }
-            .year-badge { font-size: 1rem; align-self: flex-start; }
-
-            .subject-row {
-                padding: 0.5rem 1rem;
-                font-size: 0.9rem;
-                gap: 0.4rem;
-                flex-wrap: wrap;
-                margin-bottom: 0.8rem;
-            }
-
-            /* make table more compact but readable */
-            .marks-table {
-                font-size: 0.8rem;
-            }
-            .marks-table thead th {
-                font-size: 0.8rem;
-                padding: 0.5rem 0.1rem;
-            }
-            .marks-table .group-row th {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.1rem;
-            }
-            .marks-table tbody td {
-                padding: 0.5rem 0.2rem;
-                font-size: 0.75rem;
-            }
-            .marks-table tbody td:first-child {
-                padding-left: 0.4rem;
-            }
-            .marks-table tbody td:nth-child(3) {
-                padding-right: 0.4rem;
-            }
-            .marks-table tbody td:nth-child(2),
-            .marks-table tbody td:nth-child(4) {
-                font-size: 0.85rem;
-            }
-        }
-
-        /* tiny screens (<=400px) */
-        @media (max-width: 400px) {
-            .marks-table tbody td {
-                font-size: 0.7rem;
-                padding: 0.4rem 0.1rem;
-            }
-            .marks-table td.perfect {
-                font-weight: 700;
-            }
-            .dept-header .title-item strong {
-                padding: 0.15rem 0.6rem;
-                font-size: 0.85rem;
-            }
-        }
-
-        /* :contains fallback is not needed — we use perfect class */
-    </style>
+</style>
 </head>
+
 <body>
 <div class="card">
-    <!-- header: Department, Branch, Year -->
-    <div class="dept-header">
-        <span class="title-item">🏛️ Dept: <strong>Information Technology</strong></span>
-        <span class="title-item">📘 Branch: <strong>IF6K</strong></span>
-        <span class="year-badge">🗓️ 2025-2026</span>
-    </div>
 
-    <!-- Subject line (as requested) -->
-    <div class="subject-row">
-        <span class="subject-name">📘 Emerging Trends in CS & IT</span>
-        <span class="subject-code">🔢 316313</span>
-    </div>
-
-    <!-- main table -->
-    <table class="marks-table">
-        <thead>
-            <tr>
-                <th>Unit</th>
-                <th>Test</th>
-                <th>Unit</th>
-                <th>Test</th>
-            </tr>
-        </thead>
-        <!-- group row: left IF6K, right ET-1 -->
-        <tr class="group-row">
-            <th colspan="2">📋 IF6K</th>
-            <th colspan="2">📋 ET-1</th>
-        </tr>
-        <tbody>
-            <!-- data with corrected names + perfect class for 30s -->
-            <tr>
-                <td>Bhondle Yashasvi</td>
-                <td class="perfect">30</td>
-                <td>Punse Harshad</td>
-                <td>29</td>
-            </tr>
-            <tr>
-                <td>Barapatre Aakansha</td>
-                <td class="perfect">30</td>   <!-- now mark 30 (image had blank, but we set 30) based on later user change: Barapatre A. originally blank? but in updated code they set 30, we keep as per latest request (Barapatre Aakansha 30) -->
-                <td>Selwante Shlok</td>
-                <td class="perfect">30</td>
-            </tr>
-            <tr>
-                <td>Bhakare Anurag</td>
-                <td class="perfect">30</td>
-                <td>Shahu Jay</td>
-                <td>29</td>
-            </tr>
-            <tr>
-                <td>Bhavesh Thawale</td>
-                <td class="perfect">30</td>
-                <td>Thakur Shourya</td>
-                <td class="perfect">30</td>
-            </tr>
-            <tr>
-                <td>Bokde Bhavik</td>
-                <td class="perfect">30</td>
-                <td>Shinde Aman</td>
-                <td>29</td>
-            </tr>
-            <tr>
-                <td>Dikondwar Rudraksh</td>
-                <td class="perfect">30</td>
-                <td>Tanvi Dhakate</td>
-                <td class="perfect">30</td>
-            </tr>
-            <tr>
-                <td>Gube Thunali</td>
-                <td class="perfect">30</td>
-                <td>Teltumbade Sejal</td>
-                <td>27</td>
-            </tr>
-            <tr>
-                <td>Gulghane Harsha</td>
-                <td class="perfect">30</td>
-                <td>Vedant Joshi</td>
-                <td>28</td>
-            </tr>
-            <tr>
-                <td>Hemane Lucky</td>
-                <td class="perfect">30</td>
-                <td>Yadav Somya</td>
-                <td class="perfect">30</td>
-            </tr>
-            <tr>
-                <td>Kamble Prashik</td>
-                <td class="perfect">30</td>
-                <td>Dhanorkar Kartiki</td>
-                <td>29</td>
-            </tr>
-            <tr>
-                <td>Kanade Gaurav</td>
-                <td>29</td>
-                <td>Yawale Sujal</td>
-                <td>28</td>
-            </tr>
-            <tr>
-                <td>Kundajwar Ashutosh</td>
-                <td class="perfect">30</td>
-                <td>Jagruti Dharme</td>
-                <td>23</td>
-            </tr>
-            <tr>
-                <td>Lasunte Arya</td>
-                <td class="perfect">30</td>
-                <td>Nikore Tanvi</td>
-                <td class="perfect">30</td>
-            </tr>
-            <tr>
-                <td>Mahi Kale</td>
-                <td class="perfect">30</td>
-                <td>Waghmare Sachin</td>
-                <td>27</td>
-            </tr>
-            <tr>
-                <td>Pal Aman</td>
-                <td class="perfect">30</td>
-                <td></td>
-                <td></td>
-            </tr>
-            
-        </tbody>
-    </table>
-
+<div class="dept-header">
+<span>🏛️ Dept: <strong>Information Technology</strong></span>
+<span>📘 Branch: <strong>IF6K</strong></span>
+<span class="year-badge">🗓️ 2025-2026</span>
 </div>
 
-<!-- ensure that any 30 without perfect class gets style (though we added perfect) -->
-<style>
-    /* additional insurance for .perfect, and names fade already applied */
-    .marks-table td.perfect {
-        background: #c7efd4;
-        color: #0b4e2b;
-    }
-    /* names fade via keyframe on all td */
-</style>
+<div class="subject-row">
+<span class="subject-name">📘 Emerging Trends in CS & IT</span>
+<span class="subject-code">🔢 316313</span>
+</div>
 
+<!-- Faculty Added -->
+<div class="faculty">
+👨‍🏫 Name of Faculty: Mr. Kaustubh Ramteke
+</div>
+
+<table class="marks-table">
+<thead>
+<tr>
+<th>Unit</th>
+<th>Test</th>
+<th>Unit</th>
+<th>Test</th>
+</tr>
+</thead>
+
+<tbody>
+
+<!-- New Name/Marks Header -->
+<tr class="name-header">
+<td>Name</td>
+<td>Marks</td>
+<td>Name</td>
+<td>Marks</td>
+</tr>
+
+<tr>
+<td>Bhondle Yashasvi</td>
+<td class="perfect">30</td>
+<td>Punse Harshad</td>
+<td>29</td>
+</tr>
+
+<tr>
+<td>Barapatre Aakansha</td>
+<td class="perfect">30</td>
+<td>Selwante Shlok</td>
+<td class="perfect">30</td>
+</tr>
+
+<tr>
+<td>Bhakare Anurag</td>
+<td class="perfect">30</td>
+<td>Shahu Jay</td>
+<td>29</td>
+</tr>
+
+<tr>
+<td>Bhavesh Thawale</td>
+<td class="perfect">30</td>
+<td>Thakur Shourya</td>
+<td class="perfect">30</td>
+</tr>
+
+<tr>
+<td>Bokde Bhavik</td>
+<td class="perfect">30</td>
+<td>Shinde Aman</td>
+<td>29</td>
+</tr>
+
+<tr>
+<td>Dikondwar Rudraksh</td>
+<td class="perfect">30</td>
+<td>Tanvi Dhakate</td>
+<td class="perfect">30</td>
+</tr>
+
+<tr>
+<td>Gube Thunali</td>
+<td class="perfect">30</td>
+<td>Teltumbade Sejal</td>
+<td>27</td>
+</tr>
+
+<tr>
+<td>Gulghane Harsha</td>
+<td class="perfect">30</td>
+<td>Vedant Joshi</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>Hemane Lucky</td>
+<td class="perfect">30</td>
+<td>Yadav Somya</td>
+<td class="perfect">30</td>
+</tr>
+
+<tr>
+<td>Kamble Prashik</td>
+<td class="perfect">30</td>
+<td>Dhanorkar Kartiki</td>
+<td>29</td>
+</tr>
+
+<tr>
+<td>Kanade Gaurav</td>
+<td>29</td>
+<td>Yawale Sujal</td>
+<td>28</td>
+</tr>
+
+<tr>
+<td>Kundajwar Ashutosh</td>
+<td class="perfect">30</td>
+<td>Jagruti Dharme</td>
+<td>29</td>
+</tr>
+
+<tr>
+<td>Lasunte Arya</td>
+<td class="perfect">30</td>
+<td>Nikore Tanvi</td>
+<td class="perfect">30</td>
+</tr>
+
+<tr>
+<td>Mahi Kale</td>
+<td class="perfect">30</td>
+<td>Waghmare Sachin</td>
+<td>27</td>
+</tr>
+
+<tr>
+<td>Pal Aman</td>
+<td class="perfect">30</td>
+<td>Gautam Ashish</td>
+<td style="color: red; font-weight: 700;">Absent</td>
+</tr>
+
+</tbody>
+</table>
+
+</div>
 </body>
 </html>
