@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -13,6 +14,23 @@
     --text: #333;
     --muted: #666;
 }
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--card);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    color: var(--muted);
+    box-shadow: 0 -7px 16px rgba(0,0,0,0.5);
+    z-index: 200;
+}
+
+/* Prevent content from hiding behind fixed footer */
+
 
 /* Base */
 body {
@@ -20,6 +38,7 @@ body {
     font-family: system-ui, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
+    padding-bottom: 50px;
 }
 
 /* Top bar */
@@ -318,6 +337,9 @@ body {
         </ul>
     </div>
 
+</div>
+<div class="footer">
+    © Kaustubh Ramteke
 </div>
 
 </body>
