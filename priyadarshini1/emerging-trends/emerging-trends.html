@@ -87,13 +87,30 @@ main {
 }
 
 /* FOOTER */
+/* ENHANCED FOOTER */
 footer {
-    background: #333;
-    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #FF8500;
     text-align: center;
-    padding: 14px;
+    padding: 12px 0;
     font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: 0.5px;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    border-top: 2px solid rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
 }
+
+/* subtle hover glow */
+footer:hover {
+    box-shadow: 0 -6px 20px rgba(255,208,0,0.6);
+}
+
 
 /* RESPONSIVE */
 @media(max-width:600px){
@@ -111,7 +128,8 @@ footer {
 <main>
     <div class="card">
         <h1>Emerging Trends</h1>
-        <div class="subtitle">Computer Science & IT</div>
+        <div class="subtitle">CS & IT</div>
+        <div class="subtitle">Multiple Choice Questions (MCQs)</div>
 
         <div class="unit-buttons">
             <a href="unit1.html" class="unit-btn">Unit 1</a>
@@ -119,8 +137,7 @@ footer {
             <a href="unit3.html" class="unit-btn">Unit 3</a>
             <a href="unit4.html" class="unit-btn">Unit 4</a>
             <a href="unit5.html" class="unit-btn">Unit 5</a>
-            <a href="qb1.html" class="unit-btn">Online test 1 - question bank</a>
-            <a href="mark.html" class="unit-btn">Marks (online test)</a>
+            <a href="mark.html" class="unit-btn">Marks</a>
             
         </div>
     </div>
