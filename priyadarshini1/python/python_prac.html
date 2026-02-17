@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>👓 massive python lab · star practicals with deep comments</title>
+
+     <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f4f6fb;
+        }
+
+        body {
+            padding: 2rem 1rem;
+        }
+
+        .monocle-frame {
+            max-width: 1400px;
+            margin: auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+        }
+
+        .title-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .badge-msbte {
+            background: #111;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        th {
+            background: #111;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 1rem;
+            vertical-align: top;
+            border-bottom: 1px solid #eee;
+        }
+
+        .llo-badge {
+            background: #eef2ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .code-snippet {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 14px;
+            font-family: Consolas, monospace;
+            font-size: 0.85rem;
+            white-space: pre;
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        .io-hint {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        hr {
+            margin: 3rem 0;
+            border: none;
+            height: 1px;
+            background: #ddd;
+        }
+
+        /* ============================= */
+        /* 📱 RESPONSIVE FIX             */
+        /* ============================= */
+
+        @media (max-width: 1024px) {
+
+            .title-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                justify-content: center;
+                font-size: 2rem;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            th, td {
+                min-width: 180px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            .code-snippet {
+                font-size: 0.75rem;
+            }
+        }
+
+    </style>
+</head>
+
+</head>
+
+    <body>
+<div class="monocle-frame">
+    <div class="title-section">
+        <h1>
+            <span class="glasses-icon-big">👓</span> 
+            Python Practicals 
+            <span class="glasses-icon-big" style="transform: scaleX(-1);">👓</span>
+        </h1>
+        <span class="badge-msbte">Sub code: 313011</span>
+    </div>
+    
+
+    <table class="practical-table">
+        <thead class="table-header">
+            <tr><th>#</th><th>LLO/CO</th><th>Star practical description</th><th>Expanded Python code with comments</th></tr>
+        </thead>
+        <tbody>
+            <!-- 1.b ★ -->
+            <tr class="practical-row star-highlight">
+                <td>1b</td>
+                <td><span class="llo-badge">LLO1.1 · CO1</span></td>
+                <td><strong>★ display message</strong> <br> after IDE install</td>
+                <td>
+                    <div class="code-snippet"># Practical 1.b : First program - display message with user input
+# ---------------------------------------------------------------
+print("="*50)
+print("     PYTHON INSTALLATION TEST PROGRAM")
+print("="*50)
+
+# take user's name as input to make it interactive
+name = input("Enter your name: ")
+
+# display a warm welcome message
+print(f"\n👋 Hello {name}, welcome to Python programming!")
+
+# show that IDE is working fine
+print("\n✅ Python is successfully installed and configured.")
+print("👉 You can now run any Python script.\n")</div>
+                    <div class="io-hint">🧪 input: "Alex" → output: Hello Alex ...</div>
+                </td>
+            </tr>
+
+            <!-- 2.a ★ series/parallel -->
+            <tr class="practical-row star-highlight">
+                <td>2a</td>
+                <td><span class="llo-badge">LLO2.1 · CO1</span></td>
+                <td><strong>★ equivalent resistance</strong> <br> series & parallel (R1,R2,R3)</td>
+                <td>
+                    <div class="code-snippet"># Practical 2.a : Calculate equivalent resistance (series & parallel)
+# -------------------------------------------------------------------
+print("----- RESISTANCE CALCULATOR (3 resistors) -----")
+
+# Input: three resistor values in ohms
+R1 = float(input("Enter resistance R1 (Ω): "))
+R2 = float(input("Enter resistance R2 (Ω): "))
+R3 = float(input("Enter resistance R3 (Ω): "))
+
+# Series equivalent: simple sum
+R_series = R1 + R2 + R3
+
+# Parallel equivalent: 1 / (1/R1 + 1/R2 + 1/R3)
+# using try-except to avoid division by zero
+try:
+    R_parallel = 1 / (1/R1 + 1/R2 + 1/R3)
+except ZeroDivisionError:
+    R_parallel = float('inf')  # if any resistor is 0, parallel is 0? but mathematically infinite
+
+print("\n📏 RESULTS")
+print(f"   Series equivalent resistance     = {R_series:.2f} Ω")
+print(f"   Parallel equivalent resistance   = {R_parallel:.2f} Ω")
+
+# Extra: show which is bigger
+if R_series > R_parallel:
+    print("   (Series resistance is higher than parallel)")
+else:
+    print("   (Parallel resistance is lower or equal)")</div>
+                    <div class="io-hint">🔌 R1=100, R2=200, R3=300 → series=600.00, parallel≈54.55</div>
+                </td>
+            </tr>
+
+            <!-- 2.b ★ ohm's law -->
+            <tr class="practical-row star-highlight">
+                <td>2b</td>
+                <td><span class="llo-badge">LLO2.1 · CO1</span></td>
+                <td><strong>★ Ohm’s law: V = I·R</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 2.b : Calculate voltage using Ohm's law V = I * R
+# ------------------------------------------------------------
+print("----- OHM'S LAW VOLTAGE CALCULATOR -----")
+
+# Accept current in Amperes and resistance in Ohms
+I = float(input("Enter current (I) in Amperes: "))
+R = float(input("Enter resistance (R) in Ohms: "))
+
+# Compute voltage
+V = I * R
+
+print("\n⚡ According to Ohm's law:")
+print(f"   Voltage (V) = {I:.3f} A × {R:.3f} Ω = {V:.3f} V")
+
+# Additional information: power
+P = I * V
+print(f"   Power dissipated = {P:.3f} W")</div>
+                    <div class="io-hint">🔋 I=2.5, R=100 → V=250.00 V, P=625.00 W</div>
+                </td>
+            </tr>
+
+            <!-- 3 (not star) but keep minimal, but we will fill star ones bigger. skipping non-star for brevity but keep table line? we already have full table. we focus on star with huge code. I'll include bigger for 4a,4b,...-->
+
+            <!-- 4.a ★ radio frequency bands -->
+            <tr class="practical-row star-highlight">
+                <td>4a</td>
+                <td><span class="llo-badge">LLO4.1 · CO2</span></td>
+                <td><strong>★ RF bands using if..elif ladder</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 4.a : Identify radio frequency band from frequency input
+# -------------------------------------------------------------------
+print("----- RADIO FREQUENCY BAND IDENTIFIER -----")
+
+freq = float(input("Enter frequency in Hertz (Hz): "))
+
+# Using if..elif ladder to classify frequency bands
+# Reference: standard ITU radio bands
+if freq < 30e3:                     # less than 30 kHz
+    band = "VLF (Very Low Frequency)"
+elif freq < 300e3:                   # 30 kHz – 300 kHz
+    band = "LF (Low Frequency)"
+elif freq < 3e6:                      # 300 kHz – 3 MHz
+    band = "MF (Medium Frequency)"
+elif freq < 30e6:                     # 3 MHz – 30 MHz
+    band = "HF (High Frequency)"
+elif freq < 300e6:                    # 30 MHz – 300 MHz
+    band = "VHF (Very High Frequency)"
+elif freq < 3e9:                      # 300 MHz – 3 GHz
+    band = "UHF (Ultra High Frequency)"
+elif freq < 30e9:                     # 3 GHz – 30 GHz
+    band = "SHF (Super High Frequency)"
+else:
+    band = "EHF / Microwave ( > 30 GHz )"
+
+print(f"\n📡 Frequency {freq:,.2f} Hz falls under: {band}")
+
+# show in more common units
+if freq >= 1e9:
+    print(f"   (that's {freq/1e9:.2f} GHz)")
+elif freq >= 1e6:
+    print(f"   (that's {freq/1e6:.2f} MHz)")
+elif freq >= 1e3:
+    print(f"   (that's {freq/1e3:.2f} kHz)")</div>
+                    <div class="io-hint">📻 101.3e6 → VHF, 2.4e9 → UHF</div>
+                </td>
+            </tr>
+
+            <!-- 4.b ★ resistor color code (switch/dict) -->
+            <tr class="practical-row star-highlight">
+                <td>4b</td>
+                <td><span class="llo-badge">LLO4.1 · CO2</span></td>
+                <td><strong>★ resistor color code decoder</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 4.b : Decode 4-band resistor color code (simulated switch with dict)
+# -------------------------------------------------------------------------------
+print("----- RESISTOR COLOR CODE DECODER (4-band) -----")
+
+# Color code mapping (simulating switch via dictionary)
+color_digit = {
+    'black': 0, 'brown': 1, 'red': 2, 'orange': 3, 'yellow': 4,
+    'green': 5, 'blue': 6, 'violet': 7, 'grey': 8, 'white': 9
+}
+
+# multiplier: same dict but 10^value
+multiplier_factor = {color: 10**val for color, val in color_digit.items()}
+
+# tolerance (for 4-band usually gold/silver, but we simplify)
+print("Enter colors in lowercase (e.g., red, violet, orange, gold)")
+
+band1 = input("Enter 1st color (1st digit): ").strip().lower()
+band2 = input("Enter 2nd color (2nd digit): ").strip().lower()
+band3 = input("Enter 3rd color (multiplier): ").strip().lower()
+band4 = input("Enter 4th color (tolerance - optional): ").strip().lower()
+
+# validate
+if band1 in color_digit and band2 in color_digit and band3 in color_digit:
+    digit_val = color_digit[band1] * 10 + color_digit[band2]
+    multiplier = 10 ** color_digit[band3]
+    resistance = digit_val * multiplier
+
+    # tolerance mapping
+    tolerance_map = {'brown': '±1%', 'red': '±2%', 'green': '±0.5%', 'blue': '±0.25%',
+                     'violet': '±0.1%', 'gold': '±5%', 'silver': '±10%', '': '±20% (none)'}
+    tol = tolerance_map.get(band4, '±20% (est)')
+
+    print("\n🎨 Decoded resistance:")
+    print(f"   {band1.upper()} {band2.upper()} {band3.upper()} {band4.upper()}")
+    print(f"   Resistance = {resistance} Ω  ({resistance/1000:.2f} kΩ)")
+    print(f"   Tolerance = {tol}")
+else:
+    print("❌ Invalid color name. Use standard colors: black, brown, red, orange, yellow, green, blue, violet, grey, white")</div>
+                    <div class="io-hint">🎨 red, violet, orange, gold → 27000 Ω ±5%</div>
+                </td>
+            </tr>
+
+            <!-- 5a ★ while & do-while -->
+            <tr class="practical-row star-highlight">
+                <td>5a</td>
+                <td><span class="llo-badge">LLO5.1 · CO2</span></td>
+                <td><strong>★ while / do-while emulation</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 5.a : Demonstrate while loop and emulate do-while
+# ------------------------------------------------------------
+print("----- WHILE LOOP DEMO -----")
+print("\n[ while loop: print 1 to 5 ]")
+i = 1
+while i <= 5:
+    print("   i =", i)
+    i += 1
+
+print("\n[ do-while emulation (ensures at least one iteration) ]")
+# Python has no built-in do-while, but we can use while True with break
+j = 1
+while True:
+    print("   do-while iteration: j =", j)
+    j += 1
+    if j > 5:
+        break
+
+# Another example: keep asking until valid input (classic do-while use)
+print("\n[ do-while style: repeat until positive number ]")
+while True:
+    num = float(input("   Enter a positive number: "))
+    if num > 0:
+        print(f"   Thanks! You entered {num}")
+        break
+    else:
+        print("   Not positive, try again.")</div>
+                    <div class="io-hint">🔄 demonstrates both loops clearly</div>
+                </td>
+            </tr>
+
+            <!-- 5b ★ for loop demos (pattern/table/palindrome) -->
+            <tr class="practical-row star-highlight">
+                <td>5b</td>
+                <td><span class="llo-badge">LLO5.1 · CO2</span></td>
+                <td><strong>★ for loop: pattern, table, palindrome</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 5.b : for loop demonstrations
+# ----------------------------------------
+print("----- FOR LOOP PATTERN BUILDING -----")
+rows = 5
+for i in range(1, rows+1):
+    print("   " + "*" * i)
+
+print("\n----- MULTIPLICATION TABLE (7) -----")
+num = 7
+for i in range(1, 11):
+    print(f"   7 × {i:2} = {num*i:3}")
+
+print("\n----- PALINDROME CHECKER -----")
+test_words = ["madam", "racecar", "python", "malayalam"]
+for word in test_words:
+    if word == word[::-1]:
+        print(f"   ✅ '{word}' is a palindrome")
+    else:
+        print(f"   ❌ '{word}' is NOT a palindrome")
+
+# Additional: factorial with for
+print("\n----- FACTORIAL USING FOR -----")
+n = 6
+fact = 1
+for i in range(1, n+1):
+    fact *= i
+print(f"   {n}! = {fact}")</div>
+                    <div class="io-hint">🧩 madam ✅, python ❌</div>
+                </td>
+            </tr>
+
+            <!-- 6 ★ list operations -->
+            <tr class="practical-row star-highlight">
+                <td>6</td>
+                <td><span class="llo-badge">LLO6.1 · CO3</span></td>
+                <td><strong>★ list CRUD</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 6 : List operations - Create, Access, Update, Delete
+# --------------------------------------------------------------
+print("----- LIST CRUD OPERATIONS -----")
+
+# CREATE
+fruits = ["apple", "banana", "cherry", "date"]
+print("1. Initial list (CREATE):", fruits)
+
+# ACCESS
+print("\n2. ACCESS elements:")
+print("   First fruit :", fruits[0])
+print("   Last fruit  :", fruits[-1])
+print("   Slicing [1:3]:", fruits[1:3])
+
+# UPDATE
+fruits[1] = "blueberry"
+print("\n3. After UPDATE (index 1 → blueberry):", fruits)
+
+# add new element (append)
+fruits.append("elderberry")
+print("   After APPEND:", fruits)
+
+# DELETE
+del fruits[2]   # delete third element
+print("\n4. After DELETE index 2 (cherry removed):", fruits)
+
+# remove by value
+fruits.remove("date")
+print("   After REMOVE 'date':", fruits)
+
+# pop
+popped = fruits.pop()
+print("   Popped element:", popped)
+print("   Final list:", fruits)</div>
+                    <div class="io-hint">📋 demonstrates all list operations</div>
+                </td>
+            </tr>
+
+            <!-- 9 ★ dictionary CRUD -->
+            <tr class="practical-row star-highlight">
+                <td>9</td>
+                <td><span class="llo-badge">LLO9.1 · CO3</span></td>
+                <td><strong>★ dictionary: CRUD + loop</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 9 : Dictionary operations (Create, Read, Update, Delete, Loop)
+# -----------------------------------------------------------------------
+print("----- DICTIONARY CRUD + LOOPING -----")
+
+# CREATE
+student = {
+    "name": "Alice Johnson",
+    "roll": 101,
+    "course": "Computer Science",
+    "grade": "A"
+}
+print("1. Original dictionary:")
+print(student)
+
+# ACCESS (Read)
+print("\n2. ACCESS values:")
+print(f"   Name : {student['name']}")
+print(f"   Roll : {student.get('roll')} (using .get())")
+
+# UPDATE
+student["grade"] = "A+"
+student["marks"] = 95          # add new key
+print("\n3. After UPDATE (grade & marks):")
+print(student)
+
+# DELETE
+del student["course"]           # remove key 'course'
+removed = student.pop("roll")   # pop returns value
+print(f"\n4. After DELETE (removed roll: {removed}):")
+print(student)
+
+# LOOPING through dictionary
+print("\n5. LOOPING through items:")
+for key, value in student.items():
+    print(f"   {key} → {value}")
+
+# check existence
+if "name" in student:
+    print("\n✅ 'name' exists in dictionary")</div>
+                    <div class="io-hint">📖 clear dictionary demo</div>
+                </td>
+            </tr>
+
+            <!-- 10a ★ math built-in -->
+            <tr class="practical-row star-highlight">
+                <td>10a</td>
+                <td><span class="llo-badge">LLO10.1 · CO4</span></td>
+                <td><strong>★ math built‑in functions</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 10.a : Using math module built-in functions
+# -----------------------------------------------------
+import math
+
+print("----- MATH BUILT-IN FUNCTIONS DEMO -----")
+
+# Basic math constants
+print(f"1. π (pi)          = {math.pi}")
+print(f"2. e (exponential) = {math.e}")
+
+# Trigonometry
+angle = math.radians(45)   # 45 degrees in radians
+print(f"\n3. sin(45°)   = {math.sin(angle):.4f}")
+print(f"   cos(45°)   = {math.cos(angle):.4f}")
+print(f"   tan(45°)   = {math.tan(angle):.4f}")
+
+# Power and log
+print(f"\n4. 2^10           = {math.pow(2,10)}")
+print(f"   sqrt(144)      = {math.sqrt(144)}")
+print(f"   log10(1000)    = {math.log10(1000)}")
+print(f"   log2(1024)     = {math.log2(1024)}")
+print(f"   natural ln(e^3)= {math.log(math.e**3):.2f}")
+
+# Rounding / ceiling / floor
+x = 4.7
+print(f"\n5. ceil({x})   = {math.ceil(x)}")
+print(f"   floor({x})  = {math.floor(x)}")
+print(f"   factorial(5) = {math.factorial(5)}")</div>
+                    <div class="io-hint">🧮 extensive math demo</div>
+                </td>
+            </tr>
+
+            <!-- 10b ★ string built-in -->
+            <tr class="practical-row star-highlight">
+                <td>10b</td>
+                <td><span class="llo-badge">LLO10.1 · CO4</span></td>
+                <td><strong>★ string built‑in functions</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 10.b : String built-in methods demonstration
+# ------------------------------------------------------
+print("----- STRING BUILT-IN METHODS -----")
+
+s = "  Python Programming is FUN!  "
+print(f"Original string: '{s}'")
+
+# case conversions
+print(f"\n1. upper()      : '{s.upper()}'")
+print(f"   lower()      : '{s.lower()}'")
+print(f"   capitalize() : '{s.capitalize()}'")
+print(f"   title()      : '{s.title()}'")
+print(f"   swapcase()   : '{s.swapcase()}'")
+
+# trimming
+print(f"\n2. strip()      : '{s.strip()}'")
+print(f"   lstrip()     : '{s.lstrip()}'")
+print(f"   rstrip()     : '{s.rstrip()}'")
+
+# search & replace
+print(f"\n3. replace('FUN', 'AWESOME') : '{s.replace('FUN', 'AWESOME')}'")
+print(f"   find('Programming')       : {s.find('Programming')}")
+print(f"   count('P')                : {s.count('P')}")
+
+# split & join
+words = s.strip().split()
+print(f"\n4. split() -> {words}")
+print(f"   join with '-' : '{'-'.join(words)}'")
+
+# check methods
+print(f"\n5. isalpha() on 'Python'? : {'Python'.isalpha()}")
+print(f"   isdigit() on '123'?    : {'123'.isdigit()}")
+print(f"   startswith('  Py')?    : {s.startswith('  Py')}")</div>
+                    <div class="io-hint">🔤 over 15 string methods</div>
+                </td>
+            </tr>
+
+            <!-- 11a factorial ★ -->
+            <tr class="practical-row star-highlight">
+                <td>11a</td>
+                <td><span class="llo-badge">LLO11.1 · CO4</span></td>
+                <td><strong>★ factorial using function</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 11.a : Recursive & iterative factorial functions
+# ---------------------------------------------------------
+def factorial_recursive(n):
+    """Calculate factorial using recursion."""
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial_recursive(n - 1)
+
+def factorial_iterative(n):
+    """Calculate factorial using loop."""
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+print("----- FACTORIAL CALCULATOR (multiple methods) -----")
+
+num = int(input("Enter a non-negative integer: "))
+
+if num < 0:
+    print("Factorial not defined for negative numbers.")
+else:
+    print(f"\nRecursive factorial of {num} = {factorial_recursive(num)}")
+    print(f"Iterative factorial of {num} = {factorial_iterative(num)}")
+
+    # using math module to verify
+    import math
+    print(f"Using math.factorial: {math.factorial(num)}")</div>
+                    <div class="io-hint">🔢 input 6 → 720</div>
+                </td>
+            </tr>
+
+            <!-- 11b swap ★ -->
+            <tr class="practical-row star-highlight">
+                <td>11b</td>
+                <td><span class="llo-badge">LLO11.1 · CO4</span></td>
+                <td><strong>★ swapping two variables</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 11.b : Swap two variables (multiple techniques)
+# --------------------------------------------------------
+def swap_using_temp(a, b):
+    temp = a
+    a = b
+    b = temp
+    return a, b
+
+def swap_without_temp(a, b):
+    a, b = b, a   # pythonic
+    return a, b
+
+def swap_arithmetic(a, b):
+    a = a + b
+    b = a - b
+    a = a - b
+    return a, b
+
+print("----- SWAPPING DEMO -----")
+x, y = 10, 20
+print(f"Original: x = {x}, y = {y}")
+
+x1, y1 = swap_using_temp(x, y)
+print(f"After swap_using_temp  : x = {x1}, y = {y1}")
+
+x2, y2 = swap_without_temp(x, y)
+print(f"After pythonic swap    : x = {x2}, y = {y2}")
+
+x3, y3 = swap_arithmetic(x, y)
+print(f"After arithmetic swap  : x = {x3}, y = {y3}")
+
+# verify original unchanged
+print(f"\nOriginal still: x = {x}, y = {y}")</div>
+                    <div class="io-hint">🔄 10,20 → 20,10</div>
+                </td>
+            </tr>
+
+            <!-- 13 ★ built-in module -->
+            <tr class="practical-row star-highlight">
+                <td>13</td>
+                <td><span class="llo-badge">LLO13.1 · CO5</span></td>
+                <td><strong>★ built-in module: math, statistics, random</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 13 : Built-in modules (math, statistics, random)
+# ---------------------------------------------------------
+import math
+import statistics
+import random
+import datetime
+
+print("----- BUILT-IN MODULES DEMO -----")
+
+# math
+print("\n📐 MATH MODULE")
+print(f"   gcd(48, 64)           = {math.gcd(48, 64)}")
+print(f"   lcm? (via gcd)        = {48*64//math.gcd(48,64)}")
+print(f"   isclose(0.1+0.2, 0.3) = {math.isclose(0.1+0.2, 0.3)}")
+print(f"   degrees(π)            = {math.degrees(math.pi)}")
+
+# statistics
+data = [2, 4, 6, 8, 10, 10, 12]
+print("\n📊 STATISTICS MODULE")
+print(f"   data: {data}")
+print(f"   mean      = {statistics.mean(data)}")
+print(f"   median    = {statistics.median(data)}")
+print(f"   mode      = {statistics.mode(data)}")
+print(f"   stdev     = {statistics.stdev(data):.2f}")
+
+# random
+print("\n🎲 RANDOM MODULE")
+print(f"   random integer 1-100  : {random.randint(1,100)}")
+print(f"   random choice from list: {random.choice(['red','green','blue'])}")
+print(f"   random sample (3)     : {random.sample(range(20), 3)}")
+
+# secrets (secure random)
+import secrets
+print(f"\n🔐 secrets token_hex(4)  : {secrets.token_hex(4)}")</div>
+                    <div class="io-hint">📦 demonstrates three+ modules</div>
+                </td>
+            </tr>
+
+            <!-- 15 ★ NumPy array -->
+            <tr class="practical-row star-highlight">
+                <td>15</td>
+                <td><span class="llo-badge">LLO15.1 · CO5</span></td>
+                <td><strong>★ NumPy array ops (create, access, update)</strong></td>
+                <td>
+                    <div class="code-snippet"># Practical 15 : NumPy package - array creation, access, update
+# ------------------------------------------------------------
+# Make sure to install numpy: pip install numpy
+import numpy as np
+
+print("----- NUMPY ARRAY OPERATIONS -----")
+
+# CREATE
+arr1 = np.array([10, 20, 30, 40, 50])                 # 1D array
+arr2 = np.array([[1, 2, 3], [4, 5, 6]])               # 2D array
+arr_zeros = np.zeros((3, 4))
+arr_ones = np.ones((2, 3))
+arr_range = np.arange(10, 20, 2)
+
+print("1. CREATION:")
+print("   arr1 (1D):", arr1)
+print("   arr2 (2D):\n", arr2)
+print("   zeros(3,4):\n", arr_zeros)
+print("   arange(10,20,2):", arr_range)
+
+# ACCESS
+print("\n2. ACCESS:")
+print("   arr1[2] =", arr1[2])
+print("   arr2[1,2] =", arr2[1, 2])   # row 1, col 2 → 6
+print("   slicing arr1[1:4]:", arr1[1:4])
+
+# UPDATE
+arr1[0] = 99
+arr2[1, 1] = 100
+print("\n3. AFTER UPDATE:")
+print("   arr1[0]=99 →", arr1)
+print("   arr2[1,1]=100 →\n", arr2)
+
+# ADD / DELETE (using numpy delete/append)
+arr1 = np.append(arr1, [200, 210])
+print("\n4. After append:", arr1)
+arr1 = np.delete(arr1, [2])   # remove index 2
+print("   After delete index 2:", arr1)
+
+# Shape & attributes
+print("\n5. SHAPE of arr2:", arr2.shape)
+print("   dtype of arr1:", arr1.dtype)</div>
+                    <div class="io-hint">🧊 numpy essential operations</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- star summary -->
+    <hr>
+    <div style="background: rgba(255,255,240,0.6); border-radius: 60px; padding: 2rem; margin: 2rem 0;">
+        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">⭐ 14 star practicals — all with massive comments</div>
+        <div style="display: flex; gap: 1.8rem; flex-wrap: wrap;">
+            <span class="llo-badge">CO1</span> 1b,2a,2b &nbsp;&nbsp; <span class="llo-badge">CO2</span> 4a,4b,5a,5b &nbsp;&nbsp; <span class="llo-badge">CO3</span> 6,9 &nbsp;&nbsp; <span class="llo-badge">CO4</span> 10a,10b,11a,11b &nbsp;&nbsp; <span class="llo-badge">CO5</span> 13,15
+        </div>
+    </div>
+
+    <div class="footer-note">
+        <span>👓 each star code is EXPLODED with comments & multiple cases</span>
+        <span>🐍 ready to paste in IDE</span>
+        <span>⚡ 2026 · MSBTE 313011</span>
+    </div>
+</div>
+<div style="text-align: center; margin-top: 1.5rem; font-size: 2.5rem; opacity: 0.5;">⌇ ⌇ ⌇</div>
+</body>
+</html>
