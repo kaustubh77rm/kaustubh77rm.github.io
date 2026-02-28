@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>the one with factory</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Factory Items Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
 body {
@@ -10,18 +13,32 @@ body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
+  overflow-x: hidden;
 }
 
+/* Layout */
 .container {
   display: flex;
   min-height: 100vh;
 }
 
+/* Sidebar */
 .sidebar {
   width: 250px;
   padding: 20px;
-  background: rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(15px);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  transform: translateX(0);
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.hidden {
+  transform: translateX(-100%);
 }
 
 .sidebar h2 {
@@ -32,12 +49,13 @@ body {
   display: block;
   width: 100%;
   margin: 8px 0;
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   background: rgba(255,255,255,0.15);
   color: white;
+  font-size: 15px;
 }
 
 .sidebar button.active {
@@ -46,23 +64,36 @@ body {
   font-weight: bold;
 }
 
+/* Main */
 .main {
   flex: 1;
-  padding: 30px;
+  padding: 25px;
+  margin-left: 250px;
+  transition: 0.3s;
 }
 
+/* Topbar */
 .topbar {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-input {
-  padding: 8px 12px;
-  border-radius: 20px;
-  border: none;
+.menu-btn {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
 }
 
+input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
+/* Cards */
 .section {
   margin-bottom: 30px;
 }
@@ -70,13 +101,13 @@ input {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
-  gap: 12px;
+  gap: 15px;
 }
 
 .card {
   background: rgba(255,255,255,0.2);
-  padding: 15px;
-  border-radius: 12px;
+  padding: 18px;
+  border-radius: 14px;
   text-align: center;
   transition: 0.3s;
 }
@@ -85,58 +116,128 @@ input {
   transform: translateY(-5px);
   background: rgba(255,255,255,0.35);
 }
+
+.card i {
+  font-size: 32px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Mobile Mode */
+@media (max-width: 768px) {
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.show {
+    transform: translateX(0);
+  }
+
+  .main {
+    margin-left: 0;
+    padding: 18px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .topbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px,1fr));
+  }
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-  <div class="sidebar">
-    <h2>Factory items as an idea</h2>
+
+  <div class="sidebar hidden" id="sidebar">
+    <h2>Factory Items</h2>
     <div id="categoryButtons"></div>
   </div>
 
   <div class="main">
     <div class="topbar">
-      <h1 id="categoryTitle"></h1>
+      <div>
+        <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
+        <span id="categoryTitle" style="font-size:22px; margin-left:10px;"></span>
+      </div>
       <input type="text" id="search" placeholder="Search item...">
     </div>
     <div id="content"></div>
   </div>
+
 </div>
 
 <script>
 const data = {
+
   Clothing: {
     Innerwear: ["Vest","Underwear"],
-    "Casual Wear": ["Bermuda","Night Pant","T-Shirt","Jeans"],
-    "Formal Wear": ["Formal Pant","Shirt","Blazer","Suit"],
-    Traditional: ["Kurta","Pyjama","Sherwani","Indo (Indo-Western)"]
+    Casual: ["Bermuda","Night Pant","Jeans","T-Shirt"],
+    Formal: ["Formal Pant","Shirt","Blazer","Suit"],
+    Traditional: ["Sherwani","Kurta","Pyjama","Indo"]
   },
+
   "Personal Care": {
-    Soaps: ["Bath Soap","Washing Soap (Clothes)","Washing Soap (Utensils)","Animal Soap"],
-    Grooming: ["Toothbrush","Toothpaste","Facewash","Vaseline","Face Powder","Face Cream","Hair Comb","Hair Oil"]
+    Essentials: ["Toothbrush","Toothpaste","Facewash","Vaseline","Face Powder","Face Cream","Hair Comb","Hair Oil"],
+    Soaps: ["Bath Soap","Washing Soap (Clothes)","Washing Soap (Utensils)","Animal Soap"]
   },
+
   Stationery: {
     Items: ["Pen","Lead Pencil","Pencil","Sharpener","Eraser","Book","Scale","Chalk","Lekhni","Duster","Paper Weight","Black Board","White Board","Board Marker","Marker","Ink"]
   },
+
   Furniture: {
-    Wooden: ["Wooden Table","Wooden Chair","Wooden Stool"],
-    Plastic: ["Plastic Table","Plastic Chair","Plastic Stool"]
+    Tables: ["Wooden Table","Plastic Table"],
+    Chairs: ["Wooden Chair","Plastic Chair"],
+    Stools: ["Wooden Stool","Plastic Stool"]
   },
+
   Utilities: {
     Cleaning: ["Gas Stove","Gas Lighter","Mop","Broom","Vacuum Cleaner"]
   },
+
   "Steel Utensils": {
     Kitchenware: ["Cup","Plate","Bowl","Mug","Glass","Jug","Pan","Pot","Knife","Spoon","Fork","Kettle","Spatula","Ladle","Salt Container"]
   },
+
   "Accessories & Footwear": {
     Accessories: ["Belt","Cap","Hat","Sunglasses","Goggles"],
     Footwear: ["Socks","Shoes","Chappal","Sandal","Slipper"]
   }
+
 };
 
 let activeCategory = Object.keys(data)[0];
+
+function toggleMenu() {
+  document.getElementById("sidebar").classList.toggle("show");
+}
+
+function getIcon(item) {
+  item = item.toLowerCase();
+  if (item.includes("shoe") || item.includes("sandal") || item.includes("slipper") || item.includes("chappal")) return "fa-shoe-prints";
+  if (item.includes("pen") || item.includes("book") || item.includes("pencil") || item.includes("chalk")) return "fa-book";
+  if (item.includes("soap")) return "fa-pump-soap";
+  if (item.includes("chair") || item.includes("table") || item.includes("stool")) return "fa-chair";
+  if (item.includes("knife") || item.includes("spoon") || item.includes("fork") || item.includes("pan") || item.includes("pot")) return "fa-utensils";
+  if (item.includes("gas")) return "fa-fire";
+  if (item.includes("belt") || item.includes("cap") || item.includes("hat")) return "fa-hat-cowboy";
+  return "fa-box";
+}
 
 function renderCategories() {
   const container = document.getElementById("categoryButtons");
@@ -147,6 +248,7 @@ function renderCategories() {
     btn.onclick = () => {
       activeCategory = category;
       render();
+      toggleMenu();
     };
     if(category === activeCategory) btn.classList.add("active");
     container.appendChild(btn);
@@ -173,7 +275,7 @@ function render() {
       .forEach(item => {
         const card = document.createElement("div");
         card.className = "card";
-        card.textContent = item;
+        card.innerHTML = `<i class="fas ${getIcon(item)}"></i>${item}`;
         grid.appendChild(card);
       });
 
