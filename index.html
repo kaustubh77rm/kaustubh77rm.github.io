@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -186,7 +187,24 @@ h1::after {
 }
 
 /* BUTTONS */
-.links { margin-top: 20px; }
+.links .button-35 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.6s ease forwards;
+}
+
+.links .button-35:nth-child(1) { animation-delay: 0.1s; }
+.links .button-35:nth-child(2) { animation-delay: 0.2s; }
+.links .button-35:nth-child(3) { animation-delay: 0.3s; }
+.links .button-35:nth-child(4) { animation-delay: 0.4s; }
+.links .button-35:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
 /* ===== CREATIVE ROYAL GLASS BUTTON ===== */
 .button-35 {
