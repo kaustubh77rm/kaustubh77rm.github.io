@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +7,6 @@
 <title>Factory Items Dashboard</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
 body {
   margin: 0;
@@ -22,23 +22,12 @@ body {
   min-height: 100vh;
 }
 
-/* Sidebar */
+/* Sidebar - Desktop Default */
 .sidebar {
   width: 250px;
   padding: 20px;
-  background: rgba(0,0,0,0.4);
-  backdrop-filter: blur(15px);
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  transform: translateX(0);
-  transition: 0.3s ease;
-  z-index: 1000;
-}
-
-.sidebar.hidden {
-  transform: translateX(-100%);
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(12px);
 }
 
 .sidebar h2 {
@@ -56,6 +45,11 @@ body {
   background: rgba(255,255,255,0.15);
   color: white;
   font-size: 15px;
+  transition: 0.3s;
+}
+
+.sidebar button:hover {
+  background: rgba(255,255,255,0.3);
 }
 
 .sidebar button.active {
@@ -68,8 +62,6 @@ body {
 .main {
   flex: 1;
   padding: 25px;
-  margin-left: 250px;
-  transition: 0.3s;
 }
 
 /* Topbar */
@@ -100,7 +92,7 @@ input {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(160px,1fr));
   gap: 15px;
 }
 
@@ -123,11 +115,17 @@ input {
   display: block;
 }
 
-/* Mobile Mode */
+/* ===== MOBILE MODE ===== */
 @media (max-width: 768px) {
 
   .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
     transform: translateX(-100%);
+    transition: 0.3s ease;
+    z-index: 1000;
   }
 
   .sidebar.show {
@@ -135,12 +133,11 @@ input {
   }
 
   .main {
-    margin-left: 0;
     padding: 18px;
   }
 
   .menu-btn {
-    display: block;
+    display: inline-block;
   }
 
   .topbar {
@@ -196,7 +193,7 @@ const data = {
     Soaps: ["Bath Soap","Washing Soap (Clothes)","Washing Soap (Utensils)","Animal Soap"]
   },
 
-  Stationery: {
+  Stationary: {
     Items: ["Pen","Lead Pencil","Pencil","Sharpener","Eraser","Book","Scale","Chalk","Lekhni","Duster","Paper Weight","Black Board","White Board","Board Marker","Marker","Ink"]
   },
 
