@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>the one with factory</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.sidebar button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+.sidebar button.active {
+  background: white;
+  color: #764ba2;
+  font-weight: bold;
+}
+
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: none;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+  gap: 12px;
+}
+
+.card {
+  background: rgba(255,255,255,0.2);
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: rgba(255,255,255,0.35);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="sidebar">
+    <h2>Factory items as an idea</h2>
+    <div id="categoryButtons"></div>
+  </div>
+
+  <div class="main">
+    <div class="topbar">
+      <h1 id="categoryTitle"></h1>
+      <input type="text" id="search" placeholder="Search item...">
+    </div>
+    <div id="content"></div>
+  </div>
+</div>
+
+<script>
+const data = {
+  Clothing: {
+    Innerwear: ["Vest","Underwear"],
+    "Casual Wear": ["Bermuda","Night Pant","T-Shirt","Jeans"],
+    "Formal Wear": ["Formal Pant","Shirt","Blazer","Suit"],
+    Traditional: ["Kurta","Pyjama","Sherwani","Indo (Indo-Western)"]
+  },
+  "Personal Care": {
+    Soaps: ["Bath Soap","Washing Soap (Clothes)","Washing Soap (Utensils)","Animal Soap"],
+    Grooming: ["Toothbrush","Toothpaste","Facewash","Vaseline","Face Powder","Face Cream","Hair Comb","Hair Oil"]
+  },
+  Stationery: {
+    Items: ["Pen","Lead Pencil","Pencil","Sharpener","Eraser","Book","Scale","Chalk","Lekhni","Duster","Paper Weight","Black Board","White Board","Board Marker","Marker","Ink"]
+  },
+  Furniture: {
+    Wooden: ["Wooden Table","Wooden Chair","Wooden Stool"],
+    Plastic: ["Plastic Table","Plastic Chair","Plastic Stool"]
+  },
+  Utilities: {
+    Cleaning: ["Gas Stove","Gas Lighter","Mop","Broom","Vacuum Cleaner"]
+  },
+  "Steel Utensils": {
+    Kitchenware: ["Cup","Plate","Bowl","Mug","Glass","Jug","Pan","Pot","Knife","Spoon","Fork","Kettle","Spatula","Ladle","Salt Container"]
+  },
+  "Accessories & Footwear": {
+    Accessories: ["Belt","Cap","Hat","Sunglasses","Goggles"],
+    Footwear: ["Socks","Shoes","Chappal","Sandal","Slipper"]
+  }
+};
+
+let activeCategory = Object.keys(data)[0];
+
+function renderCategories() {
+  const container = document.getElementById("categoryButtons");
+  container.innerHTML = "";
+  Object.keys(data).forEach(category => {
+    const btn = document.createElement("button");
+    btn.textContent = category;
+    btn.onclick = () => {
+      activeCategory = category;
+      render();
+    };
+    if(category === activeCategory) btn.classList.add("active");
+    container.appendChild(btn);
+  });
+}
+
+function render() {
+  document.getElementById("categoryTitle").textContent = activeCategory;
+  renderCategories();
+  const search = document.getElementById("search").value.toLowerCase();
+  const content = document.getElementById("content");
+  content.innerHTML = "";
+
+  Object.entries(data[activeCategory]).forEach(([section, items]) => {
+    const sectionDiv = document.createElement("div");
+    sectionDiv.className = "section";
+    sectionDiv.innerHTML = "<h3>" + section + "</h3>";
+
+    const grid = document.createElement("div");
+    grid.className = "grid";
+
+    items
+      .filter(item => item.toLowerCase().includes(search))
+      .forEach(item => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = item;
+        grid.appendChild(card);
+      });
+
+    sectionDiv.appendChild(grid);
+    content.appendChild(sectionDiv);
+  });
+}
+
+document.getElementById("search").addEventListener("input", render);
+
+render();
+</script>
+
+</body>
+</html>
