@@ -1,3 +1,4 @@
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -13,13 +14,19 @@
 
 body {
     min-height: 100vh;
-    font-family: 'Montserrat', sans-serif; 
+    font-family: 'Montserrat', sans-serif;
+
     background: linear-gradient(
-    160deg,
-    #200122 0%,
-    #6f0000 50%,
-    #ff512f 100%
-);
+        160deg,
+        #200122,
+        #6f0000,
+        #ff512f,
+        #200122
+    );
+
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+
     display: flex;
     flex-direction: column;
     position: relative;
@@ -82,7 +89,17 @@ h1::after {
     }
 }
 
-
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 /* NAME BOX */
 .name-box {
     position: relative;
