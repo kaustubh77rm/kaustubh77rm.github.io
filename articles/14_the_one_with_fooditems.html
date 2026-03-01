@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>the one with food items</title>
+
+<style>
+:root {
+  --primary: #ff5722;
+  --dark: #1e1e1e;
+  --bg: #f5f5f5;
+  --card: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: var(--bg);
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+h1 {
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 25px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.filters {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.filters button {
+  margin: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 20px;
+  background: var(--dark);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filters button:hover {
+  background: var(--primary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.card {
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  color: white;
+  font-weight: 500;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.03);
+}
+
+
+.category {
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.favorite {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: grey;
+}
+
+.favorite.active {
+  color: red;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🍽 Fav Food Collection by Costub Ramteke</h1>
+  <input type="text" id="search" placeholder="Search food...">
+</header>
+
+<div class="filters">
+  <button onclick="filterCategory('All')">All</button>
+  <button onclick="filterCategory('South Indian')">South Indian</button>
+  <button onclick="filterCategory('North Indian')">North Indian</button>
+  <button onclick="filterCategory('Snacks')">Snacks</button>
+  <button onclick="filterCategory('Sweets')">Sweets</button>
+  <button onclick="filterCategory('Drinks')">Drinks</button>
+</div>
+
+<div class="grid" id="foodGrid"></div>
+
+<footer>
+  Made with ❤️ by Costub Ramteke
+</footer>
+
+<script>
+const foods = [
+  // South Indian
+  {name:"Masala Dosa",cat:"South Indian"},
+  {name:"Idli",cat:"South Indian"},
+  {name:"Medu Vada",cat:"South Indian"},
+  {name:"Sambar",cat:"South Indian"},
+  {name:"Coconut Chutney",cat:"South Indian"},
+  
+  // North Indian
+  {name:"Paneer Tikka Masala",cat:"North Indian"},
+  {name:"Chhole Bhature",cat:"North Indian"},
+  {name:"Palak Paratha",cat:"North Indian"},
+  {name:"Besan Paratha",cat:"North Indian"},
+  {name:"Chicken Biryani",cat:"North Indian"},
+  {name:"Dal Bati",cat:"North Indian"},
+  
+  // Snacks
+  {name:"Vada Pav",cat:"Snacks"},
+  {name:"Pav Bhaji",cat:"Snacks"},
+  {name:"Samosa",cat:"Snacks"},
+  {name:"Kachori",cat:"Snacks"},
+  {name:"Shegaon Kachori",cat:"Snacks"},
+  {name:"French Fries",cat:"Snacks"},
+  {name:"Pani Puri",cat:"Snacks"},
+  {name:"Aloo Bonda",cat:"Snacks"},
+  {name:"Pizza",cat:"Snacks"},
+  {name:"Pasta",cat:"Snacks"},
+  {name:"Manchurian Balls",cat:"Snacks"},
+  
+  // Sweets
+  {name:"Gulab Jamun",cat:"Sweets"},
+  {name:"Rasgulla",cat:"Sweets"},
+  {name:"Rasmalai",cat:"Sweets"},
+  {name:"Jalebi",cat:"Sweets"},
+  {name:"Rabdi",cat:"Sweets"},
+  {name:"Basundi",cat:"Sweets"},
+  {name:"Black Forest Cake",cat:"Sweets"},
+  {name:"Anarase",cat:"Sweets"},
+  {name:"Ferrero Rocher",cat:"Sweets"},
+  {name:"Dairy Milk",cat:"Sweets"},
+  {name:"Kitkat",cat:"Sweets"},
+  
+  // Drinks
+  {name:"Cold Coffee",cat:"Drinks"},
+  {name:"Adrak Tea",cat:"Drinks"},
+  {name:"Ilaichi Tea",cat:"Drinks"},
+  {name:"Lemon Juice",cat:"Drinks"},
+  {name:"Sprite Mojito",cat:"Drinks"},
+  {name:"Mattha",cat:"Drinks"},
+  {name:"Butterscotch Ice Cream",cat:"Drinks"},
+  {name:"Chocolate Ice Cream",cat:"Drinks"},
+  {name:"Vanilla Ice Cream",cat:"Drinks"},
+  {name:"Strawberry Ice Cream",cat:"Drinks"},
+];
+
+const grid = document.getElementById("foodGrid");
+const searchInput = document.getElementById("search");
+
+function displayFoods(list) {
+  grid.innerHTML = "";
+  list.forEach(food => {
+    const card = document.createElement("div");
+    card.className = "card";
+    card.style.background = categoryColors[food.cat] || "#333";
+
+    card.innerHTML = `
+      <span class="favorite">♥</span>
+      <h3>${food.name}</h3>
+      <p class="category">${food.cat}</p>
+    `;
+
+    card.querySelector(".favorite").onclick = function(e){
+      e.stopPropagation();
+      this.classList.toggle("active");
+    };
+
+    grid.appendChild(card);
+  });
+}
+
+function filterCategory(category) {
+  if(category === "All") {
+    displayFoods(foods);
+  } else {
+    displayFoods(foods.filter(f => f.cat === category));
+  }
+}
+
+searchInput.addEventListener("keyup", () => {
+  const value = searchInput.value.toLowerCase();
+  displayFoods(
+    foods.filter(f => f.name.toLowerCase().includes(value))
+  );
+});
+
+const categoryColors = {
+  "South Indian": "linear-gradient(135deg, #ff9800, #ff5722)",
+  "North Indian": "linear-gradient(135deg, #4caf50, #2e7d32)",
+  "Snacks": "linear-gradient(135deg, #2196f3, #0d47a1)",
+  "Sweets": "linear-gradient(135deg, #e91e63, #ad1457)",
+  "Drinks": "linear-gradient(135deg, #9c27b0, #4a148c)"
+};
+
+displayFoods(foods);
+</script>
+
+</body>
+</html>
