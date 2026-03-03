@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -135,10 +136,18 @@ footer {
 
 <script>
 const foods = [
+  // maharashtra
+  //poha, mande, puran poli, aalu wange, shrikhand
+  {name:"Pohe",cat:"Maharashtrian"},
+  {name:"Mande/ Lambi roti",cat:"Maharashtrian"},
+  {name:"Aalu wangyachi bhaji",cat:"Maharashtrian"},
+  {name:"Shrikhand",cat:"Maharashtrian"},
+  
   // South Indian
   {name:"Masala Dosa",cat:"South Indian"},
   {name:"Idli",cat:"South Indian"},
   {name:"Medu Vada",cat:"South Indian"},
+  {name:"Appe",cat:"South Indian"},
   {name:"Sambar",cat:"South Indian"},
   {name:"Coconut Chutney",cat:"South Indian"},
   
@@ -230,6 +239,7 @@ searchInput.addEventListener("keyup", () => {
 });
 
 const categoryColors = {
+  "Maharashtrian":"linear-gradient(88deg,rgba(201, 158, 0, 1) 0%, rgba(242, 199, 5, 1) 44%, rgba(242, 230, 0, 1) 100%)", 
   "South Indian": "linear-gradient(135deg, #ff9800, #ff5722)",
   "North Indian": "linear-gradient(135deg, #4caf50, #2e7d32)",
   "Snacks": "linear-gradient(135deg, #2196f3, #0d47a1)",
