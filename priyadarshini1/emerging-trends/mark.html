@@ -2,304 +2,167 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
-<title>IT · IF6K · Emerging Trends</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marks · IF6K · emerging Trends</title>
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    font-family:'Inter',sans-serif;
 }
 
 body{
-    background:linear-gradient(145deg,#f0f4fa 0%,#e6ecf3 100%);
+    background:linear-gradient(145deg,#f0f4fa,#e6ecf3);
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:1rem 0.75rem;
+    padding:1rem;
 }
 
 .card{
-    max-width:1200px;
+    max-width:900px;
     width:100%;
-    background:rgba(255,255,255,0.8);
-    backdrop-filter:blur(3px);
-    border-radius:2rem;
-    box-shadow:0 20px 40px -12px rgba(0,20,40,0.3);
-    padding:1.5rem 1.2rem 2rem 1.2rem;
-    border:1px solid rgba(255,255,255,0.6);
+    background:white;
+    border-radius:20px;
+    padding:1.5rem;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
 /* Header */
 .dept-header{
     display:flex;
-    flex-wrap:wrap;
     justify-content:space-between;
-    align-items:center;
+    flex-wrap:wrap;
     background:#0f2744;
     color:white;
-    padding:1rem 1.5rem;
-    border-radius:48px;
-    margin-bottom:1.5rem;
-    box-shadow:0 8px 16px rgba(0,20,40,0.3);
-    border:1px solid #3e6a97;
-    gap:0.6rem 0.8rem;
-}
-
-.dept-header .title-item strong{
-    font-weight:700;
-    background:#f2c94c;
-    color:#0a1a2b;
-    padding:0.2rem 1rem;
+    padding:1rem;
     border-radius:40px;
-    font-size:0.95rem;
+    margin-bottom:1rem;
 }
 
-.year-badge{
-    background:#1f4a7a;
-    padding:0.3rem 1.2rem;
-    border-radius:36px;
-    font-weight:600;
-    font-size:1.1rem;
-    border:1px solid #78a5d2;
-}
-
-/* Subject Row */
 .subject-row{
     background:#17345c;
-    margin:0.2rem 0 0.8rem 0;
-    padding:0.7rem 1.8rem;
-    border-radius:40px;
-    display:inline-flex;
-    flex-wrap:wrap;
-    align-items:baseline;
-    gap:0.8rem 1.5rem;
     color:white;
-    font-size:1.1rem;
-    border:1px solid #5d8bc0;
-}
-
-.subject-name{
-    font-weight:600;
-    background:#2c5786;
-    padding:0.25rem 1.2rem;
+    padding:0.6rem 1.2rem;
     border-radius:30px;
-}
-
-.subject-code{
-    font-family:monospace;
-    background:#0e2e4a;
-    padding:0.25rem 1.2rem;
-    border-radius:30px;
-    border:1px solid #a1c2e6;
-}
-
-/* Faculty Name */
-.faculty{
-    margin-bottom:1.2rem;
-    padding:0.6rem 1.4rem;
-    background:#e3edf9;
-    border-radius:30px;
-    font-weight:600;
-    color:#0f2744;
-    border:1px solid #b4c7e3;
     display:inline-block;
+    margin-bottom:1rem;
+}
+
+.faculty{
+    margin-bottom:1rem;
+    font-weight:600;
 }
 
 /* Table */
 .marks-table{
     width:100%;
-    border-collapse:separate;
-    border-spacing:0 6px;
+    border-collapse:collapse;
 }
 
-.marks-table thead th{
+.marks-table th{
     background:#1f3a5f;
     color:white;
-    font-weight:600;
-    padding:0.8rem 0.2rem;
+    padding:10px;
+}
+
+.marks-table td{
+    padding:10px;
+    border:1px solid #ddd;
     text-align:center;
-    border-bottom:3px solid #f5c542;
 }
 
-/* Name Marks Header */
-.name-header td{
-    background:#dce6f3;
-    font-weight:800;
-    text-align:center;
-    padding:0.6rem;
-    border-radius:12px;
-    color:#0f2744;
-    border:1px solid #b5c8e6;
+.marks-table tr:nth-child(even){
+    background:#f4f8fe;
 }
 
-/* Cells */
-.marks-table tbody td{
-    background:white;
-    padding:0.7rem 0.4rem;
-    border-radius:14px;
-    border:1px solid #dee7f2;
+.perfect{
+    background:#c7efd4;
+    font-weight:bold;
 }
 
-.marks-table td.perfect{
-    background:#c7efd4 !important;
-    color:#0b4e2b;
-    font-weight:800;
+.roll{
+    font-weight:bold;
 }
-
 </style>
 </head>
 
 <body>
+
 <div class="card">
 
 <div class="dept-header">
-<span>🏛️ Dept: <strong>Information Technology</strong></span>
-<span>📘 Branch: <strong>IF6K</strong></span>
-<span class="year-badge">🗓️ 2025-2026</span>
+<span>Department: Information Technology (IF)</span>
+<span>Class: IF6K</span>
+<span>Year: 2025-26</span>
 </div>
 
 <div class="subject-row">
-<span class="subject-name">📘 Emerging Trends in CS & IT</span>
-<span class="subject-code">🔢 316313</span>
+Subject: Emerging Trends in CS & IT (316313)
 </div>
 
-<!-- Faculty Added -->
 <div class="faculty">
-👨‍🏫 Name of Faculty: Mr. Kaustubh Ramteke
+Lecturer: Mr. Kaustubh Prabhakar Ramteke
 </div>
 
 <table class="marks-table">
 <thead>
 <tr>
-<th>Unit</th>
-<th>Test</th>
-<th>Unit</th>
-<th>Test</th>
+<th>Roll No</th>
+<th>Student Name</th>
+<th>Marks (Class test 1)</th>
 </tr>
 </thead>
 
 <tbody>
 
-<!-- New Name/Marks Header -->
-<tr class="name-header">
-<td>Name</td>
-<td>Marks</td>
-<td>Name</td>
-<td>Marks</td>
-</tr>
+<tr><td class="roll">1</td><td>Bhondle Yashasvi</td><td class="perfect">30</td></tr>
+<tr><td class="roll">2</td><td>Barapatre Aakansha</td><td class="perfect">30</td></tr>
+<tr><td class="roll">3</td><td>Bhakare Anurag</td><td class="perfect">30</td></tr>
+<tr><td class="roll">4</td><td>Bhavesh Thawale</td><td class="perfect">30</td></tr>
+<tr><td class="roll">5</td><td>Bokde Bhavik</td><td class="perfect">30</td></tr>
+<tr><td class="roll">6</td><td>Dikondwar Rudraksh</td><td class="perfect">30</td></tr>
 
-<tr>
-<td>Bhondle Yashasvi</td>
-<td class="perfect">30</td>
-<td>Punse Harshad</td>
-<td>29</td>
-</tr>
+<tr><td class="roll">7</td><td>Gautam Ashish</td><td style="color:red;font-weight:bold;">Absent</td></tr>
+<tr><td class="roll">8</td><td>Gube Thunali</td><td class="perfect">30</td></tr>
+<tr><td class="roll">9</td><td>Gulghane Harsha</td><td class="perfect">30</td></tr>
+<tr><td class="roll">10</td><td>Hemane Lucky</td><td class="perfect">30</td></tr>
 
-<tr>
-<td>Barapatre Aakansha</td>
-<td class="perfect">30</td>
-<td>Selwante Shlok</td>
-<td class="perfect">30</td>
-</tr>
+<tr><td class="roll">11</td><td>Kamble Prashik</td><td class="perfect">30</td></tr>
+<tr><td class="roll">12</td><td>Kanade Gaurav</td><td>29</td></tr>
+<tr><td class="roll">13</td><td>Kundajwar Ashutosh</td><td class="perfect">30</td></tr>
+<tr><td class="roll">14</td><td>Lasunte Arya</td><td class="perfect">30</td></tr>
 
-<tr>
-<td>Bhakare Anurag</td>
-<td class="perfect">30</td>
-<td>Shahu Jay</td>
-<td>29</td>
-</tr>
+<tr><td class="roll">15</td><td>Mahi Kale</td><td class="perfect">30</td></tr>
+<tr><td class="roll">16</td><td>Pal Aman</td><td class="perfect">30</td></tr>
+<tr><td class="roll">17</td><td>Punse Harshad</td><td>29</td></tr>
+<tr><td class="roll">18</td><td>Selwante Shlok</td><td class="perfect">30</td></tr>
 
-<tr>
-<td>Bhavesh Thawale</td>
-<td class="perfect">30</td>
-<td>Thakur Shourya</td>
-<td class="perfect">30</td>
-</tr>
+<tr><td class="roll">19</td><td>Shahu Jay</td><td>29</td></tr>
+<tr><td class="roll">20</td><td>Thakur Shourya</td><td class="perfect">30</td></tr>
+<tr><td class="roll">21</td><td>Shinde Aman</td><td>29</td></tr>
+<tr><td class="roll">22</td><td>Tanvi Dhakate</td><td class="perfect">30</td></tr>
 
-<tr>
-<td>Bokde Bhavik</td>
-<td class="perfect">30</td>
-<td>Shinde Aman</td>
-<td>29</td>
-</tr>
+<tr><td class="roll">23</td><td>Teltumbade Sejal</td><td>27</td></tr>
+<tr><td class="roll">24</td><td>Vedant Joshi</td><td>28</td></tr>
 
-<tr>
-<td>Dikondwar Rudraksh</td>
-<td class="perfect">30</td>
-<td>Tanvi Dhakate</td>
-<td class="perfect">30</td>
-</tr>
+<tr><td class="roll">25</td><td>Waghmare Sachin</td><td>27</td></tr>
 
-<tr>
-<td>Gube Thunali</td>
-<td class="perfect">30</td>
-<td>Teltumbade Sejal</td>
-<td>27</td>
-</tr>
+<tr><td class="roll">26</td><td>Yadav Somya</td><td class="perfect">30</td></tr>
+<tr><td class="roll">27</td><td>Yawale Sujal</td><td>28</td></tr>
 
-<tr>
-<td>Gulghane Harsha</td>
-<td class="perfect">30</td>
-<td>Vedant Joshi</td>
-<td>28</td>
-</tr>
+<tr><td class="roll">28</td><td>Dhanorkar Kartiki</td><td>29</td></tr>
 
-<tr>
-<td>Hemane Lucky</td>
-<td class="perfect">30</td>
-<td>Yadav Somya</td>
-<td class="perfect">30</td>
-</tr>
-
-<tr>
-<td>Kamble Prashik</td>
-<td class="perfect">30</td>
-<td>Dhanorkar Kartiki</td>
-<td>29</td>
-</tr>
-
-<tr>
-<td>Kanade Gaurav</td>
-<td>29</td>
-<td>Yawale Sujal</td>
-<td>28</td>
-</tr>
-
-<tr>
-<td>Kundajwar Ashutosh</td>
-<td class="perfect">30</td>
-<td>Jagruti Dharme</td>
-<td>29</td>
-</tr>
-
-<tr>
-<td>Lasunte Arya</td>
-<td class="perfect">30</td>
-<td>Nikore Tanvi</td>
-<td class="perfect">30</td>
-</tr>
-
-<tr>
-<td>Mahi Kale</td>
-<td class="perfect">30</td>
-<td>Waghmare Sachin</td>
-<td>27</td>
-</tr>
-
-<tr>
-<td>Pal Aman</td>
-<td class="perfect">30</td>
-<td>Gautam Ashish</td>
-<td style="color: red; font-weight: 700;">Absent</td>
-</tr>
+<tr><td class="roll">29</td><td>Jagruti Dharme</td><td>29</td></tr>
+<tr><td class="roll">30</td><td>Nikore Tanvi</td><td class="perfect">30</td></tr>
 
 </tbody>
 </table>
 
 </div>
+
 </body>
 </html>
