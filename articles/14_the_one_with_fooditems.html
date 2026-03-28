@@ -1,256 +1,654 @@
-
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>the one with food items</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foodie's Paradise | Kaustubh's Collection</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-:root {
-  --primary: #ff5722;
-  --dark: #1e1e1e;
-  --bg: #f5f5f5;
-  --card: #ffffff;
-}
+    body {
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
 
-body {
-  background: var(--bg);
-  padding: 20px;
-}
+    ::-webkit-scrollbar-track {
+      background: rgba(255,255,255,0.1);
+      border-radius: 10px;
+    }
 
-header {
-  text-align: center;
-  margin-bottom: 25px;
-}
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.3);
+      border-radius: 10px;
+    }
 
-h1 {
-  color: var(--primary);
-  margin-bottom: 10px;
-}
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255,255,255,0.5);
+    }
 
-input {
-  padding: 10px;
-  width: 100%;
-  max-width: 400px;
-  border-radius: 25px;
-  border: 1px solid #ccc;
-  outline: none;
-}
+    .app-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-.filters {
-  margin: 20px 0;
-  text-align: center;
-}
+    /* Header Styles */
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
 
-.filters button {
-  margin: 5px;
-  padding: 8px 15px;
-  border: none;
-  border-radius: 20px;
-  background: var(--dark);
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    .hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      animation: fadeInDown 0.6s ease;
+    }
 
-.filters button:hover {
-  background: var(--primary);
-}
+    .hero p {
+      color: #666;
+      font-size: 1.1rem;
+    }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 15px;
-}
+    /* Search Bar */
+    .search-wrapper {
+      position: relative;
+      max-width: 500px;
+      margin: 20px auto;
+    }
 
-.card {
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  transition: 0.3s;
-  cursor: pointer;
-  position: relative;
-  color: white;
-  font-weight: 500;
-}
+    .search-icon {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: #999;
+    }
 
-.card:hover {
-  transform: translateY(-5px) scale(1.03);
-}
+    .search-input {
+      width: 100%;
+      padding: 15px 20px 15px 50px;
+      font-size: 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      outline: none;
+      transition: all 0.3s ease;
+      background: white;
+    }
 
+    .search-input:focus {
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102,126,234,0.1);
+      transform: translateY(-2px);
+    }
 
-.category {
-  font-size: 12px;
-  opacity: 0.6;
-}
+    /* Stats */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
 
-.favorite {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 18px;
-  color: grey;
-}
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 15px 25px;
+      border-radius: 20px;
+      color: white;
+      text-align: center;
+      min-width: 120px;
+      animation: fadeInUp 0.6s ease;
+    }
 
-.favorite.active {
-  color: red;
-}
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+    }
 
-footer {
-  margin-top: 30px;
-  text-align: center;
-  opacity: 0.6;
-}
-</style>
+    .stat-label {
+      font-size: 0.85rem;
+      opacity: 0.9;
+    }
+
+    /* Filter Buttons */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 30px 0;
+    }
+
+    .filter-btn {
+      padding: 10px 24px;
+      border: none;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.95);
+      color: #333;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      transform: scale(1.05);
+    }
+
+    /* Food Grid */
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 25px;
+      padding: 10px;
+    }
+
+    /* Food Card */
+    .food-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      animation: fadeIn 0.5s ease;
+    }
+
+    .food-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
+    .card-image {
+      height: 160px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .food-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .food-category {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+      margin-top: 8px;
+    }
+
+    .favorite-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      backdrop-filter: blur(5px);
+    }
+
+    .favorite-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .favorite-btn.active {
+      color: #ff4757;
+      animation: heartBeat 0.3s ease;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      transform: translateX(0);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 30px;
+      grid-column: 1 / -1;
+    }
+
+    .empty-state h3 {
+      font-size: 1.5rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    /* Loading Skeleton */
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: loading 1.5s infinite;
+      border-radius: 20px;
+    }
+
+    @keyframes loading {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      padding: 20px;
+      color: white;
+      opacity: 0.9;
+    }
+  </style>
 </head>
-
 <body>
+  <div id="root"></div>
 
-<header>
-  <h1>🍽 Fav Food Collection by Costub Ramteke</h1>
-  <input type="text" id="search" placeholder="Search food...">
-</header>
+  <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-<div class="filters">
-  <button onclick="filterCategory('All')">All</button>
-  <button onclick="filterCategory('Maharashtrian')">Maharashtrian</button>
-  <button onclick="filterCategory('South Indian')">South Indian</button>
-  <button onclick="filterCategory('North Indian')">North Indian</button>
-  <button onclick="filterCategory('Snacks')">Snacks</button>
-  <button onclick="filterCategory('Sweets')">Sweets</button>
-  <button onclick="filterCategory('Drinks')">Drinks</button>
-</div>
+  <script type="text/babel">
+    const { useState, useEffect, useMemo } = React;
 
-<div class="grid" id="foodGrid"></div>
+    // Food Data
+    const foodsData = [
+      // Maharashtrian
+      { name: "Pohe", category: "Maharashtrian", emoji: "🥣", color: "#ff9800" },
+      { name: "Mande/ Lambi roti", category: "Maharashtrian", emoji: "🌯", color: "#ff9800" },
+      { name: "Bittya", category: "Maharashtrian", emoji: "🥮", color: "#ff9800" },
+      { name: "Aalu wangyachi bhaji", category: "Maharashtrian", emoji: "🍆", color: "#ff9800" },
+      { name: "Shrikhand", category: "Maharashtrian", emoji: "🍮", color: "#ff9800" },
+      { name: "Puran Poli", category: "Maharashtrian", emoji: "🥮", color: "#ff9800" },
+      { name: "Misal Pav", category: "Maharashtrian", emoji: "🍲", color: "#ff9800" },
+      
+      // South Indian
+      { name: "Masala Dosa", category: "South Indian", emoji: "🥞", color: "#ff5722" },
+      { name: "Idli", category: "South Indian", emoji: "🍚", color: "#ff5722" },
+      { name: "Medu Vada", category: "South Indian", emoji: "🍩", color: "#ff5722" },
+      { name: "Appe", category: "South Indian", emoji: "🥞", color: "#ff5722" },
+      { name: "Uttappam", category: "South Indian", emoji: "🌕", color: "#ff5722" },
+      { name: "Sambar", category: "South Indian", emoji: "🍲", color: "#ff5722" },
+      { name: "Coconut Chutney", category: "South Indian", emoji: "🥥", color: "#ff5722" },
+      
+      // North Indian
+      { name: "Paneer Tikka Masala", category: "North Indian", emoji: "🍛", color: "#4caf50" },
+      { name: "Chhole Bhature", category: "North Indian", emoji: "🥘", color: "#4caf50" },
+      { name: "Palak Paratha", category: "North Indian", emoji: "🥙", color: "#4caf50" },
+      { name: "Besan Paratha", category: "North Indian", emoji: "🥙", color: "#4caf50" },
+      { name: "Chicken Biryani", category: "North Indian", emoji: "🍗", color: "#4caf50" },
+      { name: "Dal Bati", category: "North Indian", emoji: "🍲", color: "#4caf50" },
+      
+      // Snacks
+      { name: "Mutton fry", category: "Snacks", emoji: "🥩", color: "#2196f3" },
+      { name: "Chicken fry", category: "Snacks", emoji: "🍗", color: "#2196f3" },
+      { name: "Vada Pav", category: "Snacks", emoji: "🍔", color: "#2196f3" },
+      { name: "Pav Bhaji", category: "Snacks", emoji: "🍞", color: "#2196f3" },
+      { name: "Samosa", category: "Snacks", emoji: "🥟", color: "#2196f3" },
+      { name: "Kachori", category: "Snacks", emoji: "🥟", color: "#2196f3" },
+      { name: "Shegaon Kachori", category: "Snacks", emoji: "🥟", color: "#2196f3" },
+      { name: "French Fries", category: "Snacks", emoji: "🍟", color: "#2196f3" },
+      { name: "Pani Puri", category: "Snacks", emoji: "🍡", color: "#2196f3" },
+      { name: "Aloo Bonda", category: "Snacks", emoji: "🥔", color: "#2196f3" },
+      { name: "Pizza", category: "Snacks", emoji: "🍕", color: "#2196f3" },
+      { name: "Pasta", category: "Snacks", emoji: "🍝", color: "#2196f3" },
+      { name: "Manchurian Balls", category: "Snacks", emoji: "🥢", color: "#2196f3" },
+      
+      // Sweets
+      { name: "Gulab Jamun", category: "Sweets", emoji: "🍡", color: "#e91e63" },
+      { name: "Rasgulla", category: "Sweets", emoji: "⚪", color: "#e91e63" },
+      { name: "Rasmalai", category: "Sweets", emoji: "🥛", color: "#e91e63" },
+      { name: "Jalebi", category: "Sweets", emoji: "🥨", color: "#e91e63" },
+      { name: "Rabdi", category: "Sweets", emoji: "🥛", color: "#e91e63" },
+      { name: "Basundi", category: "Sweets", emoji: "🥛", color: "#e91e63" },
+      { name: "Black Forest Cake", category: "Sweets", emoji: "🍰", color: "#e91e63" },
+      { name: "Anarase", category: "Sweets", emoji: "🍪", color: "#e91e63" },
+      { name: "Ferrero Rocher", category: "Sweets", emoji: "🍫", color: "#e91e63" },
+      { name: "Dairy Milk", category: "Sweets", emoji: "🍫", color: "#e91e63" },
+      { name: "Kitkat", category: "Sweets", emoji: "🍫", color: "#e91e63" },
+      
+      // Drinks
+      { name: "Cold Coffee", category: "Drinks", emoji: "☕", color: "#9c27b0" },
+      { name: "Adrak Tea", category: "Drinks", emoji: "🫖", color: "#9c27b0" },
+      { name: "Ilaichi Tea", category: "Drinks", emoji: "🫖", color: "#9c27b0" },
+      { name: "Lemon Juice", category: "Drinks", emoji: "🍋", color: "#9c27b0" },
+      { name: "Sprite Mojito", category: "Drinks", emoji: "🍹", color: "#9c27b0" },
+      { name: "Mattha", category: "Drinks", emoji: "🥛", color: "#9c27b0" },
+      { name: "Lassi", category: "Drinks", emoji: "🥛", color: "#9c27b0" },
+      { name: "Usacha ras", category: "Drinks", emoji: "🥛", color: "#9c27b0" },
+      { name: "Butterscotch Ice Cream", category: "Drinks", emoji: "🍦", color: "#9c27b0" },
+      { name: "Chocolate Ice Cream", category: "Drinks", emoji: "🍦", color: "#9c27b0" },
+      { name: "Vanilla Ice Cream", category: "Drinks", emoji: "🍦", color: "#9c27b0" },
+      { name: "Strawberry Ice Cream", category: "Drinks", emoji: "🍦", color: "#9c27b0" },
+    ];
 
-<footer>
-  Made with ❤️ by Costub Ramteke
-</footer>
-
-<script>
-const foods = [
-  // maharashtra
-  //poha, mande, puran poli, aalu wange, shrikhand
-  {name:"Pohe",cat:"Maharashtrian"},
-  {name:"Mande/ Lambi roti",cat:"Maharashtrian"},
-  {name:"Aalu wangyachi bhaji",cat:"Maharashtrian"},
-  {name:"Shrikhand",cat:"Maharashtrian"},
-  
-  // South Indian
-  {name:"Masala Dosa",cat:"South Indian"},
-  {name:"Idli",cat:"South Indian"},
-  {name:"Medu Vada",cat:"South Indian"},
-  {name:"Appe",cat:"South Indian"},
-  {name:"Sambar",cat:"South Indian"},
-  {name:"Coconut Chutney",cat:"South Indian"},
-  
-  // North Indian
-  {name:"Paneer Tikka Masala",cat:"North Indian"},
-  {name:"Chhole Bhature",cat:"North Indian"},
-  {name:"Palak Paratha",cat:"North Indian"},
-  {name:"Besan Paratha",cat:"North Indian"},
-  {name:"Chicken Biryani",cat:"North Indian"},
-  {name:"Dal Bati",cat:"North Indian"},
-  
-  // Snacks
-  {name:"Vada Pav",cat:"Snacks"},
-  {name:"Pav Bhaji",cat:"Snacks"},
-  {name:"Samosa",cat:"Snacks"},
-  {name:"Kachori",cat:"Snacks"},
-  {name:"Shegaon Kachori",cat:"Snacks"},
-  {name:"French Fries",cat:"Snacks"},
-  {name:"Pani Puri",cat:"Snacks"},
-  {name:"Aloo Bonda",cat:"Snacks"},
-  {name:"Pizza",cat:"Snacks"},
-  {name:"Pasta",cat:"Snacks"},
-  {name:"Manchurian Balls",cat:"Snacks"},
-  
-  // Sweets
-  {name:"Gulab Jamun",cat:"Sweets"},
-  {name:"Rasgulla",cat:"Sweets"},
-  {name:"Rasmalai",cat:"Sweets"},
-  {name:"Jalebi",cat:"Sweets"},
-  {name:"Rabdi",cat:"Sweets"},
-  {name:"Basundi",cat:"Sweets"},
-  {name:"Black Forest Cake",cat:"Sweets"},
-  {name:"Anarase",cat:"Sweets"},
-  {name:"Ferrero Rocher",cat:"Sweets"},
-  {name:"Dairy Milk",cat:"Sweets"},
-  {name:"Kitkat",cat:"Sweets"},
-  
-  // Drinks
-  {name:"Cold Coffee",cat:"Drinks"},
-  {name:"Adrak Tea",cat:"Drinks"},
-  {name:"Ilaichi Tea",cat:"Drinks"},
-  {name:"Lemon Juice",cat:"Drinks"},
-  {name:"Sprite Mojito",cat:"Drinks"},
-  {name:"Mattha",cat:"Drinks"},
-  {name:"Butterscotch Ice Cream",cat:"Drinks"},
-  {name:"Chocolate Ice Cream",cat:"Drinks"},
-  {name:"Vanilla Ice Cream",cat:"Drinks"},
-  {name:"Strawberry Ice Cream",cat:"Drinks"},
-];
-
-const grid = document.getElementById("foodGrid");
-const searchInput = document.getElementById("search");
-
-function displayFoods(list) {
-  grid.innerHTML = "";
-  list.forEach(food => {
-    const card = document.createElement("div");
-    card.className = "card";
-    card.style.background = categoryColors[food.cat] || "#333";
-
-    card.innerHTML = `
-      <span class="favorite">♥</span>
-      <h3>${food.name}</h3>
-      <p class="category">${food.cat}</p>
-    `;
-
-    card.querySelector(".favorite").onclick = function(e){
-      e.stopPropagation();
-      this.classList.toggle("active");
+    // Category Colors
+    const categoryColors = {
+      "Maharashtrian": { gradient: "linear-gradient(135deg, #f9a825, #f57c00)", color: "#f57c00" },
+      "South Indian": { gradient: "linear-gradient(135deg, #ff9800, #ff5722)", color: "#ff5722" },
+      "North Indian": { gradient: "linear-gradient(135deg, #4caf50, #2e7d32)", color: "#4caf50" },
+      "Snacks": { gradient: "linear-gradient(135deg, #2196f3, #0d47a1)", color: "#2196f3" },
+      "Sweets": { gradient: "linear-gradient(135deg, #e91e63, #ad1457)", color: "#e91e63" },
+      "Drinks": { gradient: "linear-gradient(135deg, #9c27b0, #4a148c)", color: "#9c27b0" }
     };
 
-    grid.appendChild(card);
-  });
-}
+    // Food Card Component
+    const FoodCard = ({ food, isFavorite, onFavoriteToggle }) => {
+      const [isHovered, setIsHovered] = useState(false);
+      
+      return (
+        <div 
+          className="food-card"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          style={{ transform: isHovered ? 'translateY(-10px) scale(1.02)' : 'none' }}
+        >
+          <div 
+            className="card-image"
+            style={{ background: categoryColors[food.category]?.gradient }}
+          >
+            <span style={{ fontSize: '4rem', filter: 'drop-shadow(2px 4px 6px rgba(0,0,0,0.2))' }}>
+              {food.emoji}
+            </span>
+          </div>
+          <div 
+            className="favorite-btn"
+            onClick={(e) => {
+              e.stopPropagation();
+              onFavoriteToggle(food.name);
+            }}
+          >
+            <span className={isFavorite ? 'active' : ''}>❤️</span>
+          </div>
+          <div className="card-content">
+            <div className="food-name">{food.name}</div>
+            <div 
+              className="food-category"
+              style={{ background: categoryColors[food.category]?.gradient }}
+            >
+              {food.category}
+            </div>
+          </div>
+        </div>
+      );
+    };
 
-function filterCategory(category) {
-  if(category === "All") {
-    displayFoods(foods);
-  } else {
-    displayFoods(foods.filter(f => f.cat === category));
-  }
-}
+    // Main App Component
+    const App = () => {
+      const [selectedCategory, setSelectedCategory] = useState('All');
+      const [searchTerm, setSearchTerm] = useState('');
+      const [favorites, setFavorites] = useState(() => {
+        const saved = localStorage.getItem('favoriteFoods');
+        return saved ? JSON.parse(saved) : [];
+      });
+      const [toast, setToast] = useState({ show: false, message: '' });
+      const [isLoading, setIsLoading] = useState(true);
 
-searchInput.addEventListener("keyup", () => {
-  const value = searchInput.value.toLowerCase();
-  displayFoods(
-    foods.filter(f => f.name.toLowerCase().includes(value))
-  );
-});
+      // Simulate loading
+      useEffect(() => {
+        setTimeout(() => setIsLoading(false), 800);
+      }, []);
 
-const categoryColors = {
-  "Maharashtrian":"linear-gradient(88deg,rgba(201, 158, 0, 1) 0%, rgba(242, 199, 5, 1) 44%, rgba(242, 230, 0, 1) 100%)", 
-  "South Indian": "linear-gradient(135deg, #ff9800, #ff5722)",
-  "North Indian": "linear-gradient(135deg, #4caf50, #2e7d32)",
-  "Snacks": "linear-gradient(135deg, #2196f3, #0d47a1)",
-  "Sweets": "linear-gradient(135deg, #e91e63, #ad1457)",
-  "Drinks": "linear-gradient(135deg, #9c27b0, #4a148c)"
-};
+      // Save favorites to localStorage
+      useEffect(() => {
+        localStorage.setItem('favoriteFoods', JSON.stringify(favorites));
+      }, [favorites]);
 
-displayFoods(foods);
-</script>
+      // Show toast notification
+      const showToast = (message) => {
+        setToast({ show: true, message });
+        setTimeout(() => setToast({ show: false, message: '' }), 2000);
+      };
 
+      // Toggle favorite
+      const toggleFavorite = (foodName) => {
+        setFavorites(prev => {
+          if (prev.includes(foodName)) {
+            showToast(`❌ Removed ${foodName} from favorites`);
+            return prev.filter(f => f !== foodName);
+          } else {
+            showToast(`❤️ Added ${foodName} to favorites`);
+            return [...prev, foodName];
+          }
+        });
+      };
+
+      // Filter foods
+      const filteredFoods = useMemo(() => {
+        let filtered = foodsData;
+        
+        if (selectedCategory !== 'All') {
+          filtered = filtered.filter(food => food.category === selectedCategory);
+        }
+        
+        if (searchTerm) {
+          filtered = filtered.filter(food => 
+            food.name.toLowerCase().includes(searchTerm.toLowerCase())
+          );
+        }
+        
+        return filtered;
+      }, [selectedCategory, searchTerm]);
+
+      // Stats
+      const stats = {
+        total: foodsData.length,
+        categories: [...new Set(foodsData.map(f => f.category))].length,
+        favorites: favorites.length
+      };
+
+      // Categories
+      const categories = ['All', ...new Set(foodsData.map(f => f.category))];
+
+      if (isLoading) {
+        return (
+          <div className="app-container">
+            <div className="hero">
+              <div className="skeleton" style={{ height: '100px', marginBottom: '20px' }}></div>
+              <div className="skeleton" style={{ height: '50px', width: '300px', margin: '0 auto' }}></div>
+            </div>
+            <div className="food-grid">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="skeleton" style={{ height: '280px' }}></div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="app-container">
+          {/* Hero Section */}
+          <div className="hero">
+            <h1>🍽️ Coustubh's Food Paradise</h1>
+            <p>Discover the most delicious foods from around India</p>
+            
+            {/* Search Bar */}
+            <div className="search-wrapper">
+              <span className="search-icon">🔍</span>
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search for your favorite food..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+
+            {/* Stats */}
+            <div className="stats">
+              <div className="stat-card">
+                <div className="stat-number">{stats.total}</div>
+                <div className="stat-label">Food Items</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-number">{stats.categories}</div>
+                <div className="stat-label">Categories</div>
+              </div>
+              <div className="stat-card">
+                <div className="stat-number">{stats.favorites}</div>
+                <div className="stat-label">Favorites</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Filter Buttons */}
+          <div className="filters">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                className={`filter-btn ${selectedCategory === cat ? 'active' : ''}`}
+                onClick={() => setSelectedCategory(cat)}
+              >
+                {cat === 'All' ? '🍽️ All' : cat === 'Maharashtrian' ? '🇮🇳 ' + cat : cat === 'South Indian' ? '🍛 ' + cat : cat === 'North Indian' ? '🍖 ' + cat : cat === 'Snacks' ? '🍟 ' + cat : cat === 'Sweets' ? '🍰 ' + cat : '🥤 ' + cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Food Grid */}
+          <div className="food-grid">
+            {filteredFoods.length > 0 ? (
+              filteredFoods.map((food, index) => (
+                <FoodCard
+                  key={index}
+                  food={food}
+                  isFavorite={favorites.includes(food.name)}
+                  onFavoriteToggle={toggleFavorite}
+                />
+              ))
+            ) : (
+              <div className="empty-state">
+                <h3>😢 No foods found</h3>
+                <p>Try searching for something else or clear your filters</p>
+                <button 
+                  className="filter-btn" 
+                  onClick={() => {
+                    setSelectedCategory('All');
+                    setSearchTerm('');
+                  }}
+                  style={{ marginTop: '20px' }}
+                >
+                  Clear Filters
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Toast Notification */}
+          <div className={`toast ${toast.show ? 'show' : ''}`}>
+            <span>{toast.message}</span>
+          </div>
+
+          <footer>
+            Made with <span style={{ color: '#ff4757' }}>❤️</span> by Costubh Ramteke | {filteredFoods.length} delicious items displayed
+          </footer>
+        </div>
+      );
+    };
+
+    // Render App
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
 </body>
 </html>
