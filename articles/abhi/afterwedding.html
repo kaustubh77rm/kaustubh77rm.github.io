@@ -2,7 +2,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>After Wedding Gallery | Complete Collection</title>
+  <title>After Wedding Gallery | Timeless Moments</title>
   <style>
     * {
       margin: 0;
@@ -18,7 +18,6 @@
       scroll-behavior: smooth;
     }
 
-    /* elegant header section */
     .hero {
       text-align: center;
       padding: 2.5rem 1.5rem 1.8rem;
@@ -50,7 +49,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* refined gallery grid */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -60,7 +58,6 @@
       margin: 0 auto;
     }
 
-    /* card-style image containers */
     .gallery-item {
       position: relative;
       border-radius: 1.25rem;
@@ -78,7 +75,6 @@
       object-fit: cover;
       display: block;
       transition: transform 0.5s ease, filter 0.3s ease;
-      filter: brightness(0.98) contrast(1.02);
     }
 
     .gallery-item:hover {
@@ -88,10 +84,8 @@
 
     .gallery-item:hover img {
       transform: scale(1.06);
-      filter: brightness(1.02) contrast(1.05);
     }
 
-    /* subtle overlay on hover for more elegance */
     .gallery-item::after {
       content: "✨";
       position: absolute;
@@ -108,21 +102,64 @@
       opacity: 0.7;
     }
 
-    /* LIGHTBOX - premium fullscreen viewer */
+    /* Load More Button */
+    .load-more-container {
+      text-align: center;
+      padding: 1.5rem 1rem 2.5rem;
+    }
+
+    .load-more-btn {
+      background: linear-gradient(135deg, #2d3a5e, #1e293b);
+      border: 1px solid rgba(165, 180, 252, 0.4);
+      color: #c9b6e4;
+      font-size: 1.1rem;
+      font-weight: 500;
+      padding: 12px 32px;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .load-more-btn:hover {
+      background: linear-gradient(135deg, #3a4a72, #2a364f);
+      border-color: rgba(165, 180, 252, 0.8);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .load-more-btn:active {
+      transform: translateY(1px);
+    }
+
+    .load-more-btn.hidden {
+      display: none;
+    }
+
+    /* Loading spinner for button */
+    .load-more-btn.loading {
+      opacity: 0.7;
+      cursor: wait;
+      pointer-events: none;
+    }
+
     .lightbox {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(8, 12, 24, 0.94);
-      backdrop-filter: blur(18px);
+      background: rgba(8, 12, 24, 0.95);
+      backdrop-filter: blur(20px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 2000;
       cursor: pointer;
-      transition: all 0.25s ease;
     }
 
     .lightbox-content {
@@ -145,10 +182,8 @@
       box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
       border: 2px solid rgba(255, 255, 255, 0.2);
       background: #0a0f1c;
-      transition: transform 0.2s;
     }
 
-    /* close hint */
     .close-hint {
       position: absolute;
       bottom: 24px;
@@ -164,8 +199,6 @@
       border-radius: 40px;
       backdrop-filter: blur(4px);
       pointer-events: none;
-      font-weight: 400;
-      letter-spacing: 0.5px;
     }
 
     @keyframes fadeScale {
@@ -179,16 +212,13 @@
       }
     }
 
-    /* counter / minimalist footer */
     .footer-stats {
       text-align: center;
       font-size: 0.85rem;
-      padding: 1.2rem 1rem 2rem;
+      padding: 1rem 1rem 1.5rem;
       color: #7e8aa8;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      margin-top: 0.5rem;
       background: rgba(0, 0, 0, 0.2);
-      letter-spacing: 0.3px;
     }
 
     .footer-stats span {
@@ -196,67 +226,60 @@
       color: #c7d2fe;
     }
 
-    /* responsive fine-tuning */
+    .loading-placeholder {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(255,255,255,0.2);
+      border-top-color: #c9b6e4;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
     @media (max-width: 680px) {
       .gallery {
         gap: 0.9rem;
         padding: 1.2rem;
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       }
-      
-      h1 {
-        font-size: 2.2rem;
-      }
-      
-      .gallery-item {
-        border-radius: 1rem;
-      }
-      
-      .lightbox img {
-        max-height: 75vh;
-        border-radius: 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .gallery {
-        gap: 0.7rem;
-        padding: 1rem;
-      }
-      
-      .subhead {
-        font-size: 0.85rem;
-      }
-    }
-
-    /* loading state subtle shimmer */
-    img {
-      background: #1e293b;
+      h1 { font-size: 2.2rem; }
+      .load-more-btn { padding: 10px 24px; font-size: 1rem; }
     }
   </style>
 </head>
 <body>
 
 <div class="hero">
-  <h1>📸 After wedding day</h1>
-  <div class="subhead">✦ all timeless moments ✦</div>
+  <h1>📸 After Wedding</h1>
+  <div class="subhead">✦ timeless frames </div>
 </div>
 
 <div class="gallery" id="gallery"></div>
 
-<div class="footer-stats">
-  <span id="imageCount"></span> cherished moments · click any photo to relive the magic · ◀  ▶  keyboard or side zones
+<div class="load-more-container" id="loadMoreContainer">
+  <button class="load-more-btn" id="loadMoreBtn">✨ LOAD 10 MORE PHOTOS ✨</button>
 </div>
 
-<div class="lightbox" id="lightbox" aria-label="lightbox gallery viewer" role="dialog">
+<div class="footer-stats">
+  <span id="loadedCount">0</span> / <span id="totalCount"></span> cherished moments · click any photo to relive the magic
+</div>
+
+<div class="lightbox" id="lightbox">
   <div class="lightbox-content">
-    <img id="lightbox-img" alt="enlarged wedding memory">
-     </div>
+    <img id="lightbox-img" alt="wedding memory">
+  </div>
 </div>
 
 <script>
-  // Complete after-wedding image collection (original 20 + 75+ new ones = 95 total)
-  const images = [
+  // Complete collection - all wedding images (81 photos)
+  const allImages = [
     "https://i.ibb.co/DHvT8GTj/dongothunder2026-02-28-20h16m17s706.png",
     "https://i.ibb.co/0RL0ftkH/dongothunder2026-02-28-20h16m20s172.png",
     "https://i.ibb.co/YMYPQnW/dongothunder2026-02-28-20h16m21s394.png",
@@ -339,58 +362,142 @@
     "https://i.ibb.co/ppdWHDW/dongothunder2026-02-28-20h20m41s025.png"
   ];
 
-  // DOM elements
+  // Configuration
+  const BATCH_SIZE = 10;
+  let currentIndex = 0;
+  let loadedCount = 0;
+  let isLoading = false;
+  
+  // DOM Elements
   const galleryContainer = document.getElementById("gallery");
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightbox-img");
-  const imageCountSpan = document.getElementById("imageCount");
-
-  // set total image count for stats
-  if (imageCountSpan) {
-    imageCountSpan.textContent = images.length;
-  }
-
-  // Function to build gallery with optimized lazy loading and smooth interactions
-  function buildGallery() {
-    const fragment = document.createDocumentFragment();
+  const loadMoreBtn = document.getElementById("loadMoreBtn");
+  const loadedCountSpan = document.getElementById("loadedCount");
+  const totalCountSpan = document.getElementById("totalCount");
+  
+  // Set total count display
+  totalCountSpan.textContent = allImages.length;
+  
+  // Track all created gallery items for lightbox navigation
+  let galleryItems = []; // store references to image elements and their indices
+  
+  // Function to create gallery item with loading spinner
+  function createGalleryItem(src, idx) {
+    const card = document.createElement("div");
+    card.className = "gallery-item";
+    card.dataset.index = idx;
     
-    images.forEach((src, index) => {
-      const card = document.createElement("div");
-      card.className = "gallery-item";
-      
-      const imgElement = document.createElement("img");
-      imgElement.src = src;
-      imgElement.alt = `After wedding memory ${index + 1}`;
-      imgElement.loading = "lazy";
-      imgElement.decoding = "async";
-      
-      // Error handling graceful fallback
-      imgElement.onerror = () => {
-        imgElement.style.background = "#2d3a5e";
-        imgElement.style.objectFit = "cover";
-        imgElement.alt = "✨ moment loading issue ✨";
-      };
-      
-      // Attach click event to open lightbox
-      card.addEventListener("click", (e) => {
-        e.stopPropagation();
-        lightbox.style.display = "flex";
-        lightboxImg.src = src;
-        lightboxImg.alt = `Enlarged wedding moment ${index + 1}`;
-        document.body.style.overflow = "hidden";
-        // update current index for navigation
-        updateCurrentIndex(src);
-      });
-      
-      card.appendChild(imgElement);
-      fragment.appendChild(card);
+    const loadingSpinner = document.createElement("div");
+    loadingSpinner.className = "loading-placeholder";
+    
+    const imgElement = document.createElement("img");
+    imgElement.style.opacity = "0";
+    imgElement.style.transition = "opacity 0.3s";
+    imgElement.src = src;
+    imgElement.alt = `Wedding moment ${idx + 1}`;
+    imgElement.loading = "lazy";
+    
+    imgElement.onload = () => {
+      imgElement.style.opacity = "1";
+      if (loadingSpinner.parentNode) {
+        loadingSpinner.remove();
+      }
+    };
+    
+    imgElement.onerror = () => {
+      if (loadingSpinner.parentNode) loadingSpinner.remove();
+      imgElement.style.opacity = "0.5";
+      imgElement.style.objectFit = "contain";
+      imgElement.style.padding = "20px";
+      imgElement.alt = "⚠️ Image unavailable";
+      console.warn("Failed to load:", src);
+    };
+    
+    card.appendChild(loadingSpinner);
+    card.appendChild(imgElement);
+    
+    card.addEventListener("click", (e) => {
+      e.stopPropagation();
+      lightbox.style.display = "flex";
+      lightboxImg.src = src;
+      currentIndex = idx;
+      document.body.style.overflow = "hidden";
     });
     
-    galleryContainer.appendChild(fragment);
+    return card;
   }
   
-  // Lightbox close handlers
+  // Load next batch of images
+  function loadNextBatch() {
+    if (isLoading) return;
+    if (loadedCount >= allImages.length) {
+      // All images loaded, hide button
+      loadMoreBtn.classList.add("hidden");
+      return;
+    }
+    
+    isLoading = true;
+    loadMoreBtn.classList.add("loading");
+    loadMoreBtn.textContent = "⏳ LOADING...";
+    
+    // Use setTimeout to simulate smooth loading and avoid UI blocking
+    setTimeout(() => {
+      const start = loadedCount;
+      const end = Math.min(loadedCount + BATCH_SIZE, allImages.length);
+      const fragment = document.createDocumentFragment();
+      
+      for (let i = start; i < end; i++) {
+        const card = createGalleryItem(allImages[i], i);
+        fragment.appendChild(card);
+        galleryItems.push(card);
+      }
+      
+      galleryContainer.appendChild(fragment);
+      loadedCount = end;
+      
+      // Update counter display
+      loadedCountSpan.textContent = loadedCount;
+      
+      // Update button state
+      isLoading = false;
+      loadMoreBtn.classList.remove("loading");
+      
+      if (loadedCount >= allImages.length) {
+        loadMoreBtn.classList.add("hidden");
+        loadMoreBtn.textContent = "✨ ALL PHOTOS LOADED ✨";
+      } else {
+        loadMoreBtn.textContent = `✨ LOAD ${Math.min(BATCH_SIZE, allImages.length - loadedCount)} MORE PHOTOS (${loadedCount}/${allImages.length}) ✨`;
+      }
+    }, 150); // tiny delay for smooth UX
+  }
+  
+  // Initial load (first 10 photos)
+  function initialLoad() {
+    const initialBatch = allImages.slice(0, BATCH_SIZE);
+    const fragment = document.createDocumentFragment();
+    
+    for (let i = 0; i < initialBatch.length; i++) {
+      const card = createGalleryItem(initialBatch[i], i);
+      fragment.appendChild(card);
+      galleryItems.push(card);
+    }
+    
+    galleryContainer.appendChild(fragment);
+    loadedCount = initialBatch.length;
+    loadedCountSpan.textContent = loadedCount;
+    
+    // Update button text
+    if (loadedCount >= allImages.length) {
+      loadMoreBtn.classList.add("hidden");
+    } else {
+      loadMoreBtn.textContent = `✨ LOAD ${Math.min(BATCH_SIZE, allImages.length - loadedCount)} MORE PHOTOS (${loadedCount}/${allImages.length}) ✨`;
+    }
+  }
+  
+  // Lightbox controls with navigation across ALL loaded images
   function initLightbox() {
+    // Close on backdrop click or close hint
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox || e.target.classList.contains("close-hint")) {
         lightbox.style.display = "none";
@@ -398,192 +505,110 @@
       }
     });
     
-    // Escape key to close
+    // Keyboard navigation
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && lightbox.style.display === "flex") {
+      if (lightbox.style.display !== "flex") return;
+      
+      if (e.key === "Escape") {
         lightbox.style.display = "none";
         document.body.style.overflow = "";
+      } else if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        if (currentIndex > 0) {
+          currentIndex--;
+          lightboxImg.src = allImages[currentIndex];
+        } else {
+          // Loop to last image
+          currentIndex = allImages.length - 1;
+          lightboxImg.src = allImages[currentIndex];
+        }
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        if (currentIndex < allImages.length - 1) {
+          currentIndex++;
+          lightboxImg.src = allImages[currentIndex];
+        } else {
+          // Loop to first
+          currentIndex = 0;
+          lightboxImg.src = allImages[currentIndex];
+        }
       }
     });
     
-    // prevent image click from closing
-    lightboxImg.addEventListener("click", (e) => {
+    // Prevent image click from closing lightbox
+    lightboxImg.addEventListener("click", (e) => e.stopPropagation());
+  }
+  
+  // Side navigation zones for touch/mouse
+  function addSideNavigation() {
+    const leftZone = document.createElement("div");
+    const rightZone = document.createElement("div");
+    
+    Object.assign(leftZone.style, {
+      position: "absolute", left: "0", top: "0", width: "15%", height: "100%",
+      cursor: "w-resize", zIndex: "10", background: "transparent",
+      display: "flex", alignItems: "center", justifyContent: "center"
+    });
+    
+    Object.assign(rightZone.style, {
+      position: "absolute", right: "0", top: "0", width: "15%", height: "100%",
+      cursor: "e-resize", zIndex: "10", background: "transparent",
+      display: "flex", alignItems: "center", justifyContent: "center"
+    });
+    
+    leftZone.onclick = (e) => {
       e.stopPropagation();
-    });
-  }
-  
-  // Preload first 6 images for better perceived performance
-  function preloadCriticalImages() {
-    const preloadLimit = Math.min(6, images.length);
-    for (let i = 0; i < preloadLimit; i++) {
-      const link = document.createElement("link");
-      link.rel = "preload";
-      link.as = "image";
-      link.href = images[i];
-      document.head.appendChild(link);
-    }
-  }
-  
-  // Navigation logic for lightbox
-  let currentImageIndex = 0;
-  
-  function updateCurrentIndex(src) {
-    const foundIndex = images.findIndex(imgSrc => imgSrc === src);
-    if (foundIndex !== -1) {
-      currentImageIndex = foundIndex;
-    }
-  }
-  
-  function showPrevImage() {
-    if (images.length === 0) return;
-    let newIndex = currentImageIndex - 1;
-    if (newIndex < 0) newIndex = images.length - 1;
-    const newSrc = images[newIndex];
-    lightboxImg.src = newSrc;
-    currentImageIndex = newIndex;
-    lightboxImg.alt = `Wedding moment ${currentImageIndex + 1}`;
-  }
-  
-  function showNextImage() {
-    if (images.length === 0) return;
-    let newIndex = currentImageIndex + 1;
-    if (newIndex >= images.length) newIndex = 0;
-    const newSrc = images[newIndex];
-    lightboxImg.src = newSrc;
-    currentImageIndex = newIndex;
-    lightboxImg.alt = `Wedding moment ${currentImageIndex + 1}`;
-  }
-  
-  // Keyboard navigation
-  document.addEventListener("keydown", (e) => {
-    if (lightbox.style.display !== "flex") return;
-    if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      showPrevImage();
-    } else if (e.key === "ArrowRight") {
-      e.preventDefault();
-      showNextImage();
-    }
-  });
-  
-  // Touch-friendly side navigation zones
-  const leftZone = document.createElement("div");
-  const rightZone = document.createElement("div");
-  leftZone.style.position = "absolute";
-  leftZone.style.left = "0";
-  leftZone.style.top = "0";
-  leftZone.style.width = "15%";
-  leftZone.style.height = "100%";
-  leftZone.style.cursor = "w-resize";
-  leftZone.style.zIndex = "10";
-  leftZone.style.background = "transparent";
-  leftZone.style.display = "flex";
-  leftZone.style.alignItems = "center";
-  leftZone.style.justifyContent = "center";
-  
-  rightZone.style.position = "absolute";
-  rightZone.style.right = "0";
-  rightZone.style.top = "0";
-  rightZone.style.width = "15%";
-  rightZone.style.height = "100%";
-  rightZone.style.cursor = "e-resize";
-  rightZone.style.zIndex = "10";
-  rightZone.style.background = "transparent";
-  
-  leftZone.addEventListener("click", (e) => {
-    e.stopPropagation();
-    showPrevImage();
-  });
-  
-  rightZone.addEventListener("click", (e) => {
-    e.stopPropagation();
-    showNextImage();
-  });
-  
-  // Append side navigation to lightbox content
-  const lightboxContentDiv = document.querySelector(".lightbox-content");
-  if (lightboxContentDiv && !lightboxContentDiv.querySelector(".nav-zone-left")) {
-    leftZone.classList.add("nav-zone-left");
-    rightZone.classList.add("nav-zone-right");
-    lightboxContentDiv.appendChild(leftZone);
-    lightboxContentDiv.appendChild(rightZone);
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = allImages.length - 1;
+      }
+      lightboxImg.src = allImages[currentIndex];
+    };
     
-    const extraStyle = document.createElement('style');
-    extraStyle.textContent = `
-      .nav-zone-left:hover::after {
-        content: "◀";
-        font-size: 2rem;
-        color: rgba(255,255,240,0.85);
-        background: rgba(0,0,0,0.4);
-        padding: 10px 18px;
-        border-radius: 60px;
-        backdrop-filter: blur(10px);
-        transition: 0.2s;
-        font-weight: 300;
+    rightZone.onclick = (e) => {
+      e.stopPropagation();
+      if (currentIndex < allImages.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
       }
-      .nav-zone-right:hover::after {
-        content: "▶";
-        font-size: 2rem;
-        color: rgba(255,255,240,0.85);
-        background: rgba(0,0,0,0.4);
-        padding: 10px 18px;
-        border-radius: 60px;
-        backdrop-filter: blur(10px);
-        transition: 0.2s;
-        font-weight: 300;
-      }
-      .nav-zone-left, .nav-zone-right {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .nav-zone-left:hover, .nav-zone-right:hover {
-        background: rgba(0,0,0,0.15);
-      }
-    `;
-    document.head.appendChild(extraStyle);
+      lightboxImg.src = allImages[currentIndex];
+    };
+    
+    const lightboxContent = document.querySelector(".lightbox-content");
+    if (lightboxContent && !lightboxContent.querySelector(".nav-zone-left")) {
+      leftZone.classList.add("nav-zone-left");
+      rightZone.classList.add("nav-zone-right");
+      lightboxContent.appendChild(leftZone);
+      lightboxContent.appendChild(rightZone);
+      
+      const navStyle = document.createElement('style');
+      navStyle.textContent = `
+        .nav-zone-left:hover::after { content: "◀"; font-size: 2rem; color: rgba(255,255,240,0.85); background: rgba(0,0,0,0.4); padding: 10px 18px; border-radius: 60px; backdrop-filter: blur(10px); pointer-events: none; }
+        .nav-zone-right:hover::after { content: "▶"; font-size: 2rem; color: rgba(255,255,240,0.85); background: rgba(0,0,0,0.4); padding: 10px 18px; border-radius: 60px; backdrop-filter: blur(10px); pointer-events: none; }
+        .nav-zone-left:hover, .nav-zone-right:hover { background: rgba(0,0,0,0.15); }
+      `;
+      document.head.appendChild(navStyle);
+    }
   }
   
-  // Mutation observer to keep track of current image index when lightbox changes src
-  const observer = new MutationObserver(() => {
-    if (lightboxImg.src && lightbox.style.display === "flex") {
-      updateCurrentIndex(lightboxImg.src);
-    }
-  });
-  observer.observe(lightboxImg, { attributes: true, attributeFilter: ["src"] });
-  
-  // Prevent background scroll on touch devices when lightbox open
+  // Prevent body scroll when lightbox is open (touch)
   lightbox.addEventListener("touchmove", (e) => {
-    if (lightbox.style.display === "flex") {
-      e.preventDefault();
-    }
+    if (lightbox.style.display === "flex") e.preventDefault();
   }, { passive: false });
   
   // Initialize everything
   function init() {
-    buildGallery();
+    initialLoad();
     initLightbox();
-    preloadCriticalImages();
-    
-    // Additional style polish for gallery items
-    const style = document.createElement('style');
-    style.textContent = `
-      .gallery-item img {
-        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.5, 1.1), filter 0.2s;
-      }
-    `;
-    document.head.appendChild(style);
+    addSideNavigation();
+    loadMoreBtn.addEventListener("click", loadNextBatch);
   }
   
   init();
   
-  // Small console message to confirm full gallery load (just for feedback)
-  window.addEventListener("load", () => {
-    const totalItems = document.querySelectorAll(".gallery-item").length;
-    if (totalItems === images.length) {
-      console.log(`✨ After wedding gallery ready — ${totalItems} beautiful moments captured ✨`);
-    }
-  });
+  console.log(`✨ Gallery ready — ${allImages.length} total photos, loading ${BATCH_SIZE} at a time ✨`);
 </script>
 </body>
 </html>
