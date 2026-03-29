@@ -1,0 +1,589 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>After Wedding Gallery | Complete Collection</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #0b1120 0%, #0f172a 100%);
+      font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, 'Inter', 'Arial', sans-serif;
+      color: #f1f5f9;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+
+    /* elegant header section */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1.5rem 1.8rem;
+      backdrop-filter: blur(2px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(15, 23, 42, 0.6);
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #FFFFFF 30%, #c9b6e4 70%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-bottom: 0.5rem;
+    }
+
+    .subhead {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #a5b4fc;
+      border-top: 1px dashed rgba(165, 180, 252, 0.3);
+      display: inline-block;
+      padding-top: 0.6rem;
+      margin-top: 0.5rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* refined gallery grid */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.25rem;
+      padding: 2rem 1.8rem;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    /* card-style image containers */
+    .gallery-item {
+      position: relative;
+      border-radius: 1.25rem;
+      overflow: hidden;
+      background: #1e293b;
+      box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.5);
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.3s ease;
+      filter: brightness(0.98) contrast(1.02);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 32px -16px rgba(0, 0, 0, 0.6);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.02) contrast(1.05);
+    }
+
+    /* subtle overlay on hover for more elegance */
+    .gallery-item::after {
+      content: "✨";
+      position: absolute;
+      bottom: 12px;
+      right: 16px;
+      font-size: 1.4rem;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      text-shadow: 0 2px 6px black;
+      pointer-events: none;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 0.7;
+    }
+
+    /* LIGHTBOX - premium fullscreen viewer */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(8, 12, 24, 0.94);
+      backdrop-filter: blur(18px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 92vw;
+      max-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeScale 0.2s ease-out;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 20px;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: #0a0f1c;
+      transition: transform 0.2s;
+    }
+
+    /* close hint */
+    .close-hint {
+      position: absolute;
+      bottom: 24px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #cbd5e6;
+      background: rgba(0, 0, 0, 0.5);
+      width: fit-content;
+      margin: 0 auto;
+      padding: 6px 16px;
+      border-radius: 40px;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    @keyframes fadeScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* counter / minimalist footer */
+    .footer-stats {
+      text-align: center;
+      font-size: 0.85rem;
+      padding: 1.2rem 1rem 2rem;
+      color: #7e8aa8;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      margin-top: 0.5rem;
+      background: rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.3px;
+    }
+
+    .footer-stats span {
+      font-weight: 500;
+      color: #c7d2fe;
+    }
+
+    /* responsive fine-tuning */
+    @media (max-width: 680px) {
+      .gallery {
+        gap: 0.9rem;
+        padding: 1.2rem;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .gallery-item {
+        border-radius: 1rem;
+      }
+      
+      .lightbox img {
+        max-height: 75vh;
+        border-radius: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery {
+        gap: 0.7rem;
+        padding: 1rem;
+      }
+      
+      .subhead {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* loading state subtle shimmer */
+    img {
+      background: #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>📸 After wedding day</h1>
+  <div class="subhead">✦ all timeless moments ✦</div>
+</div>
+
+<div class="gallery" id="gallery"></div>
+
+<div class="footer-stats">
+  <span id="imageCount"></span> cherished moments · click any photo to relive the magic · ◀  ▶  keyboard or side zones
+</div>
+
+<div class="lightbox" id="lightbox" aria-label="lightbox gallery viewer" role="dialog">
+  <div class="lightbox-content">
+    <img id="lightbox-img" alt="enlarged wedding memory">
+     </div>
+</div>
+
+<script>
+  // Complete after-wedding image collection (original 20 + 75+ new ones = 95 total)
+  const images = [
+    "https://i.ibb.co/DHvT8GTj/dongothunder2026-02-28-20h16m17s706.png",
+    "https://i.ibb.co/0RL0ftkH/dongothunder2026-02-28-20h16m20s172.png",
+    "https://i.ibb.co/YMYPQnW/dongothunder2026-02-28-20h16m21s394.png",
+    "https://i.ibb.co/N6ytKj8t/dongothunder2026-02-28-20h16m23s667.png",
+    "https://i.ibb.co/dJ0qfqK1/dongothunder2026-02-28-20h16m26s606.png",
+    "https://i.ibb.co/4RXff5FC/dongothunder2026-02-28-20h16m30s454.png",
+    "https://i.ibb.co/mCFwdKyX/dongothunder2026-02-28-20h16m38s312.png",
+    "https://i.ibb.co/G3pHm5vx/dongothunder2026-02-28-20h16m41s029.png",
+    "https://i.ibb.co/fGT53VHC/dongothunder2026-02-28-20h16m47s533.png",
+    "https://i.ibb.co/XkZfQZGM/dongothunder2026-02-28-20h16m55s626.png",
+    "https://i.ibb.co/ymX9ZjQt/dongothunder2026-02-28-20h16m57s401.png",
+    "https://i.ibb.co/PGb78Pd9/dongothunder2026-02-28-20h17m02s401.png",
+    "https://i.ibb.co/Gwxkmwr/dongothunder2026-02-28-20h17m04s123.png",
+    "https://i.ibb.co/qYR4bGw2/dongothunder2026-02-28-20h17m09s865.png",
+    "https://i.ibb.co/LDw65GQP/dongothunder2026-02-28-20h17m23s966.png",
+    "https://i.ibb.co/B5fTB5Vn/dongothunder2026-02-28-20h17m28s681.png",
+    "https://i.ibb.co/rnFWt9f/dongothunder2026-02-28-20h17m30s773.png",
+    "https://i.ibb.co/4w8jYfdj/dongothunder2026-02-28-20h17m32s742.png",
+    "https://i.ibb.co/67gGzn4N/dongothunder2026-02-28-20h17m34s781.png",
+    "https://i.ibb.co/Wp4fZHTn/dongothunder2026-02-28-20h17m36s532.png",
+    "https://i.ibb.co/4R3dkNjp/dongothunder2026-02-28-20h17m46s136.png",
+    "https://i.ibb.co/pvrNdhkz/dongothunder2026-02-28-20h17m53s403.png",
+    "https://i.ibb.co/VcWqyNHv/dongothunder2026-02-28-20h17m54s225.png",
+    "https://i.ibb.co/N2TvSdgD/dongothunder2026-02-28-20h17m55s114.png",
+    "https://i.ibb.co/vCffQPX5/dongothunder2026-02-28-20h18m00s357.png",
+    "https://i.ibb.co/b5X6y9D8/dongothunder2026-02-28-20h18m01s482.png",
+    "https://i.ibb.co/chVbRcvN/dongothunder2026-02-28-20h18m04s098.png",
+    "https://i.ibb.co/Jjnm1cw8/dongothunder2026-02-28-20h18m06s826.png",
+    "https://i.ibb.co/45rJKX4/dongothunder2026-02-28-20h18m16s720.png",
+    "https://i.ibb.co/S4gvgGzZ/dongothunder2026-02-28-20h18m18s607.png",
+    "https://i.ibb.co/TBYqPPMf/dongothunder2026-02-28-20h18m19s941.png",
+    "https://i.ibb.co/zHLX9WKY/dongothunder2026-02-28-20h18m23s740.png",
+    "https://i.ibb.co/jZHrCbfk/dongothunder2026-02-28-20h18m25s300.png",
+    "https://i.ibb.co/fGQgRS64/dongothunder2026-02-28-20h18m30s105.png",
+    "https://i.ibb.co/HDvDstSC/dongothunder2026-02-28-20h18m32s335.png",
+    "https://i.ibb.co/70819gq/dongothunder2026-02-28-20h18m34s422.png",
+    "https://i.ibb.co/7JktZ7Yh/dongothunder2026-02-28-20h18m34s738.png",
+    "https://i.ibb.co/B2gbfqmp/dongothunder2026-02-28-20h18m38s202.png",
+    "https://i.ibb.co/Rk7wqy5Y/dongothunder2026-02-28-20h18m41s378.png",
+    "https://i.ibb.co/hPwnM0s/dongothunder2026-02-28-20h18m44s241.png",
+    "https://i.ibb.co/6JFFV8Dn/dongothunder2026-02-28-20h18m45s364.png",
+    "https://i.ibb.co/Xfjh8HhY/dongothunder2026-02-28-20h18m55s011.png",
+    "https://i.ibb.co/Cs5nXVKX/dongothunder2026-02-28-20h18m57s338.png",
+    "https://i.ibb.co/VrxCGCX/dongothunder2026-02-28-20h18m58s442.png",
+    "https://i.ibb.co/ZRgVwdVG/dongothunder2026-02-28-20h19m00s483.png",
+    "https://i.ibb.co/B2YXQLR2/dongothunder2026-02-28-20h19m01s642.png",
+    "https://i.ibb.co/5hyRkFPJ/dongothunder2026-02-28-20h19m02s640.png",
+    "https://i.ibb.co/YBnSqw1j/dongothunder2026-02-28-20h19m04s202.png",
+    "https://i.ibb.co/pjRRwNyC/dongothunder2026-02-28-20h19m08s596.png",
+    "https://i.ibb.co/Fb411s4s/dongothunder2026-02-28-20h19m08s833.png",
+    "https://i.ibb.co/nqJ32C6t/dongothunder2026-02-28-20h19m10s337.png",
+    "https://i.ibb.co/60xMysQ9/dongothunder2026-02-28-20h19m12s023.png",
+    "https://i.ibb.co/JFbJ81d9/dongothunder2026-02-28-20h19m15s157.png",
+    "https://i.ibb.co/ycQ6DmMY/dongothunder2026-02-28-20h19m18s979.png",
+    "https://i.ibb.co/5h5r2f1f/dongothunder2026-02-28-20h19m20s920.png",
+    "https://i.ibb.co/q38nLCwL/dongothunder2026-02-28-20h19m23s978.png",
+    "https://i.ibb.co/Hfb3YWLG/dongothunder2026-02-28-20h19m25s428.png",
+    "https://i.ibb.co/ksD0wTr7/dongothunder2026-02-28-20h19m30s124.png",
+    "https://i.ibb.co/XZzww2hj/dongothunder2026-02-28-20h19m32s181.png",
+    "https://i.ibb.co/xKZtCT0g/dongothunder2026-02-28-20h19m41s422.png",
+    "https://i.ibb.co/d0C9HjjQ/dongothunder2026-02-28-20h19m44s673.png",
+    "https://i.ibb.co/RT7CF12m/dongothunder2026-02-28-20h19m47s313.png",
+    "https://i.ibb.co/5W0yC5hR/dongothunder2026-02-28-20h19m48s976.png",
+    "https://i.ibb.co/21RvX5dg/dongothunder2026-02-28-20h19m50s206.png",
+    "https://i.ibb.co/fG0KYNgs/dongothunder2026-02-28-20h19m56s259.png",
+    "https://i.ibb.co/fzVgvFD9/dongothunder2026-02-28-20h19m59s527.png",
+    "https://i.ibb.co/jvbzQNNN/dongothunder2026-02-28-20h20m07s729.png",
+    "https://i.ibb.co/PvmDQkmr/dongothunder2026-02-28-20h20m10s774.png",
+    "https://i.ibb.co/Jj5chHnb/dongothunder2026-02-28-20h20m11s631.png",
+    "https://i.ibb.co/bjbx5qw4/dongothunder2026-02-28-20h20m12s669.png",
+    "https://i.ibb.co/QvrxFtnH/dongothunder2026-02-28-20h20m15s221.png",
+    "https://i.ibb.co/wZWNjRww/dongothunder2026-02-28-20h20m21s414.png",
+    "https://i.ibb.co/20rNVPwJ/dongothunder2026-02-28-20h20m26s310.png",
+    "https://i.ibb.co/dwzSNW9h/dongothunder2026-02-28-20h20m27s592.png",
+    "https://i.ibb.co/y3rF1QP/dongothunder2026-02-28-20h20m30s165.png",
+    "https://i.ibb.co/zWBMcYqp/dongothunder2026-02-28-20h20m31s874.png",
+    "https://i.ibb.co/cKd9vwgm/dongothunder2026-02-28-20h20m33s501.png",
+    "https://i.ibb.co/tPqPfy9D/dongothunder2026-02-28-20h20m37s369.png",
+    "https://i.ibb.co/rfq1QHXJ/dongothunder2026-02-28-20h20m39s078.png",
+    "https://i.ibb.co/ppdWHDW/dongothunder2026-02-28-20h20m41s025.png"
+  ];
+
+  // DOM elements
+  const galleryContainer = document.getElementById("gallery");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const imageCountSpan = document.getElementById("imageCount");
+
+  // set total image count for stats
+  if (imageCountSpan) {
+    imageCountSpan.textContent = images.length;
+  }
+
+  // Function to build gallery with optimized lazy loading and smooth interactions
+  function buildGallery() {
+    const fragment = document.createDocumentFragment();
+    
+    images.forEach((src, index) => {
+      const card = document.createElement("div");
+      card.className = "gallery-item";
+      
+      const imgElement = document.createElement("img");
+      imgElement.src = src;
+      imgElement.alt = `After wedding memory ${index + 1}`;
+      imgElement.loading = "lazy";
+      imgElement.decoding = "async";
+      
+      // Error handling graceful fallback
+      imgElement.onerror = () => {
+        imgElement.style.background = "#2d3a5e";
+        imgElement.style.objectFit = "cover";
+        imgElement.alt = "✨ moment loading issue ✨";
+      };
+      
+      // Attach click event to open lightbox
+      card.addEventListener("click", (e) => {
+        e.stopPropagation();
+        lightbox.style.display = "flex";
+        lightboxImg.src = src;
+        lightboxImg.alt = `Enlarged wedding moment ${index + 1}`;
+        document.body.style.overflow = "hidden";
+        // update current index for navigation
+        updateCurrentIndex(src);
+      });
+      
+      card.appendChild(imgElement);
+      fragment.appendChild(card);
+    });
+    
+    galleryContainer.appendChild(fragment);
+  }
+  
+  // Lightbox close handlers
+  function initLightbox() {
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox || e.target.classList.contains("close-hint")) {
+        lightbox.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    });
+    
+    // Escape key to close
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && lightbox.style.display === "flex") {
+        lightbox.style.display = "none";
+        document.body.style.overflow = "";
+      }
+    });
+    
+    // prevent image click from closing
+    lightboxImg.addEventListener("click", (e) => {
+      e.stopPropagation();
+    });
+  }
+  
+  // Preload first 6 images for better perceived performance
+  function preloadCriticalImages() {
+    const preloadLimit = Math.min(6, images.length);
+    for (let i = 0; i < preloadLimit; i++) {
+      const link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "image";
+      link.href = images[i];
+      document.head.appendChild(link);
+    }
+  }
+  
+  // Navigation logic for lightbox
+  let currentImageIndex = 0;
+  
+  function updateCurrentIndex(src) {
+    const foundIndex = images.findIndex(imgSrc => imgSrc === src);
+    if (foundIndex !== -1) {
+      currentImageIndex = foundIndex;
+    }
+  }
+  
+  function showPrevImage() {
+    if (images.length === 0) return;
+    let newIndex = currentImageIndex - 1;
+    if (newIndex < 0) newIndex = images.length - 1;
+    const newSrc = images[newIndex];
+    lightboxImg.src = newSrc;
+    currentImageIndex = newIndex;
+    lightboxImg.alt = `Wedding moment ${currentImageIndex + 1}`;
+  }
+  
+  function showNextImage() {
+    if (images.length === 0) return;
+    let newIndex = currentImageIndex + 1;
+    if (newIndex >= images.length) newIndex = 0;
+    const newSrc = images[newIndex];
+    lightboxImg.src = newSrc;
+    currentImageIndex = newIndex;
+    lightboxImg.alt = `Wedding moment ${currentImageIndex + 1}`;
+  }
+  
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display !== "flex") return;
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      showPrevImage();
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      showNextImage();
+    }
+  });
+  
+  // Touch-friendly side navigation zones
+  const leftZone = document.createElement("div");
+  const rightZone = document.createElement("div");
+  leftZone.style.position = "absolute";
+  leftZone.style.left = "0";
+  leftZone.style.top = "0";
+  leftZone.style.width = "15%";
+  leftZone.style.height = "100%";
+  leftZone.style.cursor = "w-resize";
+  leftZone.style.zIndex = "10";
+  leftZone.style.background = "transparent";
+  leftZone.style.display = "flex";
+  leftZone.style.alignItems = "center";
+  leftZone.style.justifyContent = "center";
+  
+  rightZone.style.position = "absolute";
+  rightZone.style.right = "0";
+  rightZone.style.top = "0";
+  rightZone.style.width = "15%";
+  rightZone.style.height = "100%";
+  rightZone.style.cursor = "e-resize";
+  rightZone.style.zIndex = "10";
+  rightZone.style.background = "transparent";
+  
+  leftZone.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showPrevImage();
+  });
+  
+  rightZone.addEventListener("click", (e) => {
+    e.stopPropagation();
+    showNextImage();
+  });
+  
+  // Append side navigation to lightbox content
+  const lightboxContentDiv = document.querySelector(".lightbox-content");
+  if (lightboxContentDiv && !lightboxContentDiv.querySelector(".nav-zone-left")) {
+    leftZone.classList.add("nav-zone-left");
+    rightZone.classList.add("nav-zone-right");
+    lightboxContentDiv.appendChild(leftZone);
+    lightboxContentDiv.appendChild(rightZone);
+    
+    const extraStyle = document.createElement('style');
+    extraStyle.textContent = `
+      .nav-zone-left:hover::after {
+        content: "◀";
+        font-size: 2rem;
+        color: rgba(255,255,240,0.85);
+        background: rgba(0,0,0,0.4);
+        padding: 10px 18px;
+        border-radius: 60px;
+        backdrop-filter: blur(10px);
+        transition: 0.2s;
+        font-weight: 300;
+      }
+      .nav-zone-right:hover::after {
+        content: "▶";
+        font-size: 2rem;
+        color: rgba(255,255,240,0.85);
+        background: rgba(0,0,0,0.4);
+        padding: 10px 18px;
+        border-radius: 60px;
+        backdrop-filter: blur(10px);
+        transition: 0.2s;
+        font-weight: 300;
+      }
+      .nav-zone-left, .nav-zone-right {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .nav-zone-left:hover, .nav-zone-right:hover {
+        background: rgba(0,0,0,0.15);
+      }
+    `;
+    document.head.appendChild(extraStyle);
+  }
+  
+  // Mutation observer to keep track of current image index when lightbox changes src
+  const observer = new MutationObserver(() => {
+    if (lightboxImg.src && lightbox.style.display === "flex") {
+      updateCurrentIndex(lightboxImg.src);
+    }
+  });
+  observer.observe(lightboxImg, { attributes: true, attributeFilter: ["src"] });
+  
+  // Prevent background scroll on touch devices when lightbox open
+  lightbox.addEventListener("touchmove", (e) => {
+    if (lightbox.style.display === "flex") {
+      e.preventDefault();
+    }
+  }, { passive: false });
+  
+  // Initialize everything
+  function init() {
+    buildGallery();
+    initLightbox();
+    preloadCriticalImages();
+    
+    // Additional style polish for gallery items
+    const style = document.createElement('style');
+    style.textContent = `
+      .gallery-item img {
+        transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.5, 1.1), filter 0.2s;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  
+  init();
+  
+  // Small console message to confirm full gallery load (just for feedback)
+  window.addEventListener("load", () => {
+    const totalItems = document.querySelectorAll(".gallery-item").length;
+    if (totalItems === images.length) {
+      console.log(`✨ After wedding gallery ready — ${totalItems} beautiful moments captured ✨`);
+    }
+  });
+</script>
+</body>
+</html>
