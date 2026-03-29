@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Wedding Morning Gallery | Load More</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: #0f172a;
+    font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+    color: #f1f5f9;
+    scroll-behavior: smooth;
+  }
+
+  .hero {
+    text-align: center;
+    padding: 2rem 1rem 1rem;
+    background: radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.2), transparent);
+  }
+
+  h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, #ffffff, #d9c8ff, #b692f0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .sub {
+    margin-top: 0.6rem;
+    opacity: 0.8;
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  /* gallery grid */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.2rem;
+    padding: 2rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .gallery img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .gallery img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    border-color: rgba(210, 180, 255, 0.6);
+  }
+
+  /* button container */
+  .load-more-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 1rem 3rem;
+  }
+
+  .load-more-btn {
+    background: linear-gradient(105deg, #2d3a5e, #1e293b);
+    border: 1px solid rgba(203, 173, 255, 0.6);
+    color: #f0e9ff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.85rem 2.2rem;
+    border-radius: 60px;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: all 0.2s ease;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .load-more-btn:hover {
+    background: linear-gradient(105deg, #3b4a70, #2a3448);
+    border-color: #cbb5ff;
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    color: white;
+  }
+
+  .load-more-btn:active {
+    transform: scale(0.98);
+  }
+
+  .counter-status {
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: -0.8rem;
+    margin-bottom: 0.8rem;
+    color: #a5b4fc;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+  }
+
+  /* lightbox styling */
+  .lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(8, 12, 25, 0.96);
+    backdrop-filter: blur(12px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    cursor: pointer;
+  }
+
+  .lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    border-radius: 24px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(255, 245, 215, 0.3);
+    transition: transform 0.2s;
+    cursor: default;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #fef9e8;
+    background: rgba(20, 20, 40, 0.7);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .close-btn:hover {
+    background: #c2410c;
+    transform: scale(1.05);
+    color: white;
+  }
+
+  /* footer / empty state */
+  .end-message {
+    text-align: center;
+    margin: 1rem 0 2rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+    font-style: italic;
+  }
+
+  @media (max-width: 640px) {
+    .gallery {
+      gap: 0.9rem;
+      padding: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    h1 {
+      font-size: 1.8rem;
+    }
+    .load-more-btn {
+      padding: 0.7rem 1.6rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🌿 Wedding Morning · 晨曦光影 🌅</h1>
+  <div class="sub">eternal moments | 温柔记忆</div>
+</div>
+
+<div class="gallery" id="gallery"></div>
+<div class="load-more-wrapper" id="loadMoreWrapper">
+  <button class="load-more-btn" id="loadMoreBtn">✨ 加载更多照片 +10 ✨</button>
+</div>
+<div class="counter-status" id="counterStatus"></div>
+<div class="end-message" id="endMessage"></div>
+
+<!-- Lightbox structure -->
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" id="closeBtn">✕</span>
+  <img id="lightbox-img" alt="Enlarged wedding moment">
+</div>
+
+<script>
+  // ----------------------------------------------
+  // COMPLETE IMAGE LIST (all provided URLs + extra given below)
+  // ----------------------------------------------
+  const fullImageSet = [
+    "https://i.ibb.co/27y85d4W/dongothunder2026-02-28-19h42m54s700.png",
+    "https://i.ibb.co/n8wKQYk1/dongothunder2026-02-28-19h42m41s361.png",
+    "https://i.ibb.co/WvrrL7Zk/dongothunder2026-02-28-19h42m35s119.png",
+    "https://i.ibb.co/4nrdcdnQ/dongothunder2026-02-28-19h42m33s177.png",
+    "https://i.ibb.co/TMQJ7CQG/dongothunder2026-02-28-19h42m31s906.png",
+    "https://i.ibb.co/TqwDGwxV/dongothunder2026-02-28-19h42m30s341.png",
+    "https://i.ibb.co/WvNGCF1Z/dongothunder2026-02-28-19h42m16s755.png",
+    "https://i.ibb.co/ynJPB3St/dongothunder2026-02-28-19h42m06s252.png",
+    "https://i.ibb.co/kssgjt9y/dongothunder2026-02-28-19h42m04s604.png",
+    "https://i.ibb.co/Xx5qfZPV/dongothunder2026-02-28-19h41m56s478.png",
+    "https://i.ibb.co/WNZgmjKF/dongothunder2026-02-28-19h41m50s119.png",
+    "https://i.ibb.co/5gL1sbsQ/dongothunder2026-02-28-19h41m48s526.png",
+    "https://i.ibb.co/tMtyVHHZ/dongothunder2026-02-28-19h41m45s629.png",
+    "https://i.ibb.co/60ZVZVNJ/dongothunder2026-02-28-19h41m41s960.png",
+    "https://i.ibb.co/qYhkR1Kv/dongothunder2026-02-28-19h41m39s574.png",
+    "https://i.ibb.co/XfpdLjKs/dongothunder2026-02-28-19h41m37s691.png",
+    "https://i.ibb.co/CK3LgHHL/dongothunder2026-02-28-19h41m36s661.png",
+    "https://i.ibb.co/QvKrQ06V/dongothunder2026-02-28-19h41m35s202.png",
+    "https://i.ibb.co/8gP2zFbf/dongothunder2026-02-28-19h47m44s865.png",
+    "https://i.ibb.co/d0shwMCt/dongothunder2026-02-28-19h47m36s527.png",
+    "https://i.ibb.co/dJGyL0vw/dongothunder2026-02-28-19h47m34s945.png",
+    "https://i.ibb.co/VcsvBWGh/dongothunder2026-02-28-19h47m27s961.png",
+    "https://i.ibb.co/n8PsZGyk/dongothunder2026-02-28-19h47m23s453.png",
+    "https://i.ibb.co/N62Y5fTZ/dongothunder2026-02-28-19h47m15s805.png",
+    "https://i.ibb.co/CsMK90nn/dongothunder2026-02-28-19h47m09s031.png",
+    "https://i.ibb.co/4wTsfXNG/dongothunder2026-02-28-19h47m05s220.png",
+    "https://i.ibb.co/YFrSZdJD/dongothunder2026-02-28-19h47m03s633.png",
+    "https://i.ibb.co/VcLgW0Z4/dongothunder2026-02-28-19h47m00s439.png",
+    "https://i.ibb.co/2Y6fJQ1j/dongothunder2026-02-28-19h46m57s255.png",
+    "https://i.ibb.co/9myNfNss/dongothunder2026-02-28-19h46m55s678.png",
+    "https://i.ibb.co/PZJZ2dwK/dongothunder2026-02-28-19h46m54s498.png",
+    "https://i.ibb.co/RpRhR5h9/dongothunder2026-02-28-19h46m53s519.png",
+    "https://i.ibb.co/y3dLdpC/dongothunder2026-02-28-19h46m52s490.png",
+    "https://i.ibb.co/v6hsKCry/dongothunder2026-02-28-19h46m51s286.png",
+    "https://i.ibb.co/27CB3qBp/dongothunder2026-02-28-19h46m23s241.png",
+    "https://i.ibb.co/4gfGKpgp/dongothunder2026-02-28-19h46m18s206.png",
+    "https://i.ibb.co/ymY1BRvj/dongothunder2026-02-28-19h46m16s288.png",
+    "https://i.ibb.co/zTK0Nyq6/dongothunder2026-02-28-19h46m14s925.png",
+    "https://i.ibb.co/9m9CLWvn/dongothunder2026-02-28-19h46m12s956.png",
+    "https://i.ibb.co/0pfdxJsk/dongothunder2026-02-28-19h46m09s846.png",
+    "https://i.ibb.co/R8X5J2w/dongothunder2026-02-28-19h46m08s223.png",
+    "https://i.ibb.co/Xxppyx3J/dongothunder2026-02-28-19h46m06s957.png",
+    "https://i.ibb.co/Xf8h8nnc/dongothunder2026-02-28-19h46m04s905.png",
+    "https://i.ibb.co/4RSbLfbx/dongothunder2026-02-28-19h46m00s819.png",
+    "https://i.ibb.co/jPhLB4Kx/dongothunder2026-02-28-19h45m59s185.png",
+    "https://i.ibb.co/XxTncMqs/dongothunder2026-02-28-19h45m57s562.png",
+    "https://i.ibb.co/H00vtXG/dongothunder2026-02-28-19h45m54s658.png",
+    "https://i.ibb.co/GvSDfsby/dongothunder2026-02-28-19h45m46s171.png",
+    "https://i.ibb.co/5gqvpjBd/dongothunder2026-02-28-19h45m45s262.png",
+    "https://i.ibb.co/jPc3bD5V/dongothunder2026-02-28-19h45m34s153.png",
+    "https://i.ibb.co/216TLCP0/dongothunder2026-02-28-19h45m32s025.png",
+    "https://i.ibb.co/r2qLfY08/dongothunder2026-02-28-19h45m20s185.png",
+    "https://i.ibb.co/hJ8NyJw3/dongothunder2026-02-28-19h45m18s579.png",
+    "https://i.ibb.co/NdH98BHK/dongothunder2026-02-28-19h45m15s759.png",
+    "https://i.ibb.co/PGDcpM7y/dongothunder2026-02-28-19h45m10s993.png",
+    "https://i.ibb.co/WvTmsQRp/dongothunder2026-02-28-19h44m57s427.png",
+    "https://i.ibb.co/TxDQsSwb/dongothunder2026-02-28-19h44m56s211.png",
+    "https://i.ibb.co/V051ckNK/dongothunder2026-02-28-19h44m55s118.png",
+    "https://i.ibb.co/4Z2YnzHP/dongothunder2026-02-28-19h44m52s854.png",
+    "https://i.ibb.co/ZpDKv9nT/dongothunder2026-02-28-19h44m50s972.png",
+    "https://i.ibb.co/cXJ2vXYK/dongothunder2026-02-28-19h44m49s561.png",
+    "https://i.ibb.co/4HDBT6y/dongothunder2026-02-28-19h44m47s904.png",
+    "https://i.ibb.co/p6QPMdFx/dongothunder2026-02-28-19h44m46s159.png",
+    "https://i.ibb.co/4rt95hr/dongothunder2026-02-28-19h44m45s025.png",
+    "https://i.ibb.co/v4t31fJC/dongothunder2026-02-28-19h44m43s588.png",
+    "https://i.ibb.co/LdLLfP5Y/dongothunder2026-02-28-19h44m41s761.png",
+    "https://i.ibb.co/YBTw1b4t/dongothunder2026-02-28-19h44m40s138.png",
+    "https://i.ibb.co/zHX3wBzD/dongothunder2026-02-28-19h44m38s145.png",
+    "https://i.ibb.co/HLC9XBVg/dongothunder2026-02-28-19h44m36s975.png",
+    "https://i.ibb.co/v692czsz/dongothunder2026-02-28-19h44m35s129.png",
+    "https://i.ibb.co/gZYp0tsv/dongothunder2026-02-28-19h44m33s868.png",
+    "https://i.ibb.co/TBgh2z43/dongothunder2026-02-28-19h44m32s705.png",
+    "https://i.ibb.co/hRGsbdsF/dongothunder2026-02-28-19h44m31s014.png",
+    "https://i.ibb.co/0VFsqJ4r/dongothunder2026-02-28-19h44m24s768.png",
+    "https://i.ibb.co/hR2dT49d/dongothunder2026-02-28-19h44m22s189.png",
+    "https://i.ibb.co/M5yHG5wM/dongothunder2026-02-28-19h44m09s790.png",
+    "https://i.ibb.co/XfSwfhqc/dongothunder2026-02-28-19h43m59s303.png",
+    "https://i.ibb.co/4Rvqbqgv/dongothunder2026-02-28-19h43m55s329.png",
+    "https://i.ibb.co/xq9PmSgs/dongothunder2026-02-28-19h43m30s767.png",
+    "https://i.ibb.co/3YRzDMpT/dongothunder2026-02-28-19h43m29s491.png",
+    "https://i.ibb.co/whq3X3qd/dongothunder2026-02-28-19h43m25s285.png",
+    "https://i.ibb.co/nMVJYy5w/dongothunder2026-02-28-19h43m22s387.png",
+    "https://i.ibb.co/bjYnSmYC/dongothunder2026-02-28-19h43m20s846.png",
+    "https://i.ibb.co/mC2QQJsT/dongothunder2026-02-28-19h43m19s642.png",
+    "https://i.ibb.co/pvvyz4vT/dongothunder2026-02-28-19h43m17s656.png",
+    "https://i.ibb.co/hJjLyKHb/dongothunder2026-02-28-19h43m15s609.png",
+    "https://i.ibb.co/G39Sr5kr/dongothunder2026-02-28-19h43m12s705.png",
+    "https://i.ibb.co/whK93Rmh/dongothunder2026-02-28-19h43m10s585.png",
+    "https://i.ibb.co/DHPKBJbK/dongothunder2026-02-28-19h43m09s444.png",
+    "https://i.ibb.co/ZzbWMJvH/dongothunder2026-02-28-19h43m06s268.png",
+    "https://i.ibb.co/MkjqNSH4/dongothunder2026-02-28-19h43m01s619.png",
+    "https://i.ibb.co/0j7k5g6L/dongothunder2026-02-28-19h43m04s082.png"
+  ];
+
+  // DOM elements
+  const galleryContainer = document.getElementById("gallery");
+  const loadBtn = document.getElementById("loadMoreBtn");
+  const counterSpan = document.getElementById("counterStatus");
+  const endMessageDiv = document.getElementById("endMessage");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.getElementById("closeBtn");
+
+  // pagination state
+  let currentIndex = 0;          // how many images have been loaded so far
+  const BATCH_SIZE = 10;         // load 10 per click
+  let isLoading = false;          // prevent double-fetch while appending
+
+  // helper: update status text (showing loaded count / total)
+  function updateStatus() {
+    const loaded = currentIndex;
+    const total = fullImageSet.length;
+    if (total === 0) {
+      counterSpan.innerText = "✨ 暂无照片 ✨";
+      return;
+    }
+    counterSpan.innerText = `📸 已加载 ${loaded} / ${total} 张 · 温柔时刻`;
+    if (loaded >= total) {
+      endMessageDiv.innerText = "🌸 所有婚礼影像已呈现，愿爱永驻 🌸";
+      loadBtn.disabled = true;
+      loadBtn.style.opacity = "0.6";
+      loadBtn.style.cursor = "default";
+      loadBtn.innerText = "✨ 已加载全部 ✨";
+    } else {
+      endMessageDiv.innerText = "";
+      loadBtn.disabled = false;
+      loadBtn.style.opacity = "1";
+      loadBtn.innerText = `✨ 加载更多照片 +${Math.min(BATCH_SIZE, total - loaded)} ✨`;
+    }
+  }
+
+  // lightbox logic (re-attach for new images? we'll use event delegation)
+  function attachClickToImages() {
+    // using event delegation on gallery container is safer & dynamic
+    // but we also want to ensure any newly added images get click handler.
+    // we already set onclick property in createImageElement, but delegation also works.
+    // but to be consistent: we set onclick individually inside createImageElement.
+    // no need extra.
+  }
+
+  // create single gallery image element with lightbox trigger
+  function createImageElement(imgUrl) {
+    const img = document.createElement("img");
+    img.src = imgUrl;
+    img.loading = "lazy";
+    img.alt = "Wedding morning memory";
+    img.style.cursor = "pointer";
+    // lightbox trigger
+    img.onclick = (e) => {
+      e.stopPropagation();
+      lightbox.style.display = "flex";
+      lightboxImg.src = imgUrl;
+    };
+    return img;
+  }
+
+  // append next batch of images (BATCH_SIZE) to gallery
+  function loadNextBatch() {
+    if (isLoading) return;
+    if (currentIndex >= fullImageSet.length) {
+      updateStatus();
+      return;
+    }
+    
+    isLoading = true;
+    // simulate micro async for smooth ui (but sync dom is fine)
+    // use requestAnimationFrame to avoid blocking
+    setTimeout(() => {
+      const start = currentIndex;
+      const end = Math.min(start + BATCH_SIZE, fullImageSet.length);
+      const fragment = document.createDocumentFragment();
+      
+      for (let i = start; i < end; i++) {
+        const imgElement = createImageElement(fullImageSet[i]);
+        fragment.appendChild(imgElement);
+      }
+      
+      galleryContainer.appendChild(fragment);
+      currentIndex = end;
+      updateStatus();
+      isLoading = false;
+      
+      // after loading new images, if lightbox is not open it's fine.
+      // optional: smooth scroll to bottom hint? but not needed
+    }, 20); // tiny delay for responsiveness
+  }
+
+  // initial load: first 10 images
+  function initialLoad() {
+    // reset gallery
+    galleryContainer.innerHTML = "";
+    currentIndex = 0;
+    isLoading = false;
+    // load first batch (10)
+    const firstBatchCount = Math.min(BATCH_SIZE, fullImageSet.length);
+    if (firstBatchCount === 0) return;
+    
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < firstBatchCount; i++) {
+      const img = createImageElement(fullImageSet[i]);
+      fragment.appendChild(img);
+    }
+    galleryContainer.appendChild(fragment);
+    currentIndex = firstBatchCount;
+    updateStatus();
+    
+    // If total images <= 10, disable load more automatically
+    if (currentIndex >= fullImageSet.length) {
+      loadBtn.disabled = true;
+      loadBtn.style.opacity = "0.6";
+      loadBtn.innerText = "✨ 已加载全部 ✨";
+      if (fullImageSet.length === 0) endMessageDiv.innerText = "✨ 等待照片 ✨";
+      else endMessageDiv.innerText = "🌸 所有婚礼影像已呈现，愿爱永驻 🌸";
+    } else {
+      loadBtn.disabled = false;
+      loadBtn.style.opacity = "1";
+      loadBtn.innerText = `✨ 加载更多照片 +${Math.min(BATCH_SIZE, fullImageSet.length - currentIndex)} ✨`;
+      endMessageDiv.innerText = "";
+    }
+  }
+
+  // Lightbox close handlers
+  function closeLightbox() {
+    lightbox.style.display = "none";
+    lightboxImg.src = ""; // optional clear
+  }
+  
+  closeBtn.onclick = closeLightbox;
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) closeLightbox();
+  };
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.style.display === "flex") {
+      closeLightbox();
+    }
+  });
+
+  // load more button event
+  loadBtn.onclick = () => {
+    if (currentIndex >= fullImageSet.length) {
+      updateStatus();
+      return;
+    }
+    loadNextBatch();
+  };
+
+  // initialize gallery on page load
+  initialLoad();
+</script>
+</body>
+</html>
