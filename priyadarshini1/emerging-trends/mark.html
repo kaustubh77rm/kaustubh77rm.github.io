@@ -1,197 +1,201 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marks · IF6K · emerging trends</title>
+<title>Marks</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Inter',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif}
 
 body{
-    background:linear-gradient(145deg,#f0f4fa,#e6ecf3);
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:1rem;
+  background:linear-gradient(145deg,#f0f4fa,#e6ecf3);
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:1rem;
 }
 
 .card{
-    max-width:1000px;
-    width:100%;
-    background:white;
-    border-radius:20px;
-    padding:1.5rem;
-    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  max-width:1100px;
+  width:100%;
+  background:white;
+  border-radius:20px;
+  padding:1.5rem;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
 .dept-header{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    background:#0f2744;
-    color:white;
-    padding:1rem;
-    border-radius:40px;
-    margin-bottom:1rem;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  background:#0f2744;
+  color:white;
+  padding:1rem;
+  border-radius:40px;
+  margin-bottom:1rem;
 }
 
 .subject-row{
-    background:#17345c;
-    color:white;
-    padding:0.6rem 1.2rem;
-    border-radius:30px;
-    display:inline-block;
-    margin-bottom:1rem;
+  background:#17345c;
+  color:white;
+  padding:0.6rem 1.2rem;
+  border-radius:30px;
+  display:inline-block;
+  margin-bottom:1rem;
 }
 
-.faculty{
-    margin-bottom:1rem;
-    font-weight:600;
-}
+.faculty{margin-bottom:1rem;font-weight:600}
 
-.marks-table{
-    width:100%;
-    border-collapse:collapse;
-}
+.marks-table{width:100%;border-collapse:collapse}
 
 .marks-table th{
-    background:#1f3a5f;
-    color:white;
-    padding:10px;
+  background:#1f3a5f;
+  color:white;
+  padding:10px;
 }
 
 .marks-table td{
-    padding:10px;
-    border:1px solid #ddd;
-    text-align:center;
+  padding:10px;
+  border:1px solid #ddd;
+  text-align:center;
 }
 
-.marks-table tr:nth-child(even){
-    background:#f4f8fe;
+.marks-table tr:nth-child(even){background:#f4f8fe}
+
+.perfect{background:#c7efd4;font-weight:700}
+.avg-high{background:#ffe0b2;font-weight:600}
+
+.roll{font-weight:bold}
+
+tbody tr:hover{
+  transform:scale(1.01);
+  transition:0.2s;
 }
 
-.perfect{
-    background:#c7efd4;
-    font-weight:bold;
-}
-
-.avg-high{
-    background:#ffe0b2;
-    font-weight:bold;
-}
-
-.roll{
-    font-weight:bold;
+.summary{
+  margin-top:1rem;
+  padding:1rem;
+  background:#eef4ff;
+  border-radius:10px;
+  font-weight:600;
 }
 </style>
 </head>
 
 <body>
-
 <div class="card">
 
 <div class="dept-header">
-<span>Department: Information Technology (IF)</span>
+<span>Department: Information Technology</span>
 <span>Class: IF6K</span>
 <span>Year: 2025-26</span>
 </div>
 
-<div class="subject-row">
-Subject: Emerging Trends in CS & IT (316313)
-</div>
-
-<div class="faculty">
-Lecturer: Mr. Kaustubh Prabhakar Ramteke
-</div>
+<div class="subject-row">Subject: Emerging Trends</div>
+<div class="faculty">Lecturer: Mr. Kaustubh Prabhakar Ramteke</div>
 
 <table class="marks-table">
 <thead>
 <tr>
-<th>Roll No</th>
-<th>Student Name</th>
-<th>Class Test 1</th>
-<th>Class Test 2</th>
-<th>Average</th>
+<th>Roll</th>
+<th>Name</th>
+<th>CT1</th>
+<th>CT2</th>
+<th>Avg</th>
 </tr>
 </thead>
-
-<tbody>
-
-<tr><td class="roll">1</td><td>Bhondle Yashasvi</td><td>30</td><td>26</td><td class="avg"></td></tr>
-<tr><td class="roll">2</td><td>Barapatre Aakansha</td><td>30</td><td>30</td><td class="avg"></td></tr>
-<tr><td class="roll">3</td><td>Bhakare Anurag</td><td>30</td><td>26</td><td class="avg"></td></tr>
-<tr><td class="roll">4</td><td>Bhavesh Thawale</td><td>30</td><td>29</td><td class="avg"></td></tr>
-<tr><td class="roll">5</td><td>Bokde Bhavik</td><td>30</td><td>30</td><td class="avg"></td></tr>
-<tr><td class="roll">6</td><td>Dikondwar Rudraksh</td><td>30</td><td>30</td><td class="avg"></td></tr>
-
-<tr><td class="roll">7</td><td>Gautam Ashish</td><td>Absent</td><td>Absent</td><td class="avg"></td></tr>
-
-<tr><td class="roll">8</td><td>Gube Thunali</td><td>30</td><td>29</td><td class="avg"></td></tr>
-<tr><td class="roll">9</td><td>Gulghane Harsha</td><td>30</td><td>29</td><td class="avg"></td></tr>
-<tr><td class="roll">10</td><td>Hemane Lucky</td><td>30</td><td>29</td><td class="avg"></td></tr>
-
-<tr><td class="roll">11</td><td>Kamble Prashik</td><td>30</td><td>28</td><td class="aaa"></td></tr>
-<tr><td class="roll">12</td><td>Kanade Gaurav</td><td>29</td><td>28</td><td></td></tr>
-<tr><td class="roll">13</td><td>Kundajwar Ashutosh</td><td>30</td><td>24</td><td class="avg"></td></tr>
-<tr><td class="roll">14</td><td>Lasunte Arya</td><td>30</td><td>28</td><td></td></tr>
-
-<tr><td class="roll">15</td><td>Mahi Kale</td><td>30</td><td>28</td><td></td></tr>
-<tr><td class="roll">16</td><td>Pal Aman</td><td>30</td><td>30</td><td class="avg"></td></tr>
-<tr><td class="roll">17</td><td>Punse Harshal</td><td>29</td><td>28</td><td></td></tr>
-<tr><td class="roll">18</td><td>Selwante Shlok</td><td>30</td><td>29</td><td class="avg"></td></tr>
-
-<tr><td class="roll">19</td><td>Shahu Jay</td><td>29</td><td>28</td><td></td></tr>
-<tr><td class="roll">20</td><td>Thakur Shourya</td><td>30</td><td>26</td><td class="avg"></td></tr>
-<tr><td class="roll">21</td><td>Shinde Aman</td><td>29</td><td>28</td><td class="avg"></td></tr>
-<tr><td class="roll">22</td><td>Tanvi Dhakate</td><td>30</td><td>30</td><td class="avg"></td></tr>
-
-<tr><td class="roll">23</td><td>Teltumbade Sejal</td><td>27</td><td>29</td><td class="avg"></td></tr>
-<tr><td class="roll">24</td><td>Vedant Joshi</td><td>28</td><td>30</td><td></td></tr>
-
-<tr><td class="roll">25</td><td>Waghmare Sachin</td><td>27</td><td>29</td><td class="avg"></td></tr>
-
-<tr><td class="roll">26</td><td>Yadav Somya</td><td>30</td><td>29</td><td class="avg"></td></tr>
-<tr><td class="roll">27</td><td>Yawale Sujal</td><td>28</td><td>27</td><td class="avg"></td></tr>
-
-<tr><td class="roll">28</td><td>Dhanorkar Kartiki</td><td>29</td><td>30</td><td class="avg"></td></tr>
-<tr><td class="roll">29</td><td>Jagruti Dharme</td><td>29</td><td>28</td><td></td></tr>
-<tr><td class="roll">30</td><td>Nikore Tanvi</td><td>30</td><td>29</td><td class="avg"></td></tr>
-
+<tbody id="tableBody">
 </tbody>
 </table>
+
+<div class="summary" id="summary"></div>
 
 </div>
 
 <script>
-// Calculate averages
-document.querySelectorAll("tbody tr").forEach(row => {
-    let ct1Cell = row.children[2];
-    let ct2Cell = row.children[3];
-    let avgCell = row.children[4];
+const data = [
+{r:1,n:"Bhondle Yashasvi",a:30,b:26},
+{r:2,n:"Barapatre Aakansha",a:30,b:30},
+{r:3,n:"Bhakare Anurag",a:30,b:26},
+{r:4,n:"Bhavesh Thawale",a:30,b:29},
+{r:5,n:"Bokde Bhavik",a:30,b:30},
+{r:6,n:"Dikondwar Rudraksh",a:30,b:30},
+{r:7,n:"Gautam Ashish",a:"Absent",b:"Absent"},
+{r:8,n:"Gube Thunali",a:30,b:29},
+{r:9,n:"Gulghane Harsha",a:30,b:29},
+{r:10,n:"Hemane Lucky",a:30,b:29},
+{r:11,n:"Kamble Prashik",a:30,b:28},
+{r:12,n:"Kanade Gaurav",a:29,b:28},
+{r:13,n:"Kundajwar Ashutosh",a:30,b:24},
+{r:14,n:"Lasunte Arya",a:30,b:28},
+{r:15,n:"Mahi Kale",a:30,b:28},
+{r:16,n:"Pal Aman",a:30,b:30},
+{r:17,n:"Punse Harshal",a:29,b:28},
+{r:18,n:"Selwante Shlok",a:30,b:29},
+{r:19,n:"Shahu Jay",a:29,b:28},
+{r:20,n:"Thakur Shourya",a:30,b:26},
+{r:21,n:"Shinde Aman",a:29,b:28},
+{r:22,n:"Tanvi Dhakate",a:30,b:30},
+{r:23,n:"Teltumbade Sejal",a:27,b:29},
+{r:24,n:"Vedant Joshi",a:28,b:30},
+{r:25,n:"Waghmare Sachin",a:27,b:29},
+{r:26,n:"Yadav Somya",a:30,b:29},
+{r:27,n:"Yawale Sujal",a:28,b:27},
+{r:28,n:"Dhanorkar Kartiki",a:29,b:30},
+{r:29,n:"Jagruti Dharme",a:29,b:28},
+{r:30,n:"Nikore Tanvi",a:30,b:29}
+];
 
-    let ct1 = ct1Cell.innerText;
-    let ct2 = ct2Cell.innerText;
+const body = document.getElementById("tableBody");
 
-    // Handle absent
-    if(ct1 === "Absent" || ct2 === "Absent"){
-        avgCell.innerText = "-";
-        return;
-    }
+let valid = [];
 
-    let avg = Math.round((parseInt(ct1) + parseInt(ct2)) / 2);
-    avgCell.innerText = avg;
+// build rows
+ data.forEach(s=>{
+  let avg="-";
+  if(s.a!=="Absent" && s.b!=="Absent"){
+    avg=Math.round((s.a+s.b)/2);
+    valid.push(avg);
+  }
 
-    // ✅ Bold ONLY if 30
-    if(parseInt(ct1) === 30) ct1Cell.style.fontWeight = "bold";
-    if(parseInt(ct2) === 30) ct2Cell.style.fontWeight = "bold";
-    if(avg === 30) avgCell.style.fontWeight = "bold";
+  s.avg=avg;
 });
+
+// ranking
+let sorted=[...data].filter(x=>x.avg!=="-").sort((a,b)=>b.avg-a.avg);
+sorted.forEach((s,i)=>s.rank=i+1);
+
+// render
+ data.forEach(s=>{
+  let tr=document.createElement("tr");
+
+  tr.innerHTML=`
+  <td class="roll">${s.r}</td>
+  <td>${s.n}</td>
+  <td>${s.a}</td>
+  <td>${s.b}</td>
+  <td>${s.avg}</td>`;
+
+  let tds=tr.children;
+
+  if(s.a===30) tds[2].classList.add("perfect");
+  if(s.b===30) tds[3].classList.add("perfect");
+
+  if(s.avg===30) tds[4].classList.add("perfect");
+
+  if(s.avg==="-") tr.style.opacity="0.6";
+
+  body.appendChild(tr);
+});
+
+// summary
+let classAvg=(valid.reduce((a,b)=>a+b,0)/valid.length).toFixed(2);
+let topper=Math.max(...valid);
+
+ document.getElementById("summary").innerText=
+ `Class Average: ${classAvg} | Top Score: ${topper} | Students: ${data.length}`;
 </script>
 
 </body>
