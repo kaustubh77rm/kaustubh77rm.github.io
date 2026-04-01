@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marks · IF6K · emerging Trends</title>
+<title>Marks · IF6K · emerging trends</title>
 
 <style>
 *{
@@ -23,7 +22,7 @@ body{
 }
 
 .card{
-    max-width:900px;
+    max-width:1000px;
     width:100%;
     background:white;
     border-radius:20px;
@@ -31,7 +30,6 @@ body{
     box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-/* Header */
 .dept-header{
     display:flex;
     justify-content:space-between;
@@ -57,7 +55,6 @@ body{
     font-weight:600;
 }
 
-/* Table */
 .marks-table{
     width:100%;
     border-collapse:collapse;
@@ -81,6 +78,11 @@ body{
 
 .perfect{
     background:#c7efd4;
+    font-weight:bold;
+}
+
+.avg-high{
+    background:#ffe0b2;
     font-weight:bold;
 }
 
@@ -113,56 +115,84 @@ Lecturer: Mr. Kaustubh Prabhakar Ramteke
 <tr>
 <th>Roll No</th>
 <th>Student Name</th>
-<th>Marks (Class test 1)</th>
+<th>Class Test 1</th>
+<th>Class Test 2</th>
+<th>Average</th>
 </tr>
 </thead>
 
 <tbody>
 
-<tr><td class="roll">1</td><td>Bhondle Yashasvi</td><td class="perfect">30</td></tr>
-<tr><td class="roll">2</td><td>Barapatre Aakansha</td><td class="perfect">30</td></tr>
-<tr><td class="roll">3</td><td>Bhakare Anurag</td><td class="perfect">30</td></tr>
-<tr><td class="roll">4</td><td>Bhavesh Thawale</td><td class="perfect">30</td></tr>
-<tr><td class="roll">5</td><td>Bokde Bhavik</td><td class="perfect">30</td></tr>
-<tr><td class="roll">6</td><td>Dikondwar Rudraksh</td><td class="perfect">30</td></tr>
+<tr><td class="roll">1</td><td>Bhondle Yashasvi</td><td>30</td><td>26</td><td class="avg"></td></tr>
+<tr><td class="roll">2</td><td>Barapatre Aakansha</td><td>30</td><td>30</td><td class="avg"></td></tr>
+<tr><td class="roll">3</td><td>Bhakare Anurag</td><td>30</td><td>26</td><td class="avg"></td></tr>
+<tr><td class="roll">4</td><td>Bhavesh Thawale</td><td>30</td><td>29</td><td class="avg"></td></tr>
+<tr><td class="roll">5</td><td>Bokde Bhavik</td><td>30</td><td>30</td><td class="avg"></td></tr>
+<tr><td class="roll">6</td><td>Dikondwar Rudraksh</td><td>30</td><td>30</td><td class="avg"></td></tr>
 
-<tr><td class="roll">7</td><td>Gautam Ashish</td><td style="color:red;font-weight:bold;">Absent</td></tr>
-<tr><td class="roll">8</td><td>Gube Thunali</td><td class="perfect">30</td></tr>
-<tr><td class="roll">9</td><td>Gulghane Harsha</td><td class="perfect">30</td></tr>
-<tr><td class="roll">10</td><td>Hemane Lucky</td><td class="perfect">30</td></tr>
+<tr><td class="roll">7</td><td>Gautam Ashish</td><td>Absent</td><td>Absent</td><td class="avg"></td></tr>
 
-<tr><td class="roll">11</td><td>Kamble Prashik</td><td class="perfect">30</td></tr>
-<tr><td class="roll">12</td><td>Kanade Gaurav</td><td>29</td></tr>
-<tr><td class="roll">13</td><td>Kundajwar Ashutosh</td><td class="perfect">30</td></tr>
-<tr><td class="roll">14</td><td>Lasunte Arya</td><td class="perfect">30</td></tr>
+<tr><td class="roll">8</td><td>Gube Thunali</td><td>30</td><td>29</td><td class="avg"></td></tr>
+<tr><td class="roll">9</td><td>Gulghane Harsha</td><td>30</td><td>29</td><td class="avg"></td></tr>
+<tr><td class="roll">10</td><td>Hemane Lucky</td><td>30</td><td>29</td><td class="avg"></td></tr>
 
-<tr><td class="roll">15</td><td>Mahi Kale</td><td class="perfect">30</td></tr>
-<tr><td class="roll">16</td><td>Pal Aman</td><td class="perfect">30</td></tr>
-<tr><td class="roll">17</td><td>Punse Harshad</td><td>29</td></tr>
-<tr><td class="roll">18</td><td>Selwante Shlok</td><td class="perfect">30</td></tr>
+<tr><td class="roll">11</td><td>Kamble Prashik</td><td>30</td><td>28</td><td class="aaa"></td></tr>
+<tr><td class="roll">12</td><td>Kanade Gaurav</td><td>29</td><td>28</td><td></td></tr>
+<tr><td class="roll">13</td><td>Kundajwar Ashutosh</td><td>30</td><td>24</td><td class="avg"></td></tr>
+<tr><td class="roll">14</td><td>Lasunte Arya</td><td>30</td><td>28</td><td></td></tr>
 
-<tr><td class="roll">19</td><td>Shahu Jay</td><td>29</td></tr>
-<tr><td class="roll">20</td><td>Thakur Shourya</td><td class="perfect">30</td></tr>
-<tr><td class="roll">21</td><td>Shinde Aman</td><td>29</td></tr>
-<tr><td class="roll">22</td><td>Tanvi Dhakate</td><td class="perfect">30</td></tr>
+<tr><td class="roll">15</td><td>Mahi Kale</td><td>30</td><td>28</td><td></td></tr>
+<tr><td class="roll">16</td><td>Pal Aman</td><td>30</td><td>30</td><td class="avg"></td></tr>
+<tr><td class="roll">17</td><td>Punse Harshal</td><td>29</td><td>28</td><td></td></tr>
+<tr><td class="roll">18</td><td>Selwante Shlok</td><td>30</td><td>29</td><td class="avg"></td></tr>
 
-<tr><td class="roll">23</td><td>Teltumbade Sejal</td><td>27</td></tr>
-<tr><td class="roll">24</td><td>Vedant Joshi</td><td>28</td></tr>
+<tr><td class="roll">19</td><td>Shahu Jay</td><td>29</td><td>28</td><td></td></tr>
+<tr><td class="roll">20</td><td>Thakur Shourya</td><td>30</td><td>26</td><td class="avg"></td></tr>
+<tr><td class="roll">21</td><td>Shinde Aman</td><td>29</td><td>28</td><td class="avg"></td></tr>
+<tr><td class="roll">22</td><td>Tanvi Dhakate</td><td>30</td><td>30</td><td class="avg"></td></tr>
 
-<tr><td class="roll">25</td><td>Waghmare Sachin</td><td>27</td></tr>
+<tr><td class="roll">23</td><td>Teltumbade Sejal</td><td>27</td><td>29</td><td class="avg"></td></tr>
+<tr><td class="roll">24</td><td>Vedant Joshi</td><td>28</td><td>30</td><td></td></tr>
 
-<tr><td class="roll">26</td><td>Yadav Somya</td><td class="perfect">30</td></tr>
-<tr><td class="roll">27</td><td>Yawale Sujal</td><td>28</td></tr>
+<tr><td class="roll">25</td><td>Waghmare Sachin</td><td>27</td><td>29</td><td class="avg"></td></tr>
 
-<tr><td class="roll">28</td><td>Dhanorkar Kartiki</td><td>29</td></tr>
+<tr><td class="roll">26</td><td>Yadav Somya</td><td>30</td><td>29</td><td class="avg"></td></tr>
+<tr><td class="roll">27</td><td>Yawale Sujal</td><td>28</td><td>27</td><td class="avg"></td></tr>
 
-<tr><td class="roll">29</td><td>Jagruti Dharme</td><td>29</td></tr>
-<tr><td class="roll">30</td><td>Nikore Tanvi</td><td class="perfect">30</td></tr>
+<tr><td class="roll">28</td><td>Dhanorkar Kartiki</td><td>29</td><td>30</td><td class="avg"></td></tr>
+<tr><td class="roll">29</td><td>Jagruti Dharme</td><td>29</td><td>28</td><td></td></tr>
+<tr><td class="roll">30</td><td>Nikore Tanvi</td><td>30</td><td>29</td><td class="avg"></td></tr>
 
 </tbody>
 </table>
 
 </div>
+
+<script>
+// Calculate averages
+document.querySelectorAll("tbody tr").forEach(row => {
+    let ct1Cell = row.children[2];
+    let ct2Cell = row.children[3];
+    let avgCell = row.children[4];
+
+    let ct1 = ct1Cell.innerText;
+    let ct2 = ct2Cell.innerText;
+
+    // Handle absent
+    if(ct1 === "Absent" || ct2 === "Absent"){
+        avgCell.innerText = "-";
+        return;
+    }
+
+    let avg = Math.round((parseInt(ct1) + parseInt(ct2)) / 2);
+    avgCell.innerText = avg;
+
+    // ✅ Bold ONLY if 30
+    if(parseInt(ct1) === 30) ct1Cell.style.fontWeight = "bold";
+    if(parseInt(ct2) === 30) ct2Cell.style.fontWeight = "bold";
+    if(avg === 30) avgCell.style.fontWeight = "bold";
+});
+</script>
 
 </body>
 </html>
